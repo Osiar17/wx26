@@ -1,0 +1,63 @@
+/* ============================================================
+   WX 2026 — Design tokens (shared, canonical)
+   Namespaced --wx-* custom properties: a single authoritative
+   definition of the approved brand values, available site-wide.
+   These MIRROR the per-page palettes; pages keep their own local
+   variables for existing bespoke styling. New shared components
+   (components.css) consume these tokens.
+   ============================================================ */
+:root {
+  /* Brand palette */
+  --wx-wildflower-purple: #7A4CB8;
+  --wx-wildflower-purple-rgb: 122, 76, 184;
+  --wx-presence-gold: #C6A24C;
+  --wx-gold-bright: #E7CF8C;
+  --wx-bone: #ECE3D0;
+  --wx-bone-dim: #b9b09c;
+  --wx-blue-black: #0A0E1A;
+  --wx-midnight: #16203D;
+  --wx-crimson: #8A171B;
+  --wx-crimson-bright: #C8455A;
+
+  /* Phase accent colours (order I–IV) */
+  --wx-phase-1: #9a83c8;
+  --wx-phase-2: #5f9d8f;
+  --wx-phase-3: #c86b72;
+  --wx-phase-4: #e7cf8c;
+
+  /* Type stacks */
+  --wx-display: "Cinzel", Georgia, serif;
+  --wx-serif: "EB Garamond", Georgia, serif;
+  --wx-sans: "TFArrow", "Arial Narrow", Arial, sans-serif;
+
+  /* Spacing scale */
+  --wx-space-1: .25rem;
+  --wx-space-2: .5rem;
+  --wx-space-3: .75rem;
+  --wx-space-4: 1rem;
+  --wx-space-6: 1.5rem;
+  --wx-space-8: 2rem;
+
+  /* Radii */
+  --wx-radius-sm: 4px;
+  --wx-radius-md: 9px;
+  --wx-radius-lg: 16px;
+
+  /* Shadows */
+  --wx-shadow-soft: 0 2px 22px rgba(0, 0, 0, .5);
+
+  /* Z-index scale */
+  --wx-z-header: 300;
+  --wx-z-overlay: 900;
+  --wx-z-modal: 1000;
+
+  /* Motion */
+  --wx-ease: cubic-bezier(.4, 0, .2, 1);
+  --wx-dur-fast: .2s;
+  --wx-dur: .35s;
+
+  /* Breakpoints (documented for reference; used in media queries) */
+  --wx-bp-narrow: 360px;
+  --wx-bp-mobile: 600px;
+  --wx-bp-tablet: 880px;
+}

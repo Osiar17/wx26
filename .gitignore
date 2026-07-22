@@ -1,0 +1,7 @@
+# Dev tooling artifacts — never part of the published static site
+node_modules/
+test-results/
+playwright-report/
+.playwright/
+*.log
+.DS_Store

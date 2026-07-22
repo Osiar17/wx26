@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="description" content="The Worship Experience 2026 theme — YES: Not My Will, But Yours — and its four-phase journey from God is Good to God is Glorified.">
+
+<title>Our Theme — Worship Experience 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'TFArrow';font-weight:300;font-style:normal;font-display:swap;src:url(assets/4eb0091819c7.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:500;font-style:normal;font-display:swap;src:url(assets/9a22f94c2bb9.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:700;font-style:normal;font-display:swap;src:url(assets/431bfc939f5d.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:800;font-style:normal;font-display:swap;src:url(assets/af3abf759b90.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:900;font-style:normal;font-display:swap;src:url(assets/2498c2d4309d.ttf) format('truetype')}
+  :root{
+    --night:#080b14;--crimson:#8A171B;--crimson-bright:#b0535f;
+    --gold:#C6A24C;--gold-bright:#E7CE92;--gold-deep:#8C6B2E;
+    --bone:#ece3d0;--bone-dim:#C4BBA8;--bone-faint:#766C5C;
+    --rule:rgba(200,162,75,0.26);
+    --display:"Cinzel",Georgia,serif;--body:"EB Garamond",Georgia,serif;
+    --maxread:720px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--night);color:var(--bone);font-family:var(--body);
+    font-size:1.18rem;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(80% 60% at 50% -10%,rgba(161,43,60,.10),transparent 60%),
+      radial-gradient(70% 70% at 50% 120%,rgba(200,162,75,.07),transparent 60%),
+      linear-gradient(180deg,#0C0910,#0A0810 50%,#0C0910)}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.045;
+    background-image:url("assets/images/texture-160-2.svg")}
+
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:90;
+    background:linear-gradient(90deg,var(--crimson),var(--gold-bright));transition:width .08s linear}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:center;
+    justify-content:space-between;padding:.9rem clamp(1.2rem,4vw,2.6rem);
+    background:rgba(10,8,14,.42);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,162,75,.12)}
+  .nav a{text-decoration:none}
+  .nav__back{display:inline-flex;align-items:center;gap:.6em;color:var(--crimson-bright);font-size:.96rem;letter-spacing:.04em}
+  .nav__back .arr{display:inline-block;transition:transform .25s ease}
+  .nav__back:hover .arr{transform:translateX(-5px)}
+  .nav__logo{font-family:var(--display);font-weight:600;letter-spacing:.22em;color:var(--gold-bright);font-size:1.02rem}
+
+  .eyebrow{font-family:var(--display);font-size:.74rem;font-weight:500;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7em}
+  .eyebrow::before{content:"◆";color:var(--gold);font-size:.6em}
+  .gilt{font-family:var(--display);
+    background:linear-gradient(168deg,var(--gold-bright),var(--gold) 50%,var(--gold-deep));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .scrip,.said{color:var(--gold-bright);font-weight:500}
+  .yes{color:var(--gold-bright);font-weight:600}
+  .big{color:var(--emph,#C8455A);font-weight:600}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.6rem;overflow:hidden}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(12,9,16,.6),rgba(12,9,16,.4) 42%,rgba(12,9,16,.9)),
+      radial-gradient(60% 50% at 50% 46%,transparent,rgba(12,9,16,.55))}
+  .hero__inner{max-width:54rem}
+  .hero .eyebrow{margin-bottom:1.8rem;justify-content:center}
+  .hero__title{font-family:var(--display);font-weight:600;line-height:1.04;
+    font-size:clamp(2.2rem,6vw,4.4rem);color:var(--bone)}
+  .hero__title .y{display:block;font-size:clamp(4.5rem,15vw,11rem);line-height:.86;margin-bottom:.05em;
+    text-shadow:0 0 50px rgba(200,162,75,.22)}
+  .hero__tag{color:var(--bone-dim);font-size:clamp(1.05rem,2vw,1.35rem);margin-top:1.8rem}
+  .scrolltip{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;
+    color:var(--bone-faint);font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:.7rem}
+  .scrolltip .ln{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:drop 2.6s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform-origin:top}}
+
+  /* ---------- PRESENTATION SLIDES ---------- */
+  .slide{position:relative;min-height:100svh;overflow:hidden}
+  .slide .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .slide .scrim{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(12,9,16,.5),rgba(12,9,16,.2) 40%,rgba(12,9,16,.6))}
+  .slide--steward .bg{object-position:center center}
+  .slide--wrestle .bg{object-position:center 45%}
+  .slide--geth .bg{object-position:center 40%}
+  .slide--steward{--emph:#86B6D9}
+  .slide--wrestle{--emph:#E3A24E}
+  .slide--geth{--emph:#6FB7B0}
+
+  .overlay{position:relative;z-index:2;width:100%;min-height:100svh}
+
+  /* the visible guiding trail (drawn through the boxes) */
+  .trail-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+  .trail-line{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:6 7;opacity:.62;
+    filter:drop-shadow(0 0 6px rgba(200,162,75,.35))}
+  .trail-node{fill:var(--gold-bright);opacity:.95;filter:drop-shadow(0 0 8px rgba(231,206,134,.6))}
+
+  .step{position:absolute;max-width:33ch;z-index:2}
+  .panel{background:linear-gradient(rgba(7,5,10,.74),rgba(7,5,10,.6));
+    border:1px solid rgba(200,162,75,.18);backdrop-filter:blur(3px);padding:1.15rem 1.4rem}
+  .panel p{margin-bottom:.8em;font-size:1.02rem;line-height:1.58}
+  .panel p:last-child{margin-bottom:0}
+  .dropcap::first-letter{font-family:var(--display);font-weight:600;color:var(--gold-bright);
+    font-size:3em;line-height:.78;float:left;margin:.04em .1em 0 0}
+
+  .slide-title{position:absolute;font-family:var(--display);font-weight:700;color:var(--bone);
+    line-height:1.0;letter-spacing:.01em;z-index:3;
+    text-shadow:0 4px 46px rgba(0,0,0,.92),0 0 90px rgba(0,0,0,.6)}
+  .t-s1,.t-s2,.t-s3{position:absolute;z-index:3}
+  .t-s1{top:8%;left:5%;text-align:left;max-width:52%}
+  .t-s1 .slide-title{position:static;font-size:clamp(2.4rem,6.4vw,5.4rem)}
+  .t-s1 .undertick{height:1px;margin:.9rem auto 0 0;width:240px;opacity:.65;
+    background:repeating-linear-gradient(90deg,var(--gold) 0 13px,transparent 13px 24px)}
+  .t-s2{bottom:7%;left:5%;text-align:left}
+  .t-s2 .slide-title{position:static;font-size:clamp(2.2rem,6.6vw,5rem)}
+  .t-s3{bottom:7%;left:5%;text-align:left}
+  .t-s3 .slide-title{position:static;font-size:clamp(2.4rem,7vw,5.6rem)}
+
+  /* ---------- divider ---------- */
+  .divider{display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    margin:clamp(3rem,7vh,5rem) auto;max-width:var(--maxread);padding:0 1.4rem}
+  .divider span{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--rule),transparent)}
+  .divider b{color:var(--gold);font-size:.8rem}
+
+  /* ---------- INVITATION BRIDGE ---------- */
+  .closing{position:relative;text-align:center;padding:clamp(4rem,11vh,8rem) 1.4rem clamp(3rem,7vh,5rem);
+    background:linear-gradient(180deg,#0C0910 0%,#0B0C1C 55%,#0D1126 100%)}
+  .closing__inner{position:relative;z-index:2;max-width:var(--maxread);margin:0 auto}
+  .lead-line{color:var(--bone-dim);font-size:clamp(1.12rem,1.6vw,1.34rem);line-height:1.6;margin:0 auto 1.4em;max-width:44ch}
+  .datecard{display:inline-flex;align-items:center;gap:1.2rem;margin:1.4rem auto 2.2rem}
+  .datecard .ln{height:1px;width:clamp(28px,8vw,70px);background:linear-gradient(90deg,transparent,var(--gold))}
+  .datecard .ln.r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .datecard .dt{font-family:var(--display);font-size:1.14rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-bright)}
+
+  /* ---------- THE GARDEN MAP (horizontal journey) ---------- */
+  .gardenmap{position:relative;padding:0 0 clamp(2.5rem,6vh,4rem)}
+  .gm-intro{position:relative;text-align:center;padding:clamp(3.5rem,12vh,7rem) 1.4rem clamp(3rem,9vh,5.5rem);
+    background:
+      radial-gradient(78% 100% at 50% 80%,rgba(201,120,58,.15),transparent 64%),
+      linear-gradient(180deg,#0D1126 0%,#0E1432 55%,#0B1130 100%)}
+  .gm-intro__in{position:relative;z-index:2;max-width:46rem;margin:0 auto}
+  .gm-intro .eyebrow{justify-content:center;margin-bottom:1.3rem}
+  .gm-h{font-family:var(--display);font-weight:600;color:var(--bone);font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.1;
+    text-shadow:0 3px 30px rgba(0,0,0,.8)}
+  .gm-hint{margin-top:1.5rem;font-family:var(--display);color:var(--gold-bright);
+    font-size:clamp(1.05rem,2.1vw,1.4rem);letter-spacing:.04em}
+  .gm-hint span{display:block;font-family:var(--body);font-weight:300;color:var(--bone-dim);
+    font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;margin-top:.7rem}
+
+  .gm-stage{position:relative;height:320vh}
+  .gm-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+  .gm-track{position:relative;display:flex;width:400vw;height:100%;will-change:transform}
+  .gm-pano{position:absolute;top:0;left:0;width:400vw;height:100%;z-index:0;pointer-events:none}
+  .gm-pano img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+  .station{flex:0 0 100vw;height:100%;position:relative;z-index:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:clamp(3rem,7vh,5rem) clamp(1.6rem,9vw,8rem)}
+  .station::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(72% 82% at 50% 50%,rgba(8,6,12,.30),rgba(8,6,12,.72))}
+  .station>*{position:relative;z-index:1}
+  .st1{--acc:#8FBEE0}.st2{--acc:#E6A85A}.st3{--acc:#EAD9A0}.st4{--acc:#7FC6C0}
+  .st-num{font-family:var(--display);color:var(--acc,var(--gold));letter-spacing:.34em;font-size:.92rem;
+    margin-bottom:1.2rem;text-shadow:0 2px 16px rgba(0,0,0,.75)}
+  .st-ref{font-family:var(--body);font-weight:500;text-transform:uppercase;letter-spacing:.32em;
+    font-size:.7rem;color:var(--acc,var(--crimson-bright));opacity:.85;margin-bottom:1.6rem;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+  .st-title{font-family:var(--display);font-weight:600;line-height:1.05;color:#F5EFE0;
+    font-size:clamp(2.1rem,5.2vw,3.9rem);margin-bottom:1.8rem;letter-spacing:.02em;text-shadow:0 3px 34px rgba(0,0,0,.92)}
+  .st-lines{font-family:var(--body);font-weight:300;line-height:2;color:#E9E2D2;
+    font-size:clamp(1.05rem,1.5vw,1.26rem);max-width:34ch;margin:0 auto;text-shadow:0 2px 18px rgba(0,0,0,.88)}
+  .st-pause{font-family:var(--display);font-weight:500;color:var(--acc,var(--gold-bright));
+    font-size:clamp(1.5rem,3.3vw,2.4rem);margin-top:2.4rem;letter-spacing:.02em;text-shadow:0 0 40px rgba(0,0,0,.55)}
+
+  .gm-controls{position:absolute;left:0;right:0;bottom:clamp(2rem,5vh,3.2rem);z-index:6;
+    display:flex;flex-direction:column;align-items:center;gap:1.5rem;pointer-events:none}
+  .gm-controls>*{pointer-events:auto}
+  .gm-rail{display:flex;align-items:center;justify-content:center;width:min(560px,86vw)}
+  .gm-rail .seg{height:1px;flex:1;opacity:.5;background:repeating-linear-gradient(90deg,var(--gold) 0 7px,transparent 7px 15px)}
+  .gm-rail .dot{width:17px;height:17px;border-radius:50%;border:2px solid var(--crimson-bright);
+    background:rgba(231,206,134,.28);flex:0 0 auto;cursor:pointer;position:relative;
+    transition:background .3s ease,box-shadow .3s ease,transform .3s ease}
+  .gm-rail .dot:hover{transform:scale(1.12)}
+  .gm-rail .dot.active{background:var(--gold-bright);border-color:var(--gold-bright);
+    box-shadow:0 0 20px rgba(231,206,134,.85);transform:scale(1.18)}
+  .gm-rail .dot b{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-family:var(--display);
+    font-weight:600;font-size:.66rem;letter-spacing:.16em;color:var(--bone-dim)}
+  .gm-arrows{display:flex;justify-content:center;gap:1.4rem}
+  .gm-arrows button{background:transparent;border:1px solid var(--rule);color:var(--gold);
+    width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.05rem;transition:border-color .25s,background .25s}
+  .gm-arrows button:hover{border-color:var(--gold);background:rgba(200,162,75,.08)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--rule);text-align:center;padding:3.4rem 1.4rem 4.4rem;background:rgba(8,6,12,.5)}
+  footer .mk{font-family:var(--display);font-weight:600;letter-spacing:.2em;color:var(--gold-bright);font-size:1.05rem;margin-bottom:.7rem}
+  footer .ft-links{display:flex;gap:1.6rem;justify-content:center;margin:1.2rem 0;flex-wrap:wrap}
+  footer .ft-links a{color:var(--bone-dim);text-decoration:none;font-size:.92rem}
+  footer .ft-links a:hover{color:var(--gold-bright)}
+  footer .meta{color:var(--bone-faint);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;margin-top:1rem}
+
+  .rise{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.16,.8,.3,1)}
+  .rise.in{opacity:1;transform:none}
+  .d1{transition-delay:.16s}.d2{transition-delay:.32s}.d3{transition-delay:.48s}.d4{transition-delay:.64s}
+
+  @media(max-width:880px){
+    body{font-size:1.08rem}
+    .slide{min-height:auto}
+    .slide .scrim{background:linear-gradient(180deg,rgba(10,8,12,.55),rgba(10,8,12,.62))}
+    .trail-svg{display:none}
+    .overlay{display:flex;flex-direction:column;justify-content:center;min-height:100svh;gap:1rem;padding:6rem 1.2rem 4rem}
+    .step{position:static !important;max-width:none;width:100%;transform:none !important;order:2}
+    .slide-title,.t-s1,.t-s2,.t-s3{position:static !important;transform:none !important;text-align:left;max-width:none;order:1}
+    .t-s1 .undertick{margin-left:0}
+    .t-s1 .slide-title,.t-s2 .slide-title,.t-s3 .slide-title{font-size:clamp(2.3rem,9vw,3.6rem)}
+    .panel p{font-size:1rem}
+    .station{padding:clamp(3rem,8vh,5rem) 1.3rem}
+    .gm-rail .dot b{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .rise{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}.progress{transition:none}.gm-track{scroll-behavior:auto}
+  }
+  /* ---------- concept-style header band ---------- */
+  .band{position:relative;z-index:40;overflow:hidden;border-bottom:1px solid rgba(200,162,75,.2);
+    min-height:clamp(220px,28vw,360px);display:flex}
+  .band__bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center 20%}
+  .band__bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(rgba(10,8,12,.4),rgba(10,8,12,.66))}
+  .band__row{flex:1;display:flex;flex-direction:column;width:100%;
+    padding:clamp(1.3rem,2.6vw,2rem) clamp(1.2rem,4vw,2.6rem)}
+  .band__top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .band .home img{height:30px;opacity:.95;display:block}
+  .band .back{font-family:var(--display);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bone);background:var(--crimson-bright);border:1.5px solid var(--crimson-bright);border-radius:2px;padding:.55rem 1.15rem;
+    display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+    box-shadow:0 0 18px -4px rgba(200,69,90,.6);transition:box-shadow .25s ease,transform .25s ease}
+  .band .back:hover{box-shadow:0 0 26px -2px rgba(200,69,90,.8);transform:translateY(-1px)}
+  .band .back .ar{font-size:.9rem;transition:transform .25s ease}
+  .band .back:hover .ar{transform:translateX(-3px)}
+  .band__title{margin:auto;text-align:center;font-family:var(--display);font-weight:600;
+    font-size:clamp(2.1rem,8.2vw,6.5rem);letter-spacing:.05em;text-transform:uppercase;color:var(--bone);
+    white-space:nowrap;text-shadow:0 2px 22px rgba(0,0,0,.85)}
+
+  /* ---------- concept-style footer ---------- */
+  .foot{position:relative;z-index:5;background:#080610;border-top:1px solid rgba(200,162,75,.18);
+    padding:2.8rem clamp(1.2rem,4vw,2.6rem)}
+  .foot-wrap{width:100%;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.4rem}
+  .foot-mark{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:.1em;color:var(--crimson-bright)}
+  .foot-mark b{color:var(--gold-bright)}
+  .foot-sub{font-family:var(--body);font-size:.92rem;color:var(--bone-dim);margin-top:.4rem}
+  .foot-sub a{color:var(--bone-dim);text-decoration:none}.foot-sub a:hover{color:var(--gold-bright)}
+  .foot-verse{font-family:var(--body);font-style:italic;font-size:1.05rem;color:var(--bone-dim);text-align:right;max-width:26ch}
+  @media(max-width:880px){.foot-verse{text-align:left}.band__title{font-size:clamp(2.2rem,10.4vw,4.3rem)}}
+  @media(max-width:560px){.band__title{white-space:normal;text-wrap:balance;font-size:clamp(2rem,9vw,3.4rem);line-height:1.06}}
+
+  /* ---------- theme opener (hero) ---------- */
+  .hero__color{position:absolute;inset:0;z-index:-2;
+    background:radial-gradient(80% 70% at 50% 0%,rgba(200,162,75,.16),transparent 60%),
+      linear-gradient(165deg,#2a0a12,#160710 52%,#0b0510)}
+  .theme-open{max-width:60rem}
+  .theme-open .lead-h{font-family:var(--display);font-weight:600;text-transform:uppercase;
+    letter-spacing:.06em;line-height:1.12;color:var(--bone);
+    font-size:clamp(2.3rem,6.2vw,4.6rem);margin-bottom:1.2rem}
+  .theme-open .lead-sub{font-family:var(--body);font-style:italic;color:var(--gold-bright);
+    font-size:clamp(1.1rem,2.4vw,1.5rem);margin-bottom:2.6rem}
+  .theme-points{display:grid;grid-template-columns:repeat(2,1fr);gap:2.1rem 3rem;text-align:left;margin-top:.4rem}
+  .tp{border-left:2px solid rgba(200,162,75,.35);padding-left:1.2rem}
+  .tp{transition:border-color .3s ease}.tp.open{border-color:var(--gold-bright)}
+  .tp h3{font-family:var(--display);font-weight:600;letter-spacing:.04em;color:var(--gold-bright);
+    font-size:clamp(1.05rem,1.7vw,1.25rem);margin:0;cursor:pointer;display:flex;align-items:center;
+    justify-content:space-between;gap:.8rem;background:none;border:0;width:100%;text-align:left;padding:0}
+  .tp h3 .ind{font-size:1.1rem;color:var(--crimson-bright);transition:transform .3s ease;flex:none}
+  .tp.open h3 .ind{transform:rotate(45deg)}
+  .tp p{font-family:var(--body);color:var(--bone-dim);font-size:1.1rem;line-height:1.5;
+    max-height:0;opacity:0;overflow:hidden;margin-top:0;
+    transition:max-height .4s ease,opacity .35s ease,margin-top .3s ease}
+  .tp.open p{max-height:200px;opacity:1;margin-top:.6rem}
+  @media(max-width:760px){.theme-points{grid-template-columns:1fr;gap:1.5rem}}
+
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold-bright);outline-offset:4px}
+
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem clamp(1.1rem,4vw,2.4rem);background:rgba(10,14,26,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-bottom:1px solid rgba(198,162,76,.28)}
+.site-nav__logo img{height:28px;width:auto;display:block;opacity:.97}
+.nav-countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.42rem;font-family:'TFArrow','Arial Narrow',sans-serif;white-space:nowrap;pointer-events:none}
+.nav-countdown .cd-num{color:#C6A24C;font-weight:800;font-size:.92rem;letter-spacing:.03em;line-height:1}
+.nav-countdown .cd-lbl{color:#ECE3D0;font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82;line-height:1}
+@media(max-width:600px){.nav-countdown .cd-lbl{display:none}.nav-countdown{gap:0}}
+.site-nav__ws{font-family:'TFArrow','Arial Narrow',sans-serif;font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0A0E1A;background:#C6A24C;border:1px solid #C6A24C;border-radius:3px;padding:.52rem 1.25rem;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 2px 12px rgba(198,162,76,.28);transition:background .25s,color .25s,transform .25s,box-shadow .25s}
+.site-nav__ws:hover,.site-nav__ws:focus-visible{background:#d4b25e;color:#0A0E1A;transform:translateY(-1px);box-shadow:0 4px 18px rgba(198,162,76,.42);outline:none}
+.site-nav__ws .ar{font-size:.9rem;transition:transform .25s}
+.site-nav__ws:hover .ar{transform:translateX(-3px)}
+.wx-foot{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:clamp(2.6rem,7vh,5rem) clamp(1.4rem,5vw,3.4rem);border-top:1px solid rgba(236,227,208,.12);background:#080b14}
+.wx-foot-yes{height:clamp(42px,5vw,56px);width:auto;display:block}
+.wx-foot-ccc{height:clamp(28px,3.6vw,38px);width:auto;display:block}
+@media(max-width:560px){.wx-foot{flex-direction:column;align-items:center;gap:1.6rem;text-align:center}}
+</style>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/routes.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body id="top">
+<a class="wx-skip-link" href="#main">Skip to main content</a>
+<nav class="site-nav" aria-label="Ecosystem">
+  <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
+  <div class="nav-countdown" aria-label="Days remaining until 29 November 2026"><span class="cd-num">—</span><span class="cd-lbl">days to 29 Nov</span></div>
+  <a class="site-nav__ws" href="index.html#hub"><span class="ar">&larr;</span> Workspace</a>
+</nav>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="band">
+  <div class="band__bg" style="background-image:image-set(url('assets/images/theme-brief-slide-4.webp') type('image/webp'), url('assets/images/theme-brief-slide-4.jpg') type('image/jpeg'))" aria-hidden="true"></div>
+  <div class="band__row">
+    
+    <h1 class="band__title">Our WX 26 Theme</h1>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<main id="main" tabindex="-1">
+<section class="hero">
+  <div class="hero__color" aria-hidden="true"></div>
+  <div class="hero__scrim"></div>
+  <div class="hero__inner theme-open">
+    <span class="eyebrow">Worship Experience 2026 &middot; Our Theme</span>
+    <h2 class="lead-h">We Build Every<br>Experience On A Theme</h2>
+    <p class="lead-sub">The theme anchors everything we do.</p>
+    <div class="theme-points">
+      <div class="tp">
+        <h3 class="tp-toggle" role="button" tabindex="0" aria-expanded="false"><span>Achieve our Pattern of Worship</span><span class="ind" aria-hidden="true">+</span></h3>
+        <p>The WX theme helps create room to Engage God, Behold Him and Be Transformed.</p>
+      </div>
+      <div class="tp">
+        <h3 class="tp-toggle" role="button" tabindex="0" aria-expanded="false"><span>Made new each year</span><span class="ind" aria-hidden="true">+</span></h3>
+        <p>Every Worship Experience theme creates a new experience; it is never merely a repeat of the previous year.</p>
+      </div>
+      <div class="tp">
+        <h3 class="tp-toggle" role="button" tabindex="0" aria-expanded="false"><span>Our guiding light</span><span class="ind" aria-hidden="true">+</span></h3>
+        <p>The theme shapes the songs, the design, the whole flow.</p>
+      </div>
+      <div class="tp">
+        <h3 class="tp-toggle" role="button" tabindex="0" aria-expanded="false"><span>Where God moves</span><span class="ind" aria-hidden="true">+</span></h3>
+        <p>The theme becomes the ground on which He works among His people.</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrolltip"><span>Enter</span><span class="ln"></span></div>
+</section>
+
+<!-- ===================== SLIDE 1 ===================== -->
+<section class="slide slide--steward" id="stewardship">
+  <picture><source type="image/webp" srcset="assets/images/theme-brief-color.webp"><img class="bg" src="assets/images/theme-brief-color.jpg" alt="A steward with keys overlooking the estate at dawn" decoding="async"></picture>
+  <div class="scrim"></div>
+  <div class="overlay">
+    <div class="slide-title t-s1 rise">
+      <h2 class="slide-title">Understanding<br>Stewardship</h2>
+      <div class="undertick"></div>
+    </div>
+
+    <div class="step" style="top:13%;right:5%">
+      <div class="panel rise d1">
+        <p class="dropcap">Stewardship is CCC's theme for 2026, inspired by Paul's letter to the church in Corinth, where believers had been arguing over whether it was he or Apollos who was their true leader. Paul reminded them that whether he or Apollos, they were only "servants of Christ and <span class="big">stewards</span> of the mysteries of God."</p>
+      </div>
+    </div>
+
+    <div class="step" style="top:48%;left:6%">
+      <div class="panel rise d2">
+        <p>Back then, everyone knew what <span class="big">a steward was — a manager looking after someone else's property.</span> Think of Joseph in Egypt: he ran Pharaoh's entire empire, yet owned none of it, even while administering great wealth and increase.</p>
+      </div>
+    </div>
+
+    <div class="step" style="bottom:9%;right:6%">
+      <div class="panel rise d3">
+        <p>Paul asked a question that grounds stewardship: <span class="scrip">"What do you have that you did not receive?"</span></p>
+        <p>Honestly? Nothing. Everything — time, abilities, even our lives — is received from God. And one day, the Owner will ask: <span class="scrip">what did you do with what I gave you?</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SLIDE 2 ===================== -->
+<section class="slide slide--wrestle" id="struggle">
+  <picture><source type="image/webp" srcset="assets/images/theme-brief-slide-1.webp"><img class="bg" src="assets/images/theme-brief-slide-1.jpg" alt="A man at a fork between a rough path and a lit street at twilight" decoding="async"></picture>
+  <div class="scrim"></div>
+  <div class="overlay">
+    <div class="slide-title t-s2 rise">
+      <h2 class="slide-title">The Will That Wrestles</h2>
+    </div>
+
+    <div class="step" style="top:10%;left:5%">
+      <div class="panel rise d1">
+        <p>But while the truth of stewardship is simple, living it out becomes complicated — because of another gift God gave us: the freedom of choice. <span class="big">Every single day, we are faced with constant decisions about who gets to call the shots.</span></p>
+      </div>
+    </div>
+
+    <div class="step" style="top:42%;left:31%">
+      <div class="panel rise d2">
+        <p>Most of the time, we have no problem choosing His way when it aligns with what we already want. <span class="big">The real struggle is when what He wants conflicts with what we want — because it threatens our pride, comfort, or ambition.</span></p>
+      </div>
+    </div>
+
+    <div class="step" style="top:12%;right:5%">
+      <div class="panel rise d3">
+        <p>Our will quietly resists, convinced of what we might gain by holding on. In those unseen, internal moments, letting go can come with real pain, sorrow, and very little happiness.</p>
+      </div>
+    </div>
+
+    <div class="step" style="bottom:9%;right:5.5%">
+      <div class="panel rise d4">
+        <p>But if stewardship is tested in these hidden places — where the loudest arguments happen in the silence of our own hearts — then fixing it must start there too. It begins by trading our secret reservations for one answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SLIDE 3 ===================== -->
+<section class="slide slide--geth" id="gethsemane">
+  <picture><source type="image/webp" srcset="assets/images/theme-brief-slide-2.webp"><img class="bg" src="assets/images/theme-brief-slide-2.jpg" alt="The figure of Christ in agony among the olive trees of Gethsemane" decoding="async"></picture>
+  <div class="scrim"></div>
+  <div class="overlay">
+    <div class="t-s3 rise">
+      <h2 class="slide-title gilt">The Yes of<br>the Steward</h2>
+    </div>
+
+    <div class="step" style="top:12%;left:5%">
+      <div class="panel rise d1">
+        <p class="big">Everything the Owner asks, everywhere, the steward's answer must remain the same: <span class="yes">Yes.</span> But it is never that simple.</p>
+      </div>
+    </div>
+
+    <div class="step" style="top:20%;left:34%">
+      <div class="panel rise d2">
+        <p>In Gethsemane, when the night was heavy, the Father's love called for redemption — but at a price: a cross, nails, and raw shame. Yet Jesus said it anyway: <span class="yes">Yes.</span></p>
+        <p>When His humanity strained against the desire for self-preservation, He didn't romanticise it. He named it: <span class="scrip">"Not my will…"</span></p>
+      </div>
+    </div>
+
+    <div class="step" style="top:16%;right:5%">
+      <div class="panel rise d3">
+        <p>When it meant blood — when the thought of it alone was agonising, so intense He sweated blood while the Father's will stood clear — He did not only resist His own will. He embraced the Father's: <span class="scrip">"…but Yours be done."</span></p>
+        <p>Struggling hour after hour, praying over and over, Jesus laid down His life and all it represented. He surrendered completely: <span class="scrip">"Not my will, but Yours be done."</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span></span><b>◆</b><span></span></div>
+
+<!-- ===================== INVITATION BRIDGE ===================== -->
+<section class="closing">
+  <div class="closing__inner">
+    <p class="lead-line rise">At Worship Experience 2026 on</p>
+    <div class="datecard rise">
+      <span class="ln"></span>
+      <span class="dt">Sunday · 29 November 2026 · In person &amp; Online</span>
+      <span class="ln r"></span>
+    </div>
+    <p class="lead-line rise">Our desire is simple but weighty: every heart would come to its own Gethsemane moment — where our preference meets His purpose, and our true answer becomes clear again.</p>
+  </div>
+</section>
+
+<!-- ===================== THE GARDEN MAP ===================== -->
+<section class="gardenmap" id="garden">
+  <div class="gm-intro">
+    <div class="gm-intro__in rise">
+      <span class="eyebrow">The Garden Map</span>
+      <h2 class="gm-h">The Path Through the Garden</h2>
+      <p class="gm-hint">4 Phases, Many Songs, One Destination<br><span>Discover our Journey of Songs</span></p>
+    </div>
+  </div>
+
+  <div class="gm-stage" id="gmstage">
+    <div class="gm-sticky">
+      <div class="gm-track" id="gmtrack">
+        <div class="gm-pano"><img src="assets/images/theme-brief-slide-3.webp" alt="" draggable="false"></div>
+    <article class="station st1">
+      <div class="st-num">Phase I</div>
+      <div class="st-ref">The Threshold of Goodness</div>
+      <h3 class="st-title">God Is Good</h3>
+      <p class="st-lines">Even when it was difficult, Jesus still called Him Father because He is good.<br>We begin with songs about who God is: good.</p>
+      <p class="st-pause">Before the garden is trust.</p>
+    </article>
+
+    <article class="station st2">
+      <div class="st-num">Phase II</div>
+      <div class="st-ref">The Help in the Dark</div>
+      <h3 class="st-title">God Helps Us Yield</h3>
+      <p class="st-lines">We shift to the oil press. Like Jesus, strengthened by an angel, we are never alone — the Holy Spirit never leaves. We'll sing about the help He provides.</p>
+      <p class="st-pause">You are not alone in the weight.</p>
+    </article>
+
+    <article class="station st3">
+      <div class="st-num">Phase III</div>
+      <div class="st-ref">The Will Laid Down</div>
+      <h3 class="st-title">We Say Yes</h3>
+      <p class="st-lines">This is our climax. No performance. No triumphant shout. Just a trembling heart, and a cup we wish would pass — but we say Yes, and sing songs of our yes.</p>
+      <p class="st-pause">Not my will, but His will be done.</p>
+    </article>
+
+    <article class="station st4">
+      <div class="st-num">Phase IV</div>
+      <div class="st-ref">The Gateway to Glory</div>
+      <h3 class="st-title">God Is Glorified</h3>
+      <p class="st-lines">Surrender is never the end of the story.<br>The will laid down, the Father is lifted high.</p>
+      <p class="st-pause">Glory is what obedience becomes.</p>
+    </article>
+      </div>
+      <div class="gm-controls">
+        <div class="gm-rail" id="gmrail">
+          <span class="dot active" data-i="0"><b>I</b></span><span class="seg"></span>
+          <span class="dot" data-i="1"><b>II</b></span><span class="seg"></span>
+          <span class="dot" data-i="2"><b>III</b></span><span class="seg"></span>
+          <span class="dot" data-i="3"><b>IV</b></span>
+        </div>
+        <div class="gm-arrows">
+          <button class="gm-prev" aria-label="Previous phase">‹</button>
+          <button class="gm-next" aria-label="Next phase">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wx-foot">
+  <picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img class="wx-foot-yes" src="assets/yes-crimson-vertical.png" alt="YES: Not My Will, But Yours" decoding="async"></picture>
+  <picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img class="wx-foot-ccc" src="assets/ccc-logo.png" alt="Calvary Charismatic Centre, Apenkwa" loading="lazy" decoding="async"></picture>
+</footer>
+
+<script>
+  // progress bar
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;const max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
+    {threshold:0.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rise').forEach(el=>io.observe(el));
+
+  // ---- the guiding trail, drawn through the boxes in reading order ----
+  const NS='http://www.w3.org/2000/svg';
+  function stepAnchor(step,ow,oh){
+    const s=step.style,p=v=>parseFloat(v)/100,w=step.offsetWidth,h=step.offsetHeight,pad=22;
+    let x,y;
+    if(s.left)x=p(s.left)*ow+pad; else x=ow-p(s.right)*ow-w+pad;
+    if(s.top)y=p(s.top)*oh+pad; else y=oh-p(s.bottom)*oh-h+pad;
+    return [x,y];
+  }
+  function buildTrail(slide){
+    const ov=slide.querySelector('.overlay'); if(!ov) return;
+    const steps=[...ov.querySelectorAll('.step')]; if(!steps.length) return;
+    if(getComputedStyle(ov).display==='flex'){const old=ov.querySelector('.trail-svg'); if(old) old.remove(); return;}
+    let svg=ov.querySelector('.trail-svg');
+    if(!svg){svg=document.createElementNS(NS,'svg');svg.setAttribute('class','trail-svg');svg.setAttribute('preserveAspectRatio','none');ov.insertBefore(svg,ov.firstChild);}
+    const ow=ov.clientWidth,oh=ov.clientHeight;
+    svg.setAttribute('viewBox','0 0 '+ow+' '+oh);
+    const pts=steps.map(s=>stepAnchor(s,ow,oh));
+    svg.innerHTML='';
+    const poly=document.createElementNS(NS,'polyline');
+    poly.setAttribute('points',pts.map(p=>[Math.round(p[0]),Math.round(p[1])].join(',')).join(' '));
+    poly.setAttribute('class','trail-line'); svg.appendChild(poly);
+    const c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',Math.round(pts[0][0]));c.setAttribute('cy',Math.round(pts[0][1]));c.setAttribute('r','6');
+    c.setAttribute('class','trail-node'); svg.appendChild(c);
+  }
+  const buildAll=()=>document.querySelectorAll('.slide').forEach(buildTrail);
+  window.addEventListener('load',buildAll);
+  window.addEventListener('resize',()=>{clearTimeout(window.__tt);window.__tt=setTimeout(buildAll,150);});
+  setTimeout(buildAll,400);
+
+  // ---- garden map: pinned, seamless horizontal scroll ----
+  const stage=document.getElementById('gmstage');
+  const track=document.getElementById('gmtrack');
+  if(stage&&track){
+    const stations=[...track.querySelectorAll('.station')];
+    const dots=[...document.querySelectorAll('#gmrail .dot')];
+    const n=stations.length;
+    let maxX=0,total=1,top=0;
+    const measure=()=>{
+      maxX=Math.max(0,track.scrollWidth-window.innerWidth);
+      total=Math.max(1,stage.offsetHeight-window.innerHeight);
+      top=stage.getBoundingClientRect().top+window.scrollY;
+    };
+    const progress=()=>Math.min(Math.max(window.scrollY-top,0),total)/total;
+    const render=()=>{
+      const p=progress();
+      track.style.transform='translate3d('+(-p*maxX)+'px,0,0)';
+      const i=Math.round(p*(n-1));
+      dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+    };
+    let ticking=false;
+    const onScroll=()=>{if(!ticking){requestAnimationFrame(()=>{render();ticking=false;});ticking=true;}};
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',()=>{measure();render();});
+    window.addEventListener('load',()=>{measure();render();});
+    const goTo=i=>{i=Math.max(0,Math.min(n-1,i));window.scrollTo({top:Math.round(top+(i/(n-1))*total),behavior:window.WX.smoothBehavior()});};
+    dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+    document.querySelector('.gm-prev').addEventListener('click',()=>goTo(Math.round(progress()*(n-1))-1));
+    document.querySelector('.gm-next').addEventListener('click',()=>goTo(Math.round(progress()*(n-1))+1));
+    measure();render();
+  }
+</script>
+<script>(function(){var t=new Date(2026,10,29),n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());var d=Math.max(0,Math.round((t-t0)/86400000));var e=document.querySelectorAll('.cd-num');for(var i=0;i<e.length;i++)e[i].textContent=d;})();</script>
+<script>
+/* Theme-points accordion — bound with addEventListener (no inline handlers). */
+(function () {
+  var heads = document.querySelectorAll(".tp .tp-toggle");
+  function toggle(h) {
+    var tp = h.closest(".tp");
+    var open = tp.classList.toggle("open");
+    h.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  heads.forEach(function (h) {
+    h.addEventListener("click", function () { toggle(h); });
+    h.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(h); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

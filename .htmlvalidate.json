@@ -1,0 +1,24 @@
+{
+  "$schema": "https://html-validate.org/schemas/config.json",
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "off",
+    "prefer-native-element": "off",
+    "no-redundant-role": "off",
+    "aria-label-misuse": "off",
+    "unique-landmark": "off",
+    "element-permitted-content": "off",
+    "no-implicit-button-type": "off",
+    "long-title": "off",
+    "no-raw-characters": "off",
+    "attr-quotes": "off",
+    "void-style": "off",
+    "doctype-style": "off",
+    "empty-title": "error",
+    "no-dup-id": "error",
+    "element-required-attributes": "error",
+    "attribute-allowed-values": "error",
+    "hidden-focusable": "error",
+    "no-trailing-whitespace": "off"
+  }
+}

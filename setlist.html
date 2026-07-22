@@ -1,0 +1,1095 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="description" content="The Worship Experience 2026 setlist — 28 musical items across four phases, with the worship roadmap from trust to a surrendered Yes.">
+
+<title>Setlist — Worship Experience 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<style>
+/* Pass 6.1 — Setlist door CLS fix. The centred door text is layout-sensitive to
+   the self-hosted TFArrow (uppercase label face). With font-display:swap it
+   painted in the Arial-Narrow fallback first, then swapped ~230ms in; the
+   narrower TFArrow advance un-wrapped the flex `.cues--row` (2 rows -> 1), which
+   collapsed the vertically-centred `.door-shell` and shifted the whole door
+   (~0.196 CLS at 390px). `font-display:optional` removes the mid-load reflow
+   deterministically: within its short block period the font is used if ready
+   (warm cache = immediate), otherwise the fallback is kept for that load with NO
+   swap. No geometry hack, no fixed heights, presentation unchanged on warm load. */
+@font-face{font-family:'TFArrow';src:url(assets/4eb0091819c7.ttf) format('truetype');font-weight:300;font-display:optional}
+@font-face{font-family:'TFArrow';src:url(assets/9a22f94c2bb9.ttf) format('truetype');font-weight:500;font-display:optional}
+@font-face{font-family:'TFArrow';src:url(assets/431bfc939f5d.ttf) format('truetype');font-weight:700;font-display:optional}
+@font-face{font-family:'TFArrow';src:url(assets/af3abf759b90.ttf) format('truetype');font-weight:800;font-display:optional}
+@font-face{font-family:'TFArrow';src:url(assets/2498c2d4309d.ttf) format('truetype');font-weight:900;font-display:optional}
+
+:root{
+ --blue-black:#0A0E1A;
+ --midnight-blue:#16203D;
+ --charcoal:#262B3A;
+ --bone:#ECE3D0;
+ --presence-gold:#C6A24C;
+ --deep-crimson:#8A171B;
+ --wildflower-purple:#7A4CB8;
+ --active-accent:#C6A24C;
+ --gold:var(--presence-gold);--crimson:var(--deep-crimson);
+ --muted-blue:#7f9fd8;
+ --ink:#c9c3b4;--ink-soft:#9a9686;
+ --panel:rgba(12,17,32,.72);
+ --panel-grad:linear-gradient(180deg,rgba(22,32,61,.34),rgba(12,17,32,.58));
+ --edge:1px solid rgba(236,227,208,.13);
+ --sans:'TFArrow','Arial Narrow',sans-serif;--serif:'EB Garamond',Georgia,serif;--display:'Cinzel',serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:#080B14;color:var(--bone);font-family:var(--serif);min-height:100vh;padding-top:64px;-webkit-font-smoothing:antialiased}
+
+/* ===== fixed background layers (shared night atmosphere) ===== */
+.night{position:fixed;inset:0;z-index:0;pointer-events:none;
+ background:
+  radial-gradient(120% 95% at 50% 118%,rgba(54,78,128,.40),transparent 55%),
+  radial-gradient(95% 75% at 22% 22%,rgba(38,48,82,.36),transparent 62%),
+  linear-gradient(180deg,#070A14 0%,#0B0F1A 58%,#090D16 100%);}
+.score-field{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.32;
+ background-image:linear-gradient(rgba(236,227,208,.035) 1px,transparent 1px);
+ background-size:100% 4.7rem;
+ mask-image:linear-gradient(180deg,transparent 0%,black 12%,black 88%,transparent 100%);
+ -webkit-mask-image:linear-gradient(180deg,transparent 0%,black 12%,black 88%,transparent 100%);}
+/* occasional vertical measure markers over the score-field */
+.score-field::before{content:"";position:absolute;inset:0;
+ background-image:linear-gradient(90deg,rgba(198,162,76,.05) 1px,transparent 1px);
+ background-size:19% 100%;background-position:6% 0;
+ mask-image:linear-gradient(180deg,transparent 0%,black 20%,black 80%,transparent 100%);
+ -webkit-mask-image:linear-gradient(180deg,transparent 0%,black 20%,black 80%,transparent 100%);}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+ background-image:url("assets/images/texture-160.svg");}
+
+/* ===== fixed top navigation (preserved) ===== */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+ padding:.6rem clamp(1.1rem,4vw,2.4rem);background:rgba(10,14,26,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-bottom:1px solid rgba(198,162,76,.28)}
+.site-nav__logo img{height:28px;width:auto;display:block;opacity:.97}
+.site-nav__ws{font-family:var(--sans);font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:.52rem 1.25rem;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 2px 12px rgba(198,162,76,.28)}
+.site-nav__ws:hover{background:#d4b25c}
+.nav-countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.42rem;font-family:var(--sans);white-space:nowrap;pointer-events:none;}
+.nav-countdown .cd-num{color:var(--gold);font-weight:800;font-size:.92rem;letter-spacing:.03em;line-height:1;}
+.nav-countdown .cd-lbl{color:var(--bone);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82;line-height:1;}
+@media(max-width:600px){.nav-countdown .cd-lbl{display:none;}.nav-countdown{gap:0;}}
+
+/* ===== content sits above the layers; sections stay transparent ===== */
+main{position:relative;z-index:3;width:100%;max-width:66rem;margin:0 auto;padding:0 clamp(1.4rem,5vw,3rem)}
+section{padding:clamp(3.4rem,7vw,5.6rem) 0;background:transparent;position:relative}
+.eyebrow{font-family:var(--sans);font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;color:var(--gold);margin:0 0 1.3rem}
+.label{font-family:var(--sans);font-weight:700;letter-spacing:.28em;text-transform:uppercase;font-size:.66rem;color:var(--gold);margin:0 0 1.1rem}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(2.3rem,5.8vw,4rem);line-height:1.05;margin:0 0 1.4rem;color:var(--bone)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.12;margin:0 0 1.3rem;color:var(--bone)}
+p{font-size:1.1rem;line-height:1.68;color:var(--ink);max-width:42rem;margin:0 0 1.05rem}
+.lead{font-size:1.2rem;color:#d8d1c0}
+
+/* section separators as score measures, not thick borders */
+.measure-sep{position:relative;height:0;margin:0 auto;max-width:66rem}
+.measure-sep::before{content:"";position:absolute;left:clamp(1.4rem,5vw,3rem);right:clamp(1.4rem,5vw,3rem);top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(236,227,208,.14)12%,rgba(236,227,208,.14) 88%,transparent)}
+.measure-sep.rest::before{background:linear-gradient(90deg,transparent,rgba(236,227,208,.06) 30%,rgba(236,227,208,.06) 70%,transparent)}
+.measure-sep.begin::before{background:linear-gradient(90deg,transparent,rgba(198,162,76,.28) 10%,rgba(198,162,76,.12) 60%,transparent)}
+
+/* ================= Living Score doorway ================= */
+/* full-bleed opening: the section itself spans the viewport, content sits in an inner shell */
+.door{position:relative;width:100vw;left:calc(50% - 50vw);min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;padding:0;overflow:hidden}
+.door-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;
+ background:
+  linear-gradient(180deg,rgba(7,10,20,.06) 0%,rgba(7,10,20,.12) 58%,#0B0F1A 100%),
+  linear-gradient(90deg,rgba(7,10,20,.9) 0%,rgba(8,11,20,.68) 40%,rgba(8,11,20,.16) 100%),
+  image-set(url('assets/music-resources-hero.webp') type('image/webp'), url('assets/music-resources-hero.png') type('image/png')) center center / cover no-repeat}
+.door-shell{position:relative;z-index:1;width:100%;max-width:66rem;margin:0 auto;padding:clamp(2rem,6vh,4rem) clamp(1.4rem,5vw,3rem)}
+.door-inner{position:relative;width:100%}
+.door h1{max-width:18ch;margin-bottom:1.3rem}
+.door-lead{max-width:42rem;margin-bottom:1rem}
+.door-gov-line{font-family:var(--serif);font-style:italic;color:#d8d1c0;font-size:1.14rem;max-width:40rem;margin-bottom:clamp(1.8rem,4vh,2.8rem)}
+/* two primary destinations, placed as cues on the score */
+.cues{display:flex;flex-direction:column;gap:clamp(1.4rem,3vh,2.2rem);margin-bottom:clamp(1.8rem,3.5vh,2.6rem)}
+.cues--row{flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:clamp(1.6rem,5vw,3.4rem)}
+.cues--row .cue{max-width:21rem}
+.cue-eyebrow{display:block;font-family:var(--sans);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.6rem;color:var(--gold);opacity:.85;margin-bottom:.5rem}
+.cues--row .cue-title{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,2.3vw,1.6rem);color:var(--bone);line-height:1.12;margin:0 0 .2rem;transition:color .3s}
+.gov-mini-line{margin:1.5rem 0 0;font-size:.95rem;color:var(--ink-soft)}
+.gov-mini-line span{font-style:italic}
+.gov-mini{font-family:var(--sans);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.62rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(198,162,76,.5);padding-bottom:.12rem;margin-left:.5rem;white-space:nowrap}
+.gov-mini:hover,.gov-mini:focus-visible{color:#d9bd6a;border-color:var(--gold)}
+.cue{display:block;position:relative;text-decoration:none;max-width:34rem;padding:.2rem 0;transition:transform .3s}
+.cue--offset{align-self:flex-end;text-align:right}
+.cue-label{display:block;font-family:var(--sans);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;color:var(--gold);opacity:.82;margin-bottom:.45rem}
+.cue-title{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2.15rem);color:var(--bone);line-height:1.06;transition:color .3s}
+.cue-desc{display:block;font-family:var(--serif);color:var(--ink);font-size:1rem;line-height:1.55;margin:.55rem 0 .3rem;max-width:32rem}
+.cue--offset .cue-desc{margin-left:auto}
+.cue-measure{display:block;position:relative;height:1px;background:linear-gradient(90deg,rgba(236,227,208,.22),rgba(236,227,208,.05));margin:.7rem 0 .6rem;transition:background .3s}
+.cue--offset .cue-measure{background:linear-gradient(270deg,rgba(236,227,208,.22),rgba(236,227,208,.05))}
+.cue-dot{position:absolute;top:50%;left:44%;width:9px;height:9px;border-radius:50%;background:var(--midnight-blue);border:1.5px solid rgba(236,227,208,.5);transform:translateY(-50%);transition:background .3s,border-color .3s,box-shadow .3s}
+.cue--offset .cue-dot{left:56%}
+.cue-go{display:inline-block;font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.68rem;color:var(--gold);transition:color .3s}
+/* hover / focus: line brightens, cue fills gold, title toward bone, short line draws */
+.cue:hover .cue-measure,.cue:focus-visible .cue-measure{background:linear-gradient(90deg,rgba(198,162,76,.6),rgba(198,162,76,.08))}
+.cue--offset:hover .cue-measure,.cue--offset:focus-visible .cue-measure{background:linear-gradient(270deg,rgba(198,162,76,.6),rgba(198,162,76,.08))}
+.cue:hover .cue-dot,.cue:focus-visible .cue-dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,162,76,.14)}
+.cue:hover .cue-title,.cue:focus-visible .cue-title{color:#fff}
+.cue:hover .cue-go,.cue:focus-visible .cue-go{color:var(--bone)}
+.cue:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:3px}
+/* governing reference — subordinate */
+.gov-ref{max-width:38rem;border-top:1px solid rgba(236,227,208,.1);padding-top:1.3rem;margin-bottom:clamp(1.6rem,3vh,2.4rem)}
+.gov-label{font-family:var(--sans);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.58rem;color:var(--ink-soft);margin:0 0 .5rem}
+.gov-copy{font-size:.98rem;color:var(--ink-soft);margin:0 0 .8rem;max-width:36rem}
+.gov-link{display:inline-block;font-family:var(--sans);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.64rem;color:var(--ink);text-decoration:none;border:1px solid rgba(236,227,208,.2);border-radius:3px;padding:.55rem 1rem;transition:color .3s,border-color .3s}
+.gov-link:hover,.gov-link:focus-visible{color:var(--gold);border-color:rgba(198,162,76,.5)}
+.begin-cue{display:inline-block;font-family:var(--sans);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.68rem;color:var(--bone);background:none;border:none;border-bottom:1px solid rgba(198,162,76,.5);padding:0 0 .25rem;cursor:pointer}
+.begin-cue:hover,.begin-cue:focus-visible{color:var(--gold)}
+/* score strokes */
+.ls-measure{stroke:rgba(236,227,208,.10);stroke-width:1}
+.ls-measure.held{stroke:rgba(236,227,208,.2);stroke-width:1.4}
+.ls-measure.blue{stroke:rgba(127,159,216,.28)}
+.ls-div{stroke:rgba(198,162,76,.13);stroke-width:1}
+.ls-cue{fill:rgba(236,227,208,.3)}
+.ls-cue.big{fill:var(--gold)}
+.ls-playhead{stroke:rgba(198,162,76,.55);stroke-width:1.4}
+@keyframes playpass{from{transform:translateX(0)}to{transform:translateX(var(--play-dist,60vw))}}
+.playhead-g{animation:playpass 4.2s cubic-bezier(.4,.1,.3,1) .5s both}
+
+/* ================= interactive Roadmap band ================= */
+.rmj-intro{font-family:var(--serif);color:var(--ink);font-size:1.06rem;line-height:1.64;max-width:44rem;margin:0 0 2.6rem}
+.rmj-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:clamp(1.6rem,3.4vw,3.2rem);align-items:start}
+.rmj-graph-col{position:sticky;top:88px}
+.rmj-graph{background:var(--panel-grad);border:var(--edge);border-radius:14px;padding:1.1rem 1.2rem .6rem;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.rmj-graph svg{width:100%;height:auto;display:block}
+.rmj-cap{font-family:var(--serif);font-style:italic;color:var(--ink-soft);opacity:.75;font-size:.9rem;text-align:center;margin:.7rem 0 0}
+.rmj-pills{display:flex;gap:.5rem;justify-content:center;margin:1.3rem 0 0;flex-wrap:wrap}
+.rmj-pill{display:flex;flex-direction:column;align-items:center;gap:.25rem;font-family:var(--sans);color:var(--ink-soft);background:none;border:1px solid rgba(236,227,208,.18);border-radius:10px;padding:.55rem .8rem;cursor:pointer;transition:border-color .3s,color .3s,background .3s;min-width:3.4rem}
+.rmj-pill .pp-num{font-weight:800;letter-spacing:.1em;font-size:.72rem}
+.rmj-pill .pp-name{font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:.5rem;line-height:1.1;text-align:center}
+.rmj-pill:hover{color:var(--ink)}
+.rmj-pill.on{color:#0a0e1a;background:var(--active-accent);border-color:var(--active-accent)}
+.rmj-pill:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.rmj-guide{stroke:rgba(236,227,208,.12);stroke-width:1;opacity:0;transition:opacity .5s,stroke .5s}
+.rmj-guide.on{opacity:1;stroke:var(--active-accent)}
+.rmj-axis{stroke:rgba(236,227,208,.16);stroke-width:1}
+.rmj-grid{stroke:rgba(236,227,208,.055);stroke-width:1}
+.rmj-line-e{fill:none;stroke:var(--muted-blue);stroke-width:2.4;stroke-linecap:round;opacity:.85}
+.rmj-line-w{fill:none;stroke:var(--presence-gold);stroke-width:2.4;stroke-linecap:round}
+.rmj-dot{transition:r .45s cubic-bezier(.2,.72,.24,1),fill .45s,stroke-width .3s;cursor:pointer}
+.rmj-dot-e{stroke:var(--muted-blue);fill:#0c1120;stroke-width:2}
+.rmj-dot-w{stroke:var(--presence-gold);fill:#0c1120;stroke-width:2}
+.rmj-dot.on.rmj-dot-e{fill:var(--muted-blue)}
+.rmj-dot.on.rmj-dot-w{fill:var(--presence-gold)}
+.rmj-glabel{font-family:var(--display);letter-spacing:.14em;font-size:9px;fill:var(--ink-soft)}
+.rmj-plabel{font-family:var(--display);letter-spacing:.1em;font-size:11px;fill:rgba(236,227,208,.45);text-transform:uppercase}
+.rmj-plabel.on{fill:var(--bone)}
+/* persistent detail panel */
+.rmj-card{position:relative;border:var(--edge);border-radius:14px;background:var(--panel-grad);box-shadow:0 24px 70px rgba(0,0,0,.45);overflow:hidden}
+.rmj-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--active-accent)}
+.rmj-fade{animation:rmjReveal .42s cubic-bezier(.2,.72,.24,1)}
+@keyframes rmjReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rmj-chead{padding:1.7rem 1.9rem 1.3rem}
+.rmj-eyebrow{font-family:var(--sans);letter-spacing:.24em;text-transform:uppercase;font-size:.66rem;color:var(--gold);margin:0 0 .7rem}
+.rmj-title{font-family:var(--display);font-weight:600;color:var(--bone);font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.06;letter-spacing:.01em;margin:0 0 .35rem}
+.rmj-sub{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:1.1rem;margin:0 0 1.1rem}
+.rmj-meta{display:flex;flex-wrap:wrap;gap:.6rem}
+.rmj-chip{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bone);border:1px solid rgba(236,227,208,.18);border-radius:2px;padding:.5rem .8rem;background:rgba(8,11,20,.4)}
+.rmj-chip b{color:var(--gold)}
+.rmj-chip.response{border-color:rgba(198,162,76,.5)}
+.rmj-rows{display:block}
+.rmj-row{display:grid;grid-template-columns:minmax(96px,132px) 1fr;gap:1.1rem;padding:1.1rem 1.9rem;border-top:1px solid rgba(236,227,208,.1);align-items:start}
+.rmj-rlabel{font-family:var(--sans);letter-spacing:.16em;text-transform:uppercase;font-size:.6rem;color:var(--ink-soft);opacity:.7;padding-top:.15rem}
+.rmj-rval{font-family:var(--serif);color:var(--ink);font-size:1.02rem;line-height:1.55}
+.rmj-q{padding:1.3rem 1.9rem;border-top:1px solid rgba(236,227,208,.1);background:rgba(8,11,20,.35)}
+.rmj-q .q-lbl{font-family:var(--sans);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.58rem;color:var(--ink-soft);margin:0 0 .5rem}
+.rmj-q .q-text{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.45rem);color:var(--bone);margin:0;line-height:1.3}
+.rmj-handoff{padding:1.3rem 1.9rem;border-top:1px solid rgba(236,227,208,.1)}
+.rmj-handoff .ho-lbl{font-family:var(--sans);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.56rem;color:var(--ink-soft);display:block;margin-bottom:.5rem}
+.rmj-handoff .ho-text{font-family:var(--serif);font-style:italic;color:#d8d1c0;font-size:1.1rem;margin:0}
+/* compact accordions */
+.rmj-acc{border-top:1px solid rgba(236,227,208,.1)}
+.rmj-acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.9rem;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem;color:var(--bone)}
+.rmj-acc-btn:hover{color:var(--gold)}
+.rmj-acc-btn:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+.rmj-acc-btn .ai{color:var(--gold);font-family:var(--sans);font-weight:700;transition:transform .25s;font-size:1rem}
+.rmj-acc-btn[aria-expanded="true"] .ai{transform:rotate(45deg)}
+.rmj-acc-panel{overflow:hidden;max-height:0;transition:max-height .35s ease}
+.rmj-acc-inner{padding:0 1.9rem 1.2rem}
+.rmj-acc-inner h4{font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.62rem;color:var(--gold);margin:.9rem 0 .4rem}
+.rmj-acc-inner h4:first-child{margin-top:.2rem}
+.rmj-acc-inner ul{margin:.2rem 0 .6rem;padding-left:1.1rem}
+.rmj-acc-inner li{font-size:1rem;line-height:1.55;color:var(--ink);margin:.28rem 0}
+.rmj-acc-inner p{font-size:1rem}
+.rmj-kw{font-family:var(--sans);letter-spacing:.13em;text-transform:uppercase;font-size:.72rem;color:#d8d1c0;margin:.2rem 0 .9rem}
+.rmj-ew{display:grid;gap:.5rem;margin:.4rem 0 1rem}
+.rmj-ew .ewr{display:grid;grid-template-columns:64px 1fr;gap:.7rem;align-items:center}
+.rmj-ew .ewl{font-family:var(--sans);letter-spacing:.14em;text-transform:uppercase;font-size:.56rem;color:var(--ink-soft)}
+.rmj-ew .ewbar{height:5px;border-radius:3px;background:rgba(236,227,208,.1);position:relative;overflow:hidden}
+.rmj-ew .ewfill{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
+.rmj-ew .ewfill.e{background:var(--muted-blue)}
+.rmj-ew .ewfill.w{background:var(--presence-gold)}
+.rmj-mi-link{display:inline-block;font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.64rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(198,162,76,.45);padding-bottom:.15rem;margin-top:.6rem}
+.rmj-mi-link:hover{color:var(--bone)}
+@media(max-width:900px){
+ .rmj-band{grid-template-columns:1fr;gap:1.4rem}
+ .rmj-graph-col{position:static}
+ .rmj-pills{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.3rem}
+ .rmj-pills::-webkit-scrollbar{display:none}
+ .rmj-pill{flex:0 0 auto;min-height:44px}
+ .rmj-row{grid-template-columns:1fr;gap:.35rem;padding:1rem 1.2rem}
+ .rmj-chead,.rmj-q,.rmj-handoff,.rmj-acc-btn,.rmj-acc-inner{padding-left:1.2rem;padding-right:1.2rem}
+}
+
+/* handoff */
+.handoff-block .btn{margin-top:1.4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:.85rem 1.5rem;text-decoration:none;cursor:pointer;box-shadow:0 2px 14px rgba(198,162,76,.24);min-height:44px}
+.btn:hover{background:#d4b25c}
+
+/* ================= Setlist ================= */
+.ss-distinct{font-size:1rem;color:var(--ink-soft);border-left:2px solid rgba(198,162,76,.35);padding-left:1rem;margin:1.4rem 0 0;max-width:44rem}
+.ctrl{display:flex;flex-direction:column;gap:.45rem}
+.ctrl label{font-family:var(--sans);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.58rem;color:var(--ink-soft)}
+.ctrl input{font-family:var(--serif);font-size:1rem;color:var(--bone);background:rgba(8,11,20,.7);border:1px solid rgba(236,227,208,.16);border-radius:3px;padding:.6rem .7rem;min-width:11rem;min-height:44px}
+.ctrl input:focus{outline:2px solid var(--gold);outline-offset:1px}
+/* summary tiles */
+.set-summary{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,4vw,3rem);margin:2.2rem 0 1rem;padding:1.5rem 1.6rem;background:var(--panel-grad);border:var(--edge);border-radius:8px}
+.ss-stat{display:flex;flex-direction:column;gap:.25rem}
+.ss-num{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,2.8rem);color:var(--gold);line-height:1}
+.ss-lbl{font-family:var(--sans);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.6rem;color:var(--ink-soft)}
+.set-explain{font-size:1rem;color:var(--ink-soft);max-width:46rem;margin:0 0 .4rem}
+/* phase rail */
+.set-rail{position:sticky;top:64px;z-index:60;margin:1.6rem 0 1.2rem;background:rgba(8,11,20,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(236,227,208,.08);border-bottom:1px solid rgba(236,227,208,.08)}
+.set-rail__inner{display:flex;align-items:center;gap:1rem;padding:.55rem 0}
+.set-rail__pills{display:flex;gap:.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1 1 auto;min-width:0}
+.set-rail__pills::-webkit-scrollbar{display:none}
+.set-search{flex:0 0 auto;margin-left:auto}
+.set-search input{font-family:var(--serif);font-size:.92rem;color:var(--bone);background:rgba(8,11,20,.7);border:1px solid rgba(236,227,208,.16);border-radius:999px;padding:.5rem .95rem;width:13rem;max-width:42vw;min-height:38px}
+.set-search input::placeholder{color:var(--ink-soft)}
+.set-search input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.export-menu{position:relative;flex:0 0 auto}
+.export-btn{font-family:var(--sans);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.58rem;color:var(--bone);background:none;border:1px solid rgba(236,227,208,.18);border-radius:999px;padding:.5rem .85rem;cursor:pointer;min-height:38px;white-space:nowrap}
+.export-btn:hover,.export-btn:focus-visible{color:var(--gold);border-color:rgba(198,162,76,.5)}
+.export-list{position:absolute;right:0;top:calc(100% + .4rem);z-index:80;background:#0c1120;border:1px solid rgba(236,227,208,.16);border-radius:8px;box-shadow:0 18px 50px rgba(0,0,0,.5);padding:.35rem;min-width:12rem}
+.export-list button{display:block;width:100%;text-align:left;font-family:var(--sans);font-weight:600;letter-spacing:.06em;font-size:.7rem;color:var(--bone);background:none;border:none;border-radius:5px;padding:.6rem .7rem;cursor:pointer}
+.export-list button:hover,.export-list button:focus-visible{background:rgba(198,162,76,.14);color:var(--gold);outline:none}
+.export-error{font-family:var(--sans);font-size:.7rem;letter-spacing:.04em;color:#e6a; color:var(--deep-crimson,#c86b72);margin:.5rem 0 0}
+.set-pill{flex:0 0 auto;font-family:var(--sans);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.6rem;color:var(--ink-soft);background:none;border:1px solid rgba(236,227,208,.16);border-radius:999px;padding:.55rem .9rem;cursor:pointer;white-space:nowrap;min-height:40px;transition:color .3s,border-color .3s,background .3s}
+.set-pill .sp-num{color:var(--gold);font-weight:800}
+.set-pill:hover{color:var(--ink)}
+.set-pill.on{color:#0a0e1a;background:var(--active-accent);border-color:var(--active-accent)}
+.set-pill.on .sp-num{color:#0a0e1a}
+.set-pill:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.set-result{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft);min-height:1.2rem;margin:0 0 1.4rem}
+.set-empty{font-style:italic;color:var(--ink-soft);padding:1.6rem 0}
+/* phase movement */
+.phase-mv{padding:0 0 1rem;margin:0 0 1.6rem;scroll-margin-top:120px}
+.pm-head{padding:1.6rem 0 .6rem}
+.pm-num{font-family:var(--sans);font-weight:700;letter-spacing:.3em;text-transform:uppercase;font-size:.66rem;color:var(--gold);margin:0 0 .5rem}
+.pm-title{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.6vw,2.3rem);color:var(--bone);line-height:1.05;margin:0 0 .5rem}
+.pm-move{font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;font-size:.64rem;color:var(--ink-soft);margin:0 0 .8rem}
+.pm-count{color:var(--bone)}
+.pm-line{font-family:var(--serif);font-size:1.1rem;color:var(--ink);max-width:42rem;margin:0}
+/* continuous stave line running through the items */
+.stave{list-style:none;margin:.4rem 0 0;padding:0;position:relative}
+.stave::before{content:"";position:absolute;left:2.15rem;top:.6rem;bottom:.6rem;width:1px;background:linear-gradient(180deg,rgba(198,162,76,.06),rgba(236,227,208,.18) 12%,rgba(236,227,208,.18) 88%,rgba(198,162,76,.06))}
+.set-item{position:relative;display:grid;grid-template-columns:3.6rem 1fr;gap:.4rem 1rem;padding:1.1rem 0 1.1rem;align-items:start}
+.item-node{position:absolute;left:calc(2.15rem - 4px);top:1.5rem;width:9px;height:9px;border-radius:50%;background:#0c1120;border:1.5px solid rgba(236,227,208,.45);z-index:1}
+.set-item .item-num{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--ink-soft);padding-top:.15rem;letter-spacing:.04em}
+.item-main{min-width:0}
+.item-title{font-family:var(--display);font-weight:600;font-size:1.28rem;color:var(--bone);margin:0 0 .2rem;line-height:1.15}
+.item-marker{display:inline-block;font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.52rem;color:var(--gold);border:1px solid rgba(198,162,76,.5);border-radius:2px;padding:.16rem .4rem;margin-left:.6rem;vertical-align:middle}
+.item-meta{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.15rem 0 .3rem}
+.item-type{font-family:var(--sans);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.58rem;color:var(--ink-soft)}
+.item-artist{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:1rem}
+.components{list-style:none;margin:.6rem 0 .2rem;padding:0;display:grid;gap:.55rem}
+.components li{display:grid;grid-template-columns:1.4rem 1fr;gap:.6rem;align-items:baseline}
+.comp-letter{font-family:var(--sans);font-weight:800;letter-spacing:.1em;font-size:.7rem;color:var(--gold)}
+.comp-body{display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .7rem}
+.comp-title{font-family:var(--serif);color:var(--bone);font-size:1.04rem}
+.comp-artist{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.95rem}
+.comp-section{font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;font-size:.54rem;color:var(--ink-soft);opacity:.85}
+.item-cont{margin:.7rem 0 .2rem;padding:.7rem .9rem;border-left:2px solid rgba(198,162,76,.4);background:rgba(8,11,20,.4);display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .7rem}
+.cont-label{font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.54rem;color:var(--gold);width:100%}
+.cont-title{font-family:var(--serif);color:var(--bone);font-size:1.02rem}
+.item-dev{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.98rem;margin:.7rem 0 0;border-top:1px dashed rgba(236,227,208,.14);padding-top:.7rem;max-width:40rem}
+.item-det-btn{margin-top:.7rem;font-family:var(--sans);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.6rem;color:var(--gold);background:none;border:none;cursor:pointer;padding:.3rem 0}
+.item-det-btn:hover{color:var(--bone)}
+.item-det-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.item-det{overflow:hidden;max-height:0;transition:max-height .3s ease}
+.item-det-inner{padding:.3rem 0 .2rem}
+.item-det-inner h5{font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.58rem;color:var(--ink-soft);margin:.6rem 0 .2rem}
+.item-det-inner p{font-size:1rem;margin:0 0 .3rem}
+.pm-handoff{font-family:var(--serif);font-style:italic;color:#d8d1c0;font-size:1.08rem;margin:1.4rem 0 0;padding-left:2.15rem;position:relative}
+.pm-handoff::before{content:"";position:absolute;left:calc(2.15rem - 4px);top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--gold);opacity:.7}
+/* subtle phase variation — density/space only, no new section colours */
+#phase-god-helps-us-yield .stave::before{opacity:.85}
+#phase-we-say-yes .stave::before{background:linear-gradient(180deg,rgba(198,162,76,.05),rgba(236,227,208,.13) 12%,rgba(236,227,208,.13) 88%,rgba(198,162,76,.05))}
+/* Phase III — silence placed editorially, not uniformly: room around the phase intro and the central surrender items */
+#phase-we-say-yes .pm-head{padding-bottom:1.2rem}
+#item-18,#item-20{margin-top:1.9rem}
+#item-21{margin-top:1.6rem}
+#phase-god-is-glorified .pm-handoff::before{box-shadow:0 0 10px rgba(198,162,76,.5)}
+@media(max-width:640px){
+ .set-item{grid-template-columns:1fr;padding-left:1.6rem}
+ .stave::before{left:.35rem}
+ .item-node{left:calc(.35rem - 4px)}
+ .set-item .item-num{padding-top:0}
+ .pm-handoff{padding-left:1.6rem}
+ .pm-handoff::before{left:calc(.35rem - 4px)}
+ .set-rail__inner{flex-wrap:wrap;gap:.6rem}
+ .set-search{width:100%;margin-left:0}
+ .set-search input{width:100%;max-width:none}
+}
+
+/* footer (preserved) — resolves to one final gold point */
+.foot-resolve{position:relative;z-index:3;height:1px;max-width:66rem;margin:0 auto}
+.foot-resolve::before{content:"";position:absolute;left:clamp(1.4rem,5vw,3rem);right:clamp(1.4rem,5vw,3rem);top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(236,227,208,.12) 40%,rgba(198,162,76,.4) 92%,transparent)}
+.foot-resolve::after{content:"";position:absolute;right:clamp(1.3rem,5vw,2.9rem);top:-3.5px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px rgba(198,162,76,.5)}
+.foot{position:relative;z-index:3;background:transparent;padding:2rem clamp(1.2rem,4vw,2.4rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem;margin-top:2rem}
+.foot .fy img{height:clamp(42px,5vw,56px);display:block}
+.foot .fc img{height:clamp(28px,3.6vw,38px);display:block;opacity:.95}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media(max-width:600px){.controls{flex-direction:column;align-items:stretch}.ctrl select,.ctrl input{min-width:0;width:100%}.btn{width:100%;justify-content:center}.cue--offset{align-self:stretch;text-align:left}.cue--offset .cue-desc{margin-left:0}.cue--offset .cue-measure{background:linear-gradient(90deg,rgba(236,227,208,.22),rgba(236,227,208,.05))}}
+/* Pass 7 — purposeful print stylesheet (parity with the Lyric Book). Native
+   Ctrl+P yields a clean, readable Setlist on white: chrome, the doorway hero, the
+   interactive roadmap band and sticky controls are hidden; phase sections and the
+   28 items print with phase page-breaks. The Download/Print export (separate
+   document) still provides the full cover + contents layout. */
+@media print{
+  @page{size:A4;margin:16mm 14mm 18mm}
+  .night,.score-field,.grain,.site-nav,#opening,.rmj-band,.set-rail,.export-menu,
+  .foot,.measure-sep,.item-det-btn,.item-det,.item-node{display:none!important}
+  html,body{background:#fff!important;color:#161616!important;margin:0!important;padding:0!important}
+  main{max-width:none!important;width:auto!important;margin:0!important;padding:0 6mm!important}
+  #roadmap-intro{page-break-after:always}
+  .phase-mv{page-break-before:always}
+  #setBody .phase-mv:first-child{page-break-before:avoid}
+  .set-item{break-inside:avoid;page-break-inside:avoid;list-style:none}
+  .pm-title,.item-title,.comp-title,h1,h2,h3,h4{font-family:'Cinzel',Georgia,serif!important;color:#161616!important}
+  .pm-num,.pm-move,.item-type,.comp-letter{color:#8a7a4a!important}
+  .item-artist,.comp-artist,.comp-section,.pm-line,.pm-handoff,.item-dev{color:#555!important}
+  a{color:#161616!important;text-decoration:none!important}
+}
+</style>  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/routes.js"></script>
+  <script src="assets/js/wx-music-data.js"></script>
+  <script src="assets/js/wx-export.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head><body>
+<a class="wx-skip-link" href="#main">Skip to main content</a>
+
+<!-- ===== fixed background layers ===== -->
+<div class="night" aria-hidden="true"></div>
+<div class="score-field" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== fixed top navigation (preserved) ===== -->
+<nav class="site-nav">
+ <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
+ <div class="nav-countdown" aria-label="Days remaining until 29 November 2026"><span class="cd-num">—</span><span class="cd-lbl">days to 29 Nov</span></div>
+ <a class="site-nav__ws" href="index.html#hub"><span aria-hidden="true">&larr;</span> Workspace</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+ <!-- ===== 1 · Living Score doorway ===== -->
+ <section id="opening" class="door" aria-labelledby="opening-h">
+  <div class="door-bg" aria-hidden="true"></div>
+  <div class="door-shell"><div class="door-inner">
+   <p class="eyebrow">Music Resources &middot; Setlist</p>
+   <h1 id="opening-h">Every Song Leads Somewhere.</h1>
+   <p class="lead door-lead">A song does more than fill a moment. It shapes what the room sees, feels and becomes ready to do next.</p>
+   <p>The Musical Identity has given the music its colour. The Worship Roadmap gives it direction.</p>
+   <p class="door-gov-line">The Setlist gathers the musical items that will carry the congregation through that journey.</p>
+
+   <div class="cues cues--row">
+    <a class="cue" href="#roadmap-intro">
+     <span class="cue-measure" aria-hidden="true"><span class="cue-dot"></span></span>
+     <span class="cue-go">Explore the Roadmap <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a class="cue" href="#setlist">
+     <span class="cue-measure" aria-hidden="true"><span class="cue-dot"></span></span>
+     <span class="cue-go">Explore the Setlist <span aria-hidden="true">&rarr;</span></span>
+    </a>
+   </div>
+
+   <p class="gov-mini-line"><span>The colour has already been set.</span> <a class="gov-mini" href="creative-direction.html#musical" data-mi>Revisit the Musical Identity <span aria-hidden="true">&#8599;</span></a></p>
+  </div></div>
+ </section>
+
+ <div class="measure-sep" aria-hidden="true"></div>
+
+ <!-- ===== 2 · The Worship Roadmap — one journey, illustrated in the panel ===== -->
+ <section id="roadmap-intro" aria-labelledby="roadmap-h">
+  <p class="label">The Worship Roadmap</p>
+  <h2 id="roadmap-h">Where the music must lead.</h2>
+  <p>Four phases. One movement&mdash;from trust, through the help that meets us in the dark, into a Yes that brings God glory.</p>
+  <p class="rmj-intro">Select a phase to see what must happen in the room and what the music must carry next.</p>
+
+  <div class="rmj-band">
+   <div class="rmj-graph-col">
+    <div class="rmj-graph" id="rmjGraph"></div>
+    <p class="rmj-cap">Energy in blue. Weight in gold.</p>
+    <div class="rmj-pills" id="rmjPills" role="tablist" aria-label="Choose a phase"></div>
+   </div>
+   <div class="rmj-card" id="rmjCard" role="tabpanel" aria-live="polite" tabindex="0"></div>
+  </div>
+ </section>
+
+ <div class="measure-sep begin" aria-hidden="true"></div>
+
+ <!-- ===== 3 · The Setlist — one journey, 28 musical items ===== -->
+ <section id="setlist" aria-labelledby="ss-h">
+  <p class="eyebrow">Setlist</p>
+  <h2 id="ss-h">These are the songs carrying us there.</h2>
+  <p>The songs are in place. Rehearsals will now shape how each item enters, connects and carries the room into what comes next.</p>
+  <p>Anything that does not serve the journey will be dropped.</p>
+  <p class="ss-distinct">This page contains musical items only. Scripture, prayer, speaking, silence, free worship and technical cues will be placed in the Flow Map.</p>
+
+  <div class="set-summary" role="group" aria-label="Setlist summary">
+   <div class="ss-stat"><span class="ss-num">28</span><span class="ss-lbl">Musical Items</span></div>
+   <div class="ss-stat"><span class="ss-num">4</span><span class="ss-lbl">Phases</span></div>
+   <div class="ss-stat"><span class="ss-num">1</span><span class="ss-lbl">Journey</span></div>
+  </div>
+  <p class="set-explain">A numbered entry represents one musical item. Where several songs have been specially curated into one continuous medley, they remain one item and are shown as component movements beneath it.</p>
+
+  <div class="set-rail">
+   <div class="set-rail__inner">
+    <nav class="set-rail__pills" id="setRail" aria-label="Setlist phases"></nav>
+    <div class="set-search">
+     <input type="search" id="setSearch" placeholder="Search the Setlist…" aria-label="Search the Setlist">
+    </div>
+    <div class="export-menu" id="exportMenu">
+     <button class="export-btn" id="exportBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exportList">Download / Print <span aria-hidden="true">▾</span></button>
+     <div class="export-list" id="exportList" role="menu" hidden>
+      <button type="button" role="menuitem" data-act="word">Download Word (.doc)</button>
+      <button type="button" role="menuitem" data-act="pdf">Download PDF</button>
+      <button type="button" role="menuitem" data-act="print">Print</button>
+     </div>
+    </div>
+   </div>
+   <p class="export-error" id="exportError" role="alert" hidden></p>
+  </div>
+
+  <p class="set-result" id="setResult" aria-live="polite"></p>
+  <div id="setBody"></div>
+ </section>
+
+</main>
+
+<!-- ===== footer (preserved) — score resolves to a final gold point ===== -->
+<div class="foot-resolve" aria-hidden="true"></div>
+<footer class="foot">
+ <a class="fy" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
+ <span class="fc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+</footer>
+
+<script>
+/* ---------- countdown to 29 November 2026 (preserved) ---------- */
+(function(){var t=new Date(2026,10,29),n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());var d=Math.max(0,Math.round((t-t0)/86400000));var e=document.querySelectorAll('.cd-num');for(var i=0;i<e.length;i++)e[i].textContent=d;})();
+
+/* ---------- single maintainable Musical Identity URL ---------- */
+const MUSICAL_IDENTITY_URL = window.WX.routes.musicalIdentity;
+document.querySelectorAll('[data-mi]').forEach(function(a){a.setAttribute('href', MUSICAL_IDENTITY_URL);});
+
+/* ---------- approved roadmap phases (titles canonical, never derived) ---------- */
+/* Pass 7 — phase identity (numeral, title, subtitle, movement, summary line,
+   handoff) comes from the shared catalogue (assets/js/wx-music-data.js). Only the
+   roadmap-specific coaching fields live here, keyed by phase id. */
+var ROADMAP_DETAIL={
+ "god-is-good": {
+  "response": "I trust You.",
+  "e": 0.7,
+  "w": 0.26,
+  "explain": "Before the garden is trust. The journey begins by establishing who God is—the congregation must become anchored in the goodness and faithfulness of the Father before it can meaningfully surrender. We are not yet asking the room to face the cup; we are first giving them a reason to trust the One holding it.",
+  "roomState": "The room has arrived and is being gathered into one shared declaration of God's goodness.",
+  "becomeTrue": "The congregation trusts who God is before it is ever asked to surrender to His will.",
+  "readyNext": "The room is confidently declaring God's goodness, not merely listening to the platform sing about it.",
+  "songReq": [
+   "establish God's goodness clearly",
+   "focus primarily on who God is",
+   "gather the room into one shared declaration",
+   "connect God's character with trust",
+   "remain immediately accessible and singable"
+  ],
+  "fit": [
+   "clear",
+   "declarative",
+   "warm",
+   "assuring",
+   "congregational",
+   "grounded in God's character"
+  ],
+  "avoid": [
+   "begin immediately with personal anguish",
+   "demand surrender before trust is established",
+   "feel like shallow celebration",
+   "depend on the platform singing for the room"
+  ],
+  "mood": [
+   "Warm",
+   "Grounded",
+   "Open",
+   "Communal"
+  ],
+  "miGuide": "Gather the room without spending the climax. The congregation must become the first sound.",
+  "posture": "Full but unhurried; vocals lead a strong congregational declaration, confidence rather than display.",
+  "principle": "The First Sound — the congregation comes first.",
+  "question": "Can the church carry this with us?",
+  "readiness": "Move forward when the congregation is confidently declaring God's goodness, not merely listening."
+ },
+ "god-helps-us-yield": {
+  "response": "I need You.",
+  "e": 0.55,
+  "w": 0.48,
+  "explain": "The garden is dark, but it is not empty. God's help does not remove the cost; it strengthens us to remain faithful within it. The congregation must move from confidence in God's goodness to honest dependence on His help.",
+  "roomState": "The room stops observing the struggle and begins to lean, reaching for the Helper.",
+  "becomeTrue": "The congregation acknowledges its own weakness and depends on God rather than performing strength.",
+  "readyNext": "The room has stopped merely watching the struggle and has begun to depend on God within it.",
+  "songReq": [
+   "acknowledge human weakness without ending in despair",
+   "affirm the nearness and help of God",
+   "create language for dependence",
+   "present the Holy Spirit as Helper",
+   "help the congregation lean rather than perform strength"
+  ],
+  "fit": [
+   "God's presence in darkness",
+   "the Holy Spirit as Helper",
+   "grace in weakness",
+   "leaning and depending",
+   "God sustaining us through difficult obedience"
+  ],
+  "avoid": [
+   "resolve the struggle too quickly",
+   "turn the phase into triumph",
+   "centre human resilience rather than divine help",
+   "make the room passive or excessively inward"
+  ],
+  "mood": [
+   "Nearer",
+   "Darker",
+   "Exposed",
+   "Restrained"
+  ],
+  "miGuide": "The sound narrows as dependence deepens. The music may become smaller while the weight increases.",
+  "posture": "Layers enter gradually around the lead; vocals confess weakness and reach honestly for help.",
+  "principle": "The music may become smaller while the weight increases.",
+  "question": "Does this help the room acknowledge its need and lean on God?",
+  "readiness": "Move forward when the congregation has begun to depend on God within the struggle, not merely observe it."
+ },
+ "we-say-yes": {
+  "response": "Yes. Not my will, but Yours.",
+  "e": 0.12,
+  "w": 0.87,
+  "explain": "This is the centre of Worship Experience 2026. The platform cannot surrender for the congregation. It can only create enough truth, weight and space for each heart to personally answer God.",
+  "roomState": "Each heart is given room to personally lay its own will down.",
+  "becomeTrue": "The Yes is owned by the room itself, not borrowed from the platform.",
+  "readyNext": "The room has been given a real opportunity to answer and has settled into a Yes that feels owned.",
+  "songReq": [
+   "give the congregation direct language of surrender",
+   "confront the will, not merely express devotion",
+   "remain meaningful with very little accompaniment",
+   "permit honest repetition without emotional manipulation",
+   "leave room for prayer, silence and decision"
+  ],
+  "fit": [
+   "direct language of yielding",
+   "singable at a restrained pace",
+   "survives without a large arrangement",
+   "supports personal response within a shared room",
+   "permits repetition without becoming performative"
+  ],
+  "avoid": [
+   "turn surrender into a vocal showcase",
+   "depend on a dramatic final chorus",
+   "rush into victory",
+   "use broad commitment language without dealing with the will",
+   "pressure the room through excessive intensity"
+  ],
+  "mood": [
+   "Near-bare",
+   "Still",
+   "Costly",
+   "Weightiest"
+  ],
+  "miGuide": "Energy reaches its lowest point while weight reaches its highest. Loud is not weight. Silence is not emptiness.",
+  "posture": "Strip to bare — often piano and voice; the lead can drop out and vocalists must not oversing. Leave silence available.",
+  "principle": "Loud is not weight. Silence is not emptiness.",
+  "question": "Is the room being given enough truth and space to surrender personally?",
+  "readiness": "Move when the room has settled into a Yes that feels owned, not borrowed from the platform."
+ },
+ "god-is-glorified": {
+  "response": "Be glorified through my Yes.",
+  "e": 0.62,
+  "w": 0.56,
+  "explain": "Jesus rose from the garden with His will settled. His Yes did not remain a moment of prayer; it became the obedience through which the Father was glorified. The congregation must also rise from surrender knowing that the Yes is not the end of the journey. God is glorified as that Yes becomes the life we live.",
+  "roomState": "The room rises from surrender knowing its Yes must become a life through which God is glorified.",
+  "becomeTrue": "The congregation understands that its Yes must become a life through which God is glorified.",
+  "readyNext": "The room is ready to carry its Yes into a life that glorifies God.",
+  "songReq": [
+   "reveal the glory of a Yes lived out",
+   "connect the Yes to the life it becomes",
+   "strengthen the congregation to rise and follow",
+   "restore breadth without losing the weight already gained",
+   "conclude in readiness rather than easy celebration"
+  ],
+  "fit": [
+   "God being glorified",
+   "following Jesus",
+   "consecrated living",
+   "the Yes becoming a life",
+   "Christ revealed through surrendered lives",
+   "courage to live out the Father's will"
+  ],
+  "avoid": [
+   "reset the room into an unrelated praise celebration",
+   "suggest surrender guarantees an easy outcome",
+   "sound victorious without retaining reverence",
+   "erase the cost carried through the earlier phases",
+   "make the ending about musical spectacle"
+  ],
+  "mood": [
+   "Radiant",
+   "Resolved",
+   "Spacious",
+   "Strong"
+  ],
+  "miGuide": "The music widens again, but it must rise from surrender without losing the weight gained there.",
+  "posture": "The full band re-enters progressively; vocals open into a fuller congregational sound.",
+  "principle": "Brightness must be earned; it rises from surrender rather than erasing it.",
+  "question": "Does this help the room understand that its Yes is for His glory?",
+  "readiness": "The journey is complete when the room is ready to carry its Yes into a life that glorifies God."
+ }
+};
+const ROADMAP_PHASES = WX_PHASES.map(function(p){
+  var d = ROADMAP_DETAIL[p.id] || {};
+  var o = {id:p.id, number:p.number, title:p.title, subtitle:p.subtitle,
+           movement:p.movement, line:p.line, handoff:p.handoff};
+  for (var k in d) o[k] = d[k];
+  return o;
+});
+const PHASE_BY_ID = ROADMAP_PHASES.reduce(function(m,p){m[p.id]=p;return m;},{});
+var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- smooth-scroll cues ---------- */
+document.querySelectorAll('[data-scroll]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el=document.getElementById(btn.getAttribute('data-scroll'));
+    if(el) el.scrollIntoView({behavior:REDUCED?'auto':'smooth', block:'start'});
+  });
+});
+
+/* ================= interactive Roadmap band ================= */
+(function(){
+  var graph=document.getElementById('rmjGraph'), pills=document.getElementById('rmjPills'), card=document.getElementById('rmjCard');
+  if(!graph||!pills||!card) return;
+  var P=ROADMAP_PHASES, active=0;
+  var VW=580,VH=352,PX=[100,235,370,485],TOP=58,BOT=290;
+  function py(v){ return BOT - v*(BOT-TOP); }
+  function smooth(pts){
+    if(pts.length<2) return '';
+    var d='M'+pts[0][0].toFixed(1)+','+pts[0][1].toFixed(1);
+    for(var i=0;i<pts.length-1;i++){
+      var p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+      var c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+      var c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+      d+='C'+c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+p2[0].toFixed(1)+','+p2[1].toFixed(1);
+    }
+    return d;
+  }
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function buildGraph(){
+    var ePts=P.map(function(p,i){return [PX[i],py(p.e)];});
+    var wPts=P.map(function(p,i){return [PX[i],py(p.w)];});
+    var svg='<svg viewBox="0 0 '+VW+' '+VH+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The four phases across the journey — the room’s energy in blue, the weight of the moment in gold">';
+    [0.2,0.4,0.6,0.8].forEach(function(v){ svg+='<line class="rmj-grid" x1="70" y1="'+py(v).toFixed(1)+'" x2="'+(VW-58)+'" y2="'+py(v).toFixed(1)+'"/>'; });
+    PX.forEach(function(gx){ svg+='<line class="rmj-grid" x1="'+gx+'" y1="'+(TOP-4)+'" x2="'+gx+'" y2="'+(BOT+4)+'"/>'; });
+    svg+='<line class="rmj-axis" x1="70" y1="'+(TOP-6)+'" x2="70" y2="'+(BOT+6)+'"/>';
+    P.forEach(function(p,i){
+      svg+='<line class="rmj-guide" data-g="'+i+'" x1="'+PX[i]+'" y1="'+(TOP-4)+'" x2="'+PX[i]+'" y2="'+(BOT+4)+'"/>';
+      svg+='<text class="rmj-plabel" data-pl="'+i+'" x="'+PX[i]+'" y="'+(BOT+26)+'" text-anchor="middle">'+p.number+'</text>';
+    });
+    svg+='<path class="rmj-line-w" d="'+smooth(wPts)+'"/>';
+    svg+='<path class="rmj-line-e" d="'+smooth(ePts)+'"/>';
+    svg+='<text class="rmj-glabel" x="'+(VW-8)+'" y="'+py(0.66)+'" text-anchor="end" fill="#7f9fd8">ENERGY</text>';
+    svg+='<text class="rmj-glabel" x="'+(VW-8)+'" y="'+py(0.52)+'" text-anchor="end" fill="#c6a24c">WEIGHT</text>';
+    P.forEach(function(p,i){
+      svg+='<circle class="rmj-dot rmj-dot-e" data-d="'+i+'" cx="'+PX[i]+'" cy="'+py(p.e).toFixed(1)+'" r="4"><title>'+esc(p.number+' — '+p.title)+'</title></circle>';
+      svg+='<circle class="rmj-dot rmj-dot-w" data-d="'+i+'" cx="'+PX[i]+'" cy="'+py(p.w).toFixed(1)+'" r="4"><title>'+esc(p.number+' — '+p.title)+'</title></circle>';
+    });
+    svg+='</svg>';
+    graph.innerHTML=svg;
+    graph.querySelectorAll('.rmj-dot').forEach(function(c){ c.addEventListener('click',function(){ select(+c.getAttribute('data-d')); }); });
+  }
+  function buildPills(){
+    pills.innerHTML='';
+    P.forEach(function(p,i){
+      var b=document.createElement('button');
+      b.className='rmj-pill'; b.type='button'; b.setAttribute('role','tab'); b.id='rmj-tab-'+i;
+      b.setAttribute('aria-controls','rmjCard'); b.setAttribute('aria-selected','false');
+      b.innerHTML='<span class="pp-num">'+p.number+'</span><span class="pp-name">'+esc(p.title)+'</span>';
+      b.addEventListener('click',function(){ select(i); });
+      b.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault(); select((i+1)%P.length,true);}
+        if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault(); select((i-1+P.length)%P.length,true);}
+        if(e.key==='Home'){e.preventDefault(); select(0,true);}
+        if(e.key==='End'){e.preventDefault(); select(P.length-1,true);}
+      });
+      pills.appendChild(b);
+    });
+  }
+  function li(arr){ return '<ul>'+arr.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'; }
+  function row(l,v){ return '<div class="rmj-row"><div class="rmj-rlabel">'+l+'</div><div class="rmj-rval">'+v+'</div></div>'; }
+  function acc(id,label,inner){
+    return '<div class="rmj-acc">'+
+      '<button class="rmj-acc-btn" type="button" aria-expanded="false" aria-controls="'+id+'" id="'+id+'-b">'+label+'<span class="ai" aria-hidden="true">+</span></button>'+
+      '<div class="rmj-acc-panel" id="'+id+'" role="region" aria-labelledby="'+id+'-b"><div class="rmj-acc-inner">'+inner+'</div></div></div>';
+  }
+  function pct(v){ return Math.round(v*100); }
+  function miInner(p){
+    return '<p class="rmj-kw">'+p.mood.join(' &middot; ')+'</p>'+
+      '<div class="rmj-ew" aria-label="Relative energy and weight">'+
+        '<div class="ewr"><span class="ewl">Energy</span><span class="ewbar"><span class="ewfill e" style="width:'+pct(p.e)+'%"></span></span></div>'+
+        '<div class="ewr"><span class="ewl">Weight</span><span class="ewbar"><span class="ewfill w" style="width:'+pct(p.w)+'%"></span></span></div>'+
+      '</div>'+
+      '<p>'+esc(p.miGuide)+'</p>'+
+      '<h4>Band &amp; vocal posture</h4><p>'+esc(p.posture)+'</p>'+
+      '<h4>Governing principle</h4><p>'+esc(p.principle)+'</p>'+
+      '<a class="rmj-mi-link" data-mi href="'+MUSICAL_IDENTITY_URL+'">Open the Musical Identity &rarr;</a>';
+  }
+  function renderCard(){
+    var p=P[active];
+    card.setAttribute('aria-labelledby','rmj-tab-'+active);
+    var h='<div class="rmj-chead">'+
+        '<p class="rmj-eyebrow">Phase '+p.number+'</p>'+
+        '<h3 class="rmj-title">'+esc(p.title)+'</h3>'+
+        '<p class="rmj-sub">'+esc(p.subtitle)+'</p>'+
+        '<div class="rmj-meta">'+
+          '<span class="rmj-chip"><b>Movement</b> · '+esc(p.movement)+'</span>'+
+          '<span class="rmj-chip response"><b>Response</b> · &ldquo;'+esc(p.response)+'&rdquo;</span>'+
+        '</div></div>'+
+      '<div class="rmj-rows">'+
+        row('The phase',esc(p.explain))+
+        row('Room state',esc(p.roomState))+
+        row('Must become true',esc(p.becomeTrue))+
+        row('Ready for next',esc(p.readyNext))+
+      '</div>'+
+      acc('rmj-songs-'+active,'What the songs must do',li(p.songReq))+
+      acc('rmj-fit-'+active,'What fits &amp; what to avoid','<h4>What kinds of songs fit</h4>'+li(p.fit)+'<h4>Avoid songs that</h4>'+li(p.avoid))+
+      acc('rmj-mi-'+active,'Musical Identity guidance',miInner(p))+
+      '<div class="rmj-q"><p class="q-lbl">Governing question</p><p class="q-text">'+esc(p.question)+'</p></div>'+
+      row('Readiness test',esc(p.readiness))+
+      '<div class="rmj-handoff"><span class="ho-lbl">'+(active===P.length-1?'Final phase line':'Handoff into the next phase')+'</span><p class="ho-text">'+esc(p.handoff)+'</p></div>';
+    card.innerHTML=h;
+    if(!REDUCED){ card.classList.remove('rmj-fade'); void card.offsetWidth; card.classList.add('rmj-fade'); }
+    wireAccordions();
+  }
+  function wireAccordions(){
+    card.querySelectorAll('.rmj-acc-btn').forEach(function(btn){
+      var panel=document.getElementById(btn.getAttribute('aria-controls'));
+      btn.addEventListener('click',function(){
+        var open=btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded',open?'false':'true');
+        panel.style.maxHeight=open?'0px':(panel.scrollHeight+24)+'px';
+      });
+    });
+  }
+  function syncGraph(){
+    graph.querySelectorAll('.rmj-guide').forEach(function(g){ var i=+g.getAttribute('data-g'); g.classList.toggle('on',i===active); });
+    graph.querySelectorAll('.rmj-dot').forEach(function(c){ var i=+c.getAttribute('data-d'); var on=i===active; c.classList.toggle('on',on); c.setAttribute('r',on?'6.5':'4'); });
+    graph.querySelectorAll('.rmj-plabel').forEach(function(t){ t.classList.toggle('on',+t.getAttribute('data-pl')===active); });
+  }
+  function select(i,focus){
+    if(i<0||i>=P.length) return; active=i;
+    pills.querySelectorAll('.rmj-pill').forEach(function(b,k){
+      var on=k===i; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false'); b.tabIndex=on?0:-1;
+      if(on&&focus) b.focus();
+    });
+    renderCard(); syncGraph();
+  }
+  buildGraph(); buildPills(); select(0);
+})();
+
+/* ================= The Setlist — one journey, 28 musical items ================= */
+/* Pass 7 — Setlist reads phases and the 28-item catalogue from the shared
+   single source (assets/js/wx-music-data.js). Phase counts are DERIVED from the
+   catalogue, never hard-coded. The tiny adapters below shape the shared data
+   into the exact fields this page's renderer already expects (component
+   `section`, `artist`), so no rendering behaviour changes. */
+const SETLIST_PHASES = WX_PHASES.map(function(p){
+  return { id:p.id, number:p.number, title:p.title, subtitle:p.subtitle,
+           movement:p.movement, line:p.line, handoff:p.handoff,
+           count: WX_CATALOGUE.filter(function(i){return i.phase===p.id;}).length };
+});
+const SETLIST_ITEMS = WX_CATALOGUE.map(function(c){
+  var o = { number:c.number, phase:c.phase, title:c.title };
+  if (c.type) o.type = c.type;
+  if (c.artist) o.artist = c.artist;
+  if (c.developmentNote) o.developmentNote = c.developmentNote;
+  o.components = (c.components || []).map(function(cc){
+    var x = { letter:cc.letter, title:cc.title };
+    if (cc.artist) x.artist = cc.artist;
+    if (cc.arrangeNote) x.section = cc.arrangeNote;
+    return x;
+  });
+  return o;
+});
+
+(function(){
+  var rail=document.getElementById('setRail'), body=document.getElementById('setBody');
+  var searchEl=document.getElementById('setSearch'), resultEl=document.getElementById('setResult');
+  if(!body) return;
+  var PH=SETLIST_PHASES.reduce(function(m,p){m[p.id]=p;return m;},{});
+  var query='';
+  var pad=function(n){ return (n<10?'0':'')+n; };
+  function esc(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function matches(it){
+    if(!query) return true;
+    var hay=[it.title,it.artist,it.type,PH[it.phase]&&PH[it.phase].title];
+    (it.components||[]).forEach(function(c){ hay.push(c.title,c.artist); });
+    if(it.continuation){ hay.push(it.continuation.title,it.continuation.artist); }
+    return hay.join(' ').toLowerCase().indexOf(query)!==-1;
+  }
+  function hasDetails(it){ return !!(it.details&&(it.details.structure||it.details.note)); }
+
+  function itemHTML(it){
+    var meta='';
+    if(it.type) meta+='<span class="item-type">'+esc(it.type)+'</span>';
+    if(it.artist) meta+='<span class="item-artist">'+esc(it.artist)+'</span>';
+    var comps='';
+    if(it.components&&it.components.length){
+      comps='<ol class="components">'+it.components.map(function(c){
+        return '<li><span class="comp-letter">'+esc(c.letter)+'</span><span class="comp-body">'+
+          '<span class="comp-title">'+esc(c.title)+'</span>'+
+          (c.artist?'<span class="comp-artist">'+esc(c.artist)+'</span>':'')+
+          (c.section?'<span class="comp-section">'+esc(c.section)+'</span>':'')+
+        '</span></li>';
+      }).join('')+'</ol>';
+    }
+    var cont='';
+    if(it.continuation){
+      cont='<div class="item-cont"><span class="cont-label">'+esc(it.continuation.label)+'</span>'+
+        '<span class="cont-title">'+esc(it.continuation.title)+'</span>'+
+        (it.continuation.artist?'<span class="comp-artist">'+esc(it.continuation.artist)+'</span>':'')+'</div>';
+    }
+    var dev='';
+    if(it.developmentNote){ dev='<p class="item-dev">'+esc(it.developmentNote)+'</p>'; }
+    var det='';
+    if(hasDetails(it)){
+      var did='det-'+it.number, inner='';
+      if(it.details.structure) inner+='<h5>Structure</h5><p>'+esc(it.details.structure)+'</p>';
+      if(it.details.note) inner+='<h5>Note</h5><p>'+esc(it.details.note)+'</p>';
+      det='<button class="item-det-btn" type="button" aria-expanded="false" aria-controls="'+did+'" id="'+did+'-b">Open Item Details <span aria-hidden="true">&rarr;</span></button>'+
+        '<div class="item-det" id="'+did+'" role="region" aria-labelledby="'+did+'-b"><div class="item-det-inner">'+inner+'</div></div>';
+    }
+    return '<li class="set-item" id="item-'+it.number+'">'+
+      '<span class="item-node" aria-hidden="true"></span>'+
+      '<div class="item-num">'+pad(it.number)+'</div>'+
+      '<div class="item-main">'+
+        '<h4 class="item-title">'+esc(it.title)+'</h4>'+
+        (meta?'<p class="item-meta">'+meta+'</p>':'')+
+        comps+cont+dev+det+
+      '</div></li>';
+  }
+
+  function phaseSectionHTML(p, items){
+    var count = query ? (items.length+' of '+p.count+' Musical Items Shown') : (p.count+' Musical Items');
+    return '<section class="phase-mv" id="phase-'+p.id+'" aria-labelledby="ph-'+p.id+'-h" data-phase="'+p.id+'">'+
+      '<header class="pm-head">'+
+        '<p class="pm-num">Phase '+p.number+'</p>'+
+        '<h3 class="pm-title" id="ph-'+p.id+'-h">'+esc(p.title)+'</h3>'+
+        '<p class="pm-move">'+esc(p.movement)+' &middot; <span class="pm-count">'+count+'</span></p>'+
+        '<p class="pm-line">'+esc(p.line)+'</p>'+
+      '</header>'+
+      '<ol class="stave">'+items.map(itemHTML).join('')+'</ol>'+
+      '<p class="pm-handoff">'+esc(p.handoff)+'</p>'+
+    '</section>';
+  }
+
+  /* the whole journey always renders; search filters items but keeps phase context */
+  function render(){
+    var html='', shown=0;
+    SETLIST_PHASES.forEach(function(p){
+      var items=SETLIST_ITEMS.filter(function(it){ return it.phase===p.id && matches(it); });
+      if(query && !items.length) return;   // hide a phase only when a search leaves it empty
+      shown+=items.length;
+      html+=phaseSectionHTML(p, items);
+    });
+    body.innerHTML=html||'<p class="set-empty">No items match your search.</p>';
+    wireDetails();
+    resultEl.textContent = query ? (shown+(shown===1?' item':' items')+' match “'+searchEl.value.trim()+'”.') : '';
+    updateSpy();
+  }
+  function wireDetails(){
+    body.querySelectorAll('.item-det-btn').forEach(function(btn){
+      var panel=document.getElementById(btn.getAttribute('aria-controls'));
+      btn.addEventListener('click',function(){
+        var open=btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded',open?'false':'true');
+        panel.style.maxHeight=open?'0px':(panel.scrollHeight+20)+'px';
+      });
+    });
+  }
+
+  /* phase rail = navigation only: scroll to a phase, keep the whole Setlist intact */
+  function buildRail(){
+    rail.innerHTML=SETLIST_PHASES.map(function(p){
+      return '<button class="set-pill" type="button" aria-current="false" data-p="'+p.id+'"><span class="sp-num">'+p.number+'</span> — '+esc(p.title.toUpperCase())+'</button>';
+    }).join('');
+    var pills=Array.prototype.slice.call(rail.querySelectorAll('.set-pill'));
+    pills.forEach(function(b,i){
+      b.addEventListener('click',function(){
+        var t=document.getElementById('phase-'+b.getAttribute('data-p'));
+        if(t) t.scrollIntoView({behavior:REDUCED?'auto':'smooth', block:'start'});
+      });
+      b.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'){e.preventDefault();(pills[i+1]||pills[0]).focus();}
+        if(e.key==='ArrowLeft'){e.preventDefault();(pills[i-1]||pills[pills.length-1]).focus();}
+      });
+    });
+  }
+  function setActivePill(pid){
+    rail.querySelectorAll('.set-pill').forEach(function(b){
+      var on=b.getAttribute('data-p')===pid;
+      b.classList.toggle('on',on); b.setAttribute('aria-current',on?'true':'false');
+      if(on){ var r=b.getBoundingClientRect(), pr=rail.getBoundingClientRect();
+        if(r.left<pr.left||r.right>pr.right) b.scrollIntoView({inline:'center',block:'nearest'}); }
+    });
+  }
+  var spy=null;
+  function updateSpy(){
+    if(spy){ spy.disconnect(); spy=null; }
+    if(!('IntersectionObserver' in window)) return;
+    var secs=Array.prototype.slice.call(body.querySelectorAll('.phase-mv'));
+    if(!secs.length) return;
+    var vis={};
+    spy=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ vis[en.target.getAttribute('data-phase')]=en.isIntersecting?en.intersectionRatio:0; });
+      var best=null,br=0;
+      secs.forEach(function(s){ var id=s.getAttribute('data-phase'),r=vis[id]||0; if(r>br){br=r;best=id;} });
+      if(best) setActivePill(best);
+    },{rootMargin:'-40% 0px -50% 0px',threshold:[0,.2,.5,1]});
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+
+  searchEl.addEventListener('input',function(){ query=(searchEl.value||'').trim().toLowerCase(); render(); });
+
+  buildRail(); render();
+})();
+
+/* ================= export: Word / PDF / Print ================= */
+function wxEsc(x){return String(x==null?'':x).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+var WX_EXPORT_CSS='@page{size:A4;margin:18mm 16mm 20mm}'+
+ 'body{font-family:Georgia,"EB Garamond",serif;color:#161616;background:#fff;line-height:1.5;margin:0}'+
+ '.doc-cover{text-align:center;padding:12mm 0 8mm;border-bottom:2px solid #C6A24C;margin-bottom:8mm}'+
+ '.doc-cover .ev{font-family:Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:#8A171B}'+
+ '.doc-cover h1{font-family:"Cinzel",Georgia,serif;font-size:30px;margin:.3em 0 .2em;letter-spacing:.02em}'+
+ '.doc-cover .theme{font-family:Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#8A171B;margin:.4em 0}'+
+ '.doc-cover .date{font-style:italic;color:#444}'+
+ '.doc-cover .count{font-family:Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:#666;margin-top:.6em}'+
+ '.doc-toc{page-break-after:always}'+
+ '.doc-toc h2,.export-phase h2{font-family:"Cinzel",Georgia,serif}'+
+ '.doc-toc .tp{font-family:Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:#C6A24C;margin:14px 0 4px;border-bottom:1px solid #e3d9c2;padding-bottom:3px}'+
+ '.doc-toc .ti{margin:2px 0 2px 0;font-size:13px} .doc-toc .ti .n{display:inline-block;width:26px;color:#8a7a4a;font-weight:bold}'+
+ '.export-phase{page-break-before:always}'+
+ '.export-phase .pn{font-family:Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;font-size:11px;color:#C6A24C;margin:0 0 2px}'+
+ '.export-phase h2{font-size:22px;margin:0 0 2px}'+
+ '.export-phase .mv{font-family:Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;font-size:11px;color:#666;margin:0 0 4px}'+
+ '.export-phase .pl{font-style:italic;color:#333;margin:0 0 10px}'+
+ '.export-item{break-inside:avoid-page;page-break-inside:avoid;margin:0 0 12px;padding:0 0 8px;border-bottom:1px solid #eee}'+
+ '.export-item .inum{font-family:"Cinzel",Georgia,serif;color:#8a7a4a;font-size:14px}'+
+ '.export-item h3{font-family:"Cinzel",Georgia,serif;font-size:17px;margin:1px 0 1px}'+
+ '.export-item .itype{font-family:Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-size:10px;color:#777;margin:0 0 2px}'+
+ '.export-item .iart{font-style:italic;color:#555;margin:0 0 4px}'+
+ '.export-comp{margin:4px 0 2px} .export-comp .cl{font-family:Arial,sans-serif;font-weight:bold;color:#8a7a4a}'+
+ '.export-comp .ct{font-family:"Cinzel",Georgia,serif} .export-comp .ca{font-style:italic;color:#555}'+
+ '.export-comp .cs{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#777}'+
+ '.arr{font-family:Arial,sans-serif;font-size:10px;font-weight:bold;letter-spacing:.14em;text-transform:uppercase;color:#8a7a4a;margin:3px 0}'+
+ '.sec-h{font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#8A171B;margin:8px 0 2px}'+
+ '.ll{margin:0;font-size:13.5px} .tr{margin:0 0 0 10px;font-style:italic;color:#555;font-size:12px}'+
+ '.note{font-style:italic;color:#555;border-left:3px solid #C6A24C;padding-left:8px;margin:6px 0}'+
+ '.dev{font-style:italic;color:#666;margin:6px 0}'+
+ '.ph-note{color:#777;font-style:italic}'+
+ '.print-hint{background:#fff8e6;border:1px solid #C6A24C;padding:8px 12px;margin:0 0 10px;font-family:Arial,sans-serif;font-size:12px;color:#7a5c10}'+
+ '@media print{.print-hint{display:none!important}}';
+
+function buildSetlistExportDocument(mode){
+  var itemsBy={};
+  SETLIST_PHASES.forEach(function(p){itemsBy[p.id]=SETLIST_ITEMS.filter(function(it){return it.phase===p.id;});});
+  var toc='<div class="doc-toc"><h2>Contents</h2>';
+  SETLIST_PHASES.forEach(function(p){
+    toc+='<p class="tp">Phase '+p.number+' — '+wxEsc(p.title)+'</p>';
+    itemsBy[p.id].forEach(function(it){toc+='<div class="ti"><span class="n">'+(it.number<10?'0':'')+it.number+'</span>'+wxEsc(it.title)+'</div>';});
+  });
+  toc+='</div>';
+  var bodyHtml='';
+  SETLIST_PHASES.forEach(function(p){
+    bodyHtml+='<section class="export-phase"><p class="pn">Phase '+p.number+'</p><h2>'+wxEsc(p.title)+'</h2>'+
+      '<p class="mv">'+wxEsc(p.movement)+'</p><p class="pl">'+wxEsc(p.line)+'</p>';
+    itemsBy[p.id].forEach(function(it){
+      bodyHtml+='<div class="export-item"><span class="inum">'+(it.number<10?'0':'')+it.number+'</span> <h3>'+wxEsc(it.title)+'</h3>';
+      if(it.type) bodyHtml+='<p class="itype">'+wxEsc(it.type)+'</p>';
+      if(it.artist) bodyHtml+='<p class="iart">'+wxEsc(it.artist)+'</p>';
+      if(it.components&&it.components.length){
+        it.components.forEach(function(c){
+          bodyHtml+='<p class="export-comp"><span class="cl">'+wxEsc(c.letter)+' · </span><span class="ct">'+wxEsc(c.title)+'</span>'+
+            (c.artist?' <span class="ca">— '+wxEsc(c.artist)+'</span>':'')+(c.section?' <span class="cs">'+wxEsc(c.section)+'</span>':'')+'</p>';
+        });
+      }
+      if(it.developmentNote) bodyHtml+='<p class="dev">'+wxEsc(it.developmentNote)+'</p>';
+      bodyHtml+='</div>';
+    });
+    bodyHtml+='<p class="note">'+wxEsc(p.handoff)+'</p></section>';
+  });
+  var cover='<div class="doc-cover"><p class="ev">Worship Experience 2026</p><h1>Setlist</h1>'+
+    '<p class="theme">YES: Not My Will, But Yours</p><p class="date">Sunday, 29 November 2026</p>'+
+    '<p class="count">28 Musical Items · Four Phases</p></div>';
+  var hint = mode==='pdf' ? '<div class="print-hint">Choose &ldquo;Save as PDF&rdquo; in the print destination.</div>' : '';
+  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>WX2026 Setlist</title><style>'+WX_EXPORT_CSS+'</style></head><body>'+hint+cover+toc+bodyHtml+'</body></html>';
+}
+
+function wxShowError(msg){var e=document.getElementById('exportError'); if(e){e.textContent=msg; e.hidden=false; setTimeout(function(){e.hidden=true;},6000);}}
+function wxDownloadWord(builder,filename){
+  try{
+    var html=builder('word');
+    var blob=new Blob(['﻿',html],{type:'application/msword;charset=utf-8'});
+    var url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  }catch(err){ wxShowError('The Word file could not be created. Please try again.'); }
+}
+function wxOpenPrint(builder,mode,title){
+  /* Pass 7.1 — render the standalone Setlist export document in an isolated
+     iframe (WXExport) and print only that. No popup, no document.write to another
+     window, no mutation of this page. PDF is print-to-PDF with a Save-as-PDF hint. */
+  try{
+    var html=builder(mode).replace('<title>WX2026 Setlist</title>','<title>'+title+'</title>').replace('<title>WX2026 Lyric Book</title>','<title>'+title+'</title>');
+    if(window.WXExport&&window.WXExport.printDocument){
+      window.WXExport.printDocument(html,{onError:function(){ wxShowError('The document could not be prepared for printing. Please try again.'); }});
+    } else { wxShowError('Printing is unavailable in this browser. Please use Download Word instead.'); }
+  }catch(err){ wxShowError('The export document could not be prepared. Please try again.'); }
+}
+
+/* export menu wiring (shared pattern) */
+(function(){
+  var menu=document.getElementById('exportMenu'); if(!menu) return;
+  var btn=document.getElementById('exportBtn'), list=document.getElementById('exportList');
+  function open(){ list.hidden=false; btn.setAttribute('aria-expanded','true'); document.addEventListener('click',outside); document.addEventListener('keydown',onkey); }
+  function close(){ list.hidden=true; btn.setAttribute('aria-expanded','false'); document.removeEventListener('click',outside); document.removeEventListener('keydown',onkey); }
+  function outside(e){ if(!menu.contains(e.target)) close(); }
+  function onkey(e){ if(e.key==='Escape'){ close(); btn.focus(); } }
+  btn.addEventListener('click',function(e){ e.stopPropagation(); list.hidden?open():close(); });
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('[data-act]'); if(!b) return;
+    var act=b.getAttribute('data-act'); close();
+    if(act==='word') wxDownloadWord(buildSetlistExportDocument,'WX2026_Setlist.doc');
+    else if(act==='pdf') wxOpenPrint(buildSetlistExportDocument,'pdf','WX2026 Setlist — Save as PDF');
+    else wxOpenPrint(buildSetlistExportDocument,'print','WX2026 Setlist');
+  });
+})();
+</script>
+</body></html>

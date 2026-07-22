@@ -1,0 +1,34 @@
+WORSHIP EXPERIENCE 2026 — Ecosystem site
+========================================
+
+IMPORTANT — how to open this correctly
+--------------------------------------
+1. FULLY EXTRACT / UNZIP this folder first.
+   - Windows: right-click the .zip > "Extract All..." > Extract. Then open the
+     extracted "WX2026-site" folder. (Do NOT double-click index.html while it is
+     still inside the .zip — Windows opens only that one file in a temp folder,
+     which is why images and links break with "File not found".)
+   - Mac: double-click the .zip to extract, then open the "WX2026-site" folder.
+2. Open  index.html  from the extracted folder.
+3. Keep index.html, the other .html pages, and the "assets" folder together in
+   the same folder. Links and images only work when they sit side by side.
+
+What's inside
+-------------
+index.html ................ the hub (landing + workspace launcher)
+concept.html .............. The Worship Experience Concept
+creative-direction.html ... WX26 Creative Direction (the interactive workspace)
+theme-brief / setlist / lyrics / playbook / blueprint /
+music-workshop / bible-study .html  ... current working pages
+assets/ ................... all images, video, logos and fonts
+assets/css/ ............... shared tokens.css, base.css, components.css
+assets/js/ ................ shared site-config.js (theme/phases/date/palette),
+                           routes.js (routes/availability), site.js (countdown)
+assets/images/ ............ externalised images (no images are embedded in the
+                           HTML/CSS any more)
+
+Setlist and Lyric Book are authoritative working files, not placeholders.
+A few pages are still in development and appear as clearly marked "Coming Soon"
+states inside the Blueprint: flow-map, production-cue, running-order and
+experience-report. Replacing one later: drop the finished page into this folder
+using the SAME file name. No link changes needed.

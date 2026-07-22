@@ -1,0 +1,79 @@
+name: WX 2026 CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Fast gate — dependency-free structural audit (missing refs, case mismatch,
+  # subpath safety, duplicate IDs, data:image, canonical drift, metadata/a11y).
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Structural audit (no install)
+        run: node tools/audit.mjs .
+
+  # HTML validation, formatting and lint of the dev tooling.
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: HTML validation
+        run: npm run validate:html
+      - name: Formatting check (tooling + docs)
+        run: npm run format:check
+      - name: Lint tooling
+        run: npm run lint
+
+  # Playwright smoke tests at desktop + mobile.
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Smoke tests
+        run: npm run test:smoke
+
+  # Publish to GitHub Pages on main (only after checks pass). Enable Pages in the
+  # repository settings (Settings → Pages → Source: GitHub Actions) to activate.
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: [audit, validate, smoke]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # The whole repo is the static site (relative, subpath-safe URLs).
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

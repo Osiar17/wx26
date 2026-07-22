@@ -1,0 +1,24 @@
+{
+  "name": "wx-2026-site",
+  "version": "2026.9.0",
+  "private": true,
+  "description": "Worship Experience 2026 — static site (The Flow Experience). Dev tooling only; the published site is plain static HTML/CSS/JS with no runtime dependency.",
+  "type": "module",
+  "scripts": {
+    "audit": "node tools/audit.mjs .",
+    "serve": "node tools/serve.mjs 8080 .",
+    "validate:html": "html-validate \"*.html\"",
+    "format": "prettier --write \"**/*.{html,css,js,mjs,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,mjs,json,md}\"",
+    "lint": "eslint \"assets/js/**/*.js\" \"tools/**/*.mjs\"",
+    "test:smoke": "playwright test tools/smoke.spec.mjs",
+    "check": "npm run audit && npm run validate:html && npm run format:check",
+    "check:all": "npm run check && npm run lint && npm run test:smoke"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "eslint": "^9.39.5",
+    "html-validate": "^8.29.0",
+    "prettier": "^3.9.6"
+  }
+}

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+
+<title>Wade-In 2026 · Found Faithful · The Flow Experience</title>
+<meta name="description" content="Wade-In 2026 — The Flow Experience's annual movement deeper into formation. Go deeper into the Flow: the life, the craft and the room — and, for 2026, found faithful with the will and with the gift.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TFArrow — labels, numerals, controls (ecosystem font assets)
+     ============================================================ */
+  @font-face{font-family:'TFArrow';font-weight:300;font-style:normal;font-display:swap;src:url(assets/4eb0091819c7.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:500;font-style:normal;font-display:swap;src:url(assets/9a22f94c2bb9.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:700;font-style:normal;font-display:swap;src:url(assets/431bfc939f5d.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:800;font-style:normal;font-display:swap;src:url(assets/af3abf759b90.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:900;font-style:normal;font-display:swap;src:url(assets/2498c2d4309d.ttf) format('truetype')}
+
+  /* ============================================================
+     TOKENS — inherited WX 2026 visual world
+     ============================================================ */
+  :root{
+    --bg-deep:   #0A0E1A;   /* Blue-Black — the will's ground   */
+    --bg-mid:    #16203D;   /* Midnight Blue — the gift's ground */
+    --bg-panel:  #0c1120;
+    --bg-lift:   #11182b;
+    --charcoal:  #262B3A;
+
+    --ink:       #ECE3D0;   /* Bone */
+    --ink-soft:  rgba(236,227,208,.72);
+    --ink-faint: rgba(236,227,208,.44);
+    --ink-ghost: rgba(236,227,208,.22);
+    --rule:      rgba(236,227,208,.13);
+
+    --gold:      #C6A24C;   --gold-rgb:198,162,76;   /* Presence Gold — the gift */
+    --gold-ink:  #A8791A;
+    --crimson:   #8A171B;   --crimson-rgb:138,23,27; /* Deep Crimson — the will  */
+    --purple:    #7A4CB8;   /* Wildflower Purple */
+
+    --display:'Cinzel',Georgia,serif;
+    --body:'EB Garamond',Georgia,serif;
+    --num:'TFArrow','Arial Narrow',sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --measure:34rem;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);background:var(--bg-deep);color:var(--ink);line-height:1.62;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+
+  /* fixed atmosphere layers (inherited) */
+  .night{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+    radial-gradient(120% 95% at 50% 118%,rgba(54,78,128,.42),transparent 55%),
+    radial-gradient(95% 75% at 22% 22%,rgba(38,48,82,.40),transparent 62%),
+    linear-gradient(180deg,#070a14 0%,#0b0f1a 58%,#090d16 100%)}
+  .grid{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;
+    background-image:linear-gradient(rgba(236,227,208,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(236,227,208,.04) 1px,transparent 1px);
+    background-size:33.333% 33.333%}
+  .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("assets/images/texture-180.svg");background-size:180px 180px}
+
+  /* ============ SHARED CHROME ============ */
+  .nav-countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.42rem;font-family:var(--num);white-space:nowrap;pointer-events:none}
+  .nav-countdown .cd-num{color:var(--gold);font-weight:800;font-size:.92rem;letter-spacing:.03em;line-height:1}
+  .nav-countdown .cd-lbl{color:var(--ink);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82;line-height:1}
+  @media(max-width:600px){.nav-countdown .cd-lbl{display:none}.nav-countdown{gap:0}}
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:.6rem clamp(1.1rem,4vw,2.4rem);background:rgba(10,14,26,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+    border-bottom:1px solid rgba(var(--gold-rgb),.28);font-family:var(--body)}
+  .site-nav__logo img{height:28px;width:auto;display:block;opacity:.97}
+  .site-nav__ws{font-family:var(--num);font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:.52rem 1.25rem;display:inline-flex;align-items:center;gap:.5rem;
+    text-decoration:none;box-shadow:0 2px 12px rgba(var(--gold-rgb),.28);transition:background .25s,color .25s,transform .25s,box-shadow .25s}
+  .site-nav__ws:hover,.site-nav__ws:focus-visible{background:#d4b25e;color:#0A0E1A;transform:translateY(-1px);box-shadow:0 4px 18px rgba(var(--gold-rgb),.42);outline:none}
+  .site-nav__ws .ar{font-size:.9rem;transition:transform .25s}
+  .site-nav__ws:hover .ar{transform:translateX(-3px)}
+  .eco-foot{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:2vh;padding:2.6rem clamp(1rem,3.5vw,2.2rem) 3.2rem;border-top:1px solid rgba(var(--gold-rgb),.22)}
+  .eco-foot img{display:block;width:auto;pointer-events:auto}
+  .eco-foot .eco-yes img{height:clamp(42px,5vw,56px);opacity:.92}
+  .eco-foot .eco-ccc img{height:clamp(28px,3.6vw,38px);opacity:.9}
+  @media(max-width:640px){.eco-foot .eco-yes img{height:42px}.eco-foot .eco-ccc img{height:28px}}
+
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+  .skip{position:absolute;left:-999px;top:0;z-index:400;background:var(--gold);color:#0A0E1A;font-family:var(--num);font-weight:800;
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.1rem;border-radius:0 0 4px 0}
+  .skip:focus{left:0}
+
+  /* ============ EDITORIAL COMPONENTS ============ */
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+  .wrap--narrow{width:min(760px,92vw)}
+  section{position:relative;z-index:4}
+  .sec{padding:clamp(5rem,11vh,9rem) 0}
+  .kicker{font-family:var(--num);font-weight:800;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+  .kicker.k-will{color:var(--crimson)}
+  .kicker.k-will::before{background:var(--crimson)}
+  .display{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing:.005em;color:var(--ink)}
+  h2.display{font-size:clamp(1.9rem,4.4vw,3.1rem)}
+  h3.display{font-size:clamp(1.4rem,3vw,2rem)}
+  .lede{font-size:clamp(1.18rem,2vw,1.42rem);line-height:1.5;color:var(--ink);max-width:var(--measure)}
+  .prose{font-size:1.06rem;color:var(--ink-soft);max-width:var(--measure)}
+  .prose+.prose{margin-top:1.05rem}
+  .prose em{color:var(--ink);font-style:italic}
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ============================================================
+     1 · OPENING — THE QUESTION OF FAITHFULNESS
+     ============================================================ */
+  .enter{margin-top:clamp(2.2rem,5vh,3.2rem);display:inline-flex;align-items:center;gap:.85rem;
+    font-family:var(--num);font-weight:800;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;background:transparent;border:1px solid rgba(var(--gold-rgb),.5);
+    border-radius:3px;padding:.95rem 1.7rem;cursor:pointer;transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+  .enter:hover,.enter:focus-visible{border-color:var(--gold);color:#0A0E1A;background:var(--gold);outline:none}
+  .enter .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s var(--ease) infinite}
+  .enter:hover .dot,.enter:focus-visible .dot{background:#0A0E1A}
+  @keyframes pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+  @media (prefers-reduced-motion:reduce){.enter .dot{animation:none}}
+
+  /* ============================================================
+     2 · WHAT WADE-IN IS
+     ============================================================ */
+
+  /* ============================================================
+     3 · THREE PILLARS OF FORMATION — connected field
+     ============================================================ */
+  .pillars__stage{margin-top:clamp(2.6rem,5vh,3.6rem);display:grid;grid-template-columns:minmax(300px,1fr) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+  @media(max-width:900px){.pillars__stage{grid-template-columns:1fr;gap:2rem}}
+  .triad{position:relative;width:100%;max-width:440px;margin-inline:auto;aspect-ratio:1/.92}
+  .triad svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .triad__edge{stroke:rgba(236,227,208,.16);stroke-width:1;fill:none;transition:stroke .4s var(--ease)}
+  .triad__core{fill:none;stroke:rgba(var(--gold-rgb),.5);stroke-width:1;stroke-dasharray:2 4}
+  .triad__center{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);text-align:center;width:9rem;background:none;border:0;cursor:pointer;padding:.5rem;z-index:3;transition:transform .3s var(--ease)}
+  .triad__center:hover{transform:translate(-50%,-50%) scale(1.04)}
+  .triad__center:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:10px}
+  .triad__center[aria-pressed="true"] .cw{text-shadow:0 0 26px rgba(var(--gold-rgb),.55)}
+  .triad__center .cl{font-family:var(--num);font-weight:800;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+  .triad__center .cw{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.12;color:var(--gold);margin-top:.3rem}
+  .pnode{position:absolute;transform:translate(-50%,-50%);background:none;border:0;cursor:pointer;text-align:center;color:inherit;font-family:var(--body);width:8.5rem}
+  .pnode__dot{width:52px;height:52px;margin:0 auto .55rem;border-radius:50%;border:1px solid var(--rule);background:var(--bg-panel);
+    display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:800;font-size:.9rem;color:var(--ink-faint);
+    transition:border-color .35s var(--ease),color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease)}
+  .pnode__name{font-family:var(--display);font-weight:600;font-size:.98rem;color:var(--ink);letter-spacing:.01em;line-height:1.15}
+  .pnode[aria-pressed="true"] .pnode__dot{border-color:var(--gold);background:var(--gold);color:#0A0E1A;box-shadow:0 0 0 5px rgba(var(--gold-rgb),.14),0 0 20px rgba(var(--gold-rgb),.38)}
+  .pnode[aria-pressed="true"] .pnode__name{color:var(--gold)}
+  .pnode:hover .pnode__dot,.pnode:focus-visible .pnode__dot{border-color:rgba(var(--gold-rgb),.7);color:var(--ink)}
+  .p1{left:50%;top:8%}.p2{left:12%;top:88%}.p3{left:88%;top:88%}
+  @media(max-width:520px){
+    .triad{max-width:320px}
+    .pnode{width:7rem}
+    .pnode__dot{width:46px;height:46px}
+    .pnode__name{font-size:.9rem}
+    .p2{left:17%}.p3{left:83%}
+  }
+
+  .pillar-detail{border:1px solid var(--rule);border-radius:14px;background:linear-gradient(180deg,rgba(22,32,61,.34),rgba(12,17,32,.5));
+    padding:clamp(1.6rem,3.5vw,2.4rem);min-height:280px}
+  .pillar-detail__empty{color:var(--ink-faint);font-family:var(--display);font-weight:500;font-style:italic;font-size:1.15rem;line-height:1.5}
+  .pillar-detail__empty .en{color:var(--ink-soft)}
+  .pd-idx{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+  .pd-title{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--ink);margin-bottom:.3rem}
+  .pd-role{font-family:var(--body);font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin-bottom:1.1rem}
+  .pd-h{font-family:var(--num);font-weight:800;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:1.1rem 0 .5rem}
+  .pd-p{font-size:1.02rem;color:var(--ink-soft);max-width:40rem}
+  .pd-tension{margin-top:1.2rem;border-left:2px solid var(--crimson);padding:.5rem 0 .5rem 1rem}
+  #pillarBody.is-center .pd-tension{border-left-color:var(--gold)}
+  .pd-tension .t-name{font-family:var(--num);font-weight:800;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .pd-tension .t-line{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin-top:.3rem}
+  .pillars__resolve{margin-top:clamp(2.6rem,5vh,3.6rem);text-align:center}
+  .pillars__resolve p{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,3vw,1.95rem);line-height:1.4;color:var(--ink);max-width:30ch;margin-inline:auto}
+
+  /* ============================================================
+     4 · STEWARDSHIP CONTEXT
+     ============================================================ */
+  .steward__door{margin-top:clamp(2.4rem,5vh,3.4rem);text-align:center}
+  .steward__door p{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,3.2vw,2.1rem);line-height:1.36;color:var(--ink);max-width:24ch;margin-inline:auto}
+  .steward__door .em-will{color:var(--crimson)}
+  .steward__door .em-gift{color:var(--gold)}
+  .steward__wg{white-space:nowrap}
+
+  /* ===== consolidated from in-body blocks ===== */
+  /* ============================================================
+     WADE-IN — "GO DEEPER INTO THE FLOW" redesign layer
+     ============================================================ */
+  /* page-wide depth atmosphere: darkens & thickens as we descend */
+  .flow-deep{position:fixed;inset:0;z-index:3;pointer-events:none;
+    background:radial-gradient(120% 82% at 50% 122%, rgba(2,5,12,calc(.20 + .38*var(--depth,0))), transparent 62%)}
+  .flow-current{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:calc(.03 + .14*var(--depth,0));
+    background-image:repeating-linear-gradient(179deg, transparent 0 52px, rgba(120,150,190,.035) 52px 53px);
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent);
+    mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent);
+    animation:drift 26s linear infinite}
+  @keyframes drift{from{background-position:0 0}to{background-position:0 -53px}}
+  @media (prefers-reduced-motion:reduce){.flow-current{animation:none}}
+
+  /* 1 · SHORE hero (Image 1) */
+  .shore__img{position:absolute;inset:0;z-index:0;background:image-set(url('assets/wade-shore.webp') type('image/webp'), url('assets/wade-shore.png') type('image/png')) 66% center/cover no-repeat, #070a14}
+  .shore__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+    linear-gradient(90deg,rgba(6,9,18,.92) 0%,rgba(6,9,18,.64) 38%,rgba(6,9,18,.30) 66%,rgba(6,9,18,.44) 100%),
+    linear-gradient(180deg,rgba(6,9,18,.4),transparent 32%,transparent 60%,rgba(6,9,18,.74))}
+  .shore{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+  .shore__inner{position:relative;z-index:2;width:min(1180px,92vw);margin-inline:auto;padding:clamp(5rem,12vh,8rem) 0;display:flex;justify-content:flex-start}
+  .shore__copy{width:min(39rem,46vw);text-align:left}
+  .shore__logo{display:block;height:clamp(34px,4.6vw,46px);width:auto;margin-bottom:1.7rem;opacity:.97}
+  .shore__sub2{margin-top:1.1rem;font-family:var(--num);font-weight:700;font-size:clamp(.7rem,1.5vw,.82rem);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  .shore__title{font-family:var(--display);font-weight:700;font-size:clamp(3rem,8vw,6rem);line-height:1;letter-spacing:.02em;color:var(--ink);text-shadow:0 2px 40px rgba(6,9,18,.7)}
+  .shore__decl{margin-top:clamp(1.6rem,3.6vh,2.5rem);font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.7vw,2rem);line-height:1.32;color:var(--ink);max-width:30rem}
+  .shore__decl .q{display:block;margin-top:.4rem;color:var(--gold)}
+  .shore__cta{margin-top:clamp(2rem,4.5vh,3rem)}
+  .shore__cue{position:absolute;left:50%;bottom:clamp(1.4rem,4vh,2.4rem);transform:translateX(-50%);z-index:2;
+    font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:.5rem}
+  .shore__cue .ln{width:1px;height:34px;background:linear-gradient(180deg,var(--ink-ghost),transparent);animation:drop 2.6s var(--ease) infinite}
+  @keyframes drop{0%{transform:scaleY(.2);transform-origin:top;opacity:0}40%{opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+  @media (prefers-reduced-motion:reduce){.shore__cue .ln{animation:none}}
+  @media(max-width:640px){.shore__img{background-position:78% center}.shore__inner{justify-content:flex-start;align-items:flex-end}.shore__copy{width:100%}.shore__scrim{background:linear-gradient(180deg,rgba(6,9,18,.5),rgba(6,9,18,.3) 34%,rgba(6,9,18,.92))}}
+
+  /* 2 · BENEATH THE MINISTRY (Image 2) — copy over the dark studio (right) */
+  .beneath{position:relative;min-height:96svh;display:flex;align-items:center;overflow:hidden}
+  .beneath__img{position:absolute;inset:0;z-index:0;background:image-set(url('assets/wade-ministry.webp') type('image/webp'), url('assets/wade-ministry.png') type('image/png')) 32% center/cover no-repeat, #06080f}
+  .beneath__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+    linear-gradient(270deg,rgba(6,8,15,.9) 0%,rgba(6,8,15,.6) 40%,rgba(6,8,15,.34) 70%,rgba(6,8,15,.7) 100%),
+    linear-gradient(180deg,rgba(6,8,15,.5),transparent 34%,transparent 60%,rgba(6,8,15,.78))}
+  .beneath__inner{position:relative;z-index:2;width:min(1180px,92vw);margin-inline:auto;padding:clamp(4rem,10vh,7rem) 0;display:flex;justify-content:flex-end}
+  .beneath__copy{max-width:33rem}
+  .beneath__h{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,4.4vw,3rem);line-height:1.12;color:var(--ink);letter-spacing:.006em}
+  .beneath__p{font-size:1.06rem;color:var(--ink-soft);margin-top:1.3rem;max-width:30rem}
+  @media(max-width:720px){.beneath__img{background-position:34% center}.beneath__inner{justify-content:flex-start}.beneath__scrim{background:linear-gradient(180deg,rgba(6,8,15,.55),rgba(6,8,15,.38) 40%,rgba(6,8,15,.92))}}
+
+  /* ---------- refinement additions ---------- */
+  /* gathering second phrase */
+  /* 2026 application (compact WX) */
+  /* Two Currents — restrained connecting current lines within each panel */
+  .terr::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-repeat:no-repeat;opacity:.4}
+  .terr>*{position:relative;z-index:1}
+  .terr.will::before{background-image:url("assets/images/texture-1.svg");background-position:right bottom;background-size:60% 86%}
+  .terr.gift::before{background-image:url("assets/images/texture-1-2.svg");background-position:left bottom;background-size:60% 86%}
+  @media (prefers-reduced-motion:reduce){.terr::before{opacity:.32}.terr__body{transition:none}}
+  /* Deeper finale — copy left (mirror of hero) */
+  .deeper{text-align:left}
+  .deeper__inner{display:flex;justify-content:flex-start}
+  .deeper__col{width:min(40rem,54vw)}
+  .deeper__lbl{text-align:left}
+  .deeper__seq{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,2.1vw,1.32rem);line-height:1.44;color:var(--ink-soft);margin-bottom:1.1rem;max-width:34rem}
+  .deeper .finale__decl{text-align:left}
+  .deeper .finale__wg{text-align:left;justify-content:flex-start}
+  @media(max-width:720px){.deeper__img{background-position:70% center}.deeper__col{width:100%}.deeper__scrim{background:linear-gradient(180deg,rgba(5,7,14,.82),rgba(5,7,14,.42) 34%,rgba(5,7,14,.6))}}
+  /* ============================================================
+     5 · THE TWO ENTRUSTMENTS — the signature two-territory
+     ============================================================ */
+  .entrust{position:relative;padding:clamp(4rem,9vh,7rem) 0}
+  .entrust__head{width:min(1140px,92vw);margin:0 auto clamp(2.6rem,5vh,3.6rem);text-align:center}
+  .entrust__grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.5vw,1.6rem);
+    width:min(1240px,96vw);margin-inline:auto;align-items:start}
+  .terr{position:relative;padding:clamp(2rem,4vw,3.2rem) clamp(1.5rem,3.5vw,2.6rem);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+  .terr.will{background:radial-gradient(90% 60% at 40% 30%,rgba(var(--crimson-rgb),.12),transparent 60%),linear-gradient(180deg,#080b14,#0a0e1a)}
+  .terr.gift{background:radial-gradient(90% 60% at 60% 30%,rgba(var(--gold-rgb),.10),transparent 60%),linear-gradient(180deg,#0e1728,#111c34)}
+  .terr__lab{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:1rem}
+  .terr.will .terr__lab{color:var(--crimson)}
+  .terr.gift .terr__lab{color:var(--gold)}
+  .terr__title{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.05;color:var(--ink)}
+  .terr__sub{font-family:var(--body);font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin-top:.4rem}
+  .terr__core{font-family:var(--display);font-weight:500;font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.42;color:var(--ink);margin:1.4rem 0 1rem;letter-spacing:.006em}
+  .terr__p{font-size:1.02rem;color:var(--ink-soft);margin-bottom:.85rem}
+  .terr__q{list-style:none;margin:.4rem 0 1.4rem}
+  .terr__q li{position:relative;padding-left:1.3rem;margin-bottom:.5rem;font-size:1rem;color:var(--ink-soft)}
+  .terr.gift .terr__q li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg)}
+
+  /* expandable cards */
+  .terr__explore{margin-top:1.5rem;display:inline-flex;align-items:center;gap:.7rem;background:none;cursor:pointer;
+    font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+    border:1px solid var(--rule);border-radius:3px;padding:.7rem 1.2rem;transition:border-color .3s var(--ease),background .3s var(--ease)}
+  .terr.will .terr__explore:hover,.terr.will .terr__explore:focus-visible{border-color:var(--crimson);outline:none}
+  .terr.gift .terr__explore:hover,.terr.gift .terr__explore:focus-visible{border-color:var(--gold);outline:none}
+  .terr__explore:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .terr__chev{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .35s var(--ease)}
+  .terr.will .terr__chev{color:var(--crimson)} .terr.gift .terr__chev{color:var(--gold)}
+  .terr[data-open="true"] .terr__chev{transform:rotate(-135deg)}
+  .terr__body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+  .terr[data-open="true"] .terr__body{max-height:1400px}
+  .terr__bodyinner{padding-top:1.6rem}
+  .terr__words{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.3rem}
+  .terr__word{font-family:var(--num);font-weight:600;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+    border:1px solid var(--rule);border-radius:100px;padding:.36rem .72rem}
+  .terr__word.lead{color:#0A0E1A;font-weight:800}
+  .terr.will .terr__word.lead{background:var(--crimson);border-color:var(--crimson)}
+  .terr.gift .terr__word.lead{background:var(--gold);border-color:var(--gold)}
+  @media(max-width:760px){
+    .entrust__grid{grid-template-columns:1fr}
+  }
+
+  /* ============================================================
+     6 · THE CONVERGENCE — FOUND FAITHFUL
+     ============================================================ */
+  .converge{position:relative;padding:clamp(5rem,12vh,9rem) 0;overflow:hidden}
+  .converge__bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(90deg,rgba(var(--crimson-rgb),.10),transparent 42%,transparent 58%,rgba(var(--gold-rgb),.09));
+    transition:opacity 1.2s var(--ease)}
+  .converge.merged .converge__bg{background:radial-gradient(70% 60% at 50% 50%,rgba(var(--gold-rgb),.12),rgba(var(--crimson-rgb),.07) 55%,transparent 78%)}
+  .converge__axis{position:absolute;top:8%;bottom:8%;left:50%;width:1px;transform:translateX(-.5px);z-index:1;
+    background:linear-gradient(180deg,transparent,rgba(236,227,208,.28),transparent);
+    transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .converge.merged .converge__axis{opacity:0}
+  .converge__inner{position:relative;z-index:2;width:min(880px,92vw);margin-inline:auto;text-align:center}
+  .converge__intro{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.42;color:var(--ink-soft);max-width:42rem;margin:0 auto clamp(2.6rem,5.5vh,3.8rem);text-align:center}
+  .converge__decl{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,9vw,6rem);line-height:1;letter-spacing:.03em;color:var(--ink);
+    text-shadow:0 0 70px rgba(10,14,26,.6)}
+  .converge__wg{margin-top:1.4rem;font-family:var(--num);font-weight:800;font-size:clamp(.66rem,1.6vw,.9rem);letter-spacing:.26em;text-transform:uppercase}
+  .converge__wg .w{color:var(--crimson)}.converge__wg .sep{color:var(--ink-faint);margin:0 .6rem}.converge__wg .g{color:var(--gold)}
+  .converge__after{margin-top:clamp(2.4rem,5vh,3.4rem);font-size:1.08rem;color:var(--ink-soft);max-width:44rem;margin-inline:auto}
+
+  /* ============================================================
+     7 · FROM FORMATION TO EXPRESSION
+     ============================================================ */
+
+  /* ============================================================
+     8 · TWO WADE-INS · ONE FORMATION (the arc)
+     ============================================================ */
+  .arc{margin-top:clamp(2.6rem,5vh,3.6rem)}
+  .arc__rail{position:relative;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+  .arc__mid{position:relative;min-width:clamp(120px,20vw,260px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem}
+  .arc__line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,var(--crimson),rgba(236,227,208,.3),var(--gold))}
+  .arc__between{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;max-width:100%}
+  .arc__tag{font-family:var(--num);font-weight:600;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
+    background:var(--bg-panel);border:1px solid var(--rule);border-radius:100px;padding:.3rem .6rem}
+  .arc__between-lbl{position:absolute;top:calc(50% - 2.4rem);left:50%;transform:translateX(-50%);white-space:nowrap;
+    font-family:var(--num);font-weight:800;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+  .gpoint{position:relative;background:none;border:1px solid var(--rule);border-radius:14px;cursor:pointer;text-align:left;color:inherit;font-family:var(--body);
+    padding:clamp(1.4rem,3vw,2rem);transition:border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease)}
+  .gpoint:hover,.gpoint:focus-visible{transform:translateY(-2px);outline:none}
+  .gpoint.will{background:radial-gradient(80% 70% at 30% 20%,rgba(var(--crimson-rgb),.1),transparent 60%),rgba(10,14,26,.5)}
+  .gpoint.gift{background:radial-gradient(80% 70% at 70% 20%,rgba(var(--gold-rgb),.09),transparent 60%),rgba(16,26,52,.5)}
+  .gpoint.will:hover,.gpoint.will:focus-visible{border-color:var(--crimson)}
+  .gpoint.gift:hover,.gpoint.gift:focus-visible{border-color:var(--gold)}
+  .gpoint[aria-pressed="true"]{border-color:var(--gold)}
+  .gpoint.will[aria-pressed="true"]{border-color:var(--crimson)}
+  .gpoint__month{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase}
+  .gpoint.will .gpoint__month{color:var(--crimson)}.gpoint.gift .gpoint__month{color:var(--gold)}
+  .gpoint__name{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3.2vw,1.9rem);color:var(--ink);margin-top:.5rem;line-height:1.05}
+  .gpoint__date{font-family:var(--num);font-weight:700;font-size:.66rem;letter-spacing:.06em;color:var(--ink);margin-top:.6rem}
+  .gpoint__open{display:block;font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-top:.9rem}
+  @media(max-width:800px){
+    .arc__rail{grid-template-columns:1fr}
+    .arc__mid{min-width:0;padding:1.6rem 0}
+    .arc__line{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(180deg,var(--crimson),rgba(236,227,208,.3),var(--gold))}
+    .arc__between{flex-direction:column;align-items:center}
+    .arc__between-lbl{position:static;transform:none;margin-bottom:.6rem}
+  }
+
+  /* ============================================================
+     9 · PROGRAMME DETAIL — day-flow
+     ============================================================ */
+  .prog{margin-top:clamp(2.4rem,5vh,3.4rem)}
+  .prog__seg{display:inline-flex;border:1px solid var(--rule);border-radius:100px;padding:.25rem;gap:.2rem;margin-bottom:1.8rem}
+  .prog__seg button{background:none;border:0;cursor:pointer;font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);padding:.6rem 1.2rem;border-radius:100px;transition:background .25s var(--ease),color .25s var(--ease)}
+  .prog__seg button[aria-selected="true"]{background:var(--gold);color:#0A0E1A}
+  .prog__panel{border:1px solid var(--rule);border-radius:16px;background:linear-gradient(180deg,rgba(22,32,61,.32),rgba(12,17,32,.5));overflow:hidden}
+  .prog__top{padding:clamp(1.5rem,3.5vw,2.3rem) clamp(1.5rem,3.5vw,2.3rem) 1.3rem;border-bottom:1px solid var(--rule)}
+  .prog__label{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .prog__name{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);color:var(--ink);margin:.5rem 0 .4rem}
+  .prog__meta{font-family:var(--num);font-weight:700;font-size:.66rem;letter-spacing:.05em;color:var(--ink)}
+  .prog__meta .sep{color:var(--ink-faint);margin:0 .5rem}
+  .prog__tag{font-family:var(--body);font-style:italic;color:var(--ink-soft);margin-top:.4rem;font-size:.98rem}
+  .flowlist{padding:clamp(1.2rem,3vw,1.8rem) clamp(1.2rem,3.5vw,2.3rem) clamp(1.6rem,3.5vw,2.4rem)}
+  .frow{display:grid;grid-template-columns:96px 1fr;gap:1.2rem;padding:.7rem 0;border-bottom:1px solid rgba(236,227,208,.07);align-items:start}
+  .frow:last-child{border-bottom:0}
+  .frow__time{font-family:var(--num);font-weight:800;font-size:.68rem;letter-spacing:.02em;color:var(--gold);padding-top:.15rem;white-space:nowrap}
+  .frow.muted .frow__time{color:var(--ink-faint)}
+  .frow__body{min-width:0}
+  .fitem{font-family:var(--display);font-weight:500;font-size:1.08rem;color:var(--ink);line-height:1.3}
+  .frow.muted .fitem{color:var(--ink-soft);font-weight:400}
+  .fbranches{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  @media(max-width:520px){.fbranches{grid-template-columns:1fr}}
+  .fbranch{border:1px solid var(--rule);border-left:2px solid var(--gold);border-radius:8px;padding:.7rem .85rem;background:rgba(10,14,26,.35)}
+  .fbranch .fb-tag{font-family:var(--num);font-weight:700;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem}
+  .fbranch .fitem{font-size:1rem}
+  .pill{display:inline-block;font-family:var(--num);font-weight:800;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(var(--gold-rgb),.5);border-radius:100px;padding:.15rem .5rem;margin-left:.5rem;vertical-align:middle}
+  .pill.tbc{color:var(--purple);border-color:rgba(122,76,184,.6)}
+  .ptag{display:inline-block;font-family:var(--num);font-weight:700;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:.3rem}
+
+  /* ============================================================
+     10 · AT A GLANCE
+     ============================================================ */
+
+  /* ============================================================
+     11 · CLOSING — MAY HE FIND US FAITHFUL
+     ============================================================ */
+  .finale{position:relative;padding:clamp(6rem,14vh,10rem) 0 clamp(3rem,7vh,5rem);text-align:center;overflow:hidden}
+  .finale__decl{font-family:var(--display);font-weight:700;font-size:clamp(2rem,6.5vw,4.6rem);line-height:1.05;letter-spacing:.03em;color:var(--ink)}
+  .finale__wg{margin-top:1.4rem;font-family:var(--num);font-weight:800;font-size:clamp(.66rem,1.6vw,.92rem);letter-spacing:.26em;text-transform:uppercase}
+  .finale__wg .w{color:var(--crimson)}.finale__wg .sep{color:var(--ink-faint);margin:0 .6rem}.finale__wg .g{color:var(--gold)}
+  /* ===== redesign components: depths subtitle, convergence label, hidden programme, plan, deeper closing ===== */
+  .pillars__subhead{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2.5vw,1.55rem);line-height:1.3;color:var(--gold);margin-top:.5rem}
+  .pnode__sub{display:block;font-family:var(--num);font-weight:600;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:.25rem}
+  .pnode[aria-pressed="true"] .pnode__sub{color:var(--gold)}
+  .converge__lbl{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+
+  .prog__prompt{font-family:var(--body);font-style:italic;color:var(--ink-faint);font-size:1rem}
+  .prog__panel{position:relative;border:1px solid var(--rule);border-radius:16px;background:linear-gradient(180deg,rgba(22,32,61,.32),rgba(12,17,32,.5));overflow:hidden;margin-top:.4rem}
+  .prog__panel[hidden]{display:none}
+  .prog__close{position:absolute;top:.9rem;right:.9rem;z-index:2;font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-soft);background:rgba(10,14,26,.65);border:1px solid var(--rule);border-radius:100px;padding:.45rem .8rem;cursor:pointer;transition:color .25s,border-color .25s}
+  .prog__close:hover,.prog__close:focus-visible{color:var(--ink);border-color:var(--gold);outline:none}
+
+
+  .deeper{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;text-align:center}
+  .deeper__img{position:absolute;inset:0;z-index:0;background:image-set(url('assets/wade-deeper.webp') type('image/webp'), url('assets/wade-deeper.png') type('image/png')) 68% center/cover no-repeat, #05070e}
+  .deeper__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+    linear-gradient(90deg,rgba(5,7,14,.9) 0%,rgba(5,7,14,.6) 38%,rgba(5,7,14,.3) 66%,rgba(5,7,14,.48) 100%),
+    linear-gradient(180deg,rgba(5,7,14,.4),transparent 30%,transparent 62%,rgba(5,7,14,.66))}
+  .deeper__inner{position:relative;z-index:2;margin-inline:auto;padding:clamp(5rem,12vh,8rem) 0}
+  .deeper__lbl{font-family:var(--num);font-weight:800;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(2rem,5vh,3rem)}
+  .deeper__couplet{margin-top:1.3rem;font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.2rem,2.6vw,1.6rem);line-height:1.5;color:var(--ink)}
+  .deeper .finale__wg--center{text-align:center}
+</style>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/routes.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+
+<div class="night" aria-hidden="true"></div>
+<div class="grid" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ SHARED CHROME · NAV ============ -->
+<nav class="site-nav" aria-label="Ecosystem">
+  <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
+  <div class="nav-countdown" aria-label="Days remaining until 29 November 2026"><span class="cd-num">—</span><span class="cd-lbl">days to 29 Nov</span></div>
+  <a class="site-nav__ws" href="index.html#hub"><span class="ar">&larr;</span> Workspace</a>
+</nav>
+
+<main id="top" tabindex="-1">
+
+
+  <!-- ==================================================
+       1 · THE SHORE — opening (Image 1)
+       ================================================== -->
+  <section class="shore" id="open" aria-label="Wade-In 2026 — the shore">
+    <!-- IMAGE: assets/wade-shore.png — a lone figure on a stone bank at night, facing dark, gold-flecked water. -->
+    <div class="shore__img" role="img" aria-label="A young Black musician standing at the edge of dark water, looking into the deeper Flow."></div>
+    <div class="shore__scrim" aria-hidden="true"></div>
+    <div class="shore__inner">
+      <div class="shore__copy">
+        <picture><source type="image/webp" srcset="assets/flow-experience-logo.webp"><img class="shore__logo" src="assets/flow-experience-logo.png" alt="The Flow Experience" decoding="async"></picture>
+        <h1 class="shore__title">Wade-In</h1>
+        <p class="shore__sub2">Retreat &middot; Realignment &middot; Renewal</p>
+        <p class="shore__decl">What flows from us can only be as deep as what has formed within us. <span class="q">Wade-In is where we go deeper.</span></p>
+        <button class="enter shore__cta" id="beginBtn" type="button"><span class="dot" aria-hidden="true"></span> Step into the Flow</button>
+      </div>
+    </div>
+    <div class="shore__cue" aria-hidden="true"><span>Wade in</span><span class="ln"></span></div>
+  </section>
+
+  <!-- ==================================================
+       1b · BENEATH THE MINISTRY — recognition (Image 2)
+       ================================================== -->
+  <section class="beneath" id="beneath" aria-labelledby="beneath-h">
+    <!-- IMAGE: assets/wade-ministry.png — a musician seated in a dark studio, guitar and piano near, a single mic before empty space. -->
+    <div class="beneath__img" role="img" aria-label="A musician seated alone after rehearsal, with a guitar, keyboard and empty microphone nearby."></div>
+    <div class="beneath__scrim" aria-hidden="true"></div>
+    <div class="beneath__inner">
+      <div class="beneath__copy">
+        <p class="kicker rv">Beneath the Ministry</p>
+        <h2 class="beneath__h rv" id="beneath-h">True ministry begins with the Christian before God.</h2>
+        <p class="beneath__p rv">Wade-In is The Flow Experience&rsquo;s dedicated space for deeper formation&mdash;a season set apart to step beyond the familiar rhythms of weekly ministry and attend to the life, the craft and the purpose beneath them.</p>
+        <p class="beneath__p rv">Wade-In begins with our first duty: to be Christians who live like Christ. It brings us back to why and how we serve&mdash;not merely to improve what we do, but to make sure it pleases God. Each year, it focuses us on the first principles of formation most needed for the season: our life before God, our stewardship of the gift and our service to His Church.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       3 · THE THREE PILLARS OF FORMATION
+       ================================================== -->
+  <section class="sec" id="pillars" aria-labelledby="pillars-h">
+    <div class="wrap">
+      <p class="kicker rv">The Depths of Formation</p>
+      <h2 class="display rv" id="pillars-h" style="max-width:20ch">Three dimensions of our formation</h2>
+      <p class="pillars__subhead rv">&mdash; the Christian, the Musician, and the Performer.</p>
+      <p class="prose rv" style="margin-top:1.1rem">If our service is to please God, then we must be formed rightly. Wade-In addresses three essential areas: who we are, what we&rsquo;ve developed and how we serve.</p>
+
+      <div class="pillars__stage">
+        <div class="triad rv" role="group" aria-label="The three pillars around faithful service">
+          <svg viewBox="0 0 400 368" aria-hidden="true">
+            <polygon class="triad__edge" points="200,40 44,320 356,320"/>
+            <circle class="triad__core" cx="200" cy="228" r="92"/>
+          </svg>
+          <button class="triad__center" type="button" aria-pressed="false" data-pillar="4"><span class="cw">Faithful Service</span></button>
+          <button class="pnode p1" type="button" aria-pressed="false" data-pillar="1">
+            <span class="pnode__dot">01</span><span class="pnode__name">The Christian</span><span class="pnode__sub">Spirituality</span>
+          </button>
+          <button class="pnode p2" type="button" aria-pressed="false" data-pillar="2">
+            <span class="pnode__dot">02</span><span class="pnode__name">The Musician</span><span class="pnode__sub">Skill</span>
+          </button>
+          <button class="pnode p3" type="button" aria-pressed="false" data-pillar="3">
+            <span class="pnode__dot">03</span><span class="pnode__name">The Performer</span><span class="pnode__sub">Artistry</span>
+          </button>
+        </div>
+
+        <div class="pillar-detail" id="pillar-detail" aria-live="polite">
+          <p class="pillar-detail__empty" id="pillarEmpty"><span class="en">Three dimensions, one service.</span> Choose one to explore &mdash; and see what becomes distorted when it stands alone.</p>
+          <div id="pillarBody" hidden>
+            <p class="pd-idx" id="pd-idx"></p>
+            <h3 class="pd-title" id="pd-title">Pillar</h3>
+            <p class="pd-role" id="pd-role"></p>
+            <p class="pd-h">What it forms</p><p class="pd-p" id="pd-forms"></p>
+            <p class="pd-h">Why it matters</p><p class="pd-p" id="pd-matters"></p>
+            <div class="pd-tension">
+              <p class="t-name" id="pd-tname"></p>
+              <p class="t-line" id="pd-tline"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillars__resolve rv">
+        <p>&ldquo;Wade-In forms the Christian, the Musician and the Performer as one whole minister.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       4 · THE STEWARDSHIP CONTEXT
+       ================================================== -->
+  <section class="sec" id="stewardship" aria-labelledby="steward-h">
+    <div class="wrap">
+      <p class="kicker rv">The 2026 Current</p>
+      <h2 class="display rv" id="steward-h">Stewardship</h2>
+      <p class="prose rv" style="margin-top:1.1rem">Every year, Wade-In takes us deeper. The season tells us where.</p>
+      <p class="prose rv" style="margin-top:.9rem">CCC Apenkwa&rsquo;s theme for 2026 is <em>Stewardship</em> &mdash; the call to be faithful with what God has entrusted. For The Flow Experience, this year&rsquo;s formation brings faithfulness into focus in two places.</p>
+      <div class="steward__door rv">
+        <p>For us, stewardship must be seen in two places: <span class="steward__wg"><span class="em-will">the will</span> and <span class="em-gift">the gift.</span></span></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================================================
+       5 · THE TWO ENTRUSTMENTS
+       ================================================== -->
+  <section class="entrust" id="entrustments" aria-labelledby="entrust-h">
+    <div class="entrust__head">
+      <p class="kicker rv" style="justify-content:center">Two Currents</p>
+      <h2 class="display rv" id="entrust-h" style="max-width:24ch;margin-inline:auto">Faithfulness runs in two currents &mdash; one inward, one outward.</h2>
+    </div>
+    <div class="entrust__grid rv">
+      <!-- LEFT · THE WILL -->
+      <div class="terr will" data-terr>
+        <p class="terr__lab">The Inward Current &middot; The Will</p>
+        <h3 class="terr__title">Surrender</h3>
+        <p class="terr__sub">Being faithful with the will.</p>
+        <button class="terr__explore" type="button" aria-expanded="false" aria-controls="will-body"><span class="terr__explore-txt">Explore the will</span><span class="terr__chev" aria-hidden="true"></span></button>
+        <div class="terr__body" id="will-body" role="region" aria-label="The Will">
+          <div class="terr__bodyinner">
+            <p class="terr__core">&ldquo;The will is where a person decides whether to hold on or yield.&rdquo;</p>
+            <p class="terr__p">The will is one of the deepest things God has given to a person &mdash; the seat of choice, desire, obedience, resistance, ambition, preference, and surrender. It is the place where we decide whether to insist on our own way or submit to the Father&rsquo;s will.</p>
+            <p class="terr__p">To be faithful with the will is to yield it back to God, so that what we want is submitted to what He wants.</p>
+            <div class="terr__words">
+              <span class="terr__word lead">Yield</span>
+              <span class="terr__word">Choice</span>
+              <span class="terr__word">Desire</span>
+              <span class="terr__word">Obedience</span>
+              <span class="terr__word">Resistance</span>
+              <span class="terr__word">Ambition</span>
+              <span class="terr__word">Preference</span>
+              <span class="terr__word">Surrender</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT · THE GIFT -->
+      <div class="terr gift" data-terr>
+        <p class="terr__lab">The Outward Current &middot; The Gift</p>
+        <h3 class="terr__title">Intentionality</h3>
+        <p class="terr__sub">Being faithful with the gift.</p>
+        <button class="terr__explore" type="button" aria-expanded="false" aria-controls="gift-body"><span class="terr__explore-txt">Explore the gift</span><span class="terr__chev" aria-hidden="true"></span></button>
+        <div class="terr__body" id="gift-body" role="region" aria-label="The Gift">
+          <div class="terr__bodyinner">
+            <p class="terr__core">&ldquo;The gift is where what God has placed within us becomes visible.&rdquo;</p>
+            <p class="terr__p">The gift includes our voices, instruments, musical skill, discipline, sound, understanding, opportunities, and influence. To be faithful with it is to handle it intentionally &mdash; not casually, not selfishly, and not merely instinctively.</p>
+            <ul class="terr__q">
+              <li>What is this sound meant to serve?</li>
+              <li>What does the room need?</li>
+              <li>How can the gift point beyond the musician to the God who gave it?</li>
+            </ul>
+            <div class="terr__words">
+              <span class="terr__word lead">Serve</span>
+              <span class="terr__word">Voice</span>
+              <span class="terr__word">Instrument</span>
+              <span class="terr__word">Skill</span>
+              <span class="terr__word">Discipline</span>
+              <span class="terr__word">Sound</span>
+              <span class="terr__word">Understanding</span>
+              <span class="terr__word">Opportunity</span>
+              <span class="terr__word">Influence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       6 · THE CONVERGENCE — FOUND FAITHFUL
+       ================================================== -->
+  <section class="converge" id="converge" aria-labelledby="converge-h">
+    <div class="converge__bg" aria-hidden="true"></div>
+    <div class="converge__axis" aria-hidden="true"></div>
+    <div class="converge__inner">
+      <p class="converge__intro rv">For The Flow Experience, our 2026 focus on stewardship gives Wade-In its sub-theme &mdash; faithfulness with our will, and with our gift.</p>
+      <p class="converge__lbl rv">The 2026 focus</p>
+      <h2 class="converge__decl rv" id="converge-h">Found Faithful</h2>
+      <p class="converge__wg rv"><span class="w">With the Will</span><span class="sep">·</span><span class="g">With the Gift</span></p>
+      <p class="converge__after rv">Wade-In 2026 forms us to yield what God asks and steward what He gives.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       8 · TWO WADE-INS · ONE FORMATION (arc) + 9 · PROGRAMME
+       ================================================== -->
+  <section class="sec" id="gatherings" aria-labelledby="gath-h">
+    <div class="wrap">
+      <p class="kicker rv">Two Gatherings</p>
+      <h2 class="display rv" id="gath-h">Two gatherings. One movement deeper.</h2>
+      <p class="prose rv" style="margin-top:1.1rem">The gatherings mark the year&rsquo;s major formation points. Between those two points is the real journey of formation.</p>
+
+      <div class="arc rv">
+        <div class="arc__rail arc__rail--simple">
+          <button class="gpoint will" type="button" aria-pressed="false" data-prog="mini">
+            <span class="gpoint__month">July</span>
+            <span class="gpoint__name">Wade-In</span>
+            <span class="gpoint__date">Sat 25 July 2026</span>
+            <span class="gpoint__open">View programme &rarr;</span>
+          </button>
+          <div class="arc__mid">
+            <div class="arc__line" aria-hidden="true"></div>
+            <span class="arc__between-lbl">The life between</span>
+            <div class="arc__between">
+              <span class="arc__tag">Prayer</span>
+              <span class="arc__tag">Bible Study</span>
+              <span class="arc__tag">Personal Practice</span>
+              <span class="arc__tag">Rehearsals</span>
+              <span class="arc__tag">Church Service</span>
+              <span class="arc__tag">Reflection</span>
+              <span class="arc__tag">Ongoing Obedience</span>
+            </div>
+          </div>
+          <button class="gpoint gift" type="button" aria-pressed="false" data-prog="main">
+            <span class="gpoint__month">November</span>
+            <span class="gpoint__name">Wade-In: Deeper</span>
+            <span class="gpoint__date">Sat 14 November 2026</span>
+            <span class="gpoint__open">View programme &rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROGRAMME — hidden until a gathering card is chosen -->
+      <div class="prog rv" id="programme">
+        <p class="prog__prompt" id="prog-prompt">Select a gathering above to view its programme.</p>
+        <div class="prog__panel" id="prog-panel" role="region" aria-label="Gathering programme" aria-live="polite" hidden>
+          <button class="prog__close" id="prog-close" type="button">Close programme &times;</button>
+          <div class="prog__top">
+            <p class="prog__label" id="prog-label"></p>
+            <h3 class="prog__name" id="prog-name">Progression</h3>
+            <p class="prog__meta" id="prog-meta"></p>
+            <p class="prog__tag" id="prog-tag"></p>
+          </div>
+          <div class="flowlist" id="prog-flow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       11 · THE DEEPER FLOW — closing (Image 3)
+       ================================================== -->
+  <section class="deeper" id="finale" aria-labelledby="finale-h">
+    <!-- IMAGE: assets/wade-deeper.png — the figure now standing waist-deep in the water, no longer on the shore. -->
+    <div class="deeper__img" role="img" aria-label="A young Black musician standing calmly in deeper dark water, with no shore visible."></div>
+    <div class="deeper__scrim" aria-hidden="true"></div>
+    <div class="deeper__inner">
+      <div class="deeper__col">
+        <p class="deeper__lbl rv">The Deeper Flow</p>
+        <p class="deeper__seq rv">Wade-In is always a beginning&mdash;of a deeper life, an intentional gift, and faithful service.</p>
+        <p class="deeper__couplet rv">A will yielded back to God.<br>A gift handled with purpose.</p>
+        <h2 class="finale__decl rv" id="finale-h">May He find us faithful.</h2>
+        <p class="finale__wg finale__wg--center rv"><span class="w">With the Will</span><span class="sep">&middot;</span><span class="g">With the Gift</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHARED CHROME · FOOTER ============ -->
+  <div class="eco-foot" aria-hidden="false">
+    <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
+    <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   WADE-IN 2026 · interaction systems
+   1. Three Pillars field   2. Two Currents cards
+   3. Convergence reveal     4. Formation-stage accordions
+   5. Two Gatherings → Programme day-flow
+   6. Reveal, countdown, roving keys
+   ============================================================ */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- data: three pillars ---------- */
+  var PILLARS = {
+    '1':{idx:'Dimension 01', title:'The Christian', role:'Spirituality &mdash; the life of the minister before God.',
+      forms:'The person beneath everything everyone sees. It forms a life of communion, obedience, character and surrender.',
+      matters:'True ministry flows from life with God. Spirituality gives the gift true motive, authority and direction. It is the source of genuine anointing and keeps service centred on pleasing God rather than impressing people.',
+      tname:'Christianity without Musicianship and Performance', tline:'Sincere, but distracting and unrefined.'},
+    '2':{idx:'Dimension 02', title:'The Musician', role:'Skill &mdash; the discipline and understanding of the gift.',
+      forms:'The musician &mdash; skill, understanding, and the discipline to handle sound well and serve the song rather than our own habits.',
+      matters:'A gift entrusted by God must be developed. Skill enables us to serve the song accurately, prepare responsibly and offer something shaped with care, intention and excellence.',
+      tname:'Skill without Spirituality or Artistry', tline:'Skilled, but spiritually weightless and self-serving.'},
+    '3':{idx:'Dimension 03', title:'The Performer', role:'Artistry &mdash; the wisdom to shape the gift for the song, the moment and the room.',
+      forms:'The performer&mdash;the ability to translate spirituality and skill into meaningful expression. It forms sensitivity, interpretation, presence, restraint and an awareness of how every choice affects the room.',
+      matters:'Good performance is not merely accurate execution. Artistry helps the minister discern what the moment needs, communicate meaning and direct attention beyond the performer to God.',
+      tname:'Artistry without Spirituality or Skill', tline:'Impressive, but hollow and distracting.'},
+    '4':{idx:'The Centre', title:'Faithful Service', role:'',
+      forms:'A Christian grounded in God, a musician prepared in the gift and a performer able to serve the moment with wisdom and restraint.',
+      matters:'Spirituality gives the ministry its source. Skill gives it substance. Artistry gives it meaningful expression. Together, they allow the gift to serve God and His Church faithfully.',
+      tname:'When all three are present', tline:'Spiritually grounded, skilfully prepared and artistically effective.'}
+  };
+
+  var pnodes = Array.prototype.slice.call(document.querySelectorAll('[data-pillar]'));
+  var pEmpty = document.getElementById('pillarEmpty'), pBody = document.getElementById('pillarBody');
+  function selectPillar(n){
+    pnodes.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-pillar')===n ? 'true':'false'); });
+    var d = PILLARS[n];
+    document.getElementById('pd-idx').innerHTML = d.idx;
+    document.getElementById('pd-title').innerHTML = d.title;
+    var roleEl=document.getElementById('pd-role'); roleEl.innerHTML = d.role||''; roleEl.style.display = d.role ? '' : 'none';
+    document.getElementById('pd-forms').innerHTML = d.forms;
+    document.getElementById('pd-matters').innerHTML = d.matters;
+    document.getElementById('pd-tname').innerHTML = d.tname;
+    document.getElementById('pd-tline').innerHTML = d.tline;
+    pBody.classList.toggle('is-center', n==='4');
+    pEmpty.style.display='none'; pBody.hidden=false;
+  }
+  pnodes.forEach(function(b){ b.addEventListener('click', function(){ selectPillar(b.getAttribute('data-pillar')); }); });
+
+  /* ============================================================
+     2 · TWO CURRENTS — expandable cards
+     ============================================================ */
+  var terrs = Array.prototype.slice.call(document.querySelectorAll('[data-terr]'));
+  terrs.forEach(function(t){
+    var btn=t.querySelector('.terr__explore'), body=t.querySelector('.terr__body'), txt=t.querySelector('.terr__explore-txt');
+    var isWill=t.classList.contains('will');
+    var openLbl=isWill?'The will, yielded':'The gift, in service', shutLbl=isWill?'Explore the will':'Explore the gift';
+    function set(open){
+      t.setAttribute('data-open', open?'true':'false');
+      btn.setAttribute('aria-expanded', open?'true':'false');
+      if(txt) txt.textContent = open ? openLbl : shutLbl;
+    }
+    btn.addEventListener('click', function(){ set(t.getAttribute('data-open')!=='true'); });
+    if(reduce){ set(true); }
+  });
+
+  /* ============================================================
+     3 · CONVERGENCE — merge when scrolled into view
+     ============================================================ */
+  var converge = document.getElementById('converge');
+  if('IntersectionObserver' in window && !reduce){
+    var cio=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ converge.classList.add('merged'); cio.disconnect(); } });
+    },{threshold:0.4});
+    cio.observe(converge);
+  } else { converge.classList.add('merged'); }
+
+  /* ============================================================
+     4 · FORMATION-STAGE ACCORDIONS (single open at a time)
+     ============================================================ */
+  /* ============================================================
+     5 · TWO GATHERINGS → PROGRAMME DAY-FLOW
+     ============================================================ */
+  var PROG = {
+    mini:{label:'Learn · Practise · Prepare', name:'Wade-In',
+      meta:['Second Edition','Sat 25 July 2026','09:00 – 16:30'],
+      tag:'Compact. Workshop-led. Hands-on.',
+      rows:[
+        {time:'09:30–10:45', branches:[{name:'Lead Vocals Masterclass'},{name:'Instrumentalists&rsquo; Workshop', tbc:true}]},
+        {time:'11:00–12:30', name:'Bible Study: Trust Even in Darkness'},
+        {time:'12:30–13:00', name:'Lunch', muted:true},
+        {time:'13:00–13:30', name:'Orienting for WX 2026'},
+        {time:'13:30–15:00', name:'Sunday Rehearsals'},
+        {time:'15:00–16:30', name:'Ready to Record', tbc:true}
+      ]},
+    main:{label:'Foundation · Formation · Surrender', name:'Wade-In: Deeper',
+      meta:['Third Edition','Sat 14 November 2026','Full Day · ~09:00–17:00'],
+      tag:'Deep. Formational. Foundation, learning, surrender.',
+      rows:[
+        {time:'09:00–09:45', name:'Welcome &amp; Prayer'},
+        {time:'09:45–11:15', name:'Bible Study: The Next Yes'},
+        {time:'11:15–12:00', name:'Keynote — Ps Sammy Aduama'},
+        {time:'12:00–13:30', name:'Workshop Session'},
+        {time:'13:30–15:00', name:'Practitioner Panel', ptag:'Parallel · tracks TBC'},
+        {time:'15:00–17:00', name:'Surrender Session — Ps Eugene Zuta'}
+      ]}
+  };
+  var gpoints = Array.prototype.slice.call(document.querySelectorAll('.gpoint'));
+  var progPanel = document.getElementById('prog-panel');
+  var progPrompt = document.getElementById('prog-prompt');
+  var currentProg = null;
+  function renderFlow(key){
+    var p=PROG[key];
+    document.getElementById('prog-label').innerHTML = p.label;
+    document.getElementById('prog-name').innerHTML = p.name;
+    document.getElementById('prog-meta').innerHTML = p.meta.map(function(m,i){ return (i? '<span class="sep">·</span>':'')+m; }).join('');
+    document.getElementById('prog-tag').innerHTML = p.tag;
+    var html = p.rows.map(function(r){
+      var body;
+      if(r.branches){
+        body = '<div class="fbranches">'+r.branches.map(function(b){
+          return '<div class="fbranch"><span class="fb-tag">Parallel</span><span class="fitem">'+b.name+(b.tbc?'<span class="pill tbc">TBC</span>':'')+'</span></div>';
+        }).join('')+'</div>';
+      } else {
+        body = '<span class="fitem">'+r.name+(r.tbc?'<span class="pill tbc">TBC</span>':'')+'</span>'+(r.ptag?'<span class="ptag">'+r.ptag+'</span>':'');
+      }
+      return '<div class="frow'+(r.muted?' muted':'')+'"><span class="frow__time">'+r.time+'</span><span class="frow__body">'+body+'</span></div>';
+    }).join('');
+    document.getElementById('prog-flow').innerHTML = html;
+  }
+  function setProgButtons(key){
+    gpoints.forEach(function(g){ g.setAttribute('aria-pressed', g.getAttribute('data-prog')===key ? 'true':'false'); });
+  }
+  var progOpener=null;
+  function openProg(key, opener){
+    if(currentProg===key){ closeProg(); return; }
+    currentProg=key; progOpener=opener||null; renderFlow(key);
+    progPanel.hidden=false; if(progPrompt) progPrompt.style.display='none';
+    setProgButtons(key);
+  }
+  function closeProg(){
+    var wasOpen=currentProg!==null; currentProg=null; progPanel.hidden=true;
+    if(progPrompt) progPrompt.style.display=''; setProgButtons(null);
+    if(wasOpen && progOpener){ try{ progOpener.focus(); }catch(e){} } progOpener=null;
+  }
+  gpoints.forEach(function(g){ g.addEventListener('click', function(){
+    var key=g.getAttribute('data-prog');
+    if(currentProg!==key){ openProg(key, g); } else { progOpener=g; }
+    document.getElementById('programme').scrollIntoView({behavior:reduce?'auto':'smooth', block:'start'});
+  }); });
+  var progClose=document.getElementById('prog-close');
+  if(progClose){ progClose.addEventListener('click', function(){ closeProg(); }); }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && currentProg){ closeProg(); } });
+
+  /* ============================================================
+     6 · REVEAL · HERO LABELS · COUNTDOWN · ROVING KEYS
+     ============================================================ */
+  var rvs = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },
+      {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(x){ io.observe(x); });
+  } else { rvs.forEach(function(x){ x.classList.add('in'); }); }
+
+  var beginBtn=document.getElementById('beginBtn');
+  if(beginBtn){ beginBtn.addEventListener('click', function(){
+    document.getElementById('beneath').scrollIntoView({behavior:reduce?'auto':'smooth', block:'start'}); }); }
+
+  /* page-wide depth atmosphere — deepens with scroll */
+  var deepLayer=document.createElement('div'); deepLayer.className='flow-deep'; deepLayer.setAttribute('aria-hidden','true');
+  var currLayer=document.createElement('div'); currLayer.className='flow-current'; currLayer.setAttribute('aria-hidden','true');
+  document.body.appendChild(deepLayer); document.body.appendChild(currLayer);
+  var dTick=false;
+  function depthUpdate(){ dTick=false;
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    var p=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;
+    document.documentElement.style.setProperty('--depth', p.toFixed(3));
+  }
+  window.addEventListener('scroll', function(){ if(!dTick){ dTick=true; requestAnimationFrame(depthUpdate);} }, {passive:true});
+  window.addEventListener('resize', depthUpdate, {passive:true});
+  depthUpdate();
+
+  function rovingKeys(items, activate, vertical){
+    items.forEach(function(item,i){
+      item.addEventListener('keydown', function(e){
+        var k=e.key, next=-1, fwd=vertical?'ArrowDown':'ArrowRight', bwd=vertical?'ArrowUp':'ArrowLeft';
+        if(k===fwd) next=(i+1)%items.length; else if(k===bwd) next=(i-1+items.length)%items.length;
+        else if(k==='Home') next=0; else if(k==='End') next=items.length-1; else return;
+        e.preventDefault(); items[next].focus(); if(activate) activate(items[next]);
+      });
+    });
+  }
+
+  (function(){
+    var t=new Date(2026,10,29), n=new Date(), t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+    var d=Math.max(0,Math.round((t-t0)/86400000));
+    var e=document.querySelectorAll('.cd-num'); for(var i=0;i<e.length;i++) e[i].textContent=d;
+  })();
+
+})();
+</script>
+</body>
+</html>

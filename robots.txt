@@ -1,0 +1,20 @@
+# WX 2026 — crawl policy (Pass 8)
+#
+# Visibility policy (see README.md → Visibility & indexing):
+#  - Public storytelling pages are indexable: index, concept, theme-brief,
+#    setlist, music-workshop, bible-study.
+#  - Operational / internal workspaces default to noindex (no explicit public
+#    decision): creative-direction, blueprint, playbook.
+#  - The full Lyric Book defaults to noindex (third-party copyrighted lyrics).
+#
+# Each non-public page also carries an authoritative
+# <meta name="robots" content="noindex, nofollow">, which is the reliable
+# mechanism under a repository-subpath GitHub Pages deployment where this
+# root robots.txt may not apply. Remove both a page's Disallow line here and its
+# meta tag to make it publicly indexable once that decision is made.
+
+User-agent: *
+Disallow: /creative-direction.html
+Disallow: /blueprint.html
+Disallow: /playbook.html
+Disallow: /lyrics.html

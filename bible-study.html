@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+
+<title>Calibrate · Worship Experience 2026 · The Flow Experience</title>
+<meta name="description" content="Calibrate — The Flow Experience's Word Formation journey. Where Scripture brings a life into alignment with God, preparing us to say Yes at Worship Experience 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TFArrow — labels, numerals, controls (ecosystem font assets)
+     ============================================================ */
+  @font-face{font-family:'TFArrow';font-weight:300;font-style:normal;font-display:swap;src:url(assets/4eb0091819c7.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:500;font-style:normal;font-display:swap;src:url(assets/9a22f94c2bb9.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:700;font-style:normal;font-display:swap;src:url(assets/431bfc939f5d.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:800;font-style:normal;font-display:swap;src:url(assets/af3abf759b90.ttf) format('truetype')}
+  @font-face{font-family:'TFArrow';font-weight:900;font-style:normal;font-display:swap;src:url(assets/2498c2d4309d.ttf) format('truetype')}
+
+  /* ============================================================
+     TOKENS — inherited WX 2026 visual world
+     ============================================================ */
+  :root{
+    --bg-deep:   #0A0E1A;   /* Blue-Black — Mount of Olives night */
+    --bg-mid:    #16203D;   /* Midnight Blue                       */
+    --bg-panel:  #0c1120;   /* deep navy panel ground              */
+    --bg-lift:   #11182b;   /* lifted panel                        */
+    --charcoal:  #262B3A;
+
+    --ink:       #ECE3D0;   /* Bone — primary text                 */
+    --ink-soft:  rgba(236,227,208,.72);
+    --ink-faint: rgba(236,227,208,.44);
+    --ink-ghost: rgba(236,227,208,.22);
+    --rule:      rgba(236,227,208,.13);
+
+    --gold:      #C6A24C;   /* Presence Gold                       */
+    --gold-ink:  #A8791A;   /* gold ink variant                    */
+    --gold-rgb:  198,162,76;
+    --crimson:   #8A171B;   /* Deep Crimson — the YES colourway    */
+    --purple:    #7A4CB8;   /* Wildflower Purple                   */
+    --purple-soft:#9a7bc0;
+
+    --display:'Cinzel',Georgia,serif;
+    --body:'EB Garamond',Georgia,serif;
+    --num:'TFArrow','Arial Narrow',sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --measure:34rem;
+
+    /* --p : global scroll progress 0 → 1, set by JS. Drives the
+       Alignment Line from misaligned toward resolved.            */
+    --p:0;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:var(--body);background:var(--bg-deep);color:var(--ink);
+    line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    position:relative;min-height:100vh;
+  }
+
+  /* ---------- fixed atmosphere layers (inherited) ---------- */
+  .night{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+    radial-gradient(120% 95% at 50% 118%,rgba(54,78,128,.42),transparent 55%),
+    radial-gradient(95% 75% at 22% 22%,rgba(38,48,82,.40),transparent 62%),
+    linear-gradient(180deg,#070a14 0%,#0b0f1a 58%,#090d16 100%);}
+  .grid{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.42;
+    background-image:linear-gradient(rgba(236,227,208,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(236,227,208,.04) 1px,transparent 1px);
+    background-size:33.333% 33.333%;}
+  .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("assets/images/texture-180.svg");background-size:180px 180px;}
+
+  /* ============================================================
+     CHROME — shared ecosystem nav + footer
+     ============================================================ */
+  .nav-countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.42rem;font-family:var(--num);white-space:nowrap;pointer-events:none;}
+  .nav-countdown .cd-num{color:var(--gold);font-weight:800;font-size:.92rem;letter-spacing:.03em;line-height:1;}
+  .nav-countdown .cd-lbl{color:var(--ink);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82;line-height:1;}
+  @media(max-width:600px){.nav-countdown .cd-lbl{display:none;}.nav-countdown{gap:0;}}
+
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:.6rem clamp(1.1rem,4vw,2.4rem);background:rgba(10,14,26,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+    border-bottom:1px solid rgba(var(--gold-rgb),.28);font-family:var(--body)}
+  .site-nav__logo img{height:28px;width:auto;display:block;opacity:.97}
+  .site-nav__ws{font-family:var(--num);font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:.52rem 1.25rem;display:inline-flex;align-items:center;gap:.5rem;
+    text-decoration:none;box-shadow:0 2px 12px rgba(var(--gold-rgb),.28);transition:background .25s,color .25s,transform .25s,box-shadow .25s}
+  .site-nav__ws:hover,.site-nav__ws:focus-visible{background:#d4b25e;color:#0A0E1A;transform:translateY(-1px);box-shadow:0 4px 18px rgba(var(--gold-rgb),.42);outline:none}
+  .site-nav__ws .ar{font-size:.9rem;transition:transform .25s}
+  .site-nav__ws:hover .ar{transform:translateX(-3px)}
+
+  .eco-foot{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:2vh;padding:2.6rem clamp(1rem,3.5vw,2.2rem) 3.2rem;border-top:1px solid rgba(var(--gold-rgb),.22)}
+  .eco-foot img{display:block;width:auto;pointer-events:auto}
+  .eco-foot .eco-yes img{height:clamp(42px,5vw,56px);opacity:.92}
+  .eco-foot .eco-ccc img{height:clamp(28px,3.6vw,38px);opacity:.9}
+  @media(max-width:640px){.eco-foot .eco-yes img{height:42px}.eco-foot .eco-ccc img{height:28px}}
+
+  /* focus visibility, everywhere */
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+  /* skip link */
+  .skip{position:absolute;left:-999px;top:0;z-index:400;background:var(--gold);color:#0A0E1A;font-family:var(--num);font-weight:800;
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.1rem;border-radius:0 0 4px 0}
+  .skip:focus{left:0}
+
+  /* ============================================================
+     THE ALIGNMENT LINE — persistent spine (the page's motif)
+     A fixed vertical guide with calibration ticks. Ticks are
+     offset (misaligned) and resolve toward the rule as --p → 1.
+     ============================================================ */
+  .spine{position:fixed;z-index:5;top:0;bottom:0;left:clamp(18px,3.4vw,52px);width:78px;pointer-events:none;
+    display:flex;align-items:stretch;}
+  .spine__rule{position:absolute;left:50%;top:14vh;bottom:14vh;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(236,227,208,.16)12%,rgba(236,227,208,.16) 88%,transparent);}
+  /* the resolving guide: a brighter segment that lengthens with progress */
+  .spine__beam{position:absolute;left:50%;top:14vh;width:1px;transform:translateX(-.5px);
+    height:calc((86vh - 14vh) * var(--p));
+    background:linear-gradient(180deg,rgba(var(--gold-rgb),.0),rgba(var(--gold-rgb),.55));
+    box-shadow:0 0 10px rgba(var(--gold-rgb),calc(.28 * var(--p)));}
+  .spine__ticks{position:absolute;left:0;right:0;top:14vh;bottom:14vh;}
+  .tick{position:absolute;left:50%;height:1px;width:16px;background:var(--ink-ghost);
+    transform:translateX(var(--off));transition:transform 1.1s var(--ease),background .8s var(--ease),width .8s var(--ease);}
+  /* each tick's residual offset shrinks as the page resolves */
+  .spine .tick{--off:calc(var(--mis) * (1 - var(--p)))}
+  .spine__marker{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;
+    background:var(--gold);box-shadow:0 0 0 4px rgba(var(--gold-rgb),.14),0 0 14px rgba(var(--gold-rgb),.5);
+    top:calc(14vh + (86vh - 14vh) * var(--p));transform:translateY(-50%);transition:top .12s linear;}
+  /* the seven-stage journey word, tied to the marker */
+  .spine__stage{position:fixed;left:clamp(18px,3.4vw,52px);top:50%;z-index:5;pointer-events:none;
+    transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+    font-family:var(--num);font-weight:800;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);opacity:.0;transition:opacity .5s var(--ease);white-space:nowrap;}
+  .spine__stage.show{opacity:.62}
+  @media(max-width:1080px){.spine,.spine__stage{display:none}}
+
+  /* ============================================================
+     SHARED EDITORIAL COMPONENTS
+     ============================================================ */
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+  .wrap--narrow{width:min(760px,92vw)}
+  section{position:relative;z-index:4}
+  .sec{padding:clamp(5rem,11vh,9rem) 0}
+
+  .kicker{font-family:var(--num);font-weight:800;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+
+  .display{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing:.005em;color:var(--ink)}
+  h2.display{font-size:clamp(1.9rem,4.4vw,3.1rem)}
+  h3.display{font-size:clamp(1.4rem,3vw,2rem)}
+
+  .lede{font-size:clamp(1.18rem,2vw,1.42rem);line-height:1.5;color:var(--ink);max-width:var(--measure)}
+  .prose{font-size:1.06rem;color:var(--ink-soft);max-width:var(--measure)}
+  .prose+.prose{margin-top:1.05rem}
+  .prose em{color:var(--ink);font-style:italic}
+
+  /* editorial declaration — Cinzel, quiet weight */
+  .declare{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,2.9vw,2.05rem);line-height:1.4;color:var(--ink);letter-spacing:.01em}
+  .declare .soft{color:var(--ink-soft)}
+
+  /* reveal-on-scroll */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+
+  /* scripture reference — hover / tap reveal (inherited .ref pattern) */
+  .ref{position:relative;display:inline-block;width:max-content;max-width:100%;font-family:var(--display);font-weight:600;
+    font-size:.82rem;letter-spacing:.04em;color:var(--gold);line-height:1.5;cursor:help;
+    border-bottom:1px dotted color-mix(in srgb,var(--gold) 45%,transparent);background:none;border-left:0;border-right:0;border-top:0;padding:0;text-align:left}
+  .ref .verse{position:absolute;left:0;top:100%;margin-top:.45rem;width:clamp(240px,72vw,340px);
+    background:rgba(11,14,22,.98);border:1px solid rgba(var(--gold-rgb),.32);border-radius:10px;padding:.9rem 1rem;
+    font-family:var(--body);font-weight:400;font-size:.96rem;line-height:1.5;letter-spacing:0;color:rgba(236,227,208,.92);
+    box-shadow:0 24px 54px -22px rgba(0,0,0,.85);opacity:0;visibility:hidden;transform:translateY(-4px);
+    transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s;z-index:60;text-transform:none;cursor:default}
+  .ref .verse em{display:block;font-style:normal;font-family:var(--display);font-size:.56rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.42rem}
+  .ref:hover .verse,.ref:focus-visible .verse,.ref.show .verse{opacity:1;visibility:visible;transform:none}
+  @media(hover:none){.ref{cursor:pointer}}
+
+  /* ============================================================
+     1 · OPENING — THE MISALIGNMENT
+     ============================================================ */
+  .hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;
+    padding:clamp(6rem,14vh,9rem) 0 clamp(4rem,8vh,6rem)}
+  .hero__marks{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.9}
+  .hero__inner{position:relative;z-index:2;width:min(1120px,92vw);margin-inline:auto}
+  .hero__eyebrow{font-family:var(--num);font-weight:800;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.6rem}
+  .hero__title{font-family:var(--display);font-weight:700;font-size:clamp(3.4rem,13vw,8.5rem);line-height:.94;letter-spacing:.02em;color:var(--ink);
+    text-shadow:0 0 60px rgba(10,14,26,.6)}
+  .hero__sub{font-family:var(--num);font-weight:700;font-size:clamp(.72rem,1.5vw,.92rem);letter-spacing:.36em;text-transform:uppercase;
+    color:var(--gold);margin-top:1.35rem}
+  .hero__decl{margin-top:clamp(2.2rem,5vh,3.4rem);max-width:40rem;font-family:var(--display);font-weight:500;
+    font-size:clamp(1.15rem,2.5vw,1.7rem);line-height:1.44;color:var(--ink);letter-spacing:.008em}
+  .hero__decl .q{color:var(--gold)}
+  .enter{margin-top:clamp(2.4rem,5vh,3.2rem);display:inline-flex;align-items:center;gap:.85rem;
+    font-family:var(--num);font-weight:800;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;background:transparent;border:1px solid rgba(var(--gold-rgb),.5);
+    border-radius:3px;padding:.95rem 1.7rem;cursor:pointer;transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+  .enter:hover,.enter:focus-visible{border-color:var(--gold);color:#0A0E1A;background:var(--gold);outline:none}
+  .enter .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s var(--ease) infinite}
+  .enter:hover .dot,.enter:focus-visible .dot{background:#0A0E1A}
+  @keyframes pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+  .hero__scrollcue{position:absolute;left:50%;bottom:clamp(1.4rem,4vh,2.6rem);transform:translateX(-50%);z-index:2;
+    font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;flex-direction:column;align-items:center;gap:.5rem}
+  .hero__scrollcue .ln{width:1px;height:34px;background:linear-gradient(180deg,var(--ink-ghost),transparent);animation:drop 2.6s var(--ease) infinite}
+  @keyframes drop{0%{transform:scaleY(.2);transform-origin:top;opacity:0}40%{opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+  @media (prefers-reduced-motion:reduce){.enter .dot,.hero__scrollcue .ln{animation:none}}
+
+  /* ============================================================
+     2 · WHAT CALIBRATE IS
+     ============================================================ */
+  .what__statement{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.32;color:var(--ink);
+    max-width:24ch;letter-spacing:.008em}
+  .what__statement .soft{color:var(--ink-soft)}
+  .what__grid{margin-top:clamp(2.4rem,5vh,3.6rem);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+  @media(max-width:820px){.what__grid{grid-template-columns:1fr;gap:2.2rem}}
+
+  /* expandable scripture panel */
+  .scripture{border:1px solid var(--rule);border-radius:12px;background:linear-gradient(180deg,rgba(22,32,61,.4),rgba(12,17,32,.5));overflow:hidden}
+  .scripture__btn{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:1.15rem 1.3rem;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;color:var(--ink);font-family:var(--body)}
+  .scripture__ref{font-family:var(--num);font-weight:800;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .scripture__hint{font-family:var(--num);font-weight:700;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;align-items:center;gap:.55rem}
+  .scripture__chev{width:9px;height:9px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);
+    transform:rotate(45deg);transition:transform .35s var(--ease)}
+  .scripture[data-open="true"] .scripture__chev{transform:rotate(-135deg)}
+  .scripture__body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+  .scripture__inner{padding:0 1.3rem 1.4rem}
+  .scripture__text{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.05rem,2.1vw,1.32rem);line-height:1.5;color:var(--ink);
+    border-top:1px solid rgba(var(--gold-rgb),.28);padding-top:1.15rem}
+  .scripture__src{font-family:var(--num);font-weight:700;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:.9rem}
+
+  /* ============================================================
+     3 · THE FOUR WORKS OF SCRIPTURE — alignment instrument
+     ============================================================ */
+  .works{position:relative}
+  .works__rail{position:relative;margin-top:clamp(2.6rem,5vh,3.6rem)}
+  /* the continuous line the four stations sit on */
+  .works__line{position:absolute;left:0;right:0;top:22px;height:2px;
+    background:repeating-linear-gradient(90deg,var(--ink-ghost) 0 8px,transparent 8px 15px)}
+  .works__line-fill{position:absolute;left:0;top:22px;height:2px;width:calc(var(--wp,0) * 100%);
+    background:linear-gradient(90deg,rgba(var(--gold-rgb),.4),var(--gold));box-shadow:0 0 10px rgba(var(--gold-rgb),.4);
+    transition:width .5s var(--ease)}
+  .works__stations{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .station{position:relative;text-align:left;background:none;border:0;cursor:pointer;padding:0 1rem 0 0;color:inherit;font-family:var(--body)}
+  .station__node{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:var(--bg-panel);
+    display:flex;align-items:center;justify-content:center;position:relative;z-index:2;
+    font-family:var(--num);font-weight:800;font-size:.82rem;color:var(--ink-faint);
+    transition:border-color .4s var(--ease),color .4s var(--ease),background .4s var(--ease),box-shadow .4s var(--ease);
+    /* nodes begin subtly offset (misaligned) and level out when active */
+    transform:translateY(var(--nodeoff,0));}
+  .station__name{display:block;margin-top:1rem;font-family:var(--display);font-weight:600;font-size:1.02rem;color:var(--ink);letter-spacing:.01em}
+  .station__glyph{display:block;margin-top:.35rem;font-family:var(--body);font-size:.95rem;color:var(--ink-soft);max-width:15rem}
+  .station[aria-expanded="true"] .station__node{border-color:var(--gold);color:#0A0E1A;background:var(--gold);
+    box-shadow:0 0 0 5px rgba(var(--gold-rgb),.14),0 0 20px rgba(var(--gold-rgb),.4);transform:translateY(0)}
+  .station:hover .station__node,.station:focus-visible .station__node{border-color:rgba(var(--gold-rgb),.7);color:var(--ink)}
+  .station[aria-expanded="true"] .station__name{color:var(--gold)}
+  @media(max-width:760px){
+    .works__stations{grid-template-columns:1fr;gap:0}
+    .works__line,.works__line-fill{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--ink-ghost) 0 8px,transparent 8px 15px)}
+    .works__line-fill{height:calc(var(--wp,0) * 100%);width:2px;background:linear-gradient(180deg,rgba(var(--gold-rgb),.4),var(--gold))}
+    .station{display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start;padding:0 0 2rem 0}
+    .station__name{margin-top:.15rem}
+    .station__glyph{margin-top:.3rem}
+  }
+
+  /* detail panel for the active work */
+  .works__detail{margin-top:clamp(2rem,4vh,3rem);border:1px solid var(--rule);border-radius:14px;
+    background:linear-gradient(180deg,rgba(22,32,61,.34),rgba(12,17,32,.5));overflow:hidden}
+  .works__detail-inner{padding:clamp(1.5rem,3.5vw,2.4rem)}
+  .works__detail[hidden]{display:none}
+  .wd-tag{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+  .wd-title{font-family:var(--display);font-weight:600;font-size:clamp(1.35rem,3vw,1.9rem);color:var(--ink);margin-bottom:.9rem}
+  .wd-body{font-size:1.06rem;color:var(--ink-soft);max-width:46rem}
+
+  /* synthesis chain */
+  .synth{margin-top:clamp(3rem,6vh,4.5rem);display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;justify-content:center}
+  .synth__word{font-family:var(--num);font-weight:800;font-size:clamp(.8rem,1.9vw,1.05rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+  .synth__arrow{color:var(--gold);font-size:1.05rem;opacity:.75}
+  .land{margin-top:clamp(2.4rem,5vh,3.4rem);text-align:center}
+  .land__q{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.3rem,3vw,2rem);line-height:1.42;color:var(--ink);max-width:30ch;margin-inline:auto}
+</style>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/routes.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+
+<div class="night" aria-hidden="true"></div>
+<div class="grid" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ SHARED CHROME · NAV ============ -->
+<nav class="site-nav" aria-label="Ecosystem">
+  <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
+  <div class="nav-countdown" aria-label="Days remaining until 29 November 2026"><span class="cd-num">—</span><span class="cd-lbl">days to 29 Nov</span></div>
+  <a class="site-nav__ws" href="index.html#hub"><span class="ar">&larr;</span> Workspace</a>
+</nav>
+
+<!-- ============ THE ALIGNMENT LINE · persistent spine ============ -->
+<div class="spine" aria-hidden="true">
+  <div class="spine__rule"></div>
+  <div class="spine__beam"></div>
+  <div class="spine__ticks" id="spineTicks"></div>
+  <div class="spine__marker"></div>
+</div>
+
+<main id="top" tabindex="-1">
+<style>
+  /* ============================================================
+     REFINEMENT LAYER — truth-first framing, pacing, recognition
+     ============================================================ */
+  /* hero three-beat reveal */
+  .hero__decl .beat{display:block;opacity:0;transform:translateY(10px);animation:heroBeat .9s var(--ease) forwards}
+  .hero__decl .b2{animation-delay:.5s}
+  .hero__decl .b3{animation-delay:1.15s;margin-top:.55rem}
+  @keyframes heroBeat{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.hero__decl .beat{opacity:1;transform:none;animation:none}}
+
+  /* 1b · human recognition — cinematic image field */
+  .recog{position:relative;min-height:clamp(80vh,92vh,100vh);display:flex;align-items:center;overflow:hidden}
+  .recog__img{position:absolute;inset:0;z-index:0;
+    background:radial-gradient(58% 55% at 74% 52%,rgba(198,162,76,.16),transparent 60%),#070a14}
+  .recog__img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(7,10,20,.97) 0%,rgba(7,10,20,.82) 42%,rgba(7,10,20,.34) 78%,rgba(7,10,20,.52) 100%)}
+  .recog__inner{position:relative;z-index:2;width:min(1120px,92vw);margin-inline:auto;padding:clamp(4rem,10vh,7rem) 0}
+  .recog__copy{max-width:34rem}
+  .recog__h{font-family:var(--display);font-weight:600;font-size:clamp(1.75rem,4.6vw,3.1rem);line-height:1.12;color:var(--ink);letter-spacing:.006em}
+  .recog__p{font-size:1.08rem;color:var(--ink-soft);margin-top:1.4rem;max-width:30rem}
+  .recog__list{margin:1.15rem 0;font-family:var(--display);font-style:italic;font-size:1.14rem;color:var(--ink);line-height:1.85}
+  .recog__p2{font-size:1.06rem;color:var(--ink-soft);margin-top:1.05rem;max-width:30rem}
+  .recog__land{margin-top:clamp(1.8rem,4vh,2.6rem);font-family:var(--display);font-weight:500;font-size:clamp(1.22rem,2.6vw,1.62rem);line-height:1.42;color:var(--ink);border-left:2px solid var(--gold);padding-left:1.1rem;max-width:31rem}
+  @media(max-width:640px){.recog__img{background-position:center}.recog__copy{max-width:100%}}
+
+  /* 4b · 2026 seasonal bridge */
+  .bridge{padding:clamp(3.4rem,7vh,5.5rem) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:linear-gradient(180deg,rgba(22,32,61,.22),transparent)}
+  .bridge__lbl{font-family:var(--num);font-weight:800;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.6rem}
+  .bridge__lbl::before{content:"";width:22px;height:1px;background:var(--gold);opacity:.7}
+  .bridge__h{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.16;color:var(--ink);margin:1rem 0 1.1rem;max-width:24ch}
+  .bridge__p{font-size:1.06rem;color:var(--ink-soft);max-width:44rem}
+  .bridge__p em{color:var(--ink);font-style:italic}
+  .bridge__note{margin-top:1.1rem;font-size:1rem;color:var(--ink-faint);font-style:italic;border-left:1px solid rgba(var(--gold-rgb),.4);padding-left:.9rem;max-width:42rem}
+
+  /* 4 · four works — question as primary layer */
+  .station__q{display:block;margin-top:.65rem;font-family:var(--display);font-weight:600;font-size:1.04rem;line-height:1.2;color:var(--ink)}
+  .station[aria-expanded="true"] .station__q{color:var(--gold)}
+  .station__glyph{margin-top:.35rem!important;font-size:.82rem!important;color:var(--ink-faint)!important}
+
+  /* 6 · knowing vs living — open cinematic field */
+  .distance__frame{border:0;background:none;border-radius:0;padding:clamp(1rem,4vh,3rem) 0;gap:clamp(1.4rem,5vw,4.5rem)}
+  .distance__say{font-size:clamp(1.4rem,3.4vw,2.2rem)}
+  .distance__note{color:var(--ink-faint);font-size:.98rem;font-style:italic}
+
+  /* 9 · session overview (simpler first view) */
+  .detail__overview{padding:1.4rem clamp(1.5rem,3.5vw,2.3rem) 0}
+  .detail__ov-q{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,2.5vw,1.5rem);line-height:1.28;color:var(--gold);margin-bottom:.9rem}
+  .detail__ov-syn{font-size:1.04rem;color:var(--ink-soft);max-width:46rem}
+  .detail__ov-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem;margin-top:1.3rem}
+  @media(max-width:620px){.detail__ov-cols{grid-template-columns:1fr;gap:1.1rem}}
+  .ov-h{font-family:var(--num);font-weight:800;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 .5rem}
+  .detail__ov-objs{list-style:none;counter-reset:ov;margin:0}
+  .detail__ov-objs li{position:relative;padding-left:1.7rem;margin-bottom:.4rem;color:var(--ink-soft);font-size:.98rem}
+  .detail__ov-objs li::before{counter-increment:ov;content:counter(ov,upper-alpha);position:absolute;left:0;top:.05em;font-family:var(--num);font-weight:800;font-size:.62rem;color:var(--gold);border:1px solid rgba(var(--gold-rgb),.5);width:1.15rem;height:1.15rem;display:flex;align-items:center;justify-content:center;border-radius:3px}
+  .detail__ov-def,.detail__ov-resp{font-size:.98rem;color:var(--ink-soft)}
+  .detail__ov-resp{margin-top:.4rem}
+  .detail__more{margin:1.4rem clamp(1.5rem,3.5vw,2.3rem);display:inline-flex;align-items:center;gap:.7rem;background:none;cursor:pointer;font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);border:1px solid rgba(var(--gold-rgb),.4);border-radius:3px;padding:.7rem 1.2rem;transition:border-color .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+  .detail__more:hover,.detail__more:focus-visible{border-color:var(--gold);background:rgba(var(--gold-rgb),.08);outline:none}
+  .detail__more .dm-chev{width:8px;height:8px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);transition:transform .35s var(--ease)}
+  .detail__more[aria-expanded="true"] .dm-chev{transform:rotate(-135deg)}
+  .detail__deep[hidden]{display:none}
+
+  /* 10 · monthly progression — formation word dominant, lighter */
+  .months__grid .month__form{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.4vw,1.45rem);color:var(--ink);margin-top:.5rem;letter-spacing:.02em}
+  .months__grid .month__s{font-family:var(--body)!important;font-weight:400!important;font-size:.86rem!important;color:var(--ink-faint)!important;margin-top:.35rem!important}
+
+  /* 11 · closing — compact glance strip before the declaration + seasonal line */
+  .glance--strip{margin:0 0 clamp(2.6rem,6vh,4rem);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.4rem 0;text-align:left}
+  .glance--strip .glance__h{margin-bottom:1rem}
+  .close__season{margin-top:1.5rem;font-family:var(--num);font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .close__season .em{color:var(--gold)}
+
+  /* logo in hero (replaces the eyebrow line) */
+  .hero__logo{display:block;height:clamp(40px,5.6vw,58px);width:auto;margin-bottom:1.6rem;opacity:.98}
+  /* prominent 2 Timothy reference (What Calibrate Is) */
+  .scripture-hero{border-top:1px solid rgba(var(--gold-rgb),.4);border-bottom:1px solid rgba(var(--gold-rgb),.4);padding:1.7rem 0;text-align:left}
+  .scripture-hero__lbl{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.7rem}
+  .scripture-hero__ref{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,6.2vw,4rem);line-height:1;color:var(--gold);letter-spacing:.01em}
+  .scripture-hero__esv{font-family:var(--num);font-weight:700;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:.8rem}
+  .what__ref-inline{font-family:var(--display);color:var(--gold);font-style:normal;font-weight:600;font-size:1.42em;letter-spacing:.015em;white-space:nowrap}
+  /* Four Works — the verse shown openly, the four works highlighted */
+  .works__scripture{margin:clamp(1.6rem,4vh,2.6rem) 0 0;max-width:54rem;border:0;padding:0}
+  .works__verse{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.3rem,3.3vw,2.1rem);line-height:1.44;color:var(--ink);letter-spacing:.006em}
+  .works__verse .w-hl{font-style:normal;font-weight:700;color:var(--gold)}
+  .works__cite{display:block;font-family:var(--num);font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:1rem;font-style:normal}
+  .works__lead{margin-top:clamp(1.6rem,3.5vh,2.4rem);font-family:var(--num);font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  /* sticky session rail — the five sessions stay in view as the panel scrolls (#12) */
+  @media(min-width:901px){.path__layout > .route{position:sticky;top:74px;align-self:start}}
+
+  /* What Calibrate Is — single column */
+  .what__single{max-width:var(--measure);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
+  .what__single .prose+.prose{margin-top:1.05rem}
+  /* moved note (four works) */
+  .works__note{margin-top:1.3rem;max-width:52rem}
+</style>
+
+
+  <!-- ==================================================
+       1 · OPENING — THE MISALIGNMENT
+       ================================================== -->
+  <section class="hero" id="open" aria-label="Calibrate — opening">
+    <svg class="hero__marks" id="heroMarks" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="60%" stop-color="rgba(198,162,76,0)"/>
+          <stop offset="100%" stop-color="rgba(198,162,76,.12)"/>
+        </radialGradient>
+      </defs>
+      <!-- competing voices / assumptions / inherited beliefs — resolved back toward one authoritative centre (God's Word) -->
+      <g id="rings" stroke="rgba(236,227,208,.18)" fill="none" stroke-width="1">
+        <circle class="rg" data-dx="-46" data-dy="34" cx="600" cy="400" r="120"/>
+        <circle class="rg" data-dx="58" data-dy="-40" cx="600" cy="400" r="210"/>
+        <circle class="rg" data-dx="-30" data-dy="-64" cx="600" cy="400" r="300"/>
+        <circle class="rg" data-dx="72" data-dy="46" cx="600" cy="400" r="390"/>
+      </g>
+      <!-- fine coordinate crosshair, initially split -->
+      <g id="cross" stroke="rgba(198,162,76,.34)" stroke-width="1">
+        <line class="cl" data-dx="-40" data-dy="0" x1="600" y1="120" x2="600" y2="680"/>
+        <line class="cl" data-dx="0" data-dy="28" x1="220" y1="400" x2="980" y2="400"/>
+      </g>
+      <!-- the authoritative centre: stays fixed while the voices resolve onto it -->
+      <g id="authority">
+        <circle cx="600" cy="400" r="17" fill="none" stroke="rgba(198,162,76,.55)" stroke-width="1"/>
+        <circle cx="600" cy="400" r="5.5" fill="rgba(198,162,76,.92)"/>
+      </g>
+    </svg>
+    <div class="hero__inner">
+      <picture><source type="image/webp" srcset="assets/flow-experience-logo.webp"><img class="hero__logo" src="assets/flow-experience-logo.png" alt="The Flow Experience" decoding="async"></picture>
+      <h1 class="hero__title">Calibrate</h1>
+      <p class="hero__sub">Bible Study · Word Formation</p>
+      <p class="hero__decl">
+        <span class="beat b2">&ldquo;There is no shortage of voices telling us what is true.</span>
+        <span class="beat b3">Calibrate brings us back to what is true &mdash; <span class="q">God&rsquo;s Word.</span>&rdquo;</span>
+      </p>
+      <button class="enter" id="beginBtn" type="button"><span class="dot" aria-hidden="true"></span> Begin the Calibration</button>
+    </div>
+    <div class="hero__scrollcue" aria-hidden="true"><span>Scroll</span><span class="ln"></span></div>
+  </section>
+
+  <!-- ==================================================
+       2 · WHAT CALIBRATE IS
+       ================================================== -->
+  <section class="sec" id="what" aria-labelledby="what-h">
+    <div class="wrap">
+      <p class="kicker rv">What Calibrate Is</p>
+      <h2 class="what__statement rv" id="what-h">Truth does not begin with what we feel, assume or prefer. It begins with what God has said.</h2>
+
+      <div class="what__single">
+        <p class="prose rv">Calibrate is the Word Formation session of The Flow Experience &mdash; a time set apart to sit under God&rsquo;s Word, discover what is true, and bring our beliefs and lives into agreement with it.</p>
+        <p class="prose rv">Founded on <span class="what__ref-inline">2 Timothy 3:16&ndash;17</span>, the goal of every session is to be equipped for every good work &mdash; not only for ministry but also for every sphere of life, because Christ is to be seen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       3 · THE FOUR WORKS OF SCRIPTURE — alignment instrument
+       ================================================== -->
+  <section class="sec works" id="works" aria-labelledby="works-h">
+    <div class="wrap">
+      <p class="kicker rv">The Four Works of Scripture</p>
+      <blockquote class="works__scripture rv">
+        <p class="works__verse" id="works-h">&ldquo;All Scripture is breathed out by God and profitable for <span class="w-hl">teaching</span>, for <span class="w-hl">reproof</span>, for <span class="w-hl">correction</span>, and for <span class="w-hl">training</span> in righteousness, that the man of God may be complete, equipped for every good work.&rdquo;</p>
+        <cite class="works__cite">2 Timothy 3:16&ndash;17 · ESV</cite>
+      </blockquote>
+      <p class="works__note prose rv">These four works &mdash; teaching, reproof, correction, training &mdash; are the framework Calibrate returns to whenever we open the Word.</p>
+      <p class="works__lead rv">Select each work to explore how Scripture does it.</p>
+
+      <div class="works__rail rv">
+        <div class="works__line" aria-hidden="true"></div>
+        <div class="works__line-fill" id="worksFill" aria-hidden="true"></div>
+        <div class="works__stations" role="tablist" aria-label="The four works of Scripture">
+          <button class="station" role="tab" id="wk-tab-1" aria-controls="wk-panel" aria-expanded="false" data-work="1" style="--nodeoff:-9px">
+            <span class="station__node">01</span>
+            <span class="station__name">Teaching</span>
+            <span class="station__q">What is true?</span>
+            <span class="station__glyph">Truth is revealed.</span>
+          </button>
+          <button class="station" role="tab" id="wk-tab-2" aria-controls="wk-panel" aria-expanded="false" data-work="2" style="--nodeoff:11px">
+            <span class="station__node">02</span>
+            <span class="station__name">Reproof</span>
+            <span class="station__q">What in us contradicts it?</span>
+            <span class="station__glyph">Misalignment is exposed.</span>
+          </button>
+          <button class="station" role="tab" id="wk-tab-3" aria-controls="wk-panel" aria-expanded="false" data-work="3" style="--nodeoff:-7px">
+            <span class="station__node">03</span>
+            <span class="station__name">Correction</span>
+            <span class="station__q">What must be brought back into line?</span>
+            <span class="station__glyph">What is out of step is restored.</span>
+          </button>
+          <button class="station" role="tab" id="wk-tab-4" aria-controls="wk-panel" aria-expanded="false" data-work="4" style="--nodeoff:6px">
+            <span class="station__node">04</span>
+            <span class="station__name">Training</span>
+            <span class="station__q">How do we learn to live by it?</span>
+            <span class="station__glyph">Alignment becomes a way of life.</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="works__detail" id="wk-panel" role="tabpanel" aria-live="polite" hidden>
+        <div class="works__detail-inner">
+          <p class="wd-tag" id="wd-tag">01 · Teaching</p>
+          <h3 class="wd-title" id="wd-title">Truth is revealed</h3>
+          <p class="wd-body" id="wd-body"></p>
+        </div>
+      </div>
+
+      <div class="land rv">
+        <p class="land__q">&ldquo;Scripture does not finish its work when we understand it. It finishes when truth has reshaped the life.&rdquo;</p>
+      </div>
+      <div class="synth rv" aria-label="Truth known, error exposed, life corrected, faithfulness formed">
+        <span class="synth__word">Truth known</span><span class="synth__arrow" aria-hidden="true">&rarr;</span>
+        <span class="synth__word">Error exposed</span><span class="synth__arrow" aria-hidden="true">&rarr;</span>
+        <span class="synth__word">Life corrected</span><span class="synth__arrow" aria-hidden="true">&rarr;</span>
+        <span class="synth__word" style="color:var(--gold)">Faithfulness formed</span>
+      </div>
+    </div>
+  </section>
+
+<style>
+  /* ============================================================
+     4 · THE DISTANCE BETWEEN KNOWING AND YIELDING
+     ============================================================ */
+  .distance{position:relative}
+  .distance__frame{margin-top:clamp(2.6rem,5vh,3.6rem);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    gap:clamp(1rem,3vw,2.4rem);border:1px solid var(--rule);border-radius:16px;overflow:hidden;
+    background:linear-gradient(90deg,rgba(22,32,61,.42),rgba(12,17,32,.4) 46%,rgba(12,17,32,.4) 54%,rgba(138,23,27,.14));position:relative}
+  .distance__side{padding:clamp(2rem,5vw,3.4rem) clamp(1.4rem,3.5vw,2.6rem)}
+  .distance__side.right{text-align:right}
+  .distance__lbl{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem}
+  .distance__say{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,3vw,1.95rem);line-height:1.34;color:var(--ink);letter-spacing:.008em}
+  .distance__mid{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem .4rem;z-index:2}
+  .distance__cal{font-family:var(--display);font-weight:700;font-size:clamp(.9rem,2vw,1.15rem);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+    writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;padding:1.2rem 0}
+  .distance__span{position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(180deg,transparent,rgba(var(--gold-rgb),.5),transparent)}
+  @media(max-width:760px){
+    .distance__frame{grid-template-columns:1fr;background:linear-gradient(180deg,rgba(22,32,61,.42),rgba(12,17,32,.4) 46%,rgba(12,17,32,.4) 54%,rgba(138,23,27,.14))}
+    .distance__side.right{text-align:left}
+    .distance__mid{flex-direction:row;padding:.4rem 0}
+    .distance__cal{writing-mode:horizontal-tb;transform:none;padding:0}
+    .distance__span{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.5),transparent)}
+  }
+  .distance__note{margin-top:clamp(2.4rem,5vh,3.6rem);max-width:var(--measure)}
+  .transition-line{margin-top:clamp(2.6rem,6vh,4rem);text-align:center}
+  .transition-line p{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,3.2vw,2.1rem);line-height:1.4;color:var(--ink);max-width:26ch;margin-inline:auto}
+  .transition-line .em{color:var(--gold)}
+
+  /* ============================================================
+     5 · THE CALIBRATION PATH — five sessions, one journey
+     ============================================================ */
+  .path__head{max-width:var(--measure)}
+  .path__layout{margin-top:clamp(2.6rem,5vh,3.6rem);display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
+  @media(max-width:900px){.path__layout{grid-template-columns:1fr;gap:1.4rem}}
+
+  /* the route rail */
+  .route{position:relative;padding-left:8px}
+  .route__spine{position:absolute;left:29px;top:26px;bottom:26px;width:2px;
+    background:repeating-linear-gradient(180deg,var(--ink-ghost) 0 7px,transparent 7px 14px)}
+  .route__fill{position:absolute;left:29px;top:26px;width:2px;height:var(--rf,0);
+    background:linear-gradient(180deg,rgba(var(--gold-rgb),.5),var(--gold));box-shadow:0 0 10px rgba(var(--gold-rgb),.4);transition:height .5s var(--ease)}
+  .stop{position:relative;display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start;width:100%;text-align:left;
+    background:none;border:0;cursor:pointer;color:inherit;font-family:var(--body);padding:.5rem 0 1.6rem}
+  .stop__node{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:var(--bg-panel);z-index:2;
+    display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:800;font-size:.8rem;color:var(--ink-faint);
+    transform:translateX(var(--stopoff,0));transition:border-color .4s var(--ease),color .4s var(--ease),background .4s var(--ease),box-shadow .4s var(--ease),transform 1s var(--ease)}
+  .stop__meta{padding-top:.15rem}
+  .stop__q{display:block;font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+  .stop__name{display:block;font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.2;color:var(--ink)}
+  .stop__fmt{display:block;font-family:var(--num);font-weight:500;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:.45rem}
+  .stop[aria-selected="true"] .stop__node{border-color:var(--gold);background:var(--gold);color:#0A0E1A;transform:translateX(0);
+    box-shadow:0 0 0 5px rgba(var(--gold-rgb),.14),0 0 20px rgba(var(--gold-rgb),.4)}
+  .stop[aria-selected="true"] .stop__name{color:var(--gold)}
+  .stop:hover .stop__node,.stop:focus-visible .stop__node{border-color:rgba(var(--gold-rgb),.7);color:var(--ink)}
+
+  /* the detail panel */
+  .detail{border:1px solid var(--rule);border-radius:16px;background:linear-gradient(180deg,rgba(22,32,61,.36),rgba(12,17,32,.52));
+    overflow:hidden;position:relative;min-height:340px}
+  .detail__empty{padding:clamp(2rem,5vw,3.4rem);color:var(--ink-faint);font-family:var(--display);font-weight:500;font-style:italic;font-size:1.2rem;line-height:1.5}
+  .detail__empty .en{color:var(--ink-soft)}
+  .detail[data-active] .detail__empty{display:none}
+  .detail__inner{display:none}
+  .detail[data-active] .detail__inner{display:block}
+  .detail__top{padding:clamp(1.5rem,3.5vw,2.3rem) clamp(1.5rem,3.5vw,2.3rem) 0}
+  .detail__idx{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .detail__title{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.14;color:var(--ink);margin:.6rem 0 .5rem}
+  .detail__fmt{font-family:var(--num);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+  .tabs{display:flex;gap:.3rem;flex-wrap:wrap;padding:1.3rem clamp(1.5rem,3.5vw,2.3rem) 0;border-bottom:1px solid var(--rule);margin-top:1.4rem}
+  .tab{background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;padding:.6rem .3rem;margin-right:.9rem;
+    font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+    transition:color .25s var(--ease),border-color .25s var(--ease)}
+  .tab[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+  .tab:hover,.tab:focus-visible{color:var(--ink)}
+
+  .tabpanel{padding:clamp(1.5rem,3.5vw,2.3rem);display:none}
+  .tabpanel.active{display:block;animation:fade .4s var(--ease)}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.tabpanel.active{animation:none}}
+
+  .tp-h{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:1.4rem 0 .7rem}
+  .tp-h:first-child{margin-top:0}
+  .tp-p{font-size:1.04rem;color:var(--ink-soft);margin-bottom:.75rem;max-width:44rem}
+  .tp-p .strong{color:var(--ink);font-weight:600}
+  .tp-list{list-style:none;margin:.2rem 0 .8rem}
+  .tp-list li{position:relative;padding-left:1.35rem;margin-bottom:.5rem;color:var(--ink-soft);font-size:1.02rem;max-width:44rem}
+  .tp-list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg)}
+  .tp-obj{counter-reset:o;list-style:none;margin:.2rem 0 .5rem}
+  .tp-obj li{position:relative;padding-left:2.1rem;margin-bottom:.6rem;color:var(--ink-soft);font-size:1.02rem;max-width:44rem}
+  .tp-obj li::before{counter-increment:o;content:counter(o,upper-alpha);position:absolute;left:0;top:0;
+    font-family:var(--num);font-weight:800;font-size:.7rem;color:var(--gold);border:1px solid rgba(var(--gold-rgb),.5);
+    width:1.35rem;height:1.35rem;display:flex;align-items:center;justify-content:center;border-radius:3px}
+
+  /* scripture chips inside THE WORD */
+  .scrips{display:flex;flex-direction:column;gap:.55rem;margin:.3rem 0 1rem}
+  .scrip{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:baseline}
+  .scrip__ref{font-family:var(--display);font-weight:600;font-size:.9rem;color:var(--gold);white-space:nowrap}
+  .scrip__desc{font-size:.98rem;color:var(--ink-soft)}
+  .related{font-size:.98rem;color:var(--ink-faint);line-height:1.7;max-width:44rem}
+  .related .r{color:var(--ink-soft)}
+  .ms-note{margin-top:.8rem;font-size:.86rem;font-style:italic;color:var(--ink-faint);border-left:1px solid rgba(var(--gold-rgb),.4);padding-left:.8rem;max-width:40rem}
+
+  /* facilitator resources drawer */
+  .facil{margin:1.6rem clamp(1.5rem,3.5vw,2.3rem) clamp(1.6rem,3.5vw,2.3rem);border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:rgba(10,14,26,.4)}
+  .facil__btn{width:100%;background:none;border:0;cursor:pointer;padding:.95rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .facil__btn .fx{color:var(--gold)}
+  .facil__chev{width:8px;height:8px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);transition:transform .35s var(--ease)}
+  .facil[data-open="true"] .facil__chev{transform:rotate(-135deg)}
+  .facil__body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+  .facil__inner{padding:0 1.1rem 1.2rem}
+  .facil__note{font-size:.86rem;font-style:italic;color:var(--ink-faint);margin:.2rem 0 .9rem}
+  .facil__list{columns:2;column-gap:1.8rem;list-style:none}
+  @media(max-width:620px){.facil__list{columns:1}}
+  .facil__list li{break-inside:avoid;padding-left:.9rem;position:relative;margin-bottom:.5rem;font-size:.9rem;color:var(--ink-soft);line-height:1.4}
+  .facil__list li::before{content:"";position:absolute;left:0;top:.55em;width:4px;height:4px;background:var(--gold);opacity:.7;border-radius:50%}
+  .facil__list li i{font-style:italic;color:var(--ink-faint)}
+
+  /* ============================================================
+     6 · THE MONTHLY PROGRESSION
+     ============================================================ */
+  .months__rail{margin-top:clamp(2.6rem,5vh,3.6rem);position:relative}
+  .months__line{position:absolute;left:0;right:0;top:12px;height:1px;background:linear-gradient(90deg,rgba(var(--gold-rgb),.15),rgba(var(--gold-rgb),.7),rgba(var(--gold-rgb),.9))}
+  .months__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative}
+  .month{position:relative;padding-top:34px}
+  .month::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(var(--gold-rgb),.5)}
+  .month__m{font-family:var(--num);font-weight:800;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .month__s{display:block;font-family:var(--display);font-weight:600;font-size:.98rem;line-height:1.24;color:var(--ink);margin-top:.5rem}
+  .month__n{display:block;font-family:var(--num);font-weight:500;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:.4rem}
+  @media(max-width:760px){
+    .months__grid{grid-template-columns:1fr}
+    .months__line{left:4px;right:auto;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(180deg,rgba(var(--gold-rgb),.15),rgba(var(--gold-rgb),.9))}
+    .month{padding:0 0 1.6rem 26px}
+    .month::before{left:0;top:4px}
+  }
+  .months__caption{margin-top:clamp(2rem,4vh,2.8rem);max-width:var(--measure);color:var(--ink-soft);font-size:1.04rem}
+
+  /* ============================================================
+     7 · CLOSING — READY TO YIELD
+     ============================================================ */
+  .close{position:relative;padding:clamp(6rem,14vh,10rem) 0 clamp(3rem,7vh,5rem);text-align:center;overflow:hidden}
+  .close__resolved{width:min(560px,80vw);height:1px;margin:0 auto clamp(2.6rem,6vh,4rem);position:relative;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 24px rgba(var(--gold-rgb),.4)}
+  .close__resolved span{position:absolute;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(var(--gold-rgb),.6)}
+  .close__q{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,3.1vw,2rem);line-height:1.42;color:var(--ink);max-width:30ch;margin:0 auto clamp(2.6rem,6vh,4rem)}
+  .close__q .soft{color:var(--ink-soft)}
+  .close__decl{font-family:var(--display);font-weight:700;font-size:clamp(2rem,6.5vw,4.4rem);line-height:1.06;letter-spacing:.02em;color:var(--ink)}
+  .close__decl .gold{color:var(--gold);display:block}
+
+  /* at a glance */
+  .glance{margin-top:clamp(4rem,9vh,6.5rem);border-top:1px solid var(--rule);padding-top:clamp(2rem,4vh,3rem);text-align:left}
+  .glance__h{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.4rem}
+  .glance__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem 1.6rem}
+  .glance__item dt{font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+  .glance__item dd{font-family:var(--display);font-weight:500;font-size:1rem;color:var(--ink);line-height:1.3}
+  .glance__item dd small{display:block;font-family:var(--body);font-size:.9rem;color:var(--ink-faint);margin-top:.2rem}
+</style>
+
+  <!-- ==================================================
+       5 · THE CALIBRATION PATH
+       ================================================== -->
+  <section class="sec path" id="path" aria-labelledby="path-h">
+    <div class="wrap">
+      <p class="kicker rv">Our Calibration Path for 2026</p>
+      <h2 class="display rv path__head" id="path-h">Five Sessions, Five Truths, One Life.</h2>
+      <p class="prose rv" style="margin-top:1.1rem">Each year, Calibrate applies its permanent purpose to the areas of formation most needed in that season. For 2026, there are five sessions aimed at forming ministers who do not only understand surrender but live out surrender.</p>
+
+      <div class="path__layout">
+        <!-- the route rail (tablist) -->
+        <div class="route rv" role="tablist" aria-label="The five sessions of Calibrate" aria-orientation="vertical">
+          <div class="route__spine" aria-hidden="true"></div>
+          <div class="route__fill" id="routeFill" aria-hidden="true"></div>
+
+          <button class="stop" role="tab" id="stop-1" aria-controls="session-detail" aria-selected="false" data-session="1" style="--stopoff:-10px">
+            <span class="stop__node">01</span>
+            <span class="stop__meta">
+              <span class="stop__q">What does Scripture teach us about trusting God when we cannot understand Him?</span>
+              <span class="stop__name">Trust Even in Darkness</span>
+              <span class="stop__fmt">Small Groups</span>
+            </span>
+          </button>
+          <button class="stop" role="tab" id="stop-2" aria-controls="session-detail" aria-selected="false" data-session="2" style="--stopoff:9px">
+            <span class="stop__node">02</span>
+            <span class="stop__meta">
+              <span class="stop__q">What does Scripture mean when it says God is good?</span>
+              <span class="stop__name">The Goodness We Didn&rsquo;t Order</span>
+              <span class="stop__fmt">Wide Group · Teacher</span>
+            </span>
+          </button>
+          <button class="stop" role="tab" id="stop-3" aria-controls="session-detail" aria-selected="false" data-session="3" style="--stopoff:-7px">
+            <span class="stop__node">03</span>
+            <span class="stop__meta">
+              <span class="stop__q">What is the difference between outward obedience and inward surrender?</span>
+              <span class="stop__name">Flight or Surrender</span>
+              <span class="stop__fmt">Small Groups</span>
+            </span>
+          </button>
+          <button class="stop" role="tab" id="stop-4" aria-controls="session-detail" aria-selected="false" data-session="4" style="--stopoff:6px">
+            <span class="stop__node">04</span>
+            <span class="stop__meta">
+              <span class="stop__q">What does Scripture reveal about suffering, cost and glory?</span>
+              <span class="stop__name">The Crown: Thorns &amp; Gold</span>
+              <span class="stop__fmt">Hybrid</span>
+            </span>
+          </button>
+          <button class="stop" role="tab" id="stop-5" aria-controls="session-detail" aria-selected="false" data-session="5" style="--stopoff:-4px">
+            <span class="stop__node">05</span>
+            <span class="stop__meta">
+              <span class="stop__q">What does faithful response look like when the process is unfinished?</span>
+              <span class="stop__name">The Next Yes</span>
+              <span class="stop__fmt">Small Group · Sending</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- the detail panel -->
+        <div class="detail" id="session-detail" role="tabpanel" aria-live="polite" tabindex="-1">
+          <div class="detail__empty"><span class="en">Five truths, one road.</span> Choose a station on the left to see the truth that session brings us to face in Scripture.</div>
+          <div class="detail__inner">
+            <div class="detail__top">
+              <p class="detail__idx" id="d-idx">Session One</p>
+              <h3 class="detail__title" id="d-title">Trust Even in Darkness</h3>
+              <p class="detail__fmt" id="d-fmt">Format · Small groups</p>
+            </div>
+
+            <!-- 30-second overview (simpler first view) -->
+            <div class="detail__overview" id="detail-overview">
+              <p class="detail__ov-q" id="ov-q"></p>
+              <p class="detail__ov-syn" id="ov-syn"></p>
+              <div class="detail__ov-cols">
+                <div><p class="ov-h">In this session</p><ol class="detail__ov-objs" id="ov-objs"></ol></div>
+                <div>
+                  <p class="ov-h">A defining encounter</p><p class="detail__ov-def" id="ov-def"></p>
+                  <p class="ov-h">The response</p><p class="detail__ov-resp" id="ov-resp"></p>
+                </div>
+              </div>
+            </div>
+            <button class="detail__more" id="detailMore" type="button" aria-expanded="false" aria-controls="detail-deep">
+              <span class="dm-txt">Explore this session in depth</span><span class="dm-chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="detail__deep" id="detail-deep" hidden>
+            <div class="tabs" role="tablist" aria-label="Session detail">
+              <button class="tab" role="tab" data-tab="question" aria-selected="true" id="t-question" aria-controls="p-question">The Question</button>
+              <button class="tab" role="tab" data-tab="word" aria-selected="false" id="t-word" aria-controls="p-word">The Word</button>
+              <button class="tab" role="tab" data-tab="encounter" aria-selected="false" id="t-encounter" aria-controls="p-encounter">The Encounter</button>
+              <button class="tab" role="tab" data-tab="response" aria-selected="false" id="t-response" aria-controls="p-response">The Response</button>
+            </div>
+            <div class="tabpanel active" id="p-question" role="tabpanel" aria-labelledby="t-question" data-panel="question"></div>
+            <div class="tabpanel" id="p-word" role="tabpanel" aria-labelledby="t-word" data-panel="word"></div>
+            <div class="tabpanel" id="p-encounter" role="tabpanel" aria-labelledby="t-encounter" data-panel="encounter"></div>
+            <div class="tabpanel" id="p-response" role="tabpanel" aria-labelledby="t-response" data-panel="response"></div>
+
+            <div class="facil" data-facil>
+              <button class="facil__btn" type="button" aria-expanded="false" aria-controls="facil-body">
+                <span><span class="fx">&#9673;</span>&nbsp;&nbsp;Facilitator Resources</span>
+                <span class="facil__chev" aria-hidden="true"></span>
+              </button>
+              <div class="facil__body" id="facil-body" role="region" aria-label="Facilitator resources">
+                <div class="facil__inner">
+                  <p class="facil__note">Sources to mine critically &mdash; offered for study, not as endorsements.</p>
+                  <ul class="facil__list" id="facil-list"></ul>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       6 · THE MONTHLY PROGRESSION
+       ================================================== -->
+  <section class="sec months" id="months" aria-labelledby="months-h">
+    <div class="wrap">
+      <p class="kicker rv">The Monthly Progression</p>
+      <h2 class="display rv" id="months-h" style="max-width:22ch">What Scripture forms in us, month by month.</h2>
+
+      <div class="months__rail rv">
+        <div class="months__line" aria-hidden="true"></div>
+        <div class="months__grid">
+          <div class="month"><span class="month__m">July</span><span class="month__form">Trust</span><span class="month__s">Trust Even in Darkness</span></div>
+          <div class="month"><span class="month__m">August</span><span class="month__form">Goodness</span><span class="month__s">The Goodness We Didn&rsquo;t Order</span></div>
+          <div class="month"><span class="month__m">September</span><span class="month__form">Recognition</span><span class="month__s">Flight or Surrender</span></div>
+          <div class="month"><span class="month__m">October</span><span class="month__form">Cost</span><span class="month__s">The Crown: Thorns &amp; Gold</span></div>
+          <div class="month"><span class="month__m">November</span><span class="month__form">Response</span><span class="month__s">The Next Yes</span></div>
+        </div>
+      </div>
+      <p class="months__caption rv">Not five titles to complete, but five things we pray Scripture forms in us &mdash; trust, a truer sense of God&rsquo;s goodness, honest recognition, a right view of cost, and faithful response.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       7 · CLOSING — READY TO YIELD
+       ================================================== -->
+  <section class="close" id="close" aria-labelledby="close-h">
+    <div class="wrap wrap--narrow">
+      <div class="close__resolved rv" aria-hidden="true"><span style="left:0"></span><span style="left:50%;margin-left:-4.5px"></span><span style="right:0"></span></div>
+      <p class="close__q rv" id="close-h">&ldquo;The goal is not only to know more of the Word. It is to become a people whose beliefs and lives agree with what God has said.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- ============ SHARED CHROME · FOOTER ============ -->
+  <div class="eco-foot" aria-hidden="false">
+    <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
+    <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   CALIBRATE · interaction systems
+   1. Alignment Line scroll engine (--p, spine, hero marks)
+   2. Four Works instrument (tablist + single panel)
+   3. Calibration Path (session tablist + tabbed detail)
+   4. Scripture accordion & Facilitator drawers
+   5. Reveal-on-scroll, countdown, roving keyboard
+   ============================================================ */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var root = document.documentElement;
+
+  /* ---------- data: the four works ---------- */
+  var WORKS = {
+    '1':{tag:'01 · Teaching', title:'Truth is revealed',
+      body:'Teaching is where God&rsquo;s truth is discovered. Before anything can be corrected, it must first be seen &mdash; so Calibrate begins by letting Scripture show us what is true about God, about ourselves, and about the life He calls us to.'},
+    '2':{tag:'02 · Reproof', title:'Misalignment is exposed',
+      body:'Reproof allows God&rsquo;s truth to expose and challenge the beliefs, attitudes, and ways in us that are out of step with Him. It is the uncomfortable mercy of being measured against the Word and discovering where we do not yet agree with it.'},
+    '3':{tag:'03 · Correction', title:'What is out of step is restored',
+      body:'Correction is the turning &mdash; away from misaligned ways and back to God&rsquo;s way of thinking and living. It is not condemnation but restoration: the line brought back to true.'},
+    '4':{tag:'04 · Training', title:'Alignment becomes a way of life',
+      body:'Training cultivates the habits, disciplines, and character that sustain a life of obedience to God. Alignment is not a single adjustment but a way of walking &mdash; formed until it holds under pressure.'}
+  };
+
+  /* ---------- data: the five sessions (faithful to the PDF) ---------- */
+  var SESSIONS = {
+    '1':{
+      idx:'Session One', title:'Trust Even in Darkness', fmt:'Format &middot; Small groups',
+      q:'What does Scripture teach us about trusting God when we cannot understand Him?',
+      defining:'A guided trust diagnostic &mdash; the Trust-o-Meter, the &ldquo;Even If&rdquo; test, and a worry audit &mdash; closing in prayer.',
+      question:{
+        synopsis:[
+          'Trust is the unseen foundation that holds every relationship together, including our relationship with God. Where trust is absent, even what appears good is met with suspicion.',
+          'At the heart of every struggle to choose God&rsquo;s will over our own lies a question of trust. Drawing from Proverbs 3:5, this session explores the trust God calls us to &mdash; and the reasons we resist it.',
+          'When the path grows dark and God seems distant, surrender is sustained not by certainty but by trust. And the depth of our surrender will never exceed the depth of our confidence in His character.'
+        ],
+        tension:'Why do we cling to our own understanding &mdash; when obedience is costly, when God seems silent, or when His timing feels delayed?',
+        objectives:[
+          'Understand the nature of the trust God calls us to',
+          'Identify the obstacles that hinder our trust in Him'
+        ]
+      },
+      word:{
+        direct:[{ref:'Proverbs 3:5&ndash;6', desc:'Trust with all your heart; lean not on your own understanding.'}],
+        related:'Daniel 3:8&ndash;18 &mdash; &ldquo;Even if He does not&rdquo; &middot; Psalm 13 &mdash; &ldquo;How long, O Lord?&rdquo; &middot; Psalm 56 &mdash; Trust in fear &middot; Isaiah 26 &mdash; Perfect peace for the steadfast mind &middot; Jeremiah 17 &mdash; The cursed and the blessed life &middot; Job 13:15 &mdash; &ldquo;Though He slay me, yet will I trust Him&rdquo; &middot; Psalm 73 &mdash; Wrestling with envy and divine justice &middot; 2 Corinthians 1:8&ndash;10 &mdash; Pressed beyond strength, yet delivered.'
+      },
+      encounter:{
+        intro:'Each group walks through a selected set of Scriptures to let the Word &mdash; not abstraction &mdash; construct a biblical understanding of trust. From there, the group examines passages that expose the roots of our difficulty in trusting God: the internal tensions, fears, and assumptions that weaken surrender.',
+        blocks:[{h:'Three guided diagnostics', list:[
+          '<span class="strong">The Trust-o-Meter.</span> Each person rates their confidence (1&ndash;5) in God&rsquo;s control, wisdom, and goodness. The lowest score reveals a key fracture point.',
+          '<span class="strong">The &ldquo;Even If&rdquo; Test.</span> &ldquo;I will trust God even if ___.&rdquo; The point where the sentence cannot be finished honestly exposes the limit of trust.',
+          '<span class="strong">The Worry Audit.</span> Every current anxiety is treated as an indicator of a specific area where trust is under strain.'
+        ]}]
+      },
+      response:{
+        blocks:['The session concludes in pairs. Each person shares their lowest trust area and the situation behind it, and their partner responds in prayer over them.'],
+        outcome:'Trust named honestly &mdash; and prayed over &mdash; so that surrender has something to stand on.'
+      },
+      resources:['Jerry Bridges, <i>Trusting God</i>','A.W. Tozer, <i>The Knowledge of the Holy</i>','Tim Keller, <i>Walking with God through Pain and Suffering</i>','Mitchel Lee, <i>Even If</i>','Christopher Ash, <i>Trusting God in the Darkness</i>','Jackie Hill Perry, <i>Holier Than Thou</i>','R.C. Sproul, <i>Does God Control Everything?</i>','Kristen Wetherell, <i>Fight Your Fears</i>','Robbie Castleman, <i>King David: Trusting God for a Lifetime</i>','Megan Fate Marshman, <i>Meant for Good</i>','Kenny Luck, <i>Risk</i>','Emily Belle Freeman, <i>Even This</i>','Charles F. Stanley, <i>Can You Still Trust God?</i>','Alexandra Hoover, <i>Eyes Up</i>','Grace Valentine, <i>Is It Just Me?</i>','Joyce Meyer, <i>When, God, When?</i>; <i>Unshakeable Trust</i>','Jason Crabb, <i>Trusting God to Get You Through</i>']
+    },
+    '2':{
+      idx:'Session Two', title:'The Goodness We Didn&rsquo;t Order', fmt:'Format &middot; Wide group with a teacher',
+      q:'What does Scripture mean when it says God is good?',
+      defining:'A full Bible study that ends in the Dayenu &mdash; naming God&rsquo;s goodness, line by line, as &ldquo;enough.&rdquo;',
+      question:{
+        synopsis:[
+          '&ldquo;God is good &mdash; all the time. All the time &mdash; God is good.&rdquo; The refrain rings loudest when life meets our expectations, and grows quieter in the face of sickness, lack, disappointment, or loss.',
+          'Yet Scripture is emphatic: God is good, and He does good. Surrender is most difficult precisely when what God asks of us is not what we would have chosen &mdash; even while we insist that we only ever want what is good.'
+        ],
+        tension:'So what is actually good? Is it what we want, or is it what God wants &mdash; even when it is painful?',
+        objectives:[
+          'Name our personal notion of goodness and why we hold it',
+          'Define God&rsquo;s goodness in contrast to our personal notion',
+          'Establish that God&rsquo;s goodness is not safe, not tame, and not subject to human definition'
+        ]
+      },
+      word:{
+        direct:[
+          {ref:'Mark 10:17&ndash;31', desc:'The rich young ruler &mdash; &ldquo;No one is good except God alone.&rdquo;'},
+          {ref:'Psalm 119:64&ndash;68', desc:'&ldquo;You are good and do good.&rdquo;'},
+          {ref:'Exodus 33:18&ndash;34:7', desc:'Moses asks to see God&rsquo;s glory; His goodness proclaimed.'},
+          {ref:'Jeremiah 29:4&ndash;14', desc:'Good plans spoken into exile, not escape.'},
+          {ref:'Hebrews 12:5&ndash;11', desc:'Discipline as evidence of a Father&rsquo;s love.'},
+          {ref:'Romans 8:18&ndash;30', desc:'Present suffering and God&rsquo;s redeeming purpose.'}
+        ],
+        related:'Deuteronomy 32:39 &middot; Hosea 6:1 &middot; Isaiah 55:8&ndash;9 &middot; Genesis 50:20 &middot; 2 Corinthians 12:7&ndash;9 &middot; Lamentations 3:22&ndash;33 &middot; Hebrews 12:29 &middot; Psalm 119:71.'
+      },
+      encounter:{
+        intro:'A full Bible study led by a single facilitator, to keep theological clarity and reduce divergent emphases.',
+        blocks:[{h:'How it unfolds', list:[
+          'Opens with a call-and-response of the refrain, &ldquo;God is good, all the time&rdquo; &mdash; layered from agreeable circumstances toward harder realities, until the response begins to strain under lived experience.',
+          'Participants reflect on seasons where those words were difficult, or even impossible, to say &mdash; and why.',
+          'A guided exploration of what &ldquo;good&rdquo; means in human terms versus what Scripture reveals, walking the key texts to build a portrait of God&rsquo;s true goodness.'
+        ]}]
+      },
+      response:{
+        blocks:[
+          'The session closes in two movements. First the Dayenu is introduced &mdash; the Passover litany of &ldquo;it would have been enough.&rdquo; Then a prayer asks God to reveal His goodness even in circumstances that have been difficult to reconcile with it.',
+          'Finally the room participates in the Dayenu itself, naming His goodness line by line &mdash; including the hidden and painful places &mdash; declaring each one as &ldquo;enough.&rdquo;'
+        ],
+        outcome:'A goodness confessed on God&rsquo;s terms, not ours &mdash; even over what we did not order.'
+      },
+      resources:['C.S. Lewis, <i>The Lion, the Witch and the Wardrobe</i>; <i>The Problem of Pain</i>','R.C. Sproul, <i>The Holiness of God</i>','Rudolf Otto, <i>The Idea of the Holy</i>','J.I. Packer, <i>Knowing God</i>','Bill Johnson, <i>Good or God?</i>; <i>Encountering the Goodness of God</i>; <i>Is God Really Good?</i>','Wilko van Holten, <i>Hell and the Goodness of God</i>','Christopher W. Morgan &amp; Robert A. Peterson (eds.), <i>Suffering and the Goodness of God</i>','Margaret Feinberg, <i>Discovering God&rsquo;s Goodness</i>','Randy Alcorn, <i>The Goodness of God</i>','Ralph C. Wood, <i>Chesterton: The Nightmare Goodness of God</i>','Dinesh D&rsquo;Souza, <i>What&rsquo;s So Great About God?</i>','John Piper, <i>Disability and the Sovereign Goodness of God</i>']
+    },
+    '3':{
+      idx:'Session Three', title:'Flight or Surrender', fmt:'Format &middot; Small groups',
+      q:'What is the difference between outward obedience and inward surrender?',
+      defining:'A five-move small-group discovery through Jonah, ending in honest pair prayer.',
+      question:{
+        synopsis:[
+          'While Jesus is the ultimate expression of surrender in Gethsemane, Jonah stands as its opposite. Both spent three days in a &ldquo;belly&rdquo; &mdash; Jonah in the fish, Jesus in the grave &mdash; yet their responses reveal two entirely different postures: one fully yielded to the Father, the other running from Him.',
+          'This session traces Jonah from the first word of God to him, through his flight, and into his eventual response. Even then, his obedience was incomplete &mdash; his actions complied, but his will remained unaligned with God&rsquo;s heart.'
+        ],
+        tension:'What, then, are the lessons for us? Where is obedience present while the heart stays withheld?',
+        objectives:[
+          'Trace Jonah&rsquo;s journey as a pattern of resistance to surrender: flight, descent, reluctant obedience, and resentment',
+          'Distinguish between outward compliance and inward surrender',
+          'Identify areas where obedience is present but the heart remains withheld'
+        ]
+      },
+      word:{
+        direct:[
+          {ref:'Jonah 1:1&ndash;3', desc:'The call and the flight.'},
+          {ref:'Jonah 1:4&ndash;5', desc:'The storm and the descent.'},
+          {ref:'Jonah 2', desc:'Prayer from the depths.'},
+          {ref:'Jonah 3:1&ndash;4', desc:'The second word and obedience.'},
+          {ref:'Jonah 4:1&ndash;11', desc:'Anger and unresolved tension.'},
+          {ref:'Matthew 12:39&ndash;41', desc:'&ldquo;As Jonah was three days and three nights&hellip;&rdquo;'}
+        ],
+        related:'Luke 22:42 &middot; Luke 1:38 &middot; Matthew 21:28&ndash;31 &middot; Luke 15:25&ndash;32 &middot; Isaiah 29:13 &middot; Exodus 3&ndash;4 &middot; 1 Kings 19 &middot; Mark 10:17&ndash;22 &middot; Psalm 139:7&ndash;12.'
+      },
+      encounter:{
+        intro:'A small-group discovery session guided by a facilitator card, so every group holds the same landing points. The whole session moves along one line: from God&rsquo;s call &rarr; to my response &rarr; to what that reveals about my heart.',
+        blocks:[{h:'Four movements of recognition', list:[
+          '<span class="strong">See It.</span> Read Jonah 1&ndash;4, tracing his descent step by step: the call, the resistance, the flight, the belly, the second word, the response, the outcome. Resistance is not abstract; it moves away from obedience and produces real consequences.',
+          '<span class="strong">Recognize It.</span> Before engaging Jonah personally, each person lists areas where they have sensed God&rsquo;s call, then examines their actual response: resistance, compliance, or surrender.',
+          '<span class="strong">Locate It.</span> Participants identify patterns across those responses, forming a personal &ldquo;response map&rdquo; &mdash; where they consistently surrender, where they comply but struggle inwardly, where they resist or avoid.',
+          '<span class="strong">Expose It.</span> Each writes a brief &ldquo;Jonah-style complaint&rdquo; to God, naming what sits beneath the resistance &mdash; frustration, fear, delay, disagreement, disappointment. This is for exposure, not resolution.'
+        ]}]
+      },
+      response:{
+        blocks:['<span class="strong">Release It.</span> The session closes in pairs. Each person shares their identified &ldquo;Jonah area&rdquo; and, where possible, the tension beneath it. Their partner then prays over them &mdash; specifically for alignment, trust, and willingness to respond fully to God&rsquo;s call.'],
+        outcome:'Not immediate change, but the beginning of honest surrender taking shape.'
+      },
+      resources:['Tim Keller, <i>The Prodigal Prophet</i>','Eugene Peterson, <i>Under the Unpredictable Plant</i>','Phillip Cary, <i>Jonah</i> (Brazos Theological Commentary)','Steven M. Bob, <i>Jonah and the Meaning of Our Lives</i>','William Lawson, <i>Arise and Go</i>','Erbey Valdez, <i>Jonah and Nineveh</i>','Ehud Ben Zvi, <i>Signs of Jonah</i>','Philip Peter Jenson, <i>Obadiah, Jonah, Micah</i>','James Limburg, <i>Jonah: A Commentary</i>']
+    },
+    '4':{
+      idx:'Session Four', title:'The Crown: Thorns &amp; Gold', fmt:'Format &middot; Hybrid &mdash; wide teaching, small-group confession, corporate altar',
+      q:'What does Scripture reveal about suffering, cost and glory?',
+      defining:'Wide teaching that reframes the cross as glory, culminating in a corporate altar response.',
+      question:{
+        synopsis:[
+          'Surrender comes at a cost &mdash; and that cost is not accidental but inherent, because pain and a form of death accompany every moment when what we want is not what we receive.',
+          'Yet Jesus&rsquo; own surrender carried pain and agony, and the cost of His &ldquo;yes&rdquo; to the Father was the pathway to glory. He endured the cross &ldquo;for the joy set before Him,&rdquo; understanding that the crown of thorns was not the contradiction of glory but its unveiling.',
+          'The believer who surrenders walks the same path as Christ &mdash; from thorns to gold &mdash; and discovers that the glory on the other side was not merely the reward for surrender, but what surrender was moving toward all along.'
+        ],
+        tension:'What if the cost is not the enemy of the glory, but part of it?',
+        objectives:[
+          'Understand the origin and nature of the pain involved in surrender',
+          'Recognize that this pain is not incidental but part of the pathway that leads to glory',
+          'See the glory of God as both the destination and the revelation embedded within surrender itself'
+        ]
+      },
+      word:{
+        direct:[
+          {ref:'Luke 22:44', desc:'His agony in Gethsemane.'},
+          {ref:'Hebrews 12:1&ndash;2', desc:'Enduring the cross for the joy set before Him.'},
+          {ref:'Hebrews 2:9&ndash;10', desc:'Crowned with glory because of suffering.'},
+          {ref:'Hebrews 1:3', desc:'The radiance of God&rsquo;s glory, the exact imprint of His nature.'},
+          {ref:'John 12:23&ndash;24; 13:31', desc:'The cross as the hour of glory.'},
+          {ref:'Matthew 27:29; Revelation 19:12', desc:'The crown of thorns and the many diadems.'}
+        ],
+        related:'Exodus 33:18&ndash;23 &middot; 2 Corinthians 3:18 &middot; 2 Corinthians 4:6 &middot; John 1:14 &middot; Romans 8:17&ndash;18 &middot; 2 Corinthians 4:16&ndash;18 &middot; 1 Peter 1:6&ndash;7 &middot; 1 Peter 4:12&ndash;13 &middot; 1 Peter 5:4 &middot; James 1:2&ndash;4, 12 &middot; Revelation 2:10.',
+        msnote:'On Luke 22:43&ndash;44: the account of the strengthening angel and the sweat like drops of blood is absent from several of the earliest manuscripts, and its originality is debated in the textual tradition. It is held here honestly &mdash; treasured and widely received &mdash; rather than presented as beyond question.'
+      },
+      encounter:{
+        intro:'The session is built around one tension, placed before the room at the outset: Jesus&rsquo; greatest revelation of glory was the cross. Initial responses are surfaced and held &mdash; not corrected &mdash; as part of the tension the session will resolve.',
+        blocks:[{h:'A reinterpretation, not just information', list:[
+          'The facilitator takes the room through a single unfolding logic: glory is the manifest nature of God, most clearly revealed in self-giving love &mdash; so the cross is not an interruption of glory, but its fullest expression.',
+          'The aim is to shift how suffering and surrender are understood, so glory is no longer tied only to outcomes but to the revelation of God&rsquo;s nature within the act of surrender itself.',
+          'Small groups then become spaces of reflection: how have personal pain, loss, delay, or obedience revealed God&rsquo;s glory, obscured it, or been moments where a different response might have reflected Him more clearly? The purpose is recognition, not comparison or resolution.'
+        ]}]
+      },
+      response:{
+        blocks:[
+          'The session culminates in a corporate altar response, where participants name and bring forward specific areas of cost or surrender &mdash; framed not as loss, but as participation in the same pattern of glory revealed in Christ.',
+          'It closes in worship, holding together the tension now clarified: that glory is not separate from surrender, but often revealed most fully through it.'
+        ],
+        outcome:'Cost re-seen as the pathway of glory &mdash; surrender offered, not merely endured.'
+      },
+      resources:['Dietrich Bonhoeffer, <i>The Cost of Discipleship</i>','Elisabeth Elliot, <i>Suffering Is Never for Nothing</i>','C.S. Lewis, <i>The Problem of Pain</i>; <i>A Grief Observed</i>; <i>The Weight of Glory</i>','Tim Keller, <i>Walking with God through Pain and Suffering</i>','John P. Harrigan, <i>The Gospel of Christ Crucified</i>','Scott W. Sunquist, <i>Understanding Christian Mission</i>','Christopher Southgate, <i>Theology in a Suffering World</i>','Tony Evans, <i>Who Is This King of Glory?</i>','John Piper, <i>Captive to Glory</i>; <i>Reading the Bible Supernaturally</i>; <i>God&rsquo;s Passion for His Glory</i>','Sharon Jaynes, <i>A Sudden Glory</i>','David VanDrunen, <i>God&rsquo;s Glory Alone</i>','Louie Giglio &amp; Matt Redman, <i>Indescribable</i>','J.R. Vassar, <i>Glory Hunger</i>','Adesola Joan Akala, <i>Exploring the Glory of God</i>','Rodney Stark, <i>For the Glory of God</i>','Daniel I. Block, <i>For the Glory of God</i>']
+    },
+    '5':{
+      idx:'Session Five', title:'The Next Yes', fmt:'Format &middot; Small group, closing as a sending',
+      q:'What does faithful response look like when the process is unfinished?',
+      defining:'Naming your current station of surrender and one concrete next &ldquo;yes,&rdquo; as a sending.',
+      question:{
+        synopsis:[
+          'Surrender is not a single event but an ongoing journey &mdash; as long as we live, we keep having desires and must repeatedly choose between our will and God&rsquo;s.',
+          'Even Christ&rsquo;s &ldquo;yes&rdquo; unfolded through process: three prayers in Gethsemane &mdash; &ldquo;let this cup pass,&rdquo; repeated wrestling, and finally &ldquo;nevertheless, not my will.&rdquo; His surrender was not the denial of struggle, but faithfulness within it.',
+          'So this session offers both permission and clarity: permission that your &ldquo;yes&rdquo; may still be forming, and clarity to locate where you are on the road &mdash; not as a final judgment, but as a present reality.'
+        ],
+        tension:'Sometimes the next step is action; sometimes continued wrestling; sometimes the decision to remain before God without abandoning the process. Where is surrender asking to become specific?',
+        objectives:[
+          'Understand that surrender is a journey, not a single event',
+          'Identify your current station of surrender',
+          'Discern your next faithful step &mdash; whether to act, to obey in process, or to remain faithfully before God in unresolved tension'
+        ]
+      },
+      word:{
+        direct:[
+          {ref:'Luke 22:39&ndash;46', desc:'The repeated prayers in Gethsemane.'},
+          {ref:'Genesis 32:22&ndash;32', desc:'Jacob wrestling until daybreak.'},
+          {ref:'Hebrews 5:7&ndash;9', desc:'Learned obedience through suffering.'},
+          {ref:'Philippians 2:5&ndash;11', desc:'The path of self-emptying.'},
+          {ref:'Luke 9:23', desc:'Daily cross-bearing.'}
+        ],
+        related:'Genesis 22:1&ndash;8 &middot; Luke 14:25&ndash;33 &middot; Isaiah 40:31 &middot; Psalm 27:14 &middot; Psalm 40:1&ndash;8 &middot; Lamentations 3:25&ndash;26 &middot; Romans 12:1&ndash;2 &middot; 1 Samuel 3:1&ndash;10 &middot; Acts 9:1&ndash;19.'
+      },
+      encounter:{
+        intro:'As with the other small-group sessions, truth is discovered rather than delivered, with a facilitator card carrying the same guiding questions across all groups. It opens with a framing question: surrender is a road, not a single gate &mdash; where are you on it right now?',
+        blocks:[{h:'Naming the station', list:[
+          'Participants surface lived experience &mdash; a surrender once considered settled that God later revisited, deepened, or redefined &mdash; establishing surrender as an ongoing journey rather than a completed act.',
+          'The stations of the journey are introduced as a language for recognition, not classification: <span class="strong">fleeing &mdash; bargaining &mdash; wrestling &mdash; remaining &mdash; consenting</span>. Each person holds a real area of known obedience or prompting and names, honestly, where they currently stand.',
+          'The group reflects on Christ&rsquo;s own pattern in Gethsemane, where surrender was not immediate closure but repeated prayer and faithful presence. So wrestling is not failure, and remaining in tension is not disengagement &mdash; it is often the very place surrender is being formed.'
+        ]}]
+      },
+      response:{
+        blocks:[
+          'From here, each participant discerns their next faithful step &mdash; for some clear obedience, for others continued wrestling without escape, for others the discipline of remaining before God without forcing premature resolution. The emphasis is not speed, but faithfulness within the present place of surrender.',
+          'The session closes as a sending. Each person names one concrete next step, and the group becomes a space of witness and prayerful accountability. The series ends on a shared recognition: no one leaves having completed surrender, but each leaves having named their next &ldquo;yes&rdquo; on the road they are already walking.'
+        ],
+        outcome:'In this season Calibrate serves the aim of Worship Experience 2026 &mdash; that every participant would be positioned to give a wholehearted &ldquo;Yes&rdquo; to the will of God, not as a momentary response, but as the expression of a formed and yielded life.'
+      },
+      resources:['Henri Nouwen, <i>Can You Drink the Cup?</i>','Ruth Haley Barton, <i>Strengthening the Soul of Your Leadership</i>','John of the Cross, <i>Dark Night of the Soul</i>','Dallas Willard, <i>Renovation of the Heart</i>','Monica James, <i>I Surrender</i>','Ralph Gorman, <i>The Last Hours of Jesus</i>','V.C. Darmody, <i>Gethsemane to Glory</i>','Andrew C. Skinner, <i>Gethsemane</i>','Emmanuel Falque, <i>The Guide to Gethsemane</i>','Karl Olav Sandnes, <i>Early Christian Discourses on Jesus&rsquo; Prayer at Gethsemane</i>','Raymond E. Brown, <i>The Death of the Messiah, Vol. 1</i>','Leslie Montgomery, <i>Redemptive Suffering</i>']
+    }
+  };
+
+  /* ============================================================
+     1 · ALIGNMENT LINE SCROLL ENGINE
+     ============================================================ */
+  var spineTicks = document.getElementById('spineTicks');
+  var rings = Array.prototype.slice.call(document.querySelectorAll('#heroMarks .rg, #heroMarks .cl'));
+  var hero = document.getElementById('open');
+
+  // build calibration ticks with deterministic, decreasing residual offsets
+  (function buildTicks(){
+    var N = 15, seed = [ -13,9,-7,15,-4,11,-16,6,-10,13,-5,8,-12,4,-9 ];
+    for(var i=0;i<N;i++){
+      var t = document.createElement('span');
+      t.className = 'tick';
+      t.style.top = ((i/(N-1))*100).toFixed(2)+'%';
+      t.style.setProperty('--mis', seed[i]+'px');
+      spineTicks.appendChild(t);
+    }
+  })();
+
+  var ticking = false, lastP = -1;
+  function onScroll(){
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+  }
+  function update(){
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    if(Math.abs(p - lastP) < 0.001) return;
+    lastP = p;
+    root.style.setProperty('--p', p.toFixed(4));
+
+    // hero rings resolve toward centre across the first viewport of scroll
+    var hp = hero ? Math.min(1, Math.max(0, window.scrollY / (hero.offsetHeight*0.85))) : 1;
+    var f = 1 - hp;
+    for(var i=0;i<rings.length;i++){
+      var el = rings[i];
+      var dx = parseFloat(el.getAttribute('data-dx'))*f;
+      var dy = parseFloat(el.getAttribute('data-dy'))*f;
+      el.setAttribute('transform','translate('+dx.toFixed(1)+','+dy.toFixed(1)+')');
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', function(){ lastP=-1; update(); }, {passive:true});
+  update();
+
+  /* Begin button → move into the calibration */
+  var beginBtn = document.getElementById('beginBtn');
+  if(beginBtn){ beginBtn.addEventListener('click', function(){
+    var target = document.getElementById('what');
+    target.scrollIntoView({behavior: reduce ? 'auto':'smooth', block:'start'});
+  }); }
+
+  /* ============================================================
+     2 · FOUR WORKS INSTRUMENT
+     ============================================================ */
+  var workTabs = Array.prototype.slice.call(document.querySelectorAll('.station'));
+  var wkPanel = document.getElementById('wk-panel');
+  var wkTag = document.getElementById('wd-tag'), wkTitle = document.getElementById('wd-title'), wkBody = document.getElementById('wd-body');
+  var worksFill = document.getElementById('worksFill');
+
+  function selectWork(n){
+    workTabs.forEach(function(t){ t.setAttribute('aria-expanded', t.getAttribute('data-work')===n ? 'true':'false'); });
+    var d = WORKS[n];
+    wkTag.innerHTML = d.tag; wkTitle.innerHTML = d.title; wkBody.innerHTML = d.body;
+    wkPanel.hidden = false;
+    worksFill.style.setProperty('--wp', (parseInt(n,10)/4).toString());
+  }
+  workTabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      selectWork(t.getAttribute('data-work'));
+      t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    });
+  });
+  rovingKeys(workTabs, function(t){ t.click(); });
+  selectWork('1'); // one work in focus by default
+
+  /* ============================================================
+     3 · CALIBRATION PATH — session tablist + tabbed detail
+     ============================================================ */
+  var stops = Array.prototype.slice.call(document.querySelectorAll('.stop'));
+  var detail = document.getElementById('session-detail');
+  var routeFill = document.getElementById('routeFill');
+  var dIdx = document.getElementById('d-idx'), dTitle = document.getElementById('d-title'), dFmt = document.getElementById('d-fmt');
+  var innerTabs = Array.prototype.slice.call(detail.querySelectorAll('.tab'));
+  var panels = {
+    question: document.getElementById('p-question'),
+    word: document.getElementById('p-word'),
+    encounter: document.getElementById('p-encounter'),
+    response: document.getElementById('p-response')
+  };
+  var facilList = document.getElementById('facil-list');
+  var ovQ=document.getElementById('ov-q'), ovSyn=document.getElementById('ov-syn'),
+      ovObjs=document.getElementById('ov-objs'), ovDef=document.getElementById('ov-def'), ovResp=document.getElementById('ov-resp');
+  var detailDeep=document.getElementById('detail-deep'), detailMore=document.getElementById('detailMore');
+  var currentSession = null;
+
+  function renderOverview(s){
+    ovQ.innerHTML = s.q;
+    ovSyn.innerHTML = s.question.synopsis[0];
+    ovObjs.innerHTML = s.question.objectives.map(function(o){ return '<li>'+o+'</li>'; }).join('');
+    ovDef.innerHTML = s.defining;
+    ovResp.innerHTML = s.response.outcome;
+  }
+  function setDeep(open){
+    detailDeep.hidden = !open;
+    detailMore.setAttribute('aria-expanded', open?'true':'false');
+    detailMore.querySelector('.dm-txt').textContent = open ? 'Hide the deeper detail' : 'Explore this session in depth';
+  }
+
+  function renderQuestion(s){
+    var h = '';
+    s.question.synopsis.forEach(function(p){ h += '<p class="tp-p">'+p+'</p>'; });
+    h += '<p class="tp-h">The central tension</p><p class="tp-p">'+s.question.tension+'</p>';
+    h += '<p class="tp-h">Objectives</p><ol class="tp-obj">';
+    s.question.objectives.forEach(function(o){ h += '<li>'+o+'</li>'; });
+    h += '</ol>';
+    return h;
+  }
+  function renderWord(s){
+    var h = '<p class="tp-h">Direct Scriptures</p><div class="scrips">';
+    s.word.direct.forEach(function(d){
+      h += '<div class="scrip"><span class="scrip__ref">'+d.ref+'</span><span class="scrip__desc">'+d.desc+'</span></div>';
+    });
+    h += '</div>';
+    if(s.word.msnote){ h += '<p class="ms-note">'+s.word.msnote+'</p>'; }
+    h += '<p class="tp-h">Related Scriptures</p><p class="related"><span class="r">'+s.word.related+'</span></p>';
+    return h;
+  }
+  function renderEncounter(s){
+    var h = '<p class="tp-p">'+s.encounter.intro+'</p>';
+    s.encounter.blocks.forEach(function(b){
+      h += '<p class="tp-h">'+b.h+'</p><ul class="tp-list">';
+      b.list.forEach(function(li){ h += '<li>'+li+'</li>'; });
+      h += '</ul>';
+    });
+    return h;
+  }
+  function renderResponse(s){
+    var h = '';
+    s.response.blocks.forEach(function(p){ h += '<p class="tp-p">'+p+'</p>'; });
+    h += '<p class="tp-h">Intended outcome</p><p class="tp-p">'+s.response.outcome+'</p>';
+    return h;
+  }
+
+  function selectSession(n){
+    var s = SESSIONS[n];
+    currentSession = n;
+    stops.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-session')===n ? 'true':'false'); });
+    detail.setAttribute('data-active','1');
+    dIdx.innerHTML = s.idx; dTitle.innerHTML = s.title; dFmt.innerHTML = s.fmt;
+    panels.question.innerHTML = renderQuestion(s);
+    panels.word.innerHTML = renderWord(s);
+    panels.encounter.innerHTML = renderEncounter(s);
+    panels.response.innerHTML = renderResponse(s);
+    facilList.innerHTML = s.resources.map(function(r){ return '<li>'+r+'</li>'; }).join('');
+    renderOverview(s);
+    setDeep(false); // start on the 30-second overview
+    // reset inner tabs to "The Question"
+    setInnerTab('question');
+    // reset & close facilitator drawer for the newly opened session
+    closeFacil();
+    // route fill grows with the chosen station
+    routeFill.style.setProperty('--rf', ((parseInt(n,10)-0.5)/5*100).toFixed(1)+'%');
+    // keep orientation: move focus into the panel heading region
+    dTitle.setAttribute('tabindex','-1');
+  }
+
+  stops.forEach(function(t){
+    t.addEventListener('click', function(){
+      var n = t.getAttribute('data-session');
+      if(currentSession === n){ return; }
+      selectSession(n);
+      detail.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    });
+  });
+  rovingKeys(stops, function(t){ t.click(); }, true);
+
+  if(detailMore){ detailMore.addEventListener('click', function(){ setDeep(detailDeep.hidden); }); }
+
+  /* inner tabs (The Question / Word / Encounter / Response) */
+  function setInnerTab(name){
+    innerTabs.forEach(function(t){
+      var on = t.getAttribute('data-tab')===name;
+      t.setAttribute('aria-selected', on ? 'true':'false');
+    });
+    Object.keys(panels).forEach(function(k){
+      panels[k].classList.toggle('active', k===name);
+    });
+  }
+  innerTabs.forEach(function(t){ t.addEventListener('click', function(){ setInnerTab(t.getAttribute('data-tab')); }); });
+  rovingKeys(innerTabs, function(t){ t.click(); });
+
+  /* ============================================================
+     4 · SCRIPTURE ACCORDION + FACILITATOR DRAWER
+     ============================================================ */
+  function wireDisclosure(rootEl, btnSel, bodySel){
+    var box = rootEl, btn = box.querySelector(btnSel), body = box.querySelector(bodySel);
+    btn.addEventListener('click', function(){
+      var open = box.getAttribute('data-open')==='true';
+      setDisc(box, btn, body, !open);
+    });
+  }
+  function setDisc(box, btn, body, open){
+    box.setAttribute('data-open', open ? 'true':'false');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+    body.style.maxHeight = open ? (body.scrollHeight + 'px') : '0px';
+  }
+  document.querySelectorAll('[data-scripture]').forEach(function(box){
+    wireDisclosure(box, '.scripture__btn', '.scripture__body');
+  });
+  var facilBox = document.querySelector('[data-facil]');
+  var facilBtn = facilBox.querySelector('.facil__btn'), facilBody = facilBox.querySelector('.facil__body');
+  facilBtn.addEventListener('click', function(){
+    var open = facilBox.getAttribute('data-open')==='true';
+    setDisc(facilBox, facilBtn, facilBody, !open);
+  });
+  function closeFacil(){ setDisc(facilBox, facilBtn, facilBody, false); }
+
+  /* ============================================================
+     5 · REVEAL-ON-SCROLL + ROVING KEYBOARD + COUNTDOWN
+     ============================================================ */
+  var rvs = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(x){ io.observe(x); });
+  } else { rvs.forEach(function(x){ x.classList.add('in'); }); }
+
+  /* roving arrow-key navigation for a tablist */
+  function rovingKeys(items, activate, vertical){
+    items.forEach(function(item, i){
+      item.addEventListener('keydown', function(e){
+        var k = e.key, next = -1;
+        var fwd = vertical ? 'ArrowDown' : 'ArrowRight';
+        var bwd = vertical ? 'ArrowUp' : 'ArrowLeft';
+        if(k===fwd){ next = (i+1)%items.length; }
+        else if(k===bwd){ next = (i-1+items.length)%items.length; }
+        else if(k==='Home'){ next = 0; }
+        else if(k==='End'){ next = items.length-1; }
+        else { return; }
+        e.preventDefault();
+        items[next].focus();
+        if(activate) activate(items[next]);
+      });
+    });
+  }
+
+  /* countdown to 29 November 2026 (ecosystem convention) */
+  (function(){
+    var t = new Date(2026,10,29), n = new Date(), t0 = new Date(n.getFullYear(),n.getMonth(),n.getDate());
+    var d = Math.max(0, Math.round((t - t0)/86400000));
+    var e = document.querySelectorAll('.cd-num');
+    for(var i=0;i<e.length;i++) e[i].textContent = d;
+  })();
+
+})();
+</script>
+</body>
+</html>

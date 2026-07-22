@@ -1,0 +1,11 @@
+# Site source is intentionally hand-authored/compact — do not reformat.
+*.html
+assets/
+!tools/
+CHANGELOG.md
+QA-REPORT.md
+REMOVED-CODE.md
+INTERACTION-MATRIX.md
+PERFORMANCE-MATRIX.md
+EXPORT-LIFECYCLE-MATRIX.md
+ROUTE-MANIFEST.md

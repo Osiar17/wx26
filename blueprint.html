@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="robots" content="noindex, nofollow">
+
+<title>WX 2026 Blueprint</title>
+<meta name="description" content="The Flow Experience's internal source of truth for preparing and delivering Worship Experience 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'TFArrow';font-weight:300;font-style:normal;font-display:swap;src:url(assets/4eb0091819c7.ttf) format('truetype')}
+@font-face{font-family:'TFArrow';font-weight:500;font-style:normal;font-display:swap;src:url(assets/9a22f94c2bb9.ttf) format('truetype')}
+@font-face{font-family:'TFArrow';font-weight:700;font-style:normal;font-display:swap;src:url(assets/431bfc939f5d.ttf) format('truetype')}
+@font-face{font-family:'TFArrow';font-weight:800;font-style:normal;font-display:swap;src:url(assets/af3abf759b90.ttf) format('truetype')}
+@font-face{font-family:'TFArrow';font-weight:900;font-style:normal;font-display:swap;src:url(assets/2498c2d4309d.ttf) format('truetype')}
+
+:root{
+  --bg-deep:#0A0E1A; --bg-mid:#16203D; --bg-panel:#0c1120; --bg-lift:#11182b; --charcoal:#262B3A;
+  --ink:#ECE3D0; --ink-soft:rgba(236,227,208,.72); --ink-faint:rgba(236,227,208,.55); --ink-ghost:rgba(236,227,208,.22); --rule:rgba(236,227,208,.13);
+  --gold:#C6A24C; --gold-rgb:198,162,76; --gold-bright:#E7CE92; --gold-ink:#A8791A;
+  --crimson:#8A171B; --crimson-rgb:138,23,27; --crimson-bright:#bf6470;
+  --purple:#7A4CB8; --purple-rgb:122,76,184;
+  --status-complete:#3F8F68; --status-complete-rgb:63,143,104;
+  --amber:#c98b3a;
+  --display:'Cinzel',Georgia,serif; --body:'EB Garamond',Georgia,serif; --num:'TFArrow','Arial Narrow',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1); --measure:34rem; --nav-h:50px;
+  --panel-grad:linear-gradient(180deg,rgba(22,32,61,.34),rgba(12,17,32,.5));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--body);background:var(--bg-deep);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+::selection{background:rgba(var(--gold-rgb),.32);color:var(--ink)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* atmosphere */
+.night{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(120% 95% at 50% 118%,rgba(54,78,128,.42),transparent 55%),
+  radial-gradient(95% 75% at 22% 22%,rgba(38,48,82,.40),transparent 62%),
+  linear-gradient(180deg,#070a14 0%,#0b0f1a 58%,#090d16 100%)}
+.grid{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(rgba(236,227,208,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(236,227,208,.04) 1px,transparent 1px);background-size:33.333% 33.333%}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("assets/images/texture-180.svg");background-size:180px 180px}
+
+.wrap{width:min(1200px,92vw);margin-inline:auto;position:relative;z-index:4}
+section{position:relative;z-index:4}
+.kicker{font-family:var(--num);font-weight:800;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
+.kicker::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+.display{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing:.005em;color:var(--ink)}
+h2.display{font-size:clamp(1.8rem,4.2vw,2.9rem)}
+h3.display{font-size:clamp(1.35rem,3vw,1.95rem)}
+.prose{font-size:1.06rem;color:var(--ink-soft);max-width:var(--measure)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:400;background:var(--gold);color:#0A0E1A;font-family:var(--num);font-weight:800;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.1rem;border-radius:0 0 4px 0}
+.skip:focus{left:0}
+
+/* shared chrome */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.6rem clamp(1.1rem,4vw,2.4rem);background:rgba(10,14,26,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-bottom:1px solid rgba(var(--gold-rgb),.28)}
+.site-nav__logo{display:flex;align-items:center;gap:.55rem;min-width:0}
+.site-nav__logo img{height:28px;width:auto;display:block;opacity:.97}
+.site-nav__logo .fallmark{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;color:var(--gold);white-space:nowrap}
+.nav-countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.42rem;font-family:var(--num);white-space:nowrap;pointer-events:none}
+.nav-countdown .cd-num{color:var(--gold);font-weight:800;font-size:.92rem;letter-spacing:.03em;line-height:1}
+.nav-countdown .cd-lbl{color:var(--ink);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82;line-height:1}
+@media(max-width:600px){.nav-countdown .cd-lbl{display:none}.nav-countdown{gap:0}}
+.site-nav__ws{font-family:var(--num);font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:.52rem 1.25rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 2px 12px rgba(var(--gold-rgb),.28);transition:background .25s,transform .25s}
+.site-nav__ws:hover,.site-nav__ws:focus-visible{background:#d4b25e;transform:translateY(-1px);outline:none}
+.site-nav__ws .ar{transition:transform .25s}
+.site-nav__ws:hover .ar{transform:translateX(-3px)}
+@media(max-width:560px){.site-nav__ws .txt{display:none}}
+
+/* ===== DOORWAY HERO ===== */
+.hero{position:relative;overflow:hidden;min-height:100svh;display:flex;align-items:center;z-index:4;padding:calc(var(--nav-h) + 2rem) 0 3rem}
+/* hero image layer (doorway only) — above page atmosphere, below scrim/text */
+.hero__picture{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero__picture img{width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(10,14,26,.98) 0%,rgba(10,14,26,.91) 25%,rgba(10,14,26,.66) 48%,rgba(10,14,26,.20) 73%,rgba(10,14,26,.05) 100%),
+    linear-gradient(180deg,rgba(10,14,26,.24) 0%,rgba(10,14,26,.05) 55%,rgba(10,14,26,.46) 100%)}
+.hero__inner{position:relative;z-index:2;width:min(1120px,92vw);margin-inline:auto}
+.hero__logo{display:block;height:clamp(38px,5vw,54px);width:auto;margin-bottom:1.5rem;opacity:.98}
+.hero__logo .fallmark{font-family:var(--num);font-weight:800;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.hero__title{font-family:var(--display);font-weight:700;font-size:clamp(3.2rem,12vw,7.5rem);line-height:.96;letter-spacing:.02em;color:var(--ink);text-shadow:0 4px 60px rgba(0,0,0,.5)}
+.hero__sub{font-family:var(--num);font-weight:700;font-size:clamp(.7rem,1.5vw,.9rem);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:1.1rem}
+.hero__decl-body{margin-top:clamp(1.8rem,4vh,2.8rem);max-width:44rem;font-family:var(--body);font-size:clamp(1.06rem,1.5vw,1.24rem);line-height:1.62;color:var(--ink)}
+.hero__decl-body .beat{display:block;opacity:0;transform:translateY(10px);animation:heroBeat .9s var(--ease) forwards;color:var(--ink-soft)}
+.hero__decl-body .b2{animation-delay:.45s;color:var(--ink)}
+.hero__decl-body .b3{animation-delay:.95s;margin-top:.7rem}
+@keyframes heroBeat{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.hero__decl-body .beat{opacity:1;transform:none;animation:none}}
+.enter{margin-top:clamp(2.2rem,5vh,3rem);display:inline-flex;align-items:center;gap:.85rem;font-family:var(--num);font-weight:800;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid rgba(var(--gold-rgb),.5);border-radius:3px;padding:.95rem 1.7rem;transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+.enter:hover,.enter:focus-visible{border-color:var(--gold);color:#0A0E1A;background:var(--gold);outline:none}
+.enter .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s var(--ease) infinite}
+.enter:hover .dot,.enter:focus-visible .dot{background:#0A0E1A}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+.hero__scrollcue{position:absolute;left:34%;bottom:clamp(1.2rem,4vh,2.4rem);transform:translateX(-50%);z-index:2;font-family:var(--num);font-weight:700;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.hero__scrollcue .ln{width:1px;height:32px;background:linear-gradient(180deg,var(--ink-ghost),transparent);animation:drop 2.6s var(--ease) infinite}
+/* mobile: portrait scrim + centred cue */
+@media(max-width:700px){
+  .hero__scrim{background:
+    linear-gradient(90deg,rgba(10,14,26,.96) 0%,rgba(10,14,26,.78) 56%,rgba(10,14,26,.20) 100%),
+    linear-gradient(180deg,rgba(10,14,26,.16) 0%,rgba(10,14,26,.20) 50%,rgba(10,14,26,.72) 100%)}
+  .hero__scrollcue{left:50%}
+}
+@keyframes drop{0%{transform:scaleY(.2);transform-origin:top;opacity:0}40%{opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+@media(prefers-reduced-motion:reduce){.enter .dot,.hero__scrollcue .ln{animation:none}}
+/* build-line motif */
+.bl-seg{stroke:rgba(236,227,208,.18);stroke-width:1.4;fill:none}
+.bl-node{fill:var(--bg-panel);stroke:rgba(236,227,208,.3);stroke-width:1.4}
+.bl-node.done{fill:var(--status-complete);stroke:var(--status-complete)}
+.bl-node.now{fill:var(--gold);stroke:var(--gold)}
+.bl-node.late{fill:var(--crimson);stroke:var(--crimson-bright)}
+.bl-path{stroke:rgba(var(--gold-rgb),.5);stroke-width:1.4;fill:none;stroke-dasharray:5 7}
+
+/* ===== APP (continuous scroll) ===== */
+#app{display:block}
+html{scroll-padding-top:calc(var(--nav-h) + 104px)}
+.seg{scroll-margin-top:calc(var(--nav-h) + 104px)}
+.vslot{display:none;scroll-margin-top:calc(var(--nav-h) + 104px)}
+.vslot.active{display:block;animation:fade .45s var(--ease)}
+
+/* primary nav bar — hidden until the explore segment is scrolled past */
+.appbar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:150;background:rgba(12,17,32,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(var(--gold-rgb),.42);box-shadow:0 8px 26px -14px #000;transform:translateY(calc(-100% - var(--nav-h) - 8px));transition:transform .4s var(--ease);visibility:hidden}
+.appbar.show{transform:none;visibility:visible}
+.appbar__label{font-family:var(--num);font-weight:800;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex:none}
+@media(max-width:680px){.appbar__label{display:none}}
+.appbar__in{width:min(1200px,92vw);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 0}
+.viewnav{display:flex;align-items:center;gap:.7rem;min-width:0}
+.viewtabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none}
+.viewtabs::-webkit-scrollbar{display:none}
+.vtab{background:rgba(236,227,208,.03);border:1px solid var(--rule);border-radius:100px;color:var(--ink-soft);font-family:var(--num);font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.15rem;white-space:nowrap;transition:color .2s,border-color .2s,background .2s}
+.vtab:hover{color:var(--ink);border-color:rgba(var(--gold-rgb),.5)}
+.vtab[aria-selected="true"]{color:#0A0E1A;background:var(--gold);border-color:var(--gold);box-shadow:0 2px 12px rgba(var(--gold-rgb),.35)}
+/* second-level jump bar */
+.subnav-row{border-top:1px solid var(--rule)}
+.subnav{width:min(1200px,92vw);margin-inline:auto;display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;padding:.5rem 0 .55rem}
+.subnav::-webkit-scrollbar{display:none}
+.subnav:empty{display:none}
+.subchip{flex:none;display:flex;flex-direction:column;gap:.14rem;text-align:left;background:rgba(236,227,208,.03);border:1px solid var(--rule);border-radius:9px;padding:.42rem .72rem;transition:border-color .2s,background .2s}
+.subchip:hover{border-color:rgba(var(--gold-rgb),.5)}
+.subchip.is-active{border-color:var(--gold);background:rgba(var(--gold-rgb),.13)}
+.subchip__n{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.subchip.is-active .subchip__n{color:var(--gold-bright)}
+.subchip__s{font-family:var(--num);font-weight:600;font-size:.52rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+.util{display:flex;align-items:center;gap:.4rem;flex:none}
+.util button{background:none;border:1px solid var(--rule);border-radius:100px;color:var(--ink-soft);font-family:var(--num);font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.42rem .8rem;display:inline-flex;align-items:center;gap:.4rem;transition:border-color .2s,color .2s}
+.util button:hover{border-color:rgba(var(--gold-rgb),.4);color:var(--ink)}
+.util .attn-dot{width:6px;height:6px;border-radius:50%;background:var(--crimson-bright)}
+@media(max-width:640px){.util .lbl{display:none}}
+
+main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
+.seg,.vslot{padding-top:clamp(2.6rem,5vw,4rem)}
+.seg + .seg,.seg + #viewSlot,#viewSlot + .seg{border-top:1px solid var(--rule);margin-top:1rem}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.view.active{animation:none}}
+.vhead{margin-bottom:1.6rem}
+.vhead p.lead{max-width:var(--measure);color:var(--ink-soft);font-size:1.06rem;margin-top:.5rem}
+
+/* ===== EXPLORE CARDS ===== */
+.explore{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.4rem}
+@media(max-width:760px){.explore{grid-template-columns:1fr}}
+.exch{text-align:left;border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);padding:1.4rem 1.4rem 1.5rem;transition:border-color .25s,transform .25s;position:relative;overflow:hidden}
+.exch:hover,.exch:focus-visible{border-color:rgba(var(--gold-rgb),.5);transform:translateY(-3px);outline:none}
+.exch__n{display:block;font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.exch__t{display:block;font-family:var(--display);font-weight:600;font-size:1.5rem;color:var(--ink);margin:.7rem 0 .5rem}
+.exch__d{display:block;font-size:1rem;color:var(--ink-soft);line-height:1.45}
+.exch__go{display:block;margin-top:1rem;font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+/* ===== STATUS MARKERS ===== */
+.smark{flex:none;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:900;font-size:.72rem;line-height:1;border:1.5px solid var(--ink-ghost);color:var(--ink-faint);background:transparent}
+.smark.m-complete{background:var(--status-complete);border-color:var(--status-complete);color:#08130d}
+.smark.m-overdue{background:var(--crimson);border-color:var(--crimson-bright);color:var(--ink)}
+.smark.m-progress{border-color:var(--gold);color:var(--gold);background:radial-gradient(circle,var(--gold) 40%,transparent 42%)}
+.smark.m-approval{border-color:var(--gold);color:var(--gold)}
+.smark.m-blocked{border-color:var(--crimson-bright);color:var(--crimson-bright)}
+.smark.m-atrisk{border-color:var(--amber);color:var(--amber)}
+.smark.m-deferred{border-color:var(--ink-ghost);color:var(--ink-faint)}
+.smark.m-notstarted{border-color:var(--ink-ghost)}
+
+/* ===== TASK LIST ===== */
+.tasklist{display:flex;flex-direction:column;gap:.55rem}
+.trow{display:grid;grid-template-columns:auto 1fr 7.6rem;gap:.15rem .9rem;align-items:center;width:100%;text-align:left;
+  border:1px solid var(--rule);border-radius:11px;background:rgba(10,14,26,.4);padding:.75rem .95rem;transition:border-color .2s,background .2s,transform .15s}
+.trow:hover{border-color:rgba(var(--gold-rgb),.4);background:rgba(var(--gold-rgb),.05);transform:translateX(2px)}
+.trow.is-complete .trow__title{color:var(--ink-soft)}
+.trow__mark{grid-column:1;grid-row:1/3;align-self:center}
+.trow__title{grid-column:2;grid-row:1;font-family:var(--body);font-weight:600;font-size:1.03rem;color:var(--ink);line-height:1.3}
+.trow__meta{grid-column:2;grid-row:2;font-family:var(--num);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;margin-top:.28rem}
+.trow__meta .a-dot{display:inline-flex;align-items:center;gap:.32rem}
+.trow__meta .a-dot::before{content:'';width:6px;height:6px;border-radius:2px;background:var(--ink-faint)}
+.trow__meta .m-over{color:#e6a3a5}
+.trow__due{grid-column:3;grid-row:1/3;align-self:center;text-align:right;font-family:var(--num);font-size:.62rem;font-weight:800;letter-spacing:.03em;color:var(--ink-faint);white-space:nowrap;line-height:1.3}
+.trow__due.over{color:#e6a3a5}
+.trow__due .late{display:block;font-size:.52rem;font-weight:700;color:#e6a3a5;margin-top:.15rem}
+@media(max-width:600px){.trow{grid-template-columns:auto 1fr max-content}}
+
+/* ===== ROUTE + DETAIL + SUMMARY ===== */
+.rd{margin-top:.4rem;display:grid;grid-template-columns:minmax(230px,290px) 1fr minmax(260px,320px);gap:clamp(1.2rem,2.5vw,2rem);align-items:start}
+@media(max-width:1080px){.rd{grid-template-columns:minmax(220px,270px) 1fr}.rd .summary{grid-column:1/-1;order:3}}
+@media(max-width:820px){.rd{grid-template-columns:1fr}.rd .route{order:1}.rd .summary{order:2}.rd .rd-main{order:3}}
+@media(min-width:821px){.rd > .route{position:sticky;top:calc(var(--nav-h) + 108px);align-self:start}.rd > .summary{position:sticky;top:calc(var(--nav-h) + 108px);align-self:start}}
+
+.route{position:relative;padding-left:6px}
+.route__spine{position:absolute;left:23px;top:24px;bottom:24px;width:2px;background:var(--rule)}
+.route__fill{position:absolute;left:23px;top:24px;width:2px;height:var(--rf,0);background:linear-gradient(180deg,var(--status-complete),var(--gold));transition:height .5s var(--ease)}
+.stop{position:relative;display:grid;grid-template-columns:36px 1fr;gap:.85rem;align-items:center;width:100%;text-align:left;background:none;border:0;padding:.5rem 0;color:inherit;font-family:var(--body)}
+.stop__node{width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);background:var(--bg-panel);z-index:2;display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:800;font-size:.7rem;color:var(--ink-faint);transition:border-color .3s,background .3s,color .3s}
+.stop__meta{min-width:0}
+.stop__name{display:block;font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.15;color:var(--ink)}
+.stop__sub{display:block;font-family:var(--num);font-weight:700;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:.3rem}
+.stop[aria-selected="true"] .stop__node{border-color:var(--gold);background:var(--gold);color:#0A0E1A;box-shadow:0 0 0 4px rgba(var(--gold-rgb),.14)}
+.stop[aria-selected="true"] .stop__name{color:var(--gold)}
+.stop:hover .stop__node,.stop:focus-visible .stop__node{border-color:rgba(var(--gold-rgb),.7);color:var(--ink)}
+.stop.done .stop__node{border-color:var(--status-complete);color:var(--status-complete)}
+.stop.late .stop__node{border-color:var(--crimson-bright);color:var(--crimson-bright)}
+.stop[aria-selected="true"].done .stop__node,.stop[aria-selected="true"].late .stop__node{color:#0A0E1A}
+
+/* people/area selector as a simple rail when many items */
+.railsearch{margin-bottom:.8rem}
+.railsearch input{width:100%;background:var(--bg-deep);border:1px solid var(--rule);border-radius:8px;color:var(--ink);font-family:var(--body);font-size:.94rem;padding:.55rem .7rem}
+.railsearch input:focus{outline:none;border-color:rgba(var(--gold-rgb),.55)}
+
+.rd-main{min-width:0}
+.rd-main__head{margin-bottom:1rem}
+.rd-main__idx{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.rd-main__title{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);color:var(--ink);margin-top:.4rem;line-height:1.1}
+.rd-main__desc{font-size:1rem;color:var(--ink-soft);margin-top:.4rem}
+.rd-empty{border:1px dashed var(--rule);border-radius:14px;padding:2.4rem 1.6rem;text-align:center;color:var(--ink-faint);font-family:var(--display);font-style:italic;font-size:1.15rem}
+
+/* summary panel */
+.summary{border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);overflow:hidden}
+.summary__sec{padding:1.1rem 1.2rem;border-bottom:1px solid var(--rule)}
+.summary__sec:last-child{border-bottom:0}
+.summary__label{font-family:var(--num);font-weight:800;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.prog-big{display:flex;align-items:baseline;gap:.5rem}
+.prog-big b{font-family:var(--display);font-weight:700;font-size:1.9rem;color:var(--ink);line-height:1}
+.prog-big span{font-family:var(--num);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.prog-line{height:7px;background:rgba(236,227,208,.09);border-radius:5px;margin-top:.7rem;overflow:hidden}
+.prog-line i{display:block;height:100%;background:linear-gradient(90deg,var(--status-complete),var(--gold));border-radius:5px;transition:width .5s var(--ease)}
+.prog-nums{display:flex;gap:1.1rem;margin-top:.7rem;font-family:var(--num);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.prog-nums b{color:var(--ink);font-family:var(--display);font-weight:700}
+.mini-list{display:flex;flex-direction:column;gap:.5rem}
+.mini-row{display:grid;grid-template-columns:auto 1fr auto;gap:.5rem;align-items:center;text-align:left;background:none;border:0;padding:.15rem 0;width:100%}
+.mini-row .mini-t{font-size:.92rem;color:var(--ink);line-height:1.25}
+.mini-row .mini-due{font-family:var(--num);font-size:.56rem;font-weight:800;letter-spacing:.04em;color:var(--ink-faint);white-space:nowrap}
+.mini-row .mini-due.over{color:#e6a3a5}
+.mini-row:hover .mini-t{color:var(--gold)}
+.mini-empty{font-size:.9rem;color:var(--ink-faint);font-style:italic}
+.deliv-mini{display:flex;flex-direction:column;gap:.5rem}
+.deliv-mini a,.deliv-mini div{display:block;border:1px solid var(--rule);border-radius:9px;padding:.55rem .7rem;background:rgba(10,14,26,.35)}
+.deliv-mini .dm-n{font-family:var(--display);font-weight:600;font-size:.98rem;color:var(--ink)}
+.deliv-mini .dm-m{font-family:var(--num);font-size:.54rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:.25rem;display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ===== OVERVIEW ===== */
+.ov-progress{border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);padding:1.4rem 1.5rem;margin-bottom:1.4rem}
+.ov-progress .prog-big b{font-size:2.4rem}
+.ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.ov-grid .ovblock{position:sticky;top:calc(var(--nav-h) + 14px);margin-bottom:0}
+@media(max-width:820px){.ov-grid{grid-template-columns:1fr}.ov-grid .ovblock{position:static}}
+/* overview progress bar counts */
+.prog-nums.ov4{flex-wrap:wrap;gap:.6rem 1.3rem}
+.prog-nums .pn-over b{color:var(--crimson-bright)}
+.prog-nums .pn-done b{color:var(--status-complete)}
+.ovblock{border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);overflow:hidden;margin-bottom:1.4rem}
+.ovblock__head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.3rem;border-bottom:1px solid var(--rule)}
+.ovblock__head h3{font-family:var(--display);font-weight:600;font-size:1.1rem;color:var(--ink)}
+.ovblock__head .cnt{font-family:var(--num);font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.ovblock__body{padding:.8rem 1.3rem 1.1rem}
+.moredetail{border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);margin-top:1.4rem;overflow:hidden}
+.moredetail__btn{width:100%;background:rgba(236,227,208,.03);border:0;font-family:var(--num);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:.95rem 1.3rem;display:flex;justify-content:space-between;align-items:center}
+.moredetail__btn:hover{color:var(--gold)}
+.moredetail__body{display:none;padding:1.1rem 1.3rem 1.3rem;flex-direction:column;gap:1rem}
+.moredetail__body.open{display:flex}
+.chev{display:inline-block;transition:transform .3s var(--ease)}
+[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.md-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem}
+.md-tile{border:1px solid var(--rule);border-radius:12px;background:rgba(10,14,26,.4);padding:.9rem 1rem;text-align:left;width:100%}
+.md-tile b{font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--ink);display:block;line-height:1}
+.md-tile.alert b{color:var(--crimson-bright)}
+.md-tile.gold b{color:var(--gold)}
+.md-tile span{font-family:var(--num);font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-top:.35rem}
+.md-health{display:flex;flex-direction:column;gap:.4rem}
+.md-hrow{display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-family:var(--num);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding:.4rem 0}
+.md-hrow .hp{border-radius:100px;padding:.2rem .55rem;font-size:.54rem}
+.h-ontrack{background:rgba(var(--gold-rgb),.14);color:var(--gold-bright)}
+.h-attention{background:rgba(var(--purple-rgb),.16);color:#cbb6d6}
+.h-atrisk{background:rgba(var(--crimson-rgb),.2);color:#e6a3a5}
+.h-complete{background:rgba(236,227,208,.06);color:var(--ink-soft)}
+
+/* ===== DELIVERABLES ===== */
+.delivbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.4rem}
+.delivbar select{background:var(--bg-deep);border:1px solid var(--rule);border-radius:8px;color:var(--ink-soft);font-family:var(--num);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.55rem .7rem}
+.delivbar select:focus{outline:none;border-color:rgba(var(--gold-rgb),.55)}
+.delivgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem}
+.delivcard{border:1px solid var(--rule);border-radius:14px;background:var(--panel-grad);padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.delivcard h3{font-family:var(--display);font-weight:600;font-size:1.18rem;color:var(--ink)}
+.delivcard .dpurpose{font-size:.94rem;color:var(--ink-soft);line-height:1.45}
+.delivcard .drow{display:flex;justify-content:space-between;gap:.8rem;font-family:var(--num);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.delivcard .drow b{color:var(--ink-soft);font-family:var(--body);letter-spacing:0;text-transform:none;font-size:.92rem;font-weight:600}
+.delivcard .dstatus{font-family:var(--num);font-size:.54rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:.28rem .62rem;align-self:flex-start}
+.ds-notstarted{background:rgba(236,227,208,.06);color:var(--ink-soft);border:1px solid var(--rule)}
+.ds-development{background:rgba(var(--gold-rgb),.14);color:var(--gold-bright);border:1px solid rgba(var(--gold-rgb),.32)}
+.ds-approval{background:rgba(var(--purple-rgb),.16);color:#cbb6d6;border:1px solid rgba(var(--purple-rgb),.5)}
+.ds-approved{background:rgba(var(--status-complete-rgb),.18);color:#8fceac;border:1px solid rgba(var(--status-complete-rgb),.5)}
+.ds-superseded{background:rgba(var(--crimson-rgb),.2);color:#e6a3a5;border:1px solid rgba(var(--crimson-rgb),.5)}
+.delivcard .down{font-size:.82rem;color:var(--ink-faint);font-style:italic}
+.delivcard .dlink{font-family:var(--num);font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:.2rem}
+.delivcard .dlink.disabled{color:var(--ink-faint);pointer-events:none}
+
+/* ===== DELIVERABLES route/detail ===== */
+.dlv-stagehead{margin-bottom:1rem}
+.dlv-stagehead .rd-main__idx{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.dlv-stagehead h3{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);color:var(--ink);margin-top:.4rem;line-height:1.1}
+.dlv-stagehead p{font-size:1rem;color:var(--ink-soft);margin-top:.4rem}
+.dlv-list{display:flex;flex-direction:column;gap:.55rem}
+.dlv-row{display:flex;align-items:center;gap:.85rem;width:100%;text-align:left;border:1px solid var(--rule);border-radius:11px;background:rgba(10,14,26,.4);padding:.8rem 1rem;transition:border-color .2s,background .2s,transform .15s}
+.dlv-row:hover{border-color:rgba(var(--gold-rgb),.4);background:rgba(var(--gold-rgb),.05);transform:translateX(2px)}
+.dlv-row[aria-selected="true"]{border-color:var(--gold);background:rgba(var(--gold-rgb),.08)}
+.dlv-row__mark{flex:none}
+.dlv-row__body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.22rem}
+.dlv-row__name{font-family:var(--display);font-weight:600;font-size:1.08rem;color:var(--ink);line-height:1.2}
+.dlv-row__meta{font-family:var(--num);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.dlv-row__due{flex:none;margin-left:auto;font-family:var(--num);font-size:.6rem;font-weight:800;letter-spacing:.04em;color:var(--ink-faint);white-space:nowrap}
+.dlv-row__due.over{color:#e6a3a5}
+/* selected deliverable detail (right panel) */
+.dlv-detail{padding:1.2rem 1.3rem}
+.dlv-detail__idx{font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.dlv-detail__name{font-family:var(--display);font-weight:600;font-size:1.4rem;color:var(--ink);margin:.35rem 0 1rem;line-height:1.15}
+.dlv-detail__badges{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:1.1rem}
+.dlv-field{display:grid;grid-template-columns:6.5rem 1fr;gap:.5rem 1rem;padding:.5rem 0;border-bottom:1px solid var(--rule)}
+.dlv-field:last-of-type{border-bottom:0}
+.dlv-field .k{font-family:var(--num);font-weight:800;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);align-self:center}
+.dlv-field .v{font-size:.98rem;color:var(--ink)}
+.dlv-field .v.over{color:#e6a3a5}
+.dlv-open{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#0A0E1A;background:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:.7rem 1.2rem}
+.dlv-open.disabled{background:none;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
+.deliv-mini .pending{opacity:.62;cursor:default}
+.dlv-open:hover{background:#d4b25e}
+
+/* ===== DRAWER ===== */
+.scrim{position:fixed;inset:0;z-index:310;background:rgba(5,7,12,.66);opacity:0;visibility:hidden;transition:opacity .3s;backdrop-filter:blur(2px)}
+.scrim.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(560px,100%);z-index:311;background:linear-gradient(160deg,#141b2e,var(--bg-deep));border-left:1px solid rgba(var(--gold-rgb),.3);transform:translateX(100%);transition:transform .35s var(--ease);display:flex;flex-direction:column;box-shadow:-30px 0 70px -30px #000}
+.drawer.open{transform:none}
+.drawer__head{padding:1.2rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex:none}
+.drawer__ref{font-family:var(--num);font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.drawer__title{font-family:var(--display);font-weight:600;font-size:1.32rem;color:var(--ink);line-height:1.2;margin-top:.4rem}
+.drawer__close{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:none;color:var(--ink-soft);font-size:1.1rem}
+.drawer__close:hover{border-color:rgba(var(--gold-rgb),.55);color:var(--gold)}
+.drawer__body{overflow-y:auto;padding:1.3rem 1.4rem 2.5rem;flex:1}
+.drawer__badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem;align-items:center}
+.dsec{margin-bottom:1.4rem}
+.dsec__label{font-family:var(--num);font-size:.58rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem;border-bottom:1px solid var(--rule);padding-bottom:.35rem}
+.dsec p{font-size:1.02rem;color:var(--ink-soft);line-height:1.55}
+.dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.dfield .k{font-family:var(--num);font-size:.54rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.dfield .v{font-size:1rem;color:var(--ink);margin-top:.18rem}
+.dfield .v.over{color:#e6a3a5}
+.dsteps{list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:.55rem}
+.dsteps li{position:relative;padding-left:2rem;font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+.dsteps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:1.4rem;height:1.4rem;border-radius:50%;background:rgba(var(--gold-rgb),.14);border:1px solid rgba(var(--gold-rgb),.32);color:var(--gold);font-family:var(--num);font-size:.62rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.deplist{display:flex;flex-direction:column;gap:.55rem}
+.depitem{border:1px solid var(--rule);border-radius:10px;padding:.65rem .8rem;background:rgba(10,14,26,.4)}
+.depitem.blocking{border-color:rgba(var(--crimson-rgb),.5)}
+.depitem .dep-t{font-weight:600;color:var(--ink);font-size:.96rem}
+.depitem .dep-m{font-family:var(--num);font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:.3rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.depitem .dep-eff{font-family:var(--body);font-style:italic;text-transform:none;letter-spacing:0;color:var(--ink-soft);font-size:.88rem;margin-top:.3rem;display:block}
+.depitem .dep-open{background:none;border:0;color:var(--gold);font-family:var(--num);font-size:.56rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;margin-top:.35rem}
+.badge-axis{font-family:var(--num);font-size:.54rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:.3rem .62rem;border:1px solid var(--rule);color:var(--ink-soft);cursor:help}
+.badge-axis.anchor{border-color:rgba(var(--gold-rgb),.32);color:var(--gold-bright);background:rgba(var(--gold-rgb),.14)}
+.badge-axis.gate{border-color:rgba(var(--purple-rgb),.5);color:#cbb6d6;background:rgba(var(--purple-rgb),.16)}
+.badge-axis.tight{border-color:rgba(var(--crimson-rgb),.5);color:#e6a3a5}
+.axnote{font-size:.85rem;color:var(--ink-faint);font-style:italic;margin-top:.5rem}
+
+/* ===== NEEDS ATTENTION / FILTER SHEET ===== */
+.sheet{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);z-index:311;background:linear-gradient(160deg,#141b2e,var(--bg-deep));border-left:1px solid rgba(var(--gold-rgb),.3);transform:translateX(100%);transition:transform .35s var(--ease);display:flex;flex-direction:column;box-shadow:-30px 0 70px -30px #000}
+.sheet.open{transform:none}
+.sheet__head{padding:1.2rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex:none}
+.sheet__head h2{font-family:var(--display);font-weight:600;font-size:1.25rem;color:var(--ink)}
+.sheet__body{overflow-y:auto;padding:1.2rem 1.4rem 2.5rem;flex:1}
+.attn-group{margin-bottom:1.5rem}
+.attn-group__h{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.attn-group.g-overdue .attn-group__h{color:#e6a3a5}
+.attn-group.g-blocked .attn-group__h{color:#e6a3a5}
+.attn-group.g-approval .attn-group__h{color:var(--gold-bright)}
+.attn-group.g-atrisk .attn-group__h{color:var(--amber)}
+.attn-group__x{font-size:.86rem;color:var(--ink-faint);font-style:italic;margin-bottom:.7rem}
+.filterrow{display:flex;flex-direction:column;gap:.9rem}
+.filterrow label{font-family:var(--num);font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:.35rem}
+.filterrow input,.filterrow select{width:100%;background:var(--bg-deep);border:1px solid var(--rule);border-radius:8px;color:var(--ink);font-family:var(--body);font-size:.94rem;padding:.55rem .7rem}
+.filterrow select{font-family:var(--num);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.filterrow input:focus,.filterrow select:focus{outline:none;border-color:rgba(var(--gold-rgb),.55)}
+.sheet__foot{padding:1rem 1.4rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem;flex:none}
+.sheet__foot button{font-family:var(--num);font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.65rem 1.1rem;border-radius:6px}
+.btn-clear{background:none;border:1px solid var(--rule);color:var(--ink-soft)}
+.btn-apply{background:var(--gold);border:1px solid var(--gold);color:#0A0E1A}
+.searchresults{margin-top:1rem;display:flex;flex-direction:column;gap:.55rem}
+.emptystate{text-align:center;padding:2.4rem 1rem;color:var(--ink-faint)}
+.emptystate .big{font-family:var(--display);font-size:1.25rem;color:var(--ink-soft);margin-bottom:.4rem}
+
+/* ===== DOC CONTROL + FOOTER ===== */
+.docctl{border:1px solid var(--rule);border-radius:16px;background:var(--panel-grad);padding:1.3rem 1.4rem;margin-top:2rem}
+.docctl h3{margin-bottom:1rem}
+.docctl__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem}
+.docfield .k{font-family:var(--num);font-size:.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.docfield .v{font-size:.95rem;color:var(--ink);margin-top:.2rem}
+.docnote{margin-top:1.1rem;font-size:.88rem;font-style:italic;color:var(--ink-faint);border-top:1px solid var(--rule);padding-top:.85rem}
+.eco-foot{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;margin-top:2vh;padding:2.6rem clamp(1rem,3.5vw,2.2rem) 3.2rem;border-top:1px solid rgba(var(--gold-rgb),.22)}
+.eco-foot img{display:block;width:auto;pointer-events:auto}
+.eco-foot .eco-yes img{height:clamp(42px,5vw,56px);opacity:.92}
+.eco-foot .eco-ccc img{height:clamp(28px,3.6vw,38px);opacity:.9}
+@media(max-width:640px){.eco-foot .eco-yes img{height:42px}.eco-foot .eco-ccc img{height:28px}}
+
+@media print{
+  body{background:#fff;color:#111}
+  .site-nav,.appbar,.night,.grid,.grain,.hero,.util,.drawer,.scrim,.sheet,.explore,.moredetail__btn,.route,.railsearch{display:none!important}
+  .view{display:none!important}.view.active{display:block!important}
+  .rd{grid-template-columns:1fr!important}.summary{position:static!important}
+  .ovblock,.summary,.delivcard,.docctl,.ov-progress,.trow{border-color:#ccc!important;background:#fff!important;color:#111}
+  .trow__title,.display,.rd-main__title,.delivcard h3{color:#111!important}
+}
+</style>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/routes.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#mainContent">Skip to content</a>
+
+<nav class="site-nav" aria-label="Ecosystem">
+  <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
+  <div class="nav-countdown" aria-label="Days remaining until 29 November 2026"><span class="cd-num">—</span><span class="cd-lbl">days to 29 Nov</span></div>
+  <a class="site-nav__ws" href="index.html#hub"><span class="ar">&larr;</span> Workspace</a>
+</nav>
+
+<div class="night" aria-hidden="true"></div>
+<div class="grid" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ DOORWAY ============ -->
+<header class="hero" id="doorway" aria-label="Blueprint — opening">
+  <picture class="hero__picture" aria-hidden="true">
+    <source media="(max-width:700px)" srcset="assets/blueprint-hero-mobile.png">
+    <source type="image/webp" srcset="assets/blueprint-hero-desktop.webp">
+    <img src="assets/blueprint-hero-desktop.png" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <picture><source type="image/webp" srcset="assets/flow-experience-logo.webp"><img class="hero__logo" src="assets/flow-experience-logo.png" alt="The Flow Experience" decoding="async"></picture>
+    <h1 class="hero__title">Blueprint</h1>
+    <p class="hero__sub">Task Management</p>
+    <p class="hero__decl-body">
+      <span class="beat b2">Worship Experience 2026 will happen in one morning, but the work behind it takes much longer.</span>
+      <span class="beat b3">The WX 2026 Blueprint gathers all of The Flow Experience&rsquo;s work in one place, so we can see what needs to be done and the progress made so far.</span>
+    </p>
+    <button class="enter" id="enterBtn" type="button"><span class="dot" aria-hidden="true"></span> Enter the Blueprint <span aria-hidden="true">&rarr;</span></button>
+  </div>
+  <div class="hero__scrollcue" aria-hidden="true"><span>Enter</span><span class="ln"></span></div>
+</header>
+
+<!-- ============ APP ============ -->
+<div id="app">
+<div class="appbar" id="appbar">
+  <div class="appbar__in">
+    <div class="viewnav">
+      <span class="appbar__label" aria-hidden="true">Viewing ▸</span>
+      <div class="viewtabs" role="tablist" aria-label="Choose a view">
+        <button class="vtab" role="tab" data-view="journey" id="v-journey" aria-selected="true" aria-controls="view-journey">Journey</button>
+        <button class="vtab" role="tab" data-view="areas" id="v-areas" aria-selected="false" aria-controls="view-areas">Areas</button>
+        <button class="vtab" role="tab" data-view="people" id="v-people" aria-selected="false" aria-controls="view-people">People</button>
+      </div>
+    </div>
+    <div class="util">
+      <button id="btnSearch" aria-haspopup="dialog"><span aria-hidden="true">⌕</span> <span class="lbl">Search &amp; Filter</span></button>
+      <button id="btnAttn" aria-haspopup="dialog"><span class="attn-dot" aria-hidden="true"></span> <span class="lbl">Needs Attention</span></button>
+    </div>
+  </div>
+  <div class="subnav-row"><div class="subnav" id="subnav" role="tablist" aria-label="Jump to a section"></div></div>
+</div>
+
+<main class="wrap" id="mainContent" tabindex="-1">
+  <div aria-live="polite" class="sr-only" id="live"></div>
+
+  <!-- OVERVIEW (always visible, right after the doorway) -->
+  <section class="seg" id="seg-overview" aria-labelledby="ov-h" tabindex="-1">
+    <div class="vhead"><p class="kicker">Overview · Where the work stands</p><h2 class="display" id="ov-h">Progress at a glance</h2>
+      <p class="lead">How much is done, what is due soon, and what has slipped — before you choose a way in.</p></div>
+    <div class="ov-progress" id="ovProgress"></div>
+    <div class="ov-grid">
+      <div class="ovblock"><div class="ovblock__head"><h3>Due in the Next 14 Days</h3><span class="cnt" id="ovDueCnt"></span></div><div class="ovblock__body"><div class="tasklist" id="ovDue"></div></div></div>
+      <div class="ovblock"><div class="ovblock__head"><h3>Overdue</h3><span class="cnt" id="ovOverCnt"></span></div><div class="ovblock__body"><div class="tasklist" id="ovOver"></div></div></div>
+    </div>
+    <div class="moredetail">
+      <button class="moredetail__btn" id="moreBtn" aria-expanded="false" aria-controls="moreBody">More Project Detail <span class="chev" aria-hidden="true">▾</span></button>
+      <div class="moredetail__body" id="moreBody">
+        <div class="md-grid" id="mdTiles"></div>
+        <div><p class="summary__label" style="margin-bottom:.6rem">Area Health</p><div class="md-health" id="mdHealth"></div></div>
+        <p class="docnote" style="border:0;margin:0;padding:0">Priority describes importance; status describes present condition. Overdue is a date condition, not a priority — a task may read “Overdue · In Progress”. Gates, Anchors and schedule flexibility live inside each task’s detail. <button class="dep-open" id="openLegend" style="color:var(--gold);text-decoration:underline;background:none;border:0;font-family:var(--num);text-transform:uppercase;letter-spacing:.1em;font-size:.56rem;font-weight:800">Classification legend →</button></p>
+      </div>
+    </div>
+    <section class="docctl" aria-label="Document control">
+      <p class="kicker">Data Governance</p><h3 class="display">Document Control</h3>
+      <div class="docctl__grid">
+        <div class="docfield"><div class="k">Version</div><div class="v">v15.0 — Continuous</div></div>
+        <div class="docfield"><div class="k">Last updated</div><div class="v">17 July 2026</div></div>
+        <div class="docfield"><div class="k">Document owner</div><div class="v">Executive Secretary</div></div>
+        <div class="docfield"><div class="k">Next review</div><div class="v">31 July 2026</div></div>
+        <div class="docfield"><div class="k">Controlled copy</div><div class="v">Team Leads only</div></div>
+        <div class="docfield"><div class="k">Status source</div><div class="v">Embedded task array</div></div>
+      </div>
+      <p class="docnote">Statuses shown here are valid only as of the displayed update date. Overdue is computed against the current date; the Blueprint is a manually maintained document, not a live tracker.</p>
+    </section>
+  </section>
+
+  <!-- CHOOSE HOW TO EXPLORE -->
+  <section class="seg" id="seg-explore" aria-labelledby="ex-h" tabindex="-1">
+    <div class="vhead"><p class="kicker">Choose How to Explore</p><h2 class="display" id="ex-h">Start where it helps most</h2>
+      <p class="lead">Three ways into the same work. Pick one — the menu at the top lets you switch any time.</p></div>
+    <div class="explore">
+      <button class="exch" data-goto="journey"><span class="exch__n">01 · By Journey</span><span class="exch__t">By Journey</span><span class="exch__d">See the work in preparation order, from foundation to delivery.</span><span class="exch__go">Follow the build line →</span></button>
+      <button class="exch" data-goto="areas"><span class="exch__n">02 · By Area</span><span class="exch__t">By Area</span><span class="exch__d">Spiritual, Creative, Music, Publicity, Technical, Logistics, Finance and Review.</span><span class="exch__go">Choose an area →</span></button>
+      <button class="exch" data-goto="people"><span class="exch__n">03 · By Person</span><span class="exch__t">By Person</span><span class="exch__d">See who is responsible for what across the whole Blueprint.</span><span class="exch__go">Choose a person →</span></button>
+    </div>
+  </section>
+
+  <!-- SELECTED VIEW (journey / areas / people share this slot) -->
+  <div id="viewSlot">
+    <section class="vslot active" id="view-journey" role="region" aria-label="By Journey" tabindex="-1">
+      <div class="vhead"><p class="kicker">By Journey · The Build Line</p><h2 class="display">The work in preparation order</h2>
+        <p class="lead">Follow the route from foundation to delivery. Completed points turn green, the current stage is gold, overdue work carries a crimson warning.</p></div>
+      <div class="rd">
+        <div class="route" id="journeyRoute" role="tablist" aria-label="Preparation stages" aria-orientation="vertical">
+          <div class="route__spine" aria-hidden="true"></div><div class="route__fill" id="journeyFill" aria-hidden="true"></div>
+        </div>
+        <div class="rd-main" id="journeyMain"></div>
+        <aside class="summary" id="journeySummary" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <section class="vslot" id="view-areas" role="region" aria-label="By Area" tabindex="-1">
+      <div class="vhead"><p class="kicker">By Area · The Eight Streams</p><h2 class="display">The work by area of responsibility</h2>
+        <p class="lead">Choose one area to see its tasks, progress and the deliverables it produces.</p></div>
+      <div class="rd">
+        <div class="route" id="areaRoute" role="tablist" aria-label="Areas of work" aria-orientation="vertical">
+          <div class="route__spine" aria-hidden="true"></div><div class="route__fill" id="areaFill" aria-hidden="true"></div>
+        </div>
+        <div class="rd-main" id="areaMain"></div>
+        <aside class="summary" id="areaSummary" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <section class="vslot" id="view-people" role="region" aria-label="By Person" tabindex="-1">
+      <div class="vhead"><p class="kicker">By Person · Who Carries What</p><h2 class="display">The work by owner</h2>
+        <p class="lead">Choose a person to see the work they are carrying and the deliverables connected to it.</p></div>
+      <div class="rd">
+        <div class="route" id="peopleRoute" role="tablist" aria-label="People" aria-orientation="vertical">
+          <div class="railsearch"><input type="search" id="peopleSearch" placeholder="Search people…" aria-label="Search people"></div>
+          <div id="peopleStops"></div>
+        </div>
+        <div class="rd-main" id="peopleMain"></div>
+        <aside class="summary" id="peopleSummary" aria-live="polite"></aside>
+      </div>
+    </section>
+  </div>
+
+  <!-- DELIVERABLES (always the next screen after the selected view) -->
+  <section class="seg" id="seg-deliverables" aria-labelledby="dl-h" tabindex="-1">
+    <div class="vhead"><p class="kicker">The Ecosystem · Outputs</p><h2 class="display" id="dl-h">Deliverables</h2>
+      <p class="lead">What are we producing, and where does each one currently stand? Choose a stage, then a deliverable.</p></div>
+    <div class="rd rd--deliv">
+      <div class="route" id="delivRoute" role="tablist" aria-label="Deliverable stages" aria-orientation="vertical">
+        <div class="route__spine" aria-hidden="true"></div><div class="route__fill" id="delivFill" aria-hidden="true"></div>
+      </div>
+      <div class="rd-main" id="delivMain"></div>
+      <aside class="summary" id="delivSummary" aria-live="polite"></aside>
+    </div>
+  </section>
+</main>
+</div>
+
+<div class="eco-foot" aria-hidden="false">
+  <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
+  <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+</div>
+
+<!-- task detail drawer -->
+<div class="scrim" id="drawerScrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" tabindex="-1">
+  <div class="drawer__head">
+    <div><div class="drawer__ref" id="drawerRef"></div><h2 class="drawer__title" id="drawerTitle">Task detail</h2></div>
+    <button class="drawer__close" id="drawerClose" aria-label="Close detail">✕</button>
+  </div>
+  <div class="drawer__body" id="drawerBody"></div>
+</aside>
+
+<!-- needs attention sheet -->
+<div class="scrim" id="attnScrim"></div>
+<aside class="sheet" id="attnSheet" role="dialog" aria-modal="true" aria-labelledby="attnTitle" tabindex="-1">
+  <div class="sheet__head"><h2 id="attnTitle">Needs Attention</h2><button class="drawer__close" id="attnClose" aria-label="Close">✕</button></div>
+  <div class="sheet__body" id="attnBody"></div>
+</aside>
+
+<!-- search + filter sheet -->
+<div class="scrim" id="searchScrim"></div>
+<aside class="sheet" id="searchSheet" role="dialog" aria-modal="true" aria-labelledby="searchTitle" tabindex="-1">
+  <div class="sheet__head"><h2 id="searchTitle">Search &amp; Filter</h2><button class="drawer__close" id="searchClose" aria-label="Close">✕</button></div>
+  <div class="sheet__body">
+    <div class="filterrow">
+      <div><label for="fSearch">Search</label><input type="search" id="fSearch" placeholder="Task, reference, owner, area, deliverable…"></div>
+      <div><label for="fStatus">Status</label><select id="fStatus"><option value="">Any status</option></select></div>
+      <div><label for="fArea">Area</label><select id="fArea"><option value="">Any area</option></select></div>
+      <div><label for="fPri">Priority</label><select id="fPri"><option value="">Any priority</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option></select></div>
+      <div><label for="fDue">Due within</label><select id="fDue"><option value="">Any time</option><option value="14">Next 14 days</option><option value="30">Next 30 days</option><option value="over">Overdue</option></select></div>
+      <div><label for="fGate">Leadership</label><select id="fGate"><option value="">All tasks</option><option value="gate">Gates only</option><option value="anchor">Anchors only</option></select></div>
+    </div>
+    <div class="searchresults" id="searchResults"></div>
+  </div>
+  <div class="sheet__foot"><button class="btn-clear" id="fClear">Clear filters</button><span id="fCount" style="font-family:var(--num);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);align-self:center"></span></div>
+</aside>
+
+<!-- legend -->
+<div class="scrim" id="legendScrim"></div>
+<aside class="sheet" id="legendSheet" role="dialog" aria-modal="true" aria-labelledby="legendTitle" tabindex="-1">
+  <div class="sheet__head"><h2 id="legendTitle">How to read a task</h2><button class="drawer__close" id="legendClose" aria-label="Close">✕</button></div>
+  <div class="sheet__body">
+    <p class="prose" style="margin-bottom:1rem">Four independent systems describe each task. They are never shown at equal weight — the status marker leads.</p>
+    <div class="dsec"><div class="dsec__label">Status — present condition</div>
+      <p style="font-size:.95rem;color:var(--ink-soft)"><b style="color:var(--status-complete)">Complete</b> · done. <b style="color:var(--crimson-bright)">Overdue</b> · past its date, not complete. In Progress · Awaiting Approval · Blocked · At Risk · Not Started · Deferred.</p></div>
+    <div class="dsec"><div class="dsec__label">Priority — importance</div>
+      <p style="font-size:.95rem;color:var(--ink-soft)">Critical · failure would prevent or endanger delivery. High · shapes or unlocks other work. Medium · standard preparation.</p></div>
+    <div class="dsec"><div class="dsec__label">Structural role — dependency significance</div>
+      <p style="font-size:.95rem;color:var(--ink-soft)">Anchor · a major fixed milestone. Gate · must finish before downstream work proceeds. Standalone · does not block others.</p></div>
+    <div class="dsec"><div class="dsec__label">Schedule flexibility — timing tolerance</div>
+      <p style="font-size:.95rem;color:var(--ink-soft)">Tight · little slack; others depend on the date. Flexible · may move within a window.</p></div>
+  </div>
+</aside>
+<script>
+const TASKS = [{"domain":"SPIRITUAL FORMATION","task":"Develop Pre-WX Devotional — a structured team devotional programme aligned to the WX phases, running June through November","responsible":"Worship Coordinator","due":"May 31, 2026","status":"⬜ Not Started","lesson":"Spiritual preparedness of those who engaged in 2025 produced better worship. The balance between spirituality and skill needs structuring from the beginning, not added later.","notes":"For the Flow Experience team specifically (not the congregation). Programme covers: weekly team devotionals tied to each phase | Personal surrender declarations | Personalised fasting days | Accountability pairs | Testimony moments at rehearsals | Corporate fast | Retreat (Marked overdue: no work has yet begun.)","action_plan":"1. Design a weekly format: 20 minutes — scripture reading, brief reflection, group prayer | 2. Map each week to a WX phase or aspect of the surrender theme | 3. Schedule all sessions June–November before June begins | 4. Assign a different team member to lead each week | 5. Treat attendance as compulsory — same as rehearsal | 6. Increase to twice-weekly in the two weeks before D-Day","ref":"TFE-SF-01","axis1":"Anchor","axis2":"Flexible","axis_note":"Underpins spiritual readiness of the whole team across all phases"},{"domain":"SPIRITUAL FORMATION","task":"Develop a Prayer Framework for all members — team prayer rhythms, surrender declarations, fasting days and accountability across the preparation season","responsible":"Worship Coordinator","due":"May 31, 2026","status":"⬜ Not Started","lesson":"Spiritual preparedness of those who engaged in 2025 produced better worship. The balance between spirituality and skill needs structuring from the beginning, not added later.","notes":"For the Flow Experience team. Covers team prayer rhythms, personal surrender declarations, personalised fasting days and accountability pairs.","action_plan":"1. Set weekly team prayer rhythm | 2. Provide surrender declaration prompts | 3. Assign personalised fasting days | 4. Pair members for accountability | 5. Increase frequency in the two weeks before D-Day","ref":"TFE-SF-08","axis1":"Standalone","axis2":"Flexible","axis_note":"Sustains the team's prayer life across all phases"},{"domain":"SPIRITUAL FORMATION","task":"Develop a Bible Study Framework — a structured team Bible study tied to the WX phases and surrender theme","responsible":"Worship Coordinator","due":"May 31, 2026","status":"✅ Complete","lesson":"Spiritual preparedness of those who engaged in 2025 produced better worship. The balance between spirituality and skill needs structuring from the beginning, not added later.","notes":"For the Flow Experience team. Weekly study tied to each WX phase and the surrender theme.","action_plan":"1. Design a weekly 20-minute format: reading, reflection, group prayer | 2. Map each week to a WX phase | 3. Schedule all sessions before June begins | 4. Assign a different member to lead each week","ref":"TFE-SF-09","axis1":"Standalone","axis2":"Flexible","axis_note":"Grounds the team in the Word through preparation"},{"domain":"MUSIC PRODUCTION","task":"Release First Draft Setlist — songs scoring 7+ grouped by phase, medley structures proposed, estimated durations calculated, total capped at 2h 15m","responsible":"Executive Producer","due":"May 30, 2026","status":"✅ Complete","lesson":"WX 2025 first draft Setlist was released August 15 — too late for the band to prepare properly. Moving to May 30 gives the full team three additional months of musical preparation.","notes":"WX_Plan.xlsx duration model is the template. Songs must have passed the Song Evaluation Framework. Phase groupings must reflect the four-phase arc: Phase 1 — God is Good (Invitation & Celebration) | Phase 2 — GOD will help you yield (Repentance & Empowerment — the empowering help is strength to surrender, not to get what we want) | Phase 3 — YES (Surrender) | Phase 4 — Glory","action_plan":"1. Pull all songs scored 7+ from the Song Board | 2. Build the phase arc — ensure each phase has a clear emotional and theological shape | 3. Propose medley groupings and song order | 4. Enter all songs into duration-tracking format: original duration, estimated performance duration, medley sums | 5. Verify total is within 2h 15m | 6. Share with Lead Servants before publishing | 7. Publish to all team members by May 30","ref":"TFE-MP-02","axis1":"Anchor","axis2":"Tight","axis_note":"Setlist #1 feeds song learning, engineer engagement, equipment list, and phase progressions"},{"domain":"COMMS & DESIGN","task":"Publish WX 2026 Playbook to all Ministries including The Flow Experience — the full preparation arc from June through November 29, showing all key dates and ministry-facing milestones","responsible":"Executive Producer","due":"May 31, 2026","status":"✅ Complete","lesson":"In 2025 key ministries joined the preparation process too late because they had no shared timeline. The all-ministries timeline must be in every ministry lead's hands before the June launch.","notes":"This is the external-facing version of the preparation plan — designed for Children's Ministry, Ushering, V2D, Media, and all church ministries. Different from TFE-CD-01 (Flow Experience internal timeline).","action_plan":"1. Compile all ministry-facing milestones: launch date, monthly update meetings, dress rehearsal dates, D-Day | 2. Format as a single visual one-page timeline | 3. Review with Executive Producer | 4. Share with all ministry leads by May 31 | 5. Bring printed copies to the June all-ministries launch","ref":"TFE-CD-02","axis1":"Gate","axis2":"Tight","axis_note":"All-ministries timeline must be in every ministry lead's hands before the June 28 launch"},{"domain":"COMMS & DESIGN","task":"Publish WX 2026 Blueprint to all Team Leads — covering Music Production; Vocalists preparation covering Endurance and Confidence; and Intentionality for Instrumentalists — milestones from June through November 29","responsible":"Executive Secretary","due":"March 29, 2026","status":"✅ Complete","lesson":"The Flow Experience team needs a more detailed timeline than the all-ministries version — one that speaks to their specific preparation: vocal conditioning, personal learning, rehearsal structure, and spiritual formation.","notes":"Three pillars: Music Production (song learning, arrangements, rehearsals, Setlist) | Vocalists Preparation — Endurance (vocal conditioning, stamina for 3+ hours) and Confidence (tryouts, pre-WX service, The Breaking) | Intentionality for Instrumentalists (personal learning deadlines, drawing board meetings, rehearsal expectations, IEM usage from week one) Shared with the design leads — the Wordmark designer, the mood board maker, the Stage Designer, and the Fashion (Look Book) lead. This is distinct from the Creative Brief published at the All-Ministries Launch (updated with the finished wordmark, mood board, stage design, and fashion concept).","action_plan":"1. Map all Flow Experience-specific tasks to dates | 2. Organise under three pillars: Music Production | 3. Endurance Training | 4. Confidence Boosting | 5. Include key spiritual formation dates: devotional programme, retreat, The Breaking | 6. Review with Music Director and Vocal Lead | 7. Publish to all team leads by May 30 — one day before the all-ministries version","ref":"TFE-CD-01","axis1":"Gate","axis2":"Tight","axis_note":"Flow Experience internal timeline must precede the launch and first rehearsal"},{"domain":"COMMS & DESIGN","task":"Develop and lock the WX 2026 Wordmark — a bespoke typographic or graphic mark for the YES theme, distinct from the Worship Experience logo, for use across all WX 2026 materials","responsible":"Executive Producer","due":"May 31, 2026","status":"✅ Complete","lesson":"In previous years there was no single mark that owned the year's theme. The WX badge was the event logo, not the theme expression. WX 2026 needs a specific mark that carries the YES theme and can be used across all communications independently.","notes":"Dr. Roc must receive the Brief and Creative Direction (Gethsemane) before beginning. Deliverable: final Wordmark in PNG (white on transparent, black on transparent), SVG, and PDF with minimum size and clear space guidance.","action_plan":"1. Dr. Roc receives Brief, Creative Direction, and mood board reference before starting | 2. Explore 3–5 concept directions: typographic YES mark | 3. calligraphic | 4. geometric | 5. scripture-integrated | 6. abstract | 7. Present 2–3 shortlisted concepts to Executive Producer by May 20 | 8. One revision round | 9. Final Wordmark approved and locked by May 31 | 10. Deliver all file formats | 11. File in archive under 02 — BRAND & IDENTITY","ref":"TFE-CD-03","axis1":"Anchor","axis2":"Tight","axis_note":"Wordmark feeds mood board (6), Creative Direction (CD), and all publicity assets"},{"domain":"COMMS & DESIGN","task":"Develop the WX 2026 mood board and Colour Palette — a visual reference document establishing the aesthetic world of YES: Not My Will, But Yours, grounded in the Gethsemane creative direction","responsible":"Executive Producer","due":"May 31, 2026","status":"✅ Complete","lesson":"In 2025 the Brief set the theology but there was no single visual document all creatives could reference. Design decisions diverged across the year because the aesthetic world was described in words, not shown in images.","notes":"Gethsemane aesthetic: Midnight Navy (#0A0B14) | Moonlight on Stone (#C8C4E0) | Olive Garden Green | Sweat Like Blood (deep crimson) | WX Gold (#C9A84C). Deliverable: A3 landscape PDF mood board with colour swatches (HEX/RGB), texture references, and typography samples.","action_plan":"1. Dr. Roc reads Creative Direction fully before sourcing any images | 2. Curate 12–20 reference images across: lighting | 3. texture | 4. nature | 5. posture | 6. atmosphere | 7. Define colour palette with names and HEX codes | 8. Select 1–2 typefaces consistent with Wordmark and Outfit brand font | 9. Assemble as a single A3 landscape PDF mood board | 10. Present to Executive Producer alongside Wordmark concepts | 11. Final version locked May 31","ref":"TFE-CD-04","axis1":"Anchor","axis2":"Tight","axis_note":"mood board feeds Creative Direction (CD), Multimedia/Graphics (MM-GD1), and all visual work"},{"domain":"SPIRITUAL FORMATION","task":"Produce the Creative Direction document — the phase-by-phase creative and spiritual brief for all visual and technical ministries: Lights, Multimedia, V2D, and Lyrics & Projection","responsible":"Executive Producer","due":"June 21, 2026","status":"✅ Complete","lesson":"In WX 2025 there was no single document that translated the spiritual and theological vision of each phase into a creative brief for visual ministries. Each ministry worked from its own interpretation, producing divergence in atmosphere, colour, and movement. A single Creative Direction document, issued before the All-Ministries Launch, ensures that Lights, Multimedia, V2D, and Lyrics & Projection all build the same world.","notes":"This document is the creative and spiritual translation of the Phase Framework for all visual ministries. It specifies: phase-by-phase atmosphere and aesthetic direction | permitted and forbidden visual elements per phase | colour palette references (aligned to the mood board) | movement and energy arc per phase | key moments requiring specific visual treatment | what each visual ministry must deliver and when. Must be completed before the All-Ministries Launch (TFE-CD-05, June 28) — it is a dependency for V2D (V1, V2), Multimedia/Graphics (MM-GD1), Multimedia/Lyrics (MM-LP2), and Lights (LT1).","action_plan":"1. Executive Producer reviews the Four-Phase Theological Framework and the mood board (TFE-CD-04) in full | 2. Write the document phase by phase: Phase 1 — God is Good (Invitation & Celebration — exuberant, open, gold) | 3. Phase 2 — GOD will help you yield (Repentance & Empowerment — turning in contrition, then receiving the grace and strength to surrender; the help given is help to let go, never help toward our own agenda) | 4. Phase 3 — YES (Surrender — still, deep, Gethsemane; midnight blue and olive) | 5. Phase 4 — Glory (kavod/doxa — radiant, released) | 6. For each phase: specify atmosphere, colour reference, movement/dynamic instruction, forbidden elements, and key visual moments | 7. Review with Ps Sammy and Music Director | 8. Distribute to all relevant ministry leads before June 28 | 9. File as the authoritative creative brief in the WX 2026 archive","ref":"TFE-SF-02","axis1":"Anchor","axis2":"Tight","axis_note":"V2D, Lights, Multimedia/Lyrics, and Multimedia/Graphics all depend on this before they can plan"},{"domain":"MUSIC PRODUCTION","task":"Develop the General Approach and First Set Framework — a documented musical philosophy for WX 2026 covering phase arc, dynamic shape, song typology per phase, and transition strategy","responsible":"Executive Producer","due":"June 7, 2026","status":"✅ Complete","lesson":"In 2025 there was no formal musical philosophy document — the Setlist existed but the 'why' behind each musical decision was held only in the Music Director's head. Making it explicit allows the whole team to understand and execute the vision.","notes":"This is the musical philosophy document that the Setlist is built from — not the Setlist itself (TFE-MP-02). Covers: energy levels per phase (1–10) | vocal texture | instrumental density | typical song lengths | transition principles | what we are NOT doing musically.","action_plan":"1. Production Crew studies the Brief and four phase descriptions in depth | 2. Write a one-page musical philosophy: what does surrender sound like? | 3. For each phase: define energy level, vocal texture, instrumental density, typical song length | 4. Define transition principles: how do we move between phases? Between songs? What signals the band? | 5. Write a 'what we are NOT doing' section | 6. Present at the June all-ministries launch (TFE-CD-05)","ref":"TFE-MP-04","axis1":"Gate","axis2":"Flexible","axis_note":"Musical philosophy document must precede All-Ministries Launch (L1)"},{"domain":"MUSIC PRODUCTION","task":"Listen to and review all submitted songs — full team listening session to assess each song against the theme, phase fit, and congregational singability before finalising the set","responsible":"Executive Producer","due":"May 23, 2026","status":"✅ Complete","lesson":"In 2025 scoring was done on paper but the full team never listened together. Collective listening catches what individual scoring misses — how a song actually feels in the room, not just on paper.","notes":"This is a listening session, not a rehearsal. Play each song from a reference recording. The team scores and discusses. Output: confirmed song board with phase assignments and recommendations for the Setlist.","action_plan":"1. Compile reference recordings for every song on the Song Board | 2. Book a session room — minimum 3 hours | 3. Play each song in full | 4. After each song: brief group discussion — phase fit? congregational singability? does it serve the surrender journey? | 5. Update scores based on the listening | 6. Confirm which songs advance to the First Draft Setlist (TFE-MP-02) | 7. Document outcomes and file in archive","ref":"TFE-MP-01","axis1":"Gate","axis2":"Tight","axis_note":"Listening session output feeds directly into Setlist #1 (TFE-MP-02) — must precede it"},{"domain":"LOGISTICS","task":"Finalise Equipment and Sound Tech — confirm all instruments, in-ear monitors, PA system, separation of livestream from in-house mix, overflow audio, and camera requirements","responsible":"Band Lead","due":"June 13, 2026","status":"⬜ Not Started","lesson":"In WX 2025 the livestream sound initially failed, overflow sound was poor, and there were not enough cameras. Equipment gaps identified in June can be procured, rented, or borrowed with time. Identified in November, they cannot.","notes":"Key items to confirm: trombone replacement (outstanding — not yet resolved as at WX 2026 preparation) | keyboards | laptops for music direction | 7 cameras (not 5) | separate livestream engineer and console | overflow audio feed per space | in-ear monitors for all rehearsals from July 10","action_plan":"1. Band Lead audits all current instruments — what is damaged, missing, or inadequate | 2. Sound Lead confirms livestream chain is separate from in-house | 3. Confirm IEM availability for all team members | 4. Confirm 7 cameras — owned, rented, or borrowed | 5. Confirm overflow spaces and their audio/video feed requirements | 6. Produce a single equipment list with status: confirmed | 7. to procure | 8. to rent | 9. All gaps resolved or formally budgeted by June 13","ref":"TFE-LT-01","axis1":"Anchor","axis2":"Tight","axis_note":"Equipment list feeds engineer engagement (9b), sound rental (F2), and instrument procurement (F3)"},{"domain":"LOGISTICS","task":"Finalise Engagement with Selected Sound Engineer — full list of equipment, terms of engagement, and proposed rehearsal schedule confirmed and signed","responsible":"Band Lead","due":"June 20, 2026","status":"⬜ Not Started","lesson":"Equipment finalisation (TFE-LT-01) and engineer engagement are two separate decisions. The engineer must know the full equipment list and rehearsal schedule before they can commit. Leaving this to November creates a single point of failure.","notes":"Follows directly from TFE-LT-01. Engineer must be briefed on: full equipment list | IEM requirements | rehearsal schedule from July 10 | D-Day timeline | overflow and livestream responsibilities | two separate console requirement.","action_plan":"1. Band Lead compiles the full equipment list from TFE-LT-01 | 2. Prepare terms of engagement: dates, responsibilities, fee, cancellation policy | 3. Share proposed rehearsal schedule (July 10 through November) with the engineer | 4. Confirm agreement in writing by June 27 | 5. File signed engagement in archive under 07 — FINANCE","ref":"TFE-LT-02","axis1":"Gate","axis2":"Tight","axis_note":"Engineer must be confirmed before rehearsals begin July 10"},{"domain":"MUSIC PRODUCTION","task":"Confirm Proposed Song Leaders, Keys, BPMs, Reference Songs, Estimated Durations, and Medley Structures — lock the complete Setlist #1 with all musical parameters confirmed","responsible":"Music Director","due":"June 5, 2026","status":"⬜ Not Started","lesson":"In 2025 song lead assignments were made in August but received no response within the deadline. Locking all parameters in June gives song leaders two full months before rehearsals begin to learn their material.","notes":"Total music cap: 2h 15m. Every song must have: confirmed key | BPM (with L/ST notation from WX_Plan.xlsx) | reference recording link | song leader assigned | estimated performance duration | medley transition notes where applicable.","action_plan":"1. From First Draft Setlist (TFE-MP-02), make final cuts to reach 2h 15m cap | 2. For every song: confirm key, BPM, reference recording | 3. Provisionally assign proposed song leaders for early learning — subject to tryout outcomes (TFE-MP-05) | 4. Confirm each leader's acceptance personally | 5. Document all medley transitions and modulation cues | 6. Share completed Setlist with all team members | 7. Publish by June 5 (subject to change); the Setlist is frozen on September 20","ref":"TFE-MP-03","axis1":"Anchor","axis2":"Tight","axis_note":"Locks keys, BPMs, song leaders — feeds rehearsals, engineer engagement, and phase progressions"},{"ref":"TFE-FR-01","domain":"FINANCE","task":"Finalise WX 2026 Budget — covering all Flow Experience-owned expenses: sound equipment, instruments, lighting, stage décor, and retreat honoraria","responsible":"Executive Secretary","due":"June 5, 2026","status":"⬜ Not Started","lesson":"In WX 2025 some costs were confirmed late and created procurement delays. The budget must be approved before any external engagement is made — the All-Ministries Launch cannot proceed without a confirmed budget.","notes":"Flow Experience-owned budget items: in-house sound-equipment rental | instruments (including trombone replacement) | livestream chain (second console and engineer) | IEMs for all team members | lighting and LED rig | stage décor | retreat venue and honoraria for external facilitators | post-WX outing. All other ministry costs (cameras, children's materials, ushering supplies) are borne by those ministries directly. WX 2025 actuals are held confidentially by the Executive Secretary and shared on request — they are not linked here.","action_plan":"1. Executive Producer compiles all anticipated costs from equipment, logistics, and personnel requirements, in consultation with the Executive Secretary | 2. Cross-reference with WX 2025 actuals as a baseline | 3. Build a line-item budget with three columns: estimated, confirmed, and actual | 4. Review with Ps Sammy and leadership | 5. Budget approved before June 5 | 6. File budget in archive under 07 — FINANCE | 7. Update actuals column as expenses are confirmed","axis1":"Anchor","axis2":"Tight","axis_note":"Budget approval unlocks all procurement — F2, F3, F4, F5 cannot proceed without it"},{"ref":"TFE-FR-02","domain":"FINANCE","task":"Specify and confirm sound-equipment rental requirements — PA system, second console for livestream, IEMs for all team members, cables, and all supporting technical equipment","responsible":"Band Lead","due":"June 27, 2026","status":"⬜ Not Started","lesson":"In WX 2025 the generator was booked late and cost GH₵7,495 under time pressure. Early booking secures better rates and confirms availability. These are paper confirmations; the engineer engagement (TFE-LT-02, June 20) is provisional on the equipment list (TFE-LT-01, June 13).","notes":"Key items: PA system for the main hall | separate console and signal chain for livestream | IEMs for all vocalists and instrumentalists | cables and connectivity for overflow spaces | backup equipment for critical items. Rental must cover setup day (November 27) through end of D-Day (November 29). The Band Lead specifies and confirms requirements; final payment is processed by the Executive Secretary against the budget (TFE-FR-01).","action_plan":"1. Band Lead and Sound Lead compile the full equipment list from TFE-LT-01 | 2. Approach preferred rental supplier with the full list | 3. Confirm pricing and availability | 4. Submit the confirmed requirements to the Executive Secretary for payment by June 27 | 5. Confirm rental period: November 27 to November 29 | 6. File signed rental agreement in archive under 07 — FINANCE","axis1":"Gate","axis2":"Tight","axis_note":"Sound equipment must be booked before engineer engagement is finalised"},{"ref":"TFE-FR-03","domain":"FINANCE","task":"Confirm Instruments Required — including trombone replacement and any other instruments needed for the WX 2026 Setlist","responsible":"Band Lead","due":"June 27, 2026","status":"⬜ Not Started","lesson":"The trombone was not replaced after WX 2025. The Setlist determines instrument needs — instrument procurement must follow Setlist confirmation (TFE-MP-03), not precede it.","notes":"Outstanding items include: trombone replacement (not resolved from WX 2025) | any additional instruments required by the WX 2026 Setlist. Instruments must be available from the first rehearsal (July 10). The Band Lead specifies and confirms requirements; final payment is processed by the Executive Secretary against the budget (TFE-FR-01).","action_plan":"1. Band Lead reviews Setlist #1 (TFE-MP-03) to identify all instruments required | 2. Audit current inventory — what is available, what is damaged, what is missing | 3. Identify procurement options: purchase, rental, or borrow | 4. Prioritise trombone replacement | 5. Confirm all instruments by June 27 | 6. File procurement records in archive under 07 — FINANCE","axis1":"Gate","axis2":"Flexible","axis_note":"Instruments needed by July 10 rehearsal start; window exists but not large"},{"ref":"TFE-FR-04","domain":"FINANCE","task":"Specify and confirm Lighting and LED Rig rental requirements — full rig, operator, and installation, aligned to the Creative Direction document","responsible":"Executive Producer","due":"July 12, 2026","status":"⬜ Not Started","lesson":"Lighting is one of the most significant visual elements of WX. The rig must be designed against the Creative Direction document — not selected arbitrarily. Early confirmation prevents last-minute substitutions.","notes":"Lighting budget covers: full rig rental for the WX 2026 space | operator fee | installation (November 20) and dismantling. The rig must be installed before the Second Dress Rehearsal (November 21). Rental confirmation (Playbook Task LT2) must precede financial commitment. The Executive Producer specifies and confirms requirements; final payment is processed by the Executive Secretary against the budget (TFE-FR-01).","action_plan":"1. Lighting Director reviews the Creative Direction document (TFE-SF-02) fully | 2. Identify specific rig requirements: fixtures, LED panels, controllers | 3. Approach preferred lighting supplier | 4. Confirm pricing, availability, and operator | 5. Submit the confirmed requirements to the Executive Secretary for payment by July 12 | 6. File signed rental agreement in archive under 07 — FINANCE","axis1":"Gate","axis2":"Flexible","axis_note":"Lighting confirmed by July 12; rig installed November 20 — long window"},{"ref":"TFE-FR-05","domain":"FINANCE","task":"Confirm Stage Décor and Budget — physical elements that create the Gethsemane aesthetic on stage","responsible":"Executive Producer","due":"August 16, 2026","status":"⬜ Not Started","lesson":"Stage décor was not formally planned in WX 2025. For WX 2026 the Gethsemane aesthetic requires intentional physical staging — the garden, the midnight palette, the sense of weight and surrender must be embodied in the space.","notes":"Stage décor elements may include: olive branches or foliage | deep blue or midnight fabric | candles or torch elements | minimal, purposeful placement. All décor must serve the Creative Direction — nothing decorative for its own sake. Budget confirmed in TFE-FR-01.","action_plan":"1. Executive Producer and Design Lead (Dr. Roc) review the Creative Direction document | 2. Identify 3–5 physical elements that will embody the Gethsemane aesthetic | 3. Source or commission each element — purchase or rental | 4. Confirm costs against approved budget (TFE-FR-01) | 5. Confirm procurement by August 16 | 6. Confirm installation plan for November 27 setup day","axis1":"Standalone","axis2":"Flexible","axis_note":"Stage décor has no downstream tasks; procurement window extends to November setup day"},{"domain":"COMMS & DESIGN","task":"Host WX 2026 All-Ministries Internal Launch — the first time the theme, wordmark, mood board, colour palette, and general musical approach are presented to all church ministries together","responsible":"Executive Producer","due":"June 28, 2026","status":"✅ Complete","lesson":"In WX 2025 key ministries — Ushering, Children's, V2D — joined the preparation too late. This launch begins that conversation in June with full information, so every ministry understands the vision before they begin their own preparation.","notes":"Target date: June 21/22 or June 28/29 — confirm with Worship Coordinator. Pre-launch deliverables required: Wordmark (TFE-CD-03), mood board (TFE-CD-04), General Approach (TFE-MP-04). All three must be locked before this meeting. Attendees: all church ministries. The Flow Experience team runs a separate schedule. Ministry leads and functional roles are confirmed at this launch (and reconfirmed at M1).","action_plan":"1. Executive Assistant sends calendar invitation to all ministry leads by June 1 | 2. Agenda (60 min): Welcome & prayer (5 min) → Theme presentation — the why (Worship Coordinator, 15 min) → Wordmark & mood board reveal (Dr. Roc, 10 min) → Musical Approach (Music Director, 10 min) → What each ministry needs to know (Executive Assistant, 10 min) → Questions (5 min) → Monthly meeting dates confirmed (5 min) | 3. Distribute one-page launch brief at the meeting | 4. Confirm all monthly update meeting dates at this meeting | 5. Confirm every ministry lead and all functional role appointments (Stage Manager, Director, Medical Team lead, sub-function leads) — no ministry leaves the launch without a named, accountable lead | 6. Executive Assistant circulates summary and action points within 48 hours","ref":"TFE-CD-05","axis1":"Anchor","axis2":"Tight","axis_note":"Launch activates all nine ministry tracks simultaneously — all pre-launch tasks must be complete"},{"domain":"COMMS & DESIGN","task":"Publish Look Book 2026 — a professionally designed fashion and appearance guide for all Flow Experience team members, grounded in the 'Dressed to Disappear' conviction and the YES theme","responsible":"Executive Secretary","due":"July 10, 2026","status":"⬜ Not Started","lesson":"In 2025 the Look Book was released September 19 — only 10 weeks before D-Day. High compliance was achieved but releasing in July gives team members nearly five months to prepare their outfits. One deviation was noted: Jessie-Emma, very dark green.","notes":"Template: LOOK_Book.pdf (2025). Structure: Our Focus → Our Way → Style DNA → Gents Guide → Ladies Guide → Style Guardrails → The Finish. Dress code: All-Black Semi-Formal. Structured, Not Stiff, Clean. Design to same production standard as 2025.","action_plan":"1. Executive Secretary confirms dress code with Executive Producer — same all-black semi-formal or adjusted for 2026 theme? | 2. Review 2025 Look Book — retain Dressed to Disappear theology and two-anchor structure | 3. Update Our Focus and Our Way sections for 2026 theme language | 4. Source new clothing reference images | 5. Design in InDesign or equivalent | 6. Executive Producer review and approval by July 5 | 7. Distribute to all team members by July 10","ref":"TFE-CD-06","axis1":"Standalone","axis2":"Flexible","axis_note":"Look Book has no downstream dependencies; high compliance was achieved even at September in 2025"},{"domain":"MUSIC PRODUCTION","task":"Begin Full Band and Singers Rehearsals — structured, attendance-tracked, song-by-song sessions with in-ear monitors from week one","responsible":"Music Director","due":"July 10, 2026","status":"⬜ Not Started","lesson":"In WX 2025 band rehearsals were largely ineffective until days before the event. This is the single biggest execution risk. Starting in July — not September — gives the full team four months of genuine preparation.","notes":"This is a combined start — vocalists and instrumentalists begin together from July 10. Pre-condition: all team members must have BEGUN personal song learning before entering the rehearsal room — learning starts before perfecting. Mastery is demonstrated later, at the August 16 gate (TFE-MP-08). IEMs used from session one.","action_plan":"1. Music Director publishes rehearsal schedule by June 28 — weekly sessions July 10 through November | 2. Every session: warm-up (10 min) → opening segment Phase 1 (15 min) → phase-by-phase run (90 min) → transitions drill (15 min) → cool-down (10 min) | 3. Opening two songs rehearsed at every session without exception | 4. Attendance tracked strictly — three unexcused absences reviewed by Lead Servants | 5. IEM setup confirmed before first session | 6. Brief written summary after every rehearsal: what was covered, what needs work","ref":"TFE-MP-06","axis1":"Anchor","axis2":"Tight","axis_note":"All rehearsal and conditioning work depends on sessions beginning July 10"},{"domain":"MUSIC PRODUCTION","task":"Song Lead Tryouts — all proposed and interested song leads audition before formal assignment","responsible":"Music Director","due":"June 27, 2026","status":"⬜ Not Started","lesson":"In 2025 song lead roles were assigned without a formal assessment process. Standards varied. Stage-readiness was unclear. Some songs felt like regular Sunday selections. Tryouts raise the standard and make the criteria transparent.","notes":"Criteria: vocal quality | thematic understanding of the phase | congregational engagement ability | spiritual bearing. Unsuccessful candidates remain part of the team in ensemble roles — tryouts are not exclusion exercises. Results inform Song Lead Assignments, not the Setlist itself — Setlist #1 is locked before tryouts begin.","action_plan":"1. Music Director publishes tryout criteria to all interested members by June 28 | 2. Announce tryouts — open to anyone who wants to lead a song at WX 2026 | 3. Each candidate prepares one song from the confirmed Setlist | 4. Tryouts conducted by Music Director and at least one Lead Servant | 5. Written feedback provided to each candidate within one week | 6. Results inform Song Lead Assignments (confirmed song leaders updated within the locked Setlist framework) | 7. Confirmed leads notified by July 10 — in time for first rehearsal","ref":"TFE-MP-05","axis1":"Gate","axis2":"Flexible","axis_note":"Tryouts inform song lead assignments within the locked Setlist; can shift slightly"},{"domain":"SPIRITUAL FORMATION","task":"Identify and Confirm Retreat Facilitators — minimum two external practitioners at musician/producer level, plus internal sessions from Executive Producer and Ps Sammy","responsible":"Worship Coordinator","due":"July 31, 2026","status":"⬜ Not Started","lesson":"In WX 2025 the retreat was described as life-changing largely because of the calibre of external practitioners: JaySquid, Obeng King, Nicholas Annang, Nana Yaw Ofori Atta. The same level is required. Confirming in July gives facilitators adequate preparation time.","notes":"Retreat date: November 14 (Wade-In — see TFE-SF-04). Facilitators must receive the Brief, Creative Direction, and context on the team's current level before the retreat. Honoraria must be budgeted.","action_plan":"1. Identify what the team most needs in 2026 — based on WX 25 Report gaps: band cohesion, vocal excellence, ministerial presence | 2. Draft shortlist of 3–4 potential external facilitators per skill area | 3. Approach first-choice candidates by June — give them preparation time | 4. Confirm all facilitators by July 31 | 5. Brief each facilitator: theme, team level, specific gap they are addressing | 6. Share Brief and Creative Direction with each facilitator | 7. Confirm honoraria within budget","ref":"TFE-SF-03","axis1":"Gate","axis2":"Flexible","axis_note":"Must be confirmed before retreat planning (LG1, LG2) and the retreat itself (TFE-SF-04) can proceed"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #1 — July: ideation across all ministries with strategy. Each ministry presents their WX 2026 concept and approach for the day plus needs","responsible":"Executive Secretary","due":"July 12, 2026","status":"⬜ Not Started","lesson":"The July meeting is not a status update — it is a strategy session. Each ministry should arrive having thought about what WX 2026 means for their specific area and what ideas they are bringing to make D-Day excellent.","notes":"This is the first monthly all-ministries meeting after the launch. Focus: each ministry presents their WX 2026 concept and early ideas. Cross-ministry ideation — what can we do together that we cannot do alone? Chair: Event Lead. Duration: 60 minutes. M1 also formally confirms every ministry lead and functional-role appointment carried over from the launch — any still outstanding is closed here. Spiritual anchor: this meeting opens the journey — ground every ministry’s ideas in the invitation, \"come and surrender,\" before any planning begins. Executive Producer also in attendance.","action_plan":"1. Executive Assistant sends agenda one week in advance — each ministry lead prepares a 5-minute presentation of their WX concept | 2. Confirm/close all ministry-lead and functional-role appointments — record the named owner for every ministry and every cross-cutting role | 3. Open ideation segment after all presentations: cross-ministry ideas | 4. Executive Assistant captures all ideas and assigns owners | 5. Minutes and action points circulated within 48 hours | 6. Ideas without an owner are not pursued","ref":"TFE-CD-07","axis1":"Gate","axis2":"Flexible","axis_note":"Each monthly meeting gates the next phase of ministry planning"},{"domain":"MUSIC PRODUCTION","task":"Begin Endurance Conditioning for all vocalists — vocal and physical stamina training designed for 3+ hour ministry situations","responsible":"Vocal Lead","due":"August 1, 2026","status":"⬜ Not Started","lesson":"In WX 2025 vocal strain was observed due to all-night activities preceding the event. Vocalists need stamina, not just skill. Conditioning must begin well before the intense November period.","notes":"Endurance conditioning covers: vocal warm-up and cool-down protocol at every rehearsal | sustained tone and breath control exercises | long-form stamina drills (45+ minutes continuous) | pre-event physical care: sleep, hydration, no all-night activities within 48 hours of D-Day except The Breaking (TFE-SF-05), which carries its own protections","action_plan":"1. Vocal Leads research and develop a documented vocal conditioning protocol — adopted before conditioning starts (Aug 1), naming its components: warm-up/cool-down, breath and sustain drills, the 45-minute stamina drill, and pre-event care | 2. Add 10-minute warm-up to the start of every rehearsal from August | 3. Introduce a monthly long-form stamina drill — 45+ minutes continuous singing | 4. Advise all vocalists on pre-event physical care | 5. Flag any vocal health concerns early — do not wait until November | 6. Track conditioning progress in rehearsal notes","ref":"TFE-MP-07","axis1":"Gate","axis2":"Flexible","axis_note":"Conditioning must begin before the intensive November period but has a wide window"},{"domain":"MUSIC PRODUCTION","task":"Instrumentalists Intentionality Training — a structured programme of deliberate, focused practice for all instrumentalists covering: personal song mastery, arrangement understanding, dynamic sensitivity, and musical surrender for the YES theme","responsible":"Band Lead","due":"August 1, 2026","status":"⬜ Not Started","lesson":"In WX 2025 instrumentalists played selectively based on preference and were largely ineffective until days before the event. The issue was not skill — it was intentionality. Musicians who are technically capable but spiritually and musically uncommitted to the specific demands of a theme will underperform regardless of rehearsal frequency.","notes":"Intentionality training is distinct from rehearsal. Rehearsal is collective. Intentionality training is individual and deliberate — each instrumentalist knows exactly what they are responsible for, why it matters, and what 'done' looks like. Covers: personal song learning | arrangement study | dynamic awareness | IEM discipline","action_plan":"1. Band Lead produces a personal intentionality checklist for each instrumentalist by July 10 | 2. Each instrumentalist self-assesses weekly: (a) can play every assigned part from memory at performance tempo, (b) knows the dynamic map per phase — where they drop out, where they swell, and what they do NOT play, (c) has named the 2–3 moments in their parts that must land | 3. Group intentionality session in August — discussion input: what does surrender sound like on your instrument? What are you holding back? | 4. Each member demonstrates (a)–(c) one-to-one with the Music Director by August 16 — 'done' = checklist signed off by the Music Director | 5. Any instrumentalist who cannot demonstrate mastery by August 16 is reviewed by Lead Servants before September rehearsals | 6. Intentionality assessment documented and filed in rehearsal notes","ref":"TFE-MP-08","axis1":"Gate","axis2":"Flexible","axis_note":"Same window as vocalist conditioning; can shift within August"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #2 — August: confirmation and commencement of all proposed ideas. Each ministry commits to their WX 2026 plan","responsible":"Executive Secretary","due":"August 16, 2026","status":"⬜ Not Started","lesson":"The August meeting is the point of commitment. Ideas from July are either confirmed and commenced, or formally dropped. No idea should remain undecided after August.","notes":"Focus: each ministry presents the status of their July ideas — confirmed and underway, or dropped with reason. Any idea that needs cross-ministry resource is negotiated here. Chair: Event Lead. Duration: 60 minutes. Spiritual anchor: the month of commitment mirrors Phase 2 — ministries lay down their own preferences and commit to what serves the surrender, not their visibility. Executive Producer also in attendance.","action_plan":"1. Executive Assistant reviews all ideas captured from July meeting | 2. Each ministry lead confirms: which ideas are proceeding, which are dropped, and why | 3. Resource conflicts resolved — who provides what to whom by when | 4. After August meeting: no new ideas introduced without Executive Producer approval | 5. Executive Assistant updates the all-ministries timeline with confirmed plans","ref":"TFE-CD-08","axis1":"Gate","axis2":"Flexible","axis_note":"Commits all ministries to their plans — no new ideas after this"},{"domain":"MUSIC PRODUCTION","task":"Finalisation of Phase Progressions — lock the musical arc, transitions, and dynamic shape of each phase before full-service simulations begin","responsible":"Music Director","due":"September 13, 2026","status":"⬜ Not Started","lesson":"In 2025 musical transitions were largely smooth only because of individual skill, not planning. Phase progressions must be documented and agreed before the first dress rehearsal — not improvised on the day.","notes":"Output: a written phase progression document for each of the four phases, covering: entry point | build points | peak moment | transition to next phase | key moments that must land | what the band does at each transition | what the song leader does. The Setlist Freeze follows on September 20 — no song changes after that date.","action_plan":"1. Music Director and Band Lead hold a drawing board session for each phase — four sessions total | 2. Map the emotional arc of each phase: entry, build, peak, resolution | 3. Document every song transition: key, BPM shift, who signals the band | 4. Identify the 2–3 moments in each phase that must land — the moments that cannot be rushed | 5. Share with all song leaders and band members | 6. Phase progressions tested in rehearsals before October","ref":"TFE-MP-09","axis1":"Anchor","axis2":"Tight","axis_note":"Phase progressions are a dependency for Playbook tasks V3, MM-LP3, and all dress rehearsals"},{"domain":"MUSIC PRODUCTION","task":"Pre-WX Recording — capture high-quality audio and video of the team performing WX 2026 songs for reference, content creation, and the WX Convo series","responsible":"Music Director","due":"October 18, 2026","status":"⬜ Not Started","lesson":"WX 2025 produced the first multitrack recording and multi-camera footage. Setlists and arrangements were not archived properly. 2026 must have a documented archiving protocol from the start, and the pre-WX recording must serve multiple purposes.","notes":"Serves three purposes: (1) Reference recordings for song leaders and team members | (2) Source material for WX Convo video snippets (TFE-PB-02) | (3) Archive for the WX 2026 documentation record.","action_plan":"1. Music Director liaises with the Multimedia Lead to book the recording session — venue, date, equipment | 2. Confirm multitrack audio and multi-camera setup | 3. Record all confirmed Setlist songs at performance standard | 4. Archive all files within 24 hours: WX26_RECORDING_[YYYYMMDD]_[SongTitle] | 5. Share reference recordings with all song leaders immediately | 6. Extract content for WX Convo series (TFE-PB-02) | 7. Full recording filed in archive under 04 — REHEARSAL FILES","ref":"TFE-MP-10","axis1":"Gate","axis2":"Tight","axis_note":"Recording session produces reference tracks and WX Convo source material — both time-sensitive"},{"domain":"PUBLICITY","task":"Script or Plan WX Convo Videos — a video series directly or indirectly related to the YES theme, featuring Lead Servants, to draw awareness and conscientise the congregation on the WX 2026 journey","responsible":"Executive Producer","due":"September 13, 2026","status":"⬜ Not Started","lesson":"WX 2025 had no dedicated content series for the congregation before the event. The WX Convo series fills that gap — creating a body of content that builds understanding of the theme across six weeks before D-Day.","notes":"Format: full video on YouTube | snippets during Sunday announcements | three episodes released Oct 14, Oct 28, Nov 11. Content: formational, not promotional. Subjects: Lead Servants primarily. Recording commences September 13 and is spread across several weeks (it cannot be done in one sitting); all recording is completed by October 17. Editing then begins and all three episodes are edited and ready for review by October 25 — with Episode 1 prioritised and ready before its October 14 release.","action_plan":"1. Publicity Lead develops three episode concepts from the Publicity Strategy — each building on the last | 2. Episode 1 (Oct 14): What is WX 2026 about? Introduction to the theme | 3. Episode 2 (Oct 28): What does it mean to surrender? Personal testimonies from Lead Servants | 4. Episode 3 (Nov 11): The journey so far — what has the team learned preparing for this day? | 5. Record across sessions from September 13; all recording completed by October 17 | 6. Edit Episode 1 first, ready before October 14; all three edited and ready for review by October 25 | 7. Sunday announcement snippets: 60–90 seconds | 8. Full video on YouTube with a clear call to action: subscribe, share, come on November 29","ref":"TFE-PB-02","axis1":"Anchor","axis2":"Tight","axis_note":"All three WX Convo episodes must be recorded before October 14 release date"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #3 — September: progress review, phase progression shared with all ministries, recording outcomes reviewed","responsible":"Executive Secretary","due":"September 20, 2026","status":"⬜ Not Started","lesson":"September is when the preparation visibly accelerates. All ministries need to see the full picture — what the music now sounds like, what the visual world looks like, and what their specific preparation must be in October.","notes":"Focus: Phase progression document shared (TFE-MP-09) | WX Convo series previewed | First Roll-Out confirmed for September 27 | Each ministry updates on their confirmed plans. Chair: Event Lead. Duration: 60 minutes. Spiritual anchor: as the work accelerates, hold the posture of Gethsemane — progress is measured by alignment to the \"yes,\" not by activity. Executive Producer also in attendance.","action_plan":"1. Executive Assistant shares phase progression document with all leads before the meeting | 2. Music Director gives a brief overview of where the music now is | 3. Publicity Lead previews WX Convo episode 1 | 4. Each ministry confirms: what is done, what is in progress, what support they need | 5. Minutes and action points circulated within 48 hours","ref":"TFE-CD-09","axis1":"Gate","axis2":"Flexible","axis_note":"Phase progressions shared; publicity confirmed; October work begins after this"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #4 — October: review campaign performance, confirm dress rehearsal attendance from all ministries, D-Day running order shared","responsible":"Executive Secretary","due":"October 18, 2026","status":"⬜ Not Started","lesson":"October is the last full month before final preparations begin. Every ministry must arrive at November knowing exactly what they are doing and when.","notes":"Focus: Pre-WX recording outcomes reviewed | First Major AD campaign review | WX Convo Episode 1 feedback | Dress rehearsal dates confirmed (TFE-MP-11 and 24) | D-Day running order shared for ministry input | Wade-In retreat preparation | Each ministry confirms D-Day readiness plan. Chair: Event Lead. Duration: 60 minutes. Spiritual anchor: rehearse the surrender, not just the run-sheet — every D-Day readiness item exists to make room for the room to kneel. Executive Producer also in attendance.","action_plan":"1. Executive Assistant circulates D-Day running order draft before the meeting | 2. Each ministry reviews and flags any conflict or gap | 3. Dress rehearsal attendance confirmed from all ministries | 4. Any ministry that cannot attend a simulation must send a fully briefed deputy | 5. Minutes and action points circulated within 48 hours","ref":"TFE-CD-10","axis1":"Gate","axis2":"Tight","axis_note":"Dress rehearsal attendance confirmed here; October is last full month before November crunch"},{"domain":"SPIRITUAL FORMATION","task":"Wade-In Retreat — full-day formation retreat for the Flow Experience team: morning prayer and Bible study, theological sessions, external practitioners, focus groups, and evening worship","responsible":"Worship Coordinator","due":"November 14, 2026","status":"⬜ Not Started","lesson":"The retreat in 2025 was described as life-changing. It is now a non-negotiable element of preparation. Target date: November 7 or November 14. Must happen before the second dress rehearsal.","notes":"Retreat_Schedule.docx — Wade In 2025 is the template. Full day: 07:45 prayer → morning theology (Ps Sammy) → external practitioner sessions → lunch → focus groups → accountability pairs → musical drawing board → worship rehearsal → closing prayer and commission.","action_plan":"1. Date confirmed: November 14 | 2. Confirm off-site venue | 3. Build schedule using 2025 Wade-In as template | 4. Brief all facilitators on the day's structure | 5. Send expectations to all team members by October 31 | 6. Every team member brings their personal surrender declaration | 7. Debrief within one week","ref":"TFE-SF-04","axis1":"Gate","axis2":"Tight","axis_note":"Must happen before Second Dress Rehearsal; no recovery window given Nov 14 date"},{"domain":"MUSIC PRODUCTION","task":"First Dress Rehearsal — full-service simulation involving all ministries: Music, V2D, Children's, Ushering, Sound, Media, with lighting active","responsible":"Music Director","due":"November 7, 2026","status":"⬜ Not Started","lesson":"No full-dress rehearsal was conducted in WX 2025. This created avoidable execution gaps on D-Day. Two simulations are now non-negotiable — the first surfaces the gaps, the second confirms they are closed.","notes":"Morning session. Run the full service from gates-open to benediction. All ministries present in their D-Day positions. Appoint one Director for the simulation. 30-minute debrief immediately after — every gap documented. Livestream tested end-to-end: Sound audio feed + Multimedia stream output.","action_plan":"1. Confirm all ministries present — November 7 morning | 2. Full running order distributed to all leads one week before | 3. Sound rig, lighting, and overflow feeds all live | 4. All 7 cameras in assigned positions | 5. Director calls corrections in real time | 6. 30-minute debrief: every gap gets an action point | 7. All gaps resolved before second dress rehearsal (TFE-MP-12)","ref":"TFE-MP-11","axis1":"Anchor","axis2":"Tight","axis_note":"First simulation surfaces all gaps; eight Playbook ministry tasks depend on this date"},{"domain":"MUSIC PRODUCTION","task":"Second and Final Dress Rehearsal — full-service simulation with all lighting integrated, all ministries present, implementing all fixes from the first simulation","responsible":"Music Director","due":"November 21, 2026","status":"⬜ Not Started","lesson":"The second simulation is the one that must feel like D-Day. If it does not, there is one week to address it. Every gap from the first simulation must be closed before this date.","notes":"Morning session. Full lighting integrated — this is the first time the rig runs at full intended design. Lighting Tech to have a complete cue list by this date. All gaps from First Dress Rehearsal resolved. After this simulation: no major changes. Livestream tested end-to-end: Sound audio feed + Multimedia stream output.","action_plan":"1. Review all action points from First Dress Rehearsal — confirm each is resolved | 2. Lighting Tech has full cue list ready | 3. Run the complete service — do not skip any section | 4. All ministries in D-Day positions | 5. Director notes any remaining gaps | 6. Debrief: only critical gaps addressed after this point | 7. After November 21 — the plan is locked","ref":"TFE-MP-12","axis1":"Anchor","axis2":"Tight","axis_note":"Final simulation — all gaps must be closed; one week before D-Day, no recovery beyond this"},{"ref":"TFE-LT-03","domain":"LOGISTICS","task":"Confirm Wade-In Retreat venue — off-site location for the full-day formation retreat on November 14","responsible":"Executive Secretary","due":"August 16, 2026","status":"⬜ Not Started","lesson":"In WX 2025 the retreat venue was confirmed late. The venue shapes the experience — a genuinely off-site, unhurried space changes the quality of the day. Confirmation by August 16 protects the date.","notes":"Venue requirements: off-site from CCC Apenkwa | full-day access (07:00 – 21:00) | prayer space | breakout rooms for focus groups | meal space | outdoor area if possible. Capacity: full Flow Experience team plus facilitators. Date: November 14.","action_plan":"1. Worship Coordinator identifies 2–3 candidate venues | 2. Visit or evaluate each against requirements | 3. Confirm availability for November 14 | 4. Book and pay deposit by August 16 | 5. Communicate venue details to all team members by October 31 | 6. File booking confirmation in archive","axis1":"Gate","axis2":"Flexible","axis_note":"Venue must be confirmed before facilitator briefings but has a reasonable window"},{"ref":"TFE-LT-06","domain":"LOGISTICS","task":"Confirm facilitator honoraria payment — process honoraria for all external retreat facilitators before November 14","responsible":"Executive Secretary","due":"November 7, 2026","status":"⬜ Not Started","lesson":"Honoraria not confirmed before the day itself create awkwardness and undermine the facilitator relationship. Payment or confirmed payment arrangement must precede the retreat.","notes":"Honoraria budget is set in TFE-FR-01. Facilitators confirmed in TFE-SF-03. Each facilitator should receive their honorarium or a confirmed payment arrangement no later than the week before the retreat (November 7).","action_plan":"1. Worship Coordinator confirms honorarium amount for each facilitator per TFE-FR-01 budget | 2. Communicate the amount and payment method to each facilitator by October 31 | 3. Process payment or mobile transfer by November 7 | 4. Confirm receipt with each facilitator | 5. File payment records in archive under 07 — FINANCE","axis1":"Gate","axis2":"Tight","axis_note":"Honoraria must be processed before November 14 retreat — no flexibility on timing"},{"ref":"TFE-LT-04","domain":"LOGISTICS","task":"Confirm The Breaking venue and catering — venue and shared meal for the corporate all-night prayer on November 27","responsible":"Worship Coordinator","due":"October 31, 2026","status":"⬜ Not Started","lesson":"The Breaking is a first in WX 2026. Its logistics must be confirmed in advance so the day itself is focused entirely on prayer and community — not logistics.","notes":"Venue: ideally CCC Apenkwa itself — the place of ministry on November 29. Catering: communal, generous, unhurried shared meal following the all-night prayer. Meal should be catered or team-brought. Confirm numbers by October 31.","action_plan":"1. Worship Coordinator confirms venue availability — CCC Apenkwa or alternative | 2. Confirm catering: caterer engaged or team cooking roster confirmed | 3. Communicate logistics to all team members by October 31 | 4. Confirm numbers attending by October 31 | 5. Day-of coordination: prayer begins evening November 27, meal follows early morning November 28","axis1":"Gate","axis2":"Flexible","axis_note":"The Breaking venue should be confirmed before October but is recoverable within a window"},{"ref":"TFE-LT-05","domain":"LOGISTICS","task":"Plan and book Post-WX Team Outing — bonding experience within two weeks of D-Day","responsible":"Executive Secretary","due":"November 1, 2026","status":"⬜ Not Started","lesson":"The post-WX outing in 2025 was described as formative for team chemistry and relationships. Booking in advance ensures it happens rather than being deprioritised by post-event fatigue.","notes":"Outing format: simple, relational, different from church activities. Budget confirmed in TFE-FR-01. Target date: within two weeks of D-Day (by December 13). Include one structured moment of reflection: what did God do at WX 2026? The outing plan and format are approved by the Worship Coordinator.","action_plan":"1. Worship Coordinator decides on outing format by November 1 | 2. Book venue or activity | 3. Set date: December 1–13 | 4. Communicate to all team members by November 15 | 5. Include reflection question in the outing agenda | 6. Reflection feeds directly into the Post-Event Report (TFE-PE-02)","axis1":"Standalone","axis2":"Flexible","axis_note":"Post-WX outing; no downstream dependencies and a two-week window after D-Day"},{"domain":"SPIRITUAL FORMATION","task":"The Breaking — corporate all-night prayer and fasting for the entire Flow Experience team, followed by a shared meal. Light soundcheck included. Emphasis on prayer, eating, and community","responsible":"Worship Coordinator","due":"November 27, 2026","status":"⬜ Not Started","lesson":"New for 2026. The team goes into D-Day having fasted and prayed together through the night before. This is not a rehearsal — it is a corporate act of surrender. The shared meal that follows is a deliberate act of community and celebration before the ministry.","notes":"Date: November 27 — two days before D-Day (November 29). Structure: corporate fast during the day → all-night prayer (evening through early morning Nov 28) → shared meal for the entire team → light soundcheck → rest before D-Day. Protections (per the 48-hour conditioning rule): the vigil ends by 4:00am; a mandated rest and sleep window on November 28; voices are marked, not belted, overnight; soundcheck is light only.","action_plan":"1. Executive Producer communicates The Breaking to all team members by October — what it is, what it means, what is expected | 2. Confirm venue — ideally the church itself | 3. Prayer structure: corporate intercession | 4. personal surrender time | 5. worship | 6. the Word (Executive Producer or Ps Sammy) | 7. singing | 8. Shared meal: catered or team-brought — communal, generous, unhurried | 9. Light soundcheck during meal preparation period | 10. All team members expected — this is not optional | 11. No all-night activities for anyone outside of this after November 27","ref":"TFE-SF-05","axis1":"Standalone","axis2":"Tight","axis_note":"No downstream tasks depend on it, but it is two days before D-Day — timing is fixed"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #5 — November: final coordination. Every ministry confirms D-Day readiness. No surprises on November 29","responsible":"Executive Secretary","due":"November 2, 2026","status":"⬜ Not Started","lesson":"November is the final month. Every ministry must confirm exactly what they are doing, who their contact is, and what the escalation path is. This is the last opportunity to surface any outstanding cross-ministry gap before it becomes a D-Day problem.","notes":"Focus: WX Convo Episode 2 feedback | Dress rehearsal 1 debrief | Each ministry confirms D-Day readiness | Water system | Generator confirmed | Post-event content plan agreed. Chair: Event Lead. Duration: 60 minutes. Spiritual anchor: final coordination in the spirit of Phase 3 — quiet, deliberate, nothing left to self; the team yields its plans to be ready to yield on the day. Executive Producer also in attendance.","action_plan":"1. Executive Assistant circulates a full D-Day briefing document to all leads before this meeting | 2. Each ministry confirms: role is clear, team is briefed, logistics are confirmed | 3. Any unresolved item escalated to Executive Producer immediately after the meeting | 4. Executive Assistant sends a final all-ministries summary email by November 8 | 5. After this meeting, all changes require Executive Producer approval","ref":"TFE-CD-11","axis1":"Gate","axis2":"Tight","axis_note":"Final coordination before dress rehearsals; unresolved items here become D-Day risks"},{"domain":"COMMS & DESIGN","task":"Monthly All-Ministries Update Meeting #6 — November: final briefing. Every ministry confirms D-Day readiness. No outstanding items after this meeting","responsible":"Executive Secretary","due":"November 22, 2026","status":"⬜ Not Started","lesson":"D-Day is November 29. This is the last opportunity for all ministry leads to confirm readiness in one room. Any unresolved item after this meeting becomes a D-Day risk. The meeting must be brief, structured, and decisive — not a review but a confirmation.","notes":"Focus: final D-Day briefing | every ministry lead confirms role, team, logistics, and escalation contact | Lights rig installed (November 20) confirmed | Second Dress Rehearsal debrief (November 21) reviewed | post-event content plan confirmed | any last-minute coordination resolved. Chair: Event Lead. Duration: 60 minutes maximum. Spiritual anchor: the last gathering before glory — confirm readiness as an act of trust, then release the day to God: not our will, but His. Executive Producer also in attendance.","action_plan":"1. Executive Producer circulates a D-Day readiness checklist to all ministry leads before November 22 | 2. Each ministry lead completes and returns the checklist before the meeting | 3. Meeting agenda: each ministry confirms readiness — 3 minutes maximum per ministry | 4. Any unresolved item is escalated immediately — no item left open after this meeting | 5. Executive Producer distributes a final all-ministries summary the same day | 6. After this meeting, only Executive Producer can authorise any change to D-Day plans","ref":"TFE-CD-12","axis1":"Gate","axis2":"Tight","axis_note":"Last confirmation gate before D-Day; nothing open after this meeting"},{"domain":"POST-EVENT","task":"Host post-WX team outing and bonding experience within two weeks of D-Day — structured celebration and relational investment","responsible":"Worship Coordinator","due":"December 13, 2026","status":"⬜ Not Started","lesson":"Post-WX outing in 2025 fostered team chemistry, collaboration, discovery, and relational growth. This is now a tradition. The team that goes through The Breaking together and through D-Day together deserves to celebrate together.","notes":"Simple, relational, different from church activities. Budget a modest amount per person. Include one structured moment of reflection: what did God do at WX 2026? What are you grateful for as a team?","action_plan":"1. Budget included in Finance planning | 2. Set the date: within two weeks of D-Day | 3. Attendance open to the full team | 4. One moment of reflection: what did God do? What are you grateful for? | 5. This reflection feeds directly into the Post-Event Report","ref":"TFE-PE-01","axis1":"Standalone","axis2":"Flexible","axis_note":"Team outing; no downstream dependencies within the WX 2026 cycle"},{"domain":"POST-EVENT","task":"Complete WX 2026 Post-Event Report within 4 weeks of D-Day — all domains covered, key directional responses included, ready to present to leadership","responsible":"Executive Secretary","due":"December 28, 2026","status":"⬜ Not Started","lesson":"WX 2025 was the first year a post-event report was produced. It is now the institutional standard. The WX 2027 Brief must begin with the WX 2026 report's key directional responses.","notes":"WX_25_Report.docx is the template — twelve domains: Focus | Worship Journey | Metrics | Financials | Communication | Publicity | Time Stewardship | Fashion | Team Engagement | Technical | Strengths | Key Directional Responses. Domain leads submit sections by December 13.","action_plan":"1. Assign a lead writer for each domain by D-Day itself | 2. Domain leads submit their sections by December 13 | 3. Executive Producer consolidates, edits, and writes Key Directional Responses | 4. Key Actions: specific, owned, and dated — not general reflections | 5. Include WX 26 service metrics: planned vs actual music duration, planned vs actual service duration, attendance | 6. Complete full report by December 28 | 7. The first page of WX 2027 Brief quotes at least three directional responses from this report","ref":"TFE-PE-02","axis1":"Gate","axis2":"Flexible","axis_note":"Report must be complete before the leadership presentation (TFE-PE-03)"},{"domain":"POST-EVENT","task":"Present WX 2026 Post-Event Report to church leadership and all ministry leads — formally close the year and establish institutional memory","responsible":"Worship Coordinator","due":"January 10, 2027","status":"⬜ Not Started","lesson":"The intelligence exists. The only remaining question is whether the directional responses become the first page of WX 2027 Brief. Presenting to leadership closes the loop and gives the cycle institutional authority.","notes":"Format: 15-minute summary presentation — what was the theme, what was achieved, what were the gaps, what are the three most important things to change. All domain leads present. Record any directional input from leadership.","action_plan":"1. Schedule formal presentation meeting with church leadership | 2. Prepare 15-minute summary: theme | 3. achievements | 4. gaps | 5. top three changes | 6. Invite all domain leads to attend | 7. Record directional input from leadership | 8. Circulate final approved report to all ministry leads after the meeting","ref":"TFE-PE-03","axis1":"Gate","axis2":"Flexible","axis_note":"Presentation gates the WX 2027 discernment process"},{"domain":"POST-EVENT","task":"Begin WX 2027 theme discernment immediately after the report presentation — carry the momentum forward","responsible":"Worship Coordinator","due":"January 17, 2027","status":"⬜ Not Started","lesson":"The three-year arc (gratitude → anticipation → supremacy → surrender) suggests themes consciously build. The lens changes; the concept never does.","notes":"Blueprint for Worship Experience — the concept is permanent; the annual theme is the prophetic lens for the year.","action_plan":"1. Within one week of the report presentation, Worship Coordinator and Ps Sammy hold a 90-minute discernment session | 2. Begin with prayer — what does this congregation need to encounter next? | 3. Review the four-year arc and identify the theological territory not yet explored | 4. Review WX 26 report Key Directional Responses — any unresolved spiritual threads? | 5. Arrive at 2–3 candidate themes by February 1, 2027","ref":"TFE-PE-04","axis1":"Standalone","axis2":"Flexible","axis_note":"Discernment begins after the report presentation; no hard deadline"},{"domain":"MUSIC PRODUCTION","task":"Produce the Draft Phase Progressions — an interim version of the four-phase musical arc for V2D and visual ministries to build placement from, ahead of the locked version (TFE-MP-09)","responsible":"Executive Producer","due":"August 9, 2026","status":"⬜ Not Started","lesson":"V2D and visual ministries must propose phase placement (V2, Aug 16) before the phase arc is finally locked (Sept 13). A dated draft closes that gap so placement is not built on air.","notes":"Interim deliverable. The final, locked phase progressions are TFE-MP-09 (Sept 13). Mark this clearly as DRAFT.","action_plan":"1. Music Director drafts the four-phase arc from the General Approach (TFE-MP-04) and early rehearsals | 2. For each phase: provisional entry, build, peak, and transition | 3. Share with V2D and visual ministries by August 9 | 4. Mark clearly as DRAFT — subject to the lock at TFE-MP-09","ref":"TFE-MP-13","axis1":"Gate","axis2":"Flexible","axis_note":"Draft feeds V2D placement (Playbook V2); locked at TFE-MP-09"},{"domain":"MUSIC PRODUCTION","task":"Recording Readiness / rehearsal mid-point review — confirm every set-list song is performance-ready and all song leads are off-book before the Pre-WX Recording","responsible":"Executive Producer","due":"October 11, 2026","status":"⬜ Not Started","lesson":"The Aug 16–Sept 13 window had no checkpoint, sitting right before the highest-stakes early deliverable (Pre-WX Recording). A mid-point gate prevents arriving at the session with half-learned material.","notes":"Extends the TFE-MP-08 “demonstrate mastery by Aug 16” bar into a second, song-level checkpoint shortly before the Pre-WX Recording (TFE-MP-10, October 18).","action_plan":"1. Run each set-list song in rehearsal at performance standard | 2. Confirm every song lead is off-book | 3. Flag any song not yet performance-ready and assign remedial focus | 4. Confirm the team is ready to record by October 18 | 5. Document outcomes in rehearsal notes","ref":"TFE-MP-14","axis1":"Gate","axis2":"Tight","axis_note":"Gates the Pre-WX Recording (TFE-MP-10)"},{"domain":"FINANCE","task":"Confirm and pay for the 100kva generator — booked by Traffic & Security, payment processed by the Executive Secretary","responsible":"Executive Secretary","due":"November 15, 2026","status":"⬜ Not Started","lesson":"In WX 2025 the generator was booked late at GH₵7,495 under time pressure. Early booking secures better rates and confirms availability.","notes":"Traffic & Security book the unit (supplier, technician, fuel plan); the Executive Secretary processes payment against the budget (TFE-FR-01). Booking confirmed early; payment finalised before November 15 (Playbook S5/TF4).","action_plan":"1. Traffic & Security confirm the 100kva generator supplier, technician, and fuel plan | 2. Executive Secretary confirms cost against the budget (TFE-FR-01) | 3. Process deposit/payment | 4. Confirm booking and payment before November 15 | 5. File records in archive under 07 — FINANCE","ref":"TFE-FR-06","axis1":"Gate","axis2":"Flexible","axis_note":"Generator must be booked early and confirmed before D-Day"},{"domain":"MUSIC PRODUCTION","task":"WX 2026 — D-Day: carry the congregation through the four-phase journey of surrender — from the celebration of God’s goodness, through repentance and the grace to yield, into the Gethsemane “yes,” and out into glory — executed live with all ministries and governed minute-by-minute by the D-Day Running Order","responsible":"Music Director","due":"November 29, 2026","status":"⬜ Not Started","lesson":"Everything in this Blueprint exists to serve this one morning. The 2025 lessons — power, livestream, vocal stamina, identity checks, overflow — all converge here.","notes":"The culmination of the entire Blueprint. This is not a programme to be run but a garden to be entered: the whole plan exists to bring a room to the place where “not my will, but yours” can be prayed and meant. Service begins 9:00 AM at CCC Apenkwa. The Music Director leads the worship journey; the Event Lead calls logistics and cues from the events desk per the D-Day Running Order (Playbook Task E3); every ministry executes from the Final D-Day Briefing (Playbook E8). Hold the weight of Phase 3 — do not rush the silence.","action_plan":"1. All ministries in position before gates open; the team enters already surrendered, not preparing to be | 2. Lead the journey phase by phase — Invitation & Celebration, Repentance & Empowerment, Surrender, Glory — letting each phase do its work | 3. Music Director leads the worship arc; Event Lead directs and calls every logistical cue from the events desk | 4. Guard the Gethsemane peak in Phase 3 — hold space for the Spirit, protect the silence, let the “yes” be costly and unhurried | 5. Let Phase 4 break into glory only as a release of what surrender has opened — not as a performed climax | 6. Capture everything: 7-camera, multitrack audio, livestream | 7. CCC Declaration and dismissal — send the room out still saying yes","ref":"TFE-MP-15","axis1":"Anchor","axis2":"Tight","axis_note":"D-Day — the service itself; the capstone of every task"},{"domain":"MUSIC PRODUCTION","task":"Release the confirmed Setlist with version control — publish the locked Setlist #1 to the whole team as a single controlled, versioned document","responsible":"Executive Secretary","due":"June 7, 2026","status":"⬜ Not Started","lesson":"In 2025 multiple set-list versions circulated and the team was never sure which was current. A single versioned release removes that ambiguity.","notes":"Publishes the locked Setlist #1 (TFE-MP-03). Every release carries a version number and date; the September 20 freeze is published as the final version. Depends on TFE-MP-03.","action_plan":"1. Receive the locked Setlist #1 from the Music Director (TFE-MP-03) | 2. Stamp it with a version number and date; mark it the single source of truth | 3. Publish to the whole team through one channel; supersede all prior copies | 4. Re-publish as a new version after the September 20 freeze | 5. File in the archive under the music production folder","ref":"TFE-MP-16","axis1":"Anchor","axis2":"Tight","axis_note":""},{"domain":"SPIRITUAL FORMATION","task":"Develop and publish the WX 2026 Theme Brief — the founding theological statement of YES: Not My Will, But Yours, including the direction for age-appropriate (children’s) expression","responsible":"Worship Coordinator","due":"February 8, 2026","status":"✅ Complete","lesson":"The theme is the seed of everything that follows; capturing it in a single brief gives every ministry, including Children’s, one authoritative source for the year’s direction.","notes":"Recorded here for completeness — the Theme Brief already exists and is complete. It is the upstream source for the Creative Direction (TFE-SF-02) and resolves the children’s theme-direction dependency (Playbook C3).","action_plan":"1. State the theological core: Luke 22:42, surrender, the four-phase arc | 2. Define the spiritual intent of each phase | 3. Include direction for age-appropriate (children’s) expression of the theme | 4. Publish to the Lead Servants and visual-ministry leads | 5. File as the founding document in the WX 2026 archive","ref":"TFE-SF-06","axis1":"Anchor","axis2":"Tight","axis_note":""},{"domain":"COMMS & DESIGN","task":"Receive and publish the D-Day Running Order to the team — take the running order produced by Events and circulate the controlled, versioned copy to all Flow Experience and ministry leads","responsible":"Executive Secretary","due":"October 24, 2026","status":"⬜ Not Started","lesson":"In 2025 the running order lived in scattered copies; a single published version keeps everyone working from the same document.","notes":"Receives the D-Day Running Order shared at M4 (Playbook Task E3). The M4 version is a DRAFT pending finalisation at the Final Briefing (Playbook E8); this publication is the controlled circulation of that working version, re-issued after E8. Depends on Playbook E3.","action_plan":"1. Receive the M4 draft Running Order from the Event Lead (Playbook E3) | 2. Version and date it; mark clearly as DRAFT pending finalisation at E8 | 3. Publish to all Flow Experience and ministry leads through one channel | 4. Re-publish the finalised version after the Final Briefing (Playbook E8, Nov 22) | 5. File in the archive","ref":"TFE-CD-13","axis1":"Anchor","axis2":"Tight","axis_note":""},{"domain":"SPIRITUAL FORMATION","task":"Mini Wade-In Retreat — the mid-year formation gathering for The Flow Experience team, held before the intensive build season","responsible":"Worship Coordinator","due":"July 25, 2026","status":"⬜ Not Started","lesson":"A mid-point formation checkpoint keeps the team spiritually anchored as preparation intensifies.","notes":"A shorter, mid-year Wade-In ahead of the main November formation retreat. For the Flow Experience team.","action_plan":"1. Confirm date, venue and facilitator | 2. Set the formation focus for the day | 3. Invite the full team and treat attendance as compulsory | 4. Capture reflections to carry into the build season","ref":"TFE-SF-07","axis1":"Anchor","axis2":"Flexible","axis_note":"Mid-year formation checkpoint for the whole team"}];
+
+const DDAY = new Date(2026,10,29); // 29 Nov 2026
+const NOW = new Date();
+const TODAY = new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+
+/* ---- workstreams (8) ---- */
+const WORKSTREAMS = {
+  SF:{label:"Spiritual Foundation", purpose:"Prepare the hearts of the team and lay the spiritual groundwork of the Experience.", owner:"Worship Coordinator", color:"#2ea88a", role:"gold"},
+  CR:{label:"Creative Direction", purpose:"Define the world of WX2026 — theme, wordmark, palette and creative documents.", owner:"Executive Producer", color:"#C6A24C", role:"gold"},
+  MU:{label:"Musical Preparation", purpose:"Build the music — songs, keys, progressions, rehearsals and the live set.", owner:"Music Director", color:"#7A4CB8", role:"purple"},
+  CP:{label:"Communications & Publicity", purpose:"Carry the message inward to ministries and outward to the congregation.", owner:"Executive Secretary", color:"#5b8fbf", role:"blue"},
+  PT:{label:"Production & Technical", purpose:"Secure and integrate sound, staging and technical delivery.", owner:"Band Lead", color:"#38a89e", role:"teal"},
+  LO:{label:"Logistics & Administration", purpose:"Confirm venues, catering, retreats and the operational arrangements.", owner:"Executive Secretary", color:"#b98a4a", role:"gold"},
+  FI:{label:"Finance", purpose:"Set and steward the budget across every Flow Experience commitment.", owner:"Executive Secretary", color:"#6a86c4", role:"blue"},
+  PE:{label:"Post-Experience", purpose:"Review, report and carry learning into WX2027.", owner:"Worship Coordinator", color:"#7a7a9a", role:"grey"},
+};
+const WS_ORDER = ["SF","CR","MU","CP","PT","LO","FI","PE"];
+
+/* explicit workstream overrides by ref (accurate remap of the source domains) */
+const WS_OVERRIDE = {
+  "TFE-SF-02":"CR", "TFE-SF-06":"CR",           // creative direction doc + theme brief
+  "TFE-CD-03":"CR", "TFE-CD-04":"CR", "TFE-CD-06":"CR", "TFE-CD-13":"CR", // wordmark, mood board, look book, running order
+  "TFE-LT-01":"PT", "TFE-LT-02":"PT",           // sound/equipment tech
+};
+const DOMAIN_TO_WS = {
+  "SPIRITUAL FORMATION":"SF", "MUSIC PRODUCTION":"MU", "COMMS & DESIGN":"CP",
+  "PUBLICITY":"CP", "LOGISTICS":"LO", "FINANCE":"FI", "POST-EVENT":"PE",
+};
+function wsOf(t){ return WS_OVERRIDE[t.ref] || DOMAIN_TO_WS[t.domain] || "PE"; }
+
+/* ---- preparation stages (9) ---- */
+const STAGES = [
+  {key:"foundation", name:"Foundation",   desc:"Theme, spiritual groundwork and the Blueprint itself."},
+  {key:"development", name:"Development", desc:"Set list, creative direction and the musical framework take shape."},
+  {key:"confirmation",name:"Confirmation",desc:"Decisions lock — launch, budget, tryouts and Setlist confirmed."},
+  {key:"build",       name:"Build",       desc:"Rehearsals begin; conditioning and training get underway."},
+  {key:"integration", name:"Integration", desc:"Progressions finalise and publicity begins to roll out."},
+  {key:"simulation",  name:"Simulation",  desc:"Recording, campaigns and the first full dress rehearsal."},
+  {key:"lock",        name:"Lock",        desc:"Final dress rehearsal, running order and last preparations set."},
+  {key:"dday",        name:"D-Day",        desc:"29 November 2026 — the Experience is delivered."},
+  {key:"review",      name:"Review",       desc:"Post-Experience report, learning and WX2027 discernment."},
+];
+const MONTH_NUM = {January:1,February:2,March:3,April:4,May:5,June:6,July:7,August:8,September:9,October:10,November:11,December:12};
+function dueDate(t){ if(!t.due) return null; const [m,d,y]=t.due.replace(",","").split(" "); const mm=MONTH_NUM[m]; if(!mm) return null; return new Date(parseInt(y),mm-1,parseInt(d)); }
+function dueNum(t){ const dt=dueDate(t); if(!dt) return 99999999; return dt.getFullYear()*10000+(dt.getMonth()+1)*100+dt.getDate(); }
+function stageOf(t){
+  const n=dueNum(t);
+  if(t.ref==="TFE-MP-15") return "dday";
+  if(n<20260401) return "foundation";
+  if(n<20260615) return "development";
+  if(n<20260710) return "confirmation";
+  if(n<20260901) return "build";
+  if(n<20261001) return "integration";
+  if(n<20261110) return "simulation";
+  if(n===20261129) return "dday";
+  if(n<20261130) return "lock";
+  return "review";
+}
+
+/* ---- status normalisation + overdue derivation ---- */
+function baseStatus(t){
+  const s=(t.status||"").toLowerCase();
+  if(s.includes("complete")) return "complete";
+  if(s.includes("progress")) return "progress";
+  if(s.includes("overdue")) return "overdue";
+  if(s.includes("approval")) return "approval";
+  if(s.includes("block")) return "blocked";
+  if(s.includes("risk")) return "atrisk";
+  if(s.includes("defer")) return "deferred";
+  return "notstarted";
+}
+function statusOf(t){
+  const b=baseStatus(t);
+  if(b==="complete"||b==="deferred") return b;
+  const dt=dueDate(t);
+  if(dt && dt<TODAY) return "overdue";
+  return b;
+}
+const STATUS_LABEL={notstarted:"Not Started",progress:"In Progress",approval:"Awaiting Approval",blocked:"Blocked",atrisk:"At Risk",overdue:"Overdue",complete:"Complete",deferred:"Deferred"};
+
+/* ---- priority (derived, transparent) ---- */
+function priorityOf(t){
+  const st=statusOf(t);
+  if(t.ref==="TFE-MP-15") return "critical";
+  if(st==="overdue") return "critical";
+  if(t.axis1==="Anchor" && t.axis2==="Tight") return "critical";
+  if(t.axis1==="Anchor" || (t.axis1==="Gate" && t.axis2==="Tight")) return "high";
+  return "medium";
+}
+const PRIORITY_LABEL={critical:"Critical",high:"High",medium:"Medium"};
+
+/* ---- curated dependency overlay (conservative; the rest = "Not yet specified") ---- */
+const DEPS = {
+  "TFE-CD-02":["TFE-CD-01"],
+  "TFE-SF-02":["TFE-SF-06"],
+  "TFE-MP-02":["TFE-MP-01"],
+  "TFE-MP-16":["TFE-MP-02","TFE-MP-04"],
+  "TFE-MP-04":["TFE-MP-01"],
+  "TFE-MP-03":["TFE-MP-02"],
+  "TFE-MP-05":["TFE-MP-03"],
+  "TFE-MP-06":["TFE-MP-05","TFE-MP-16"],
+  "TFE-MP-09":["TFE-MP-13"],
+  "TFE-MP-10":["TFE-MP-09"],
+  "TFE-MP-11":["TFE-MP-06","TFE-MP-09"],
+  "TFE-MP-12":["TFE-MP-11"],
+  "TFE-MP-15":["TFE-MP-12","TFE-CD-13"],
+  "TFE-CD-05":["TFE-CD-02","TFE-CD-04"],
+  "TFE-CD-06":["TFE-CD-03","TFE-CD-04"],
+  "TFE-LT-02":["TFE-LT-01"],
+  "TFE-SF-04":["TFE-SF-03","TFE-LT-03"],
+  "TFE-FR-06":["TFE-FR-01"],
+  "TFE-PE-03":["TFE-PE-02"],
+  "TFE-PE-04":["TFE-PE-03"],
+};
+function byRef(r){ return TASKS.find(t=>t.ref===r); }
+function unlocks(ref){ const out=[]; for(const k in DEPS){ if(DEPS[k].includes(ref)) out.push(k);} return out; }
+
+/* ---- deliverables (ecosystem structure) ---- */
+const DELIVERABLES = [
+  {name:"Concept", stage:"define", owner:"Executive Producer", status:"Approved", version:"v1", due:"—", purpose:"The founding idea of what Worship Experience 2026 is.", related:["TFE-SF-06"], down:"Whole team", route:"concept.html", availability:"live"},
+  {name:"Theme Brief", stage:"define", owner:"Worship Coordinator", status:"Approved", version:"v1", due:"February 8, 2026", purpose:"The single divine emphasis that shapes the whole experience.", related:["TFE-SF-06"], down:"Whole team", route:"theme-brief.html", availability:"live"},
+  {name:"Creative Direction", stage:"define", owner:"Executive Producer", status:"In Development", version:"Draft", due:"June 21, 2026", purpose:"Defines the world and intention of the experience.", related:["TFE-SF-02"], down:"Lights, Multimedia, Design", route:"creative-direction.html", availability:"live"},
+  {name:"Visual Identity", stage:"define", owner:"Executive Producer", status:"In Development", version:"Draft", due:"May 31, 2026", purpose:"Defines how that world is seen.", related:["TFE-CD-03","TFE-CD-04","TFE-CD-06"], down:"Design, Publicity, Multimedia", route:"creative-direction.html#identity", availability:"live"},
+  {name:"Musical Identity", stage:"define", owner:"Music Director", status:"Not Started", version:"—", due:"June 5, 2026", purpose:"Defines how that world sounds.", related:["TFE-MP-03","TFE-MP-09"], down:"Band, Vocals", route:"creative-direction.html#musical", availability:"live"},
+  {name:"Worship Roadmap", stage:"plan", owner:"Executive Producer", status:"Not Started", version:"—", due:"June 7, 2026", purpose:"Where the music must take the congregation.", related:["TFE-MP-04"], down:"Music, Setlist", route:"setlist.html#roadmap-intro", availability:"live"},
+  {name:"Setlist", stage:"plan", owner:"Executive Producer", status:"In Development", version:"First Draft", due:"June 7, 2026", purpose:"The songs chosen to carry the Roadmap.", related:["TFE-MP-01","TFE-MP-02","TFE-MP-16"], down:"Music, Multimedia, Lyric Book", route:"setlist.html", availability:"live"},
+  {name:"Flow Map", stage:"plan", owner:"Music Director", status:"Not Started", version:"—", due:"September 13, 2026", purpose:"Orders the songs and moments into the live journey.", related:["TFE-MP-09"], down:"Events, Production", route:"flow-map.html", availability:"pending"},
+  {name:"Ministries Playbook", stage:"prepare", owner:"Executive Producer", status:"Not Started", version:"—", due:"May 31, 2026", purpose:"Translates confirmed decisions into ministry responsibilities.", related:["TFE-CD-02","TFE-CD-05"], down:"All ministries", route:"playbook.html", availability:"live"},
+  {name:"Lyric Book", stage:"prepare", owner:"Executive Producer", status:"Not Started", version:"—", due:"—", purpose:"The approved words and structures of the confirmed Setlist.", related:["TFE-MP-16"], down:"Multimedia, Congregation", route:"lyrics.html", availability:"live"},
+  {name:"Vocal & Instrumental Training Frameworks", stage:"prepare", owner:"Music Director", status:"Not Started", version:"—", due:"August 1, 2026", purpose:"Frameworks guiding vocal endurance conditioning and instrumentalist intentionality training.", related:["TFE-MP-07","TFE-MP-08"], down:"Vocals, Band", route:null, availability:"pending"},
+  {name:"Production Cue Book", stage:"prepare", owner:"Event Lead", status:"Not Started", version:"—", due:"—", purpose:"Turns the Flow Map into exact operational cues.", related:["TFE-MP-11","TFE-MP-12"], down:"Production, Lights, Sound", route:"production-cue.html", availability:"pending"},
+  {name:"D-Day Running Order", stage:"deliver", owner:"Executive Secretary", status:"Not Started", version:"—", due:"October 24, 2026", purpose:"The minute-by-minute order of the day.", related:["TFE-CD-13"], down:"Events, all ministries", route:"running-order.html", availability:"pending"},
+  {name:"Post-Experience Report", stage:"deliver", owner:"Executive Secretary", status:"Not Started", version:"—", due:"December 28, 2026", purpose:"Review and learning after the experience.", related:["TFE-PE-02","TFE-PE-03"], down:"Church leadership, WX2027", route:"experience-report.html", availability:"pending"},
+];
+
+/* ---- availability: pages not yet built render as intentional "Coming Soon" states ---- */
+/* Availability is now an explicit field on each deliverable:
+   availability:"live" with a valid relative route, or availability:"pending"
+   (route may be null). No filename inference, no "#" as a semantic value. */
+function isLiveLink(d){ return !!(d && d.availability==="live" && d.route); }
+function isPendingDeliv(d){ return !!(d && d.availability==="pending"); }
+
+/* ---- curated decisions (derived from approval/lock/confirm tasks; no invented substance) ---- */
+const DECISIONS = [
+  {title:"Approve WX 2026 Creative Direction", owner:"Executive Producer", by:"Worship Coordinator", req:"June 21, 2026", ctx:"The phase-shaping creative document that governs design, atmosphere and communication.", task:"TFE-SF-02", docs:["Creative Direction","Visual Identity"]},
+  {title:"Confirm the WX 2026 Setlist", owner:"Executive Producer", by:"Music Director", req:"June 7, 2026", ctx:"Lock the songs able to carry the Roadmap, with version control, before rehearsals build on them.", task:"TFE-MP-16", docs:["Setlist","Lyric Book"]},
+  {title:"Lock Phase Progressions (musical Flow Map)", owner:"Music Director", by:"Executive Producer", req:"September 13, 2026", ctx:"Fix the musical journey so recording, rehearsal and running order can proceed.", task:"TFE-MP-09", docs:["Flow Map","Production Cue Book"]},
+  {title:"Adopt the WX 2026 Publicity Strategy", owner:"Executive Producer", by:"Multimedia Lead", req:"July 26, 2026", ctx:"Formally adopt the publicity approach that governs roll-outs and campaigns.", task:"TFE-PB-06", docs:["Visual Identity"]},
+  {title:"Lock the WX 2026 Wordmark", owner:"Executive Producer", by:"Worship Coordinator", req:"May 31, 2026", ctx:"A bespoke wordmark that anchors every downstream design decision.", task:"TFE-CD-03", docs:["Visual Identity"]},
+  {title:"Approve the D-Day Running Order", owner:"Executive Secretary", by:"Event Lead", req:"October 24, 2026", ctx:"Publish the exact operational order of the day to all ministries.", task:"TFE-CD-13", docs:["D-Day Running Order"]},
+];
+function decStatus(task){
+  const t=byRef(task); if(!t) return {cls:"dec-awaiting",label:"Awaiting Decision"};
+  const s=statusOf(t);
+  if(s==="complete") return {cls:"dec-approved",label:"Approved"};
+  if(s==="progress"||s==="approval") return {cls:"dec-review",label:"Under Review"};
+  if(s==="overdue"||s==="atrisk") return {cls:"dec-rejected",label:"Overdue Decision"};
+  return {cls:"dec-awaiting",label:"Awaiting Decision"};
+}
+
+/* ---- helpers ---- */
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function daysBetween(a,b){return Math.round((a-b)/86400000);}
+function fmtDue(t){const dt=dueDate(t);if(!dt)return "No date";return dt.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+function enrich(t){return {...t, ws:wsOf(t), stage:stageOf(t), status:statusOf(t), priority:priorityOf(t), dueDt:dueDate(t), dueN:dueNum(t)};}
+const DATA = TASKS.map(enrich).sort((a,b)=>a.dueN-b.dueN);
+function isAttention(t){return ["overdue","blocked","atrisk","approval"].includes(t.status);}
+
+/* ============================================================
+   NEW UI LAYER — guided, Calibrate-inspired
+   (data + logic above are preserved from the v12 dataset)
+   ============================================================ */
+
+/* ---- 7 simplified journey stages ---- */
+const JOURNEY = [
+  {key:"foundation", name:"Foundation",  sub:"Groundwork & theme", from:["foundation"]},
+  {key:"direction",  name:"Direction",   sub:"Set list & creative", from:["development","confirmation"]},
+  {key:"preparation",name:"Preparation", sub:"Rehearsals & training", from:["build"]},
+  {key:"integration",name:"Integration", sub:"Progressions & publicity", from:["integration"]},
+  {key:"readiness",  name:"Readiness",   sub:"Recording & dress runs", from:["simulation","lock"]},
+  {key:"delivery",   name:"Delivery",    sub:"D-Day · 29 Nov", from:["dday"]},
+  {key:"review",     name:"Review",      sub:"Report & learning", from:["review"]},
+];
+const STAGE_TO_JOURNEY = {};
+JOURNEY.forEach(j=>j.from.forEach(k=>STAGE_TO_JOURNEY[k]=j.key));
+function journeyOf(t){ return STAGE_TO_JOURNEY[t.stage] || "preparation"; }
+function detailedStageName(t){ const s=STAGES.find(x=>x.key===t.stage); return s?s.name:"—"; }
+
+/* ---- short area labels ---- */
+const AREA_SHORT = {SF:"Spiritual",CR:"Creative",MU:"Music",CP:"Publicity",PT:"Technical",LO:"Logistics",FI:"Finance",PE:"Review"};
+
+/* ---- deliverable → area mapping (structural) ---- */
+const DELIV_AREA = {
+  "Concept":"CR","Theme Brief":"CR","Creative Direction":"CR","Visual Identity":"CR",
+  "Musical Identity":"MU","Worship Roadmap":"MU","Setlist":"MU","Flow Map":"MU","Lyric Book":"MU","Vocal & Instrumental Training Frameworks":"MU",
+  "Ministries Playbook":"CP","D-Day Running Order":"CP",
+  "Production Cue Book":"PT",
+  "Post-Experience Report":"PE",
+};
+function delivArea(d){ return DELIV_AREA[d.name] || wsOf({ref:(d.related&&d.related[0])||"",domain:""}) || "CR"; }
+/* deliverable presentation status (honest mapping from stored data) */
+function delivStatusOf(d){
+  const s=(d.status||"").toLowerCase();
+  if(s.includes("approved")) return {cls:"ds-approved",label:"Approved"};
+  if(s.includes("await")) return {cls:"ds-approval",label:"Awaiting Approval"};
+  if(s.includes("progress")||s.includes("draft")||s.includes("develop")) return {cls:"ds-development",label:"In Development"};
+  if(s.includes("supersed")) return {cls:"ds-superseded",label:"Superseded"};
+  return {cls:"ds-notstarted",label:"Not Started"};
+}
+/* deliverables connected to a person (owner or via related task owner) */
+function delivsForPerson(name){
+  return DELIVERABLES.filter(d=> d.owner===name || (d.related||[]).some(r=>{const t=byRef(r);return t&&t.responsible===name;}));
+}
+function delivsForArea(k){ return DELIVERABLES.filter(d=>delivArea(d)===k); }
+
+/* ---- status marker (icon + accessible text) ---- */
+const MARK = {
+  complete:{g:"✓",t:"Completed"}, overdue:{g:"!",t:"Overdue"},
+  progress:{g:"",t:"In progress"}, approval:{g:"◇",t:"Awaiting approval"},
+  blocked:{g:"‖",t:"Blocked"}, atrisk:{g:"△",t:"At risk"},
+  deferred:{g:"–",t:"Deferred"}, notstarted:{g:"",t:"Not started"},
+};
+function marker(status){ const m=MARK[status]||MARK.notstarted; return `<span class="smark m-${status}" role="img" aria-label="${m.t}">${m.g}</span>`; }
+function overdueDays(t){ const dt=t.dueDt; if(!dt) return null; const d=daysBetween(TODAY,dt); return d>0?d:null; }
+function due14(t){ if(t.status==="complete"||t.status==="deferred") return false; const dt=t.dueDt; if(!dt) return false; const d=daysBetween(dt,TODAY); return d>=0&&d<=14; }
+function isOverdue(t){ return t.status==="overdue"; }
+
+/* ---- task row (compact, scannable) ---- */
+function row(t, opts){
+  opts=opts||{};
+  const area=WORKSTREAMS[t.ws];
+  const over=isOverdue(t);
+  const meta=[];
+  if(opts.area!==false) meta.push(`<span class="a-dot">${esc(AREA_SHORT[t.ws])}</span>`);
+  if(opts.owner!==false) meta.push(`<span>${esc(t.responsible)}</span>`);
+  const od=overdueDays(t);
+  // preserve both facts when overdue: "Overdue · In Progress"
+  const stText = over && baseStatus(t)!=="overdue" ? `Overdue · ${STATUS_LABEL[baseStatus(t)]}` : STATUS_LABEL[t.status];
+  meta.push(`<span class="${over?'m-over':''}">${stText}</span>`);
+  return `<button class="trow ${t.status==='complete'?'is-complete':''}" data-ref="${t.ref}">
+    <span class="trow__mark">${marker(t.status)}</span>
+    <span class="trow__title">${esc(t.task.split("—")[0].trim())}</span>
+    <span class="trow__meta">${meta.join("")}</span>
+    <span class="trow__due ${over?'over':''}">${fmtDue(t)}${over&&od?`<span class="late">${od}d late</span>`:''}</span>
+  </button>`;
+}
+function fillRows(host, list, empty, opts){
+  if(!list.length){ host.innerHTML=`<div class="emptystate"><div class="big">Nothing here</div><p>${esc(empty)}</p></div>`; return; }
+  host.innerHTML=list.map(t=>row(t,opts)).join("");
+}
+function miniRow(t){ const over=isOverdue(t); return `<button class="mini-row" data-ref="${t.ref}">${marker(t.status)}<span class="mini-t">${esc(t.task.split("—")[0].trim())}</span><span class="mini-due ${over?'over':''}">${fmtDue(t)}</span></button>`; }
+
+/* ---- progress calc (honest) ---- */
+function progressOf(list){ const total=list.length; const done=list.filter(t=>t.status==="complete").length; return {total,done,remaining:total-done,pct: total?Math.round(done/total*100):0}; }
+function progressWidget(list){
+  const p=progressOf(list);
+  return `<div class="prog-big"><b>${p.pct}%</b><span>complete</span></div>
+    <div class="prog-line"><i style="width:${p.pct}%"></i></div>
+    <div class="prog-nums"><span><b>${p.done}</b> completed</span><span><b>${p.remaining}</b> remaining</span><span><b>${p.total}</b> total</span></div>`;
+}
+
+/* ---- summary panel (shared by journey/areas/people) ---- */
+function summaryPanel(list, extra){
+  const d14=list.filter(due14).sort((a,b)=>a.dueN-b.dueN);
+  const over=list.filter(isOverdue).sort((a,b)=>a.dueN-b.dueN);
+  let html=`<div class="summary__sec"><div class="summary__label">Progress So Far</div>${progressWidget(list)}</div>`;
+  html+=`<div class="summary__sec"><div class="summary__label">Due in the Next 14 Days</div>`;
+  html+= d14.length?`<div class="mini-list">${d14.map(miniRow).join("")}</div>`:`<p class="mini-empty">No tasks in this view are due within the next fourteen days.</p>`;
+  html+=`</div>`;
+  html+=`<div class="summary__sec"><div class="summary__label">Overdue</div>`;
+  html+= over.length?`<div class="mini-list">${over.map(miniRow).join("")}</div>`:`<p class="mini-empty">Nothing in this view is currently overdue.</p>`;
+  html+=`</div>`;
+  if(extra) html+=extra;
+  return html;
+}
+function delivMiniBlock(list, label, showArea){
+  if(!list.length) return `<div class="summary__sec"><div class="summary__label">${label}</div><p class="mini-empty">No deliverables have been linked to this selection yet.</p></div>`;
+  const items=list.map(d=>{
+    const st=delivStatusOf(d), link=isLiveLink(d), pending=!link;
+    const meta=[`${st.label}`]; if(showArea) meta.unshift(WORKSTREAMS[delivArea(d)].label); if(d.due&&d.due!=="—") meta.push(d.due);
+    if(pending) meta.push("Coming soon");
+    const inner=`<span class="dm-n">${esc(d.name)}</span><span class="dm-m">${meta.map(esc).join(" · ")}</span>`;
+    return link?`<a href="${d.route}">${inner}</a>`:`<div${pending?' class="pending" aria-disabled="true"':''}>${inner}</div>`;
+  }).join("");
+  return `<div class="summary__sec"><div class="summary__label">${label}</div><div class="deliv-mini">${items}</div></div>`;
+}
+
+/* ============================================================
+   OVERVIEW
+   ============================================================ */
+function renderOverview(){
+  const totalN=DATA.length, doneN=DATA.filter(t=>t.status==="complete").length, overN=DATA.filter(isOverdue).length;
+  const notdueN=Math.max(0,totalN-doneN-overN), pctN=totalN?Math.round(doneN/totalN*100):0;
+  document.getElementById("ovProgress").innerHTML=`<div class="prog-big"><b>${pctN}%</b><span>complete</span></div>
+    <div class="prog-line"><i style="width:${pctN}%"></i></div>
+    <div class="prog-nums ov4"><span class="pn-done"><b>${doneN}</b> completed</span><span class="pn-over"><b>${overN}</b> overdue</span><span><b>${notdueN}</b> not yet due</span><span><b>${totalN}</b> total</span></div>`;
+  const d14=DATA.filter(due14).sort((a,b)=>a.dueN-b.dueN);
+  const over=DATA.filter(isOverdue).sort((a,b)=>a.dueN-b.dueN);
+  document.getElementById("ovDueCnt").textContent=d14.length+" tasks";
+  document.getElementById("ovOverCnt").textContent=over.length+" tasks";
+  fillRows(document.getElementById("ovDue"), d14, "No tasks are due within the next fourteen days.");
+  fillRows(document.getElementById("ovOver"), over, "Nothing is currently overdue.");
+  // more detail tiles
+  const blocked=DATA.filter(t=>t.status==="blocked").length;
+  const approval=DATA.filter(t=>t.status==="approval").length;
+  const gatesRisk=DATA.filter(t=>t.axis1==="Gate"&&(t.status==="overdue"||t.status==="blocked")).length;
+  const wsOnTrack=WS_ORDER.filter(k=>{const h=areaHealth(k);return h.key==="ontrack"||h.key==="complete";}).length;
+  document.getElementById("mdTiles").innerHTML=[
+    {n:blocked,l:"Blocked",cls:blocked?"alert":""},
+    {n:approval,l:"Awaiting approval",cls:approval?"gold":""},
+    {n:gatesRisk,l:"At-risk Gates",cls:gatesRisk?"alert":""},
+    {n:wsOnTrack+"/"+WS_ORDER.length,l:"Areas on track",cls:"gold"},
+  ].map(c=>`<div class="md-tile ${c.cls}"><b>${c.n}</b><span>${c.l}</span></div>`).join("");
+  document.getElementById("mdHealth").innerHTML=WS_ORDER.map(k=>{const h=areaHealth(k);return `<div class="md-hrow"><span>${esc(WORKSTREAMS[k].label)}</span><span class="hp h-${h.key}">${h.label}</span></div>`;}).join("");
+}
+
+/* ---- area health (kept, but demoted to More Detail) ---- */
+function areaTasks(k){ return DATA.filter(t=>t.ws===k); }
+function areaHealth(k){
+  const l=areaTasks(k); if(!l.length) return {key:"ontrack",label:"On Track"};
+  if(l.every(t=>t.status==="complete")) return {key:"complete",label:"Complete"};
+  const overdue=l.filter(t=>t.status==="overdue").length;
+  const blockedGates=l.filter(t=>t.axis1==="Gate"&&(t.status==="blocked"||t.status==="overdue")).length;
+  const tightSoon=l.filter(t=>t.axis2==="Tight"&&t.status!=="complete"&&due14(t)).length;
+  if(overdue>=3||blockedGates>=2) return {key:"atrisk",label:"At Risk"};
+  if(overdue>=1||tightSoon>=1||blockedGates>=1) return {key:"attention",label:"Needs Attention"};
+  return {key:"ontrack",label:"On Track"};
+}
+
+/* ============================================================
+   JOURNEY (route + tasks + sticky summary)
+   ============================================================ */
+let journeySel=null;
+function journeyTasks(k){ return DATA.filter(t=>journeyOf(t)===k).sort((a,b)=>a.dueN-b.dueN); }
+function currentJourneyKey(){
+  for(const j of JOURNEY){ if(j.key==="delivery"||j.key==="review") continue; const l=journeyTasks(j.key); if(l.some(t=>t.status!=="complete")) return j.key; }
+  return "preparation";
+}
+function buildJourneyRoute(){
+  const route=document.getElementById("journeyRoute");
+  const cur=currentJourneyKey();
+  let curIdx=JOURNEY.findIndex(j=>j.key===cur);
+  const stops=JOURNEY.map((j,i)=>{
+    const l=journeyTasks(j.key); const p=progressOf(l);
+    const done=l.length&&p.pct===100; const late=l.some(isOverdue);
+    const cls=[]; if(done)cls.push("done"); else if(late)cls.push("late");
+    return `<button class="stop ${cls.join(" ")}" role="tab" data-jstage="${j.key}" aria-selected="false" id="jstop-${j.key}" aria-controls="journeyMain">
+      <span class="stop__node">${done?"✓":(i+1<10?"0":"")+(i+1)}</span>
+      <span class="stop__meta"><span class="stop__name">${j.name}</span><span class="stop__sub">${esc(j.sub)} · ${p.done}/${p.total}</span></span></button>`;
+  }).join("");
+  route.insertAdjacentHTML("beforeend", stops);
+  // fill height to current
+  const fill=document.getElementById("journeyFill");
+  fill.style.setProperty("--rf", ((curIdx)/(JOURNEY.length-1)*100)+"%");
+  route.querySelectorAll(".stop").forEach(b=>b.addEventListener("click",()=>selectJourney(b.dataset.jstage,{scroll:true})));
+  routeKeys(route.querySelectorAll(".stop"), b=>selectJourney(b.dataset.jstage));
+}
+function selectJourney(k, opts){
+  opts=opts||{}; journeySel=k;
+  document.querySelectorAll("#journeyRoute .stop").forEach(b=>b.setAttribute("aria-selected", b.dataset.jstage===k));
+  markSubnavActive(k);
+  const j=JOURNEY.find(x=>x.key===k), l=journeyTasks(k);
+  const main=document.getElementById("journeyMain");
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Stage ${JOURNEY.indexOf(j)+1} of ${JOURNEY.length}</p><h3 class="rd-main__title">${j.name}</h3><p class="rd-main__desc">${esc(j.sub)}</p></div><div class="tasklist" id="journeyList"></div>`;
+  fillRows(document.getElementById("journeyList"), l, "No tasks fall in this stage yet.", {});
+  document.getElementById("journeySummary").innerHTML=summaryPanel(l);
+  liveMsg(`${j.name} stage — ${l.length} tasks.`);
+  if(location.hash.startsWith("#journey")) history.replaceState(null,"","#journey/"+k);
+  if(opts.scroll) scrollToEl(main, true);
+}
+function renderJourney(){
+  const route=document.getElementById("journeyRoute");
+  if(!route.dataset.built){ buildJourneyRoute(); route.dataset.built="1"; }
+  selectJourney(journeySel||currentJourneyKey());
+}
+
+/* ============================================================
+   AREAS
+   ============================================================ */
+let areaSel=null;
+function buildAreaRoute(){
+  const route=document.getElementById("areaRoute");
+  const stops=WS_ORDER.map((k,i)=>{
+    const l=areaTasks(k); const p=progressOf(l); const late=l.some(isOverdue); const done=p.pct===100;
+    const cls=[]; if(done)cls.push("done"); else if(late)cls.push("late");
+    return `<button class="stop ${cls.join(" ")}" role="tab" data-area="${k}" aria-selected="false" id="astop-${k}" aria-controls="areaMain">
+      <span class="stop__node">${done?"✓":(i+1<10?"0":"")+(i+1)}</span>
+      <span class="stop__meta"><span class="stop__name">${esc(AREA_SHORT[k])}</span><span class="stop__sub">${p.done}/${p.total} · ${p.pct}%</span></span></button>`;
+  }).join("");
+  route.insertAdjacentHTML("beforeend", stops);
+  route.querySelectorAll(".stop").forEach(b=>b.addEventListener("click",()=>selectArea(b.dataset.area,{scroll:true})));
+  routeKeys(route.querySelectorAll(".stop"), b=>selectArea(b.dataset.area));
+}
+function selectArea(k, opts){
+  opts=opts||{}; areaSel=k;
+  document.querySelectorAll("#areaRoute .stop").forEach(b=>b.setAttribute("aria-selected", b.dataset.area===k));
+  markSubnavActive(k);
+  const ws=WORKSTREAMS[k], l=areaTasks(k).sort((a,b)=>a.dueN-b.dueN);
+  const main=document.getElementById("areaMain");
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Area · ${esc(AREA_SHORT[k])}</p><h3 class="rd-main__title">${esc(ws.label)}</h3><p class="rd-main__desc">${esc(ws.purpose)} · Owner: ${esc(ws.owner)}</p></div><div class="tasklist" id="areaList"></div>`;
+  fillRows(document.getElementById("areaList"), l, "No tasks in this area.", {area:false});
+  document.getElementById("areaSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForArea(k), "Deliverables for This Area", false));
+  liveMsg(`${ws.label} — ${l.length} tasks.`);
+  if(location.hash.startsWith("#areas")) history.replaceState(null,"","#areas/"+k);
+  if(opts.scroll) scrollToEl(document.getElementById("areaMain"), true);
+}
+function renderAreas(){
+  const route=document.getElementById("areaRoute");
+  if(!route.dataset.built){ buildAreaRoute(); route.dataset.built="1"; }
+  if(areaSel) selectArea(areaSel);
+  else { document.querySelectorAll("#areaRoute .stop").forEach(b=>b.setAttribute("aria-selected","false"));
+    document.getElementById("areaMain").innerHTML=`<div class="rd-empty">Choose an area to see the work it carries.</div>`;
+    document.getElementById("areaSummary").innerHTML=`<div class="summary__sec"><p class="mini-empty">Select an area on the left to see its progress and deliverables.</p></div>`; }
+}
+
+/* ============================================================
+   PEOPLE
+   ============================================================ */
+let peopleSel=null;
+const OWNERS = [...new Set(DATA.map(t=>t.responsible))].sort();
+function ownerTasks(name){ return DATA.filter(t=>t.responsible===name).sort((a,b)=>a.dueN-b.dueN); }
+function buildPeopleRoute(filter){
+  const host=document.getElementById("peopleStops");
+  const list=OWNERS.filter(n=>!filter||n.toLowerCase().includes(filter.toLowerCase()));
+  host.innerHTML=list.map((n,i)=>{
+    const l=ownerTasks(n); const p=progressOf(l); const late=l.some(isOverdue); const done=p.pct===100;
+    const cls=[]; if(done)cls.push("done"); else if(late)cls.push("late");
+    const initials=n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+    return `<button class="stop ${cls.join(" ")}" role="tab" data-person="${esc(n)}" aria-selected="${peopleSel===n}" aria-controls="peopleMain">
+      <span class="stop__node">${done?"✓":initials}</span>
+      <span class="stop__meta"><span class="stop__name">${esc(n)}</span><span class="stop__sub">${p.done}/${p.total} · ${p.pct}%</span></span></button>`;
+  }).join("") || `<p class="mini-empty" style="padding:.5rem">No one matches that search.</p>`;
+  host.querySelectorAll(".stop").forEach(b=>b.addEventListener("click",()=>selectPerson(b.dataset.person,{scroll:true})));
+  routeKeys(host.querySelectorAll(".stop"), b=>selectPerson(b.dataset.person));
+}
+function selectPerson(name, opts){
+  opts=opts||{}; peopleSel=name;
+  document.querySelectorAll("#peopleStops .stop").forEach(b=>b.setAttribute("aria-selected", b.dataset.person===name));
+  markSubnavActive(name);
+  const l=ownerTasks(name);
+  const main=document.getElementById("peopleMain");
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Person</p><h3 class="rd-main__title">${esc(name)}</h3><p class="rd-main__desc">${l.length} task${l.length!==1?"s":""} across ${new Set(l.map(t=>t.ws)).size} area${new Set(l.map(t=>t.ws)).size!==1?"s":""}</p></div><div class="tasklist" id="peopleList"></div>`;
+  fillRows(document.getElementById("peopleList"), l, "No tasks assigned.", {owner:false});
+  document.getElementById("peopleSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForPerson(name), "Deliverables Connected to Their Work", true));
+  liveMsg(`${name} — ${l.length} tasks.`);
+  if(location.hash.startsWith("#people")) history.replaceState(null,"","#people/"+encodeURIComponent(name));
+  if(opts.scroll) scrollToEl(document.getElementById("peopleMain"), true);
+}
+function renderPeople(){
+  const route=document.getElementById("peopleStops");
+  if(!route.dataset.built){ buildPeopleRoute(""); route.dataset.built="1";
+    document.getElementById("peopleSearch").addEventListener("input",e=>{buildPeopleRoute(e.target.value);}); }
+  if(peopleSel) selectPerson(peopleSel);
+  else { document.getElementById("peopleMain").innerHTML=`<div class="rd-empty">Choose a person to see the work they are carrying.</div>`;
+    document.getElementById("peopleSummary").innerHTML=`<div class="summary__sec"><p class="mini-empty">Select a person on the left to see their progress and connected deliverables.</p></div>`; }
+}
+
+/* ============================================================
+   DELIVERABLES
+   ============================================================ */
+const DELIV_STAGES=[
+  {key:"define", n:"Define", sub:"The documents that establish the experience."},
+  {key:"plan", n:"Plan", sub:"The documents that translate direction into a journey."},
+  {key:"prepare", n:"Prepare", sub:"The documents used to build and rehearse the experience."},
+  {key:"deliver", n:"Deliver & Review", sub:"The documents used on the day and afterwards."},
+];
+let delivStageSel=null, delivSel=null;
+function delivDue(d){ if(!d.due||d.due==="—") return null; const p=d.due.replace(",","").split(" "); const mm=MONTH_NUM[p[0]]; if(!mm) return null; return new Date(parseInt(p[2]),mm-1,parseInt(p[1])); }
+function delivOverdue(d){ if(delivStatusOf(d).label==="Approved") return false; const dt=delivDue(d); return !!(dt && dt<TODAY); }
+function delivMarker(d){
+  if(delivOverdue(d)) return marker("overdue");
+  const st=delivStatusOf(d).label;
+  if(st==="Approved") return marker("complete");
+  if(st==="In Development") return marker("progress");
+  if(st==="Awaiting Approval") return marker("approval");
+  if(st==="Superseded") return marker("deferred");
+  return marker("notstarted");
+}
+function delivsInStage(k){ return DELIVERABLES.filter(d=>d.stage===k); }
+function delivRow(d){
+  const over=delivOverdue(d), dt=delivDue(d);
+  const dueTxt=dt?("Due "+dt.toLocaleDateString('en-GB',{day:'numeric',month:'short'})):(d.due&&d.due!=="—"?"Due "+d.due:"—");
+  return `<button class="dlv-row" role="tab" data-dname="${esc(d.name)}" aria-selected="${delivSel===d.name}">
+    <span class="dlv-row__mark">${delivMarker(d)}</span>
+    <span class="dlv-row__body"><span class="dlv-row__name">${esc(d.name)}</span><span class="dlv-row__meta">${esc(AREA_SHORT[delivArea(d)])} · ${delivStatusOf(d).label}</span></span>
+    <span class="dlv-row__due ${over?'over':''}">${over?'Overdue':dueTxt}</span>
+  </button>`;
+}
+function buildDelivRoute(){
+  const route=document.getElementById("delivRoute");
+  const stops=DELIV_STAGES.map((s,i)=>{
+    const l=delivsInStage(s.key); const done=l.length&&l.every(d=>delivStatusOf(d).label==="Approved"); const late=l.some(delivOverdue);
+    const cls=[]; if(done)cls.push("done"); else if(late)cls.push("late");
+    return `<button class="stop ${cls.join(" ")}" role="tab" data-dstage="${s.key}" aria-selected="false" aria-controls="delivMain">
+      <span class="stop__node">${done?"✓":"0"+(i+1)}</span>
+      <span class="stop__meta"><span class="stop__name">${s.n}</span><span class="stop__sub">${l.length} document${l.length!==1?"s":""}</span></span></button>`;
+  }).join("");
+  route.insertAdjacentHTML("beforeend", stops);
+  route.querySelectorAll(".stop").forEach(b=>b.addEventListener("click",()=>selectDelivStage(b.dataset.dstage)));
+  routeKeys(route.querySelectorAll(".stop"), b=>selectDelivStage(b.dataset.dstage));
+}
+function selectDelivStage(k){
+  delivStageSel=k; delivSel=null;
+  document.querySelectorAll("#delivRoute .stop").forEach(b=>b.setAttribute("aria-selected", b.dataset.dstage===k));
+  const s=DELIV_STAGES.find(x=>x.key===k), l=delivsInStage(k), idx=DELIV_STAGES.indexOf(s);
+  document.getElementById("delivFill").style.setProperty("--rf", (idx/(DELIV_STAGES.length-1)*100)+"%");
+  const main=document.getElementById("delivMain");
+  main.innerHTML=`<div class="dlv-stagehead"><p class="rd-main__idx">Stage ${idx+1} of ${DELIV_STAGES.length}</p><h3>${s.n}</h3><p>${esc(s.sub)}</p></div>
+    <div class="dlv-list" role="tablist" aria-label="${s.n} deliverables">${l.map(delivRow).join("")}</div>`;
+  main.querySelectorAll(".dlv-row").forEach(b=>b.addEventListener("click",()=>selectDeliv(b.dataset.dname)));
+  document.getElementById("delivSummary").innerHTML=`<div class="summary__sec"><div class="summary__label">${esc(s.n)}</div><p class="mini-empty">Choose a deliverable to see its details.</p></div>`;
+  liveMsg(`${s.n} — ${l.length} deliverables.`);
+}
+function selectDeliv(name){
+  delivSel=name;
+  const d=DELIVERABLES.find(x=>x.name===name); if(!d) return;
+  document.querySelectorAll("#delivMain .dlv-row").forEach(b=>b.setAttribute("aria-selected", b.dataset.dname===name));
+  const st=delivStatusOf(d), over=delivOverdue(d), area=WORKSTREAMS[delivArea(d)], link=isLiveLink(d);
+  const statusLine=over?("Overdue · "+st.label):st.label;
+  const openCTA = link
+    ? `<a class="dlv-open" href="${d.route}">Open document →</a>`
+    : `<span class="dlv-open disabled" role="text" aria-disabled="true">Coming soon</span>`;
+  document.getElementById("delivSummary").innerHTML=`<div class="dlv-detail">
+    <p class="dlv-detail__idx">${esc(area.label)} · Deliverable</p>
+    <h3 class="dlv-detail__name">${esc(d.name)}</h3>
+    <div class="dlv-detail__badges">${delivMarker(d)}<span class="badge-axis ${over?'tight':''}">${statusLine}</span></div>
+    <div class="dlv-field"><span class="k">Status</span><span class="v ${over?'over':''}">${statusLine}</span></div>
+    <div class="dlv-field"><span class="k">Owner</span><span class="v">${esc(d.owner||'Not yet specified')}</span></div>
+    <div class="dlv-field"><span class="k">Area</span><span class="v">${esc(area.label)}</span></div>
+    <div class="dlv-field"><span class="k">Due</span><span class="v ${over?'over':''}">${esc(d.due&&d.due!=="—"?d.due:'Not yet specified')}</span></div>
+    <div class="dlv-field"><span class="k">Version</span><span class="v">${esc(d.version&&d.version!=="—"?d.version:'Not yet specified')}</span></div>
+    <div class="dlv-field"><span class="k">Purpose</span><span class="v">${esc(d.purpose||'Not yet specified')}</span></div>
+    ${openCTA}
+  </div>`;
+  liveMsg(`${d.name} selected.`);
+}
+function renderDeliverables(){
+  const route=document.getElementById("delivRoute");
+  if(!route.dataset.built){ buildDelivRoute(); route.dataset.built="1"; }
+  selectDelivStage(delivStageSel||"define");
+  if(delivSel) selectDeliv(delivSel);
+}
+
+/* ============================================================
+   TASK DRAWER
+   ============================================================ */
+let lastTrigger=null, openSheetEl=null;
+function trapFocus(el,e){
+  if(e.key!=="Tab")return;
+  const f=el.querySelectorAll('button,a[href],input,select,[tabindex]:not([tabindex="-1"])');
+  if(!f.length)return; const first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+}
+function depBlock(ref){
+  const deps=(DEPS[ref]||[]).map(r=>byRef(r)).filter(Boolean).map(enrich);
+  if(!deps.length) return `<p class="axnote">Not yet specified.</p>`;
+  return `<div class="deplist">${deps.map(d=>{
+    const blocking=d.status!=="complete";
+    return `<div class="depitem ${blocking?"blocking":""}"><div class="dep-t">${esc(d.task.split("—")[0].trim())}</div>
+      <div class="dep-m"><span>${esc(d.ref)}</span><span>${esc(d.responsible)}</span><span>${fmtDue(d)}</span><span>${STATUS_LABEL[d.status]}</span>${blocking?'<span style="color:#e6a3a5">Blocking</span>':""}</div>
+      <button class="dep-open" data-ref="${d.ref}">Open task →</button></div>`;
+  }).join("")}</div>`;
+}
+function unlockBlock(ref){
+  const u=unlocks(ref).map(r=>byRef(r)).filter(Boolean).map(enrich);
+  if(!u.length) return `<p class="axnote">No downstream work recorded yet.</p>`;
+  return `<div class="deplist">${u.map(d=>`<div class="depitem"><div class="dep-t">${esc(d.task.split("—")[0].trim())}</div>
+    <div class="dep-m"><span>${esc(d.ref)}</span><span>${esc(d.responsible)}</span><span>${fmtDue(d)}</span></div>
+    <button class="dep-open" data-ref="${d.ref}">Open task →</button></div>`).join("")}</div>`;
+}
+function stepsBlock(t){
+  if(!t.action_plan) return `<p class="axnote">Not yet specified.</p>`;
+  const steps=t.action_plan.split(/\s*\|\s*|(?=\d+\.\s)/).map(s=>s.replace(/^\d+\.\s*/,"").trim()).filter(Boolean);
+  return `<ol class="dsteps">${steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>`;
+}
+function openDrawer(ref){
+  const raw=byRef(ref); if(!raw) return; const t=enrich(raw);
+  if(!document.getElementById("drawer").classList.contains("open")) lastTrigger=document.activeElement;
+  const ws=WORKSTREAMS[t.ws], over=isOverdue(t), dt=t.dueDt, days=dt?daysBetween(dt,TODAY):null;
+  const urgency=t.status==="complete"?"Complete":(days==null?"No date":(days<0?Math.abs(days)+" days overdue":(days===0?"Due today":days+" days remaining")));
+  const stText = over && baseStatus(t)!=="overdue" ? `Overdue · ${STATUS_LABEL[baseStatus(t)]}` : STATUS_LABEL[t.status];
+  document.getElementById("drawerRef").textContent=t.ref+" · "+ws.label;
+  document.getElementById("drawerTitle").textContent=t.task.split("—")[0].trim();
+  const rel=DELIVERABLES.filter(d=>(d.related||[]).includes(t.ref));
+  const fullTitle=t.task.includes("—")?t.task.split("—").slice(1).join("—").trim():"";
+  document.getElementById("drawerBody").innerHTML=`
+    <div class="drawer__badges">${marker(t.status)}<span class="badge-axis">${stText}</span>
+      <span class="badge-axis" title="Priority — importance">${PRIORITY_LABEL[t.priority]}</span></div>
+    ${fullTitle?`<div class="dsec"><div class="dsec__label">Full task</div><p>${esc(t.task)}</p></div>`:""}
+    <div class="dsec"><div class="dgrid">
+      <div class="dfield"><div class="k">Owner</div><div class="v">${esc(t.responsible)}</div></div>
+      <div class="dfield"><div class="k">Area</div><div class="v">${esc(ws.label)}</div></div>
+      <div class="dfield"><div class="k">Journey stage</div><div class="v">${esc(JOURNEY.find(j=>j.key===journeyOf(t)).name)}</div></div>
+      <div class="dfield"><div class="k">Due</div><div class="v ${over?"over":""}">${fmtDue(t)}</div></div>
+      <div class="dfield"><div class="k">Urgency</div><div class="v ${over?"over":""}">${urgency}</div></div>
+      <div class="dfield"><div class="k">Detailed stage</div><div class="v">${esc(detailedStageName(t))}</div></div>
+    </div></div>
+    <div class="dsec"><div class="dsec__label">Purpose</div><p>${esc(t.axis_note||"Not yet specified.")}</p></div>
+    <div class="dsec"><div class="dsec__label">Definition of Done / lesson carried forward</div><p>${esc(t.lesson||"Not yet specified.")}</p></div>
+    <div class="dsec"><div class="dsec__label">Action Steps</div>${stepsBlock(t)}</div>
+    <div class="dsec"><div class="dsec__label">Waiting On</div>${depBlock(t.ref)}</div>
+    <div class="dsec"><div class="dsec__label">Unlocks</div>${unlockBlock(t.ref)}</div>
+    ${rel.length?`<div class="dsec"><div class="dsec__label">Related Deliverables</div><p>${rel.map(d=>esc(d.name)).join(" · ")}</p></div>`:""}
+    <div class="dsec"><div class="dsec__label">Notes</div><p>${esc(t.notes||"Not yet specified.")}</p></div>
+    <div class="dsec"><div class="dsec__label">Additional Project Classification</div>
+      <div class="drawer__badges"><span class="badge-axis ${t.axis1.toLowerCase()}" title="Structural role">${t.axis1}</span><span class="badge-axis ${t.axis2==="Tight"?"tight":""}" title="Schedule flexibility">${t.axis2}</span></div>
+      <p class="axnote">${esc(t.axis_note||"")}</p>
+      <p class="axnote">Anchor · major fixed milestone. Gate · must finish before downstream work proceeds. Standalone · does not block others. Tight/Flexible describe timing tolerance.</p></div>
+    <div class="dsec"><div class="dsec__label">Evidence / link</div><p class="axnote">Placeholder — to be attached.</p></div>
+    <div class="dsec"><div class="dsec__label">Last updated</div><p>As of document date · 17 July 2026</p></div>`;
+  document.querySelectorAll("#drawerBody .dep-open").forEach(b=>b.addEventListener("click",()=>openDrawer(b.dataset.ref)));
+  document.getElementById("drawerScrim").classList.add("open");
+  const d=document.getElementById("drawer"); d.classList.add("open"); d.focus();
+}
+function closeDrawer(){
+  document.getElementById("drawerScrim").classList.remove("open");
+  document.getElementById("drawer").classList.remove("open");
+  if(lastTrigger&&lastTrigger.focus) lastTrigger.focus();
+}
+
+/* ============================================================
+   NEEDS ATTENTION + SEARCH + LEGEND SHEETS
+   ============================================================ */
+function openSheet(id){ lastTrigger=document.activeElement; document.getElementById(id+"Scrim").classList.add("open"); const s=document.getElementById(id+"Sheet"); s.classList.add("open"); openSheetEl=s; s.focus(); }
+function closeSheet(id){ document.getElementById(id+"Scrim").classList.remove("open"); document.getElementById(id+"Sheet").classList.remove("open"); openSheetEl=null; if(lastTrigger&&lastTrigger.focus)lastTrigger.focus(); }
+function renderAttn(){
+  const groups=[
+    {key:"overdue",h:"Overdue",x:"Deadline has passed.",list:DATA.filter(t=>t.status==="overdue")},
+    {key:"blocked",h:"Blocked",x:"Cannot proceed until another task or decision is resolved.",list:DATA.filter(t=>t.status==="blocked")},
+    {key:"approval",h:"Awaiting Approval",x:"Prepared, but needs approval before it becomes final.",list:DATA.filter(t=>t.status==="approval")},
+    {key:"atrisk",h:"At Risk",x:"Completion is threatened, though not yet overdue.",list:DATA.filter(t=>t.status==="atrisk")},
+  ];
+  document.getElementById("attnBody").innerHTML=groups.map(g=>`<div class="attn-group g-${g.key}"><p class="attn-group__h">${g.h} · ${g.list.length}</p><p class="attn-group__x">${g.x}</p>${g.list.length?`<div class="tasklist">${g.list.sort((a,b)=>a.dueN-b.dueN).map(t=>row(t)).join("")}</div>`:`<p class="mini-empty">Nothing here.</p>`}</div>`).join("");
+}
+let sf={q:"",status:"",area:"",pri:"",due:"",gate:""};
+function buildSearchSelects(){
+  const st=document.getElementById("fStatus"); Object.keys(STATUS_LABEL).forEach(k=>{const o=document.createElement("option");o.value=k;o.textContent=STATUS_LABEL[k];st.appendChild(o);});
+  const ar=document.getElementById("fArea"); WS_ORDER.forEach(k=>{const o=document.createElement("option");o.value=k;o.textContent=WORKSTREAMS[k].label;ar.appendChild(o);});
+}
+function runSearch(){
+  let l=DATA.slice();
+  if(sf.status) l=l.filter(t=>t.status===sf.status);
+  if(sf.area) l=l.filter(t=>t.ws===sf.area);
+  if(sf.pri) l=l.filter(t=>t.priority===sf.pri);
+  if(sf.gate) l=l.filter(t=>t.axis1===(sf.gate==="gate"?"Gate":"Anchor"));
+  if(sf.due==="14") l=l.filter(due14);
+  else if(sf.due==="30") l=l.filter(t=>{const d=t.dueDt?daysBetween(t.dueDt,TODAY):-1;return t.status!=="complete"&&d>=0&&d<=30;});
+  else if(sf.due==="over") l=l.filter(isOverdue);
+  if(sf.q){const q=sf.q.toLowerCase();l=l.filter(t=>(t.task+" "+t.ref+" "+t.responsible+" "+WORKSTREAMS[t.ws].label+" "+AREA_SHORT[t.ws]+" "+(t.notes||"")).toLowerCase().includes(q)
+    || DELIVERABLES.some(d=>(d.related||[]).includes(t.ref)&&d.name.toLowerCase().includes(q)));}
+  l.sort((a,b)=>a.dueN-b.dueN);
+  document.getElementById("fCount").textContent=l.length+" match"+(l.length!==1?"es":"");
+  const host=document.getElementById("searchResults");
+  if(!l.length){ host.innerHTML=`<div class="emptystate"><div class="big">No results</div><p>No tasks match the current search and filters.</p></div>`; return; }
+  host.innerHTML=l.map(t=>row(t)).join("");
+}
+function clearSearch(){ sf={q:"",status:"",area:"",pri:"",due:"",gate:""}; ["fSearch","fStatus","fArea","fPri","fDue","fGate"].forEach(id=>document.getElementById(id).value=""); runSearch(); }
+
+/* ============================================================
+   VIEW SWITCHING
+   ============================================================ */
+let currentView="journey";
+const SLOT={journey:renderJourney,areas:renderAreas,people:renderPeople};
+function switchView(name, sub, opts){
+  opts=opts||{};
+  if(!SLOT[name]) return;
+  currentView=name;
+  document.querySelectorAll(".vtab").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===name));
+  document.querySelectorAll(".vslot").forEach(v=>v.classList.toggle("active", v.id==="view-"+name));
+  if(name==="journey"&&sub) journeySel=sub;
+  if(name==="areas"&&sub) areaSel=sub;
+  if(name==="people"&&sub) peopleSel=sub;
+  SLOT[name]();
+  renderSubnav();
+  history.replaceState(null,"","#"+name+(sub?"/"+sub:""));
+  if(opts.scroll!==false){ scrollToEl(document.getElementById("view-"+name), true); }
+}
+/* ---- second-level jump bar ---- */
+function pad2(n){ return n<10?"0"+n:""+n; }
+function subChip(k,label,sub,active){ return `<button class="subchip ${active?'is-active':''}" role="tab" aria-selected="${active}" data-k="${esc(String(k))}"><span class="subchip__n">${esc(label)}</span><span class="subchip__s">${esc(sub)}</span></button>`; }
+function renderSubnav(){
+  const host=document.getElementById("subnav"); if(!host) return;
+  if(currentView==="journey"){
+    host.innerHTML=JOURNEY.map((j,i)=>{const p=progressOf(journeyTasks(j.key));return subChip(j.key,`${pad2(i+1)} ${j.name}`,`${p.done}/${p.total}`,journeySel===j.key);}).join("");
+    host.querySelectorAll(".subchip").forEach(b=>b.addEventListener("click",()=>selectJourney(b.dataset.k,{scroll:true})));
+  } else if(currentView==="areas"){
+    host.innerHTML=WS_ORDER.map((k,i)=>{const p=progressOf(areaTasks(k));return subChip(k,`${pad2(i+1)} ${AREA_SHORT[k]}`,`${p.done}/${p.total} · ${p.pct}%`,areaSel===k);}).join("");
+    host.querySelectorAll(".subchip").forEach(b=>b.addEventListener("click",()=>selectArea(b.dataset.k,{scroll:true})));
+  } else if(currentView==="people"){
+    host.innerHTML=OWNERS.map(n=>{const p=progressOf(ownerTasks(n));const ini=n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();return subChip(n,`${ini} ${n}`,`${p.done}/${p.total} · ${p.pct}%`,peopleSel===n);}).join("");
+    host.querySelectorAll(".subchip").forEach(b=>b.addEventListener("click",()=>selectPerson(b.dataset.k,{scroll:true})));
+  }
+}
+function markSubnavActive(key){ document.querySelectorAll("#subnav .subchip").forEach(b=>{const a=b.dataset.k===String(key);b.classList.toggle("is-active",a);b.setAttribute("aria-selected",a);}); }
+function scrollToEl(el, includeAppbar){
+  if(!el) return;
+  const ab=document.getElementById("appbar");
+  const off = 50 + (includeAppbar && ab ? ab.offsetHeight : 0) + 10;
+  const y = el.getBoundingClientRect().top + window.pageYOffset - off;
+  window.scrollTo({top:Math.max(0,y), behavior:window.WX.smoothBehavior()});
+}
+function liveMsg(m){ document.getElementById("live").textContent=m; }
+
+/* roving keyboard for route tablists */
+function routeKeys(items, activate){
+  items=[...items];
+  items.forEach((it,i)=>it.addEventListener("keydown",e=>{
+    let n=-1; if(e.key==="ArrowDown"||e.key==="ArrowRight")n=(i+1)%items.length; else if(e.key==="ArrowUp"||e.key==="ArrowLeft")n=(i-1+items.length)%items.length; else if(e.key==="Home")n=0; else if(e.key==="End")n=items.length-1; else return;
+    e.preventDefault(); items[n].focus(); activate(items[n]);
+  }));
+}
+
+/* ============================================================
+   DOORWAY + MOTIF + COUNTDOWN + INIT
+   ============================================================ */
+function buildMotif(){
+  const svg=document.getElementById("heroMarks"); if(!svg) return;
+  // a fine build-line: points across the canvas, some complete(green), current(gold), late(crimson)
+  const pts=[[140,540],[300,470],[470,520],[640,430],[820,480],[980,400],[1080,460]];
+  const states=["done","done","late","now","","",""];
+  let path=`<path class="bl-path" d="M ${pts.map(p=>p.join(" ")).join(" L ")}"/>`;
+  // faint incomplete scaffolding lines rising toward the path
+  let scaff="";
+  pts.forEach((p,i)=>{ scaff+=`<line class="bl-seg" x1="${p[0]}" y1="${p[1]}" x2="${p[0]}" y2="${p[1]+120+i*8}"/>`; });
+  let nodes="";
+  pts.forEach((p,i)=>{ nodes+=`<circle class="bl-node ${states[i]}" cx="${p[0]}" cy="${p[1]}" r="${states[i]==='now'?9:6.5}"/>`; });
+  svg.innerHTML=scaff+path+nodes;
+}
+function renderCountdown(){
+  const days=Math.max(0,daysBetween(DDAY,TODAY));
+  document.querySelectorAll(".cd-num").forEach(e=>e.textContent=days);
+}
+function revealNavOnScroll(){
+  const appbar=document.getElementById("appbar"), ex=document.getElementById("seg-explore");
+  if(!appbar||!ex) return;
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    const past = e.boundingClientRect.top < 0 && !e.isIntersecting;
+    appbar.classList.toggle("show", past);
+  }),{rootMargin:"-110px 0px 0px 0px",threshold:0});
+  obs.observe(ex);
+}
+function revealInit(){
+  const rvs=document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"}); rvs.forEach(x=>io.observe(x)); }
+  else rvs.forEach(x=>x.classList.add("in"));
+}
+function init(){
+  renderCountdown(); revealInit(); revealNavOnScroll();
+  buildSearchSelects();
+  // always-visible segments
+  renderOverview(); renderDeliverables(); renderJourney(); renderSubnav();
+  // doorway enter → bring Overview's first line into full view (nav not yet shown)
+  document.getElementById("enterBtn").addEventListener("click",()=>{ scrollToEl(document.getElementById("seg-overview"), false); });
+  // explore cards
+  document.querySelectorAll(".exch").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.goto)));
+  // view tabs (Journey / Areas / People)
+  const tabs=[...document.querySelectorAll(".vtab")];
+  tabs.forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
+  document.querySelector(".viewtabs").addEventListener("keydown",e=>{
+    const i=tabs.indexOf(document.activeElement); if(i<0)return; let n=-1;
+    if(e.key==="ArrowRight")n=(i+1)%tabs.length; if(e.key==="ArrowLeft")n=(i-1+tabs.length)%tabs.length; if(e.key==="Home")n=0; if(e.key==="End")n=tabs.length-1;
+    if(n>=0){e.preventDefault();tabs[n].focus();switchView(tabs[n].dataset.view);}
+  });
+  // more detail
+  const mb=document.getElementById("moreBtn"); mb.addEventListener("click",()=>{const o=document.getElementById("moreBody").classList.toggle("open");mb.setAttribute("aria-expanded",o);});
+  // drawer close + delegation
+  document.getElementById("drawerClose").addEventListener("click",closeDrawer);
+  document.getElementById("drawerScrim").addEventListener("click",closeDrawer);
+  document.getElementById("drawer").addEventListener("keydown",e=>trapFocus(document.getElementById("drawer"),e));
+  document.body.addEventListener("click",e=>{ const r=e.target.closest("[data-ref]"); if(r&&r.dataset.ref&&!r.classList.contains("dep-open")){ openDrawer(r.dataset.ref); } });
+  // sheets
+  document.getElementById("btnAttn").addEventListener("click",()=>{renderAttn();openSheet("attn");});
+  document.getElementById("attnClose").addEventListener("click",()=>closeSheet("attn"));
+  document.getElementById("attnScrim").addEventListener("click",()=>closeSheet("attn"));
+  document.getElementById("btnSearch").addEventListener("click",()=>{runSearch();openSheet("search");document.getElementById("fSearch").focus();});
+  document.getElementById("searchClose").addEventListener("click",()=>closeSheet("search"));
+  document.getElementById("searchScrim").addEventListener("click",()=>closeSheet("search"));
+  document.getElementById("openLegend").addEventListener("click",()=>openSheet("legend"));
+  document.getElementById("legendClose").addEventListener("click",()=>closeSheet("legend"));
+  document.getElementById("legendScrim").addEventListener("click",()=>closeSheet("legend"));
+  ["attn","search","legend"].forEach(id=>document.getElementById(id+"Sheet").addEventListener("keydown",e=>trapFocus(document.getElementById(id+"Sheet"),e)));
+  // search inputs
+  document.getElementById("fSearch").addEventListener("input",e=>{sf.q=e.target.value;runSearch();});
+  document.getElementById("fStatus").addEventListener("change",e=>{sf.status=e.target.value;runSearch();});
+  document.getElementById("fArea").addEventListener("change",e=>{sf.area=e.target.value;runSearch();});
+  document.getElementById("fPri").addEventListener("change",e=>{sf.pri=e.target.value;runSearch();});
+  document.getElementById("fDue").addEventListener("change",e=>{sf.due=e.target.value;runSearch();});
+  document.getElementById("fGate").addEventListener("change",e=>{sf.gate=e.target.value;runSearch();});
+  document.getElementById("fClear").addEventListener("click",clearSearch);
+  // escape
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(document.getElementById("drawer").classList.contains("open"))closeDrawer(); else if(openSheetEl){["attn","search","legend"].forEach(id=>{if(document.getElementById(id+"Sheet").classList.contains("open"))closeSheet(id);});} } });
+  // hash entry
+  const h=parseHash();
+  if(h.view){ switchView(h.view,h.sub); }
+  else if(h.seg){ const el=document.getElementById("seg-"+h.seg); if(el) el.scrollIntoView(); }
+  else if(h.ref){ openDrawer(h.ref); }
+}
+function parseHash(){
+  const raw=(location.hash||"").replace(/^#/,""); if(!raw) return {};
+  const [a,b]=raw.split("/");
+  if(SLOT[a]) return {view:a, sub:b?decodeURIComponent(b):null};
+  if(a==="overview"||a==="deliverables") return {seg:a};
+  if(byRef(a.toUpperCase())) return {ref:a.toUpperCase()};
+  return {};
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>

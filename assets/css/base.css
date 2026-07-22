@@ -1,0 +1,95 @@
+/* ============================================================
+   WX 2026 — Base utilities (shared, additive)
+   Conservative, namespaced helpers only. This file does NOT
+   re-declare body / global box-sizing — each page keeps its own
+   baseline to avoid visual regressions. It adds accessibility
+   utilities and safe global safeguards.
+   ============================================================ */
+
+/* Screen-reader-only content */
+.wx-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Skip link — visible on focus */
+.wx-skip-link {
+  position: absolute;
+  left: .5rem; top: -3rem;
+  z-index: var(--wx-z-modal, 1000);
+  background: var(--wx-blue-black, #0A0E1A);
+  color: var(--wx-bone, #ECE3D0);
+  border: 1px solid var(--wx-presence-gold, #C6A24C);
+  border-radius: var(--wx-radius-sm, 4px);
+  padding: .55rem .9rem;
+  font-family: var(--wx-sans, sans-serif);
+  font-size: .8rem;
+  text-decoration: none;
+  transition: top var(--wx-dur-fast, .2s) var(--wx-ease, ease);
+}
+.wx-skip-link { min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; }
+.wx-skip-link:focus {
+  top: .5rem;
+  outline: 2px solid var(--wx-presence-gold, #C6A24C);
+  outline-offset: 2px;
+}
+
+/* Reduced-motion safeguard (global, standards-based) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Pass 4 — responsive & accessibility hardening (shared, additive)
+   ============================================================ */
+
+/* Keep anchor destinations clear of the sticky header bar (WCAG 2.4.11 /
+   anchor coverage), but SCOPED to the actual navigation target via :target
+   scroll-margin — so it never offsets a full-viewport composition that is
+   meant to begin at the very top. ~3.25rem matches the ~50px sticky bar.
+   Full-section landings (e.g. the index #hub gateway) opt out with 0. */
+:target { scroll-margin-top: 3.25rem; }
+/* The index gateway composition is meant to begin at the very top. */
+#hub:target { scroll-margin-top: 0; }
+
+/* iOS safe-area padding for the shared fixed nav bars. */
+@supports (padding: env(safe-area-inset-left)) {
+  /* Preserve each bar's existing clamp() padding; only extend it when a
+     device safe-area inset is larger (notched phones in landscape). */
+  .site-nav, .topbar {
+    padding-left: max(clamp(1.1rem, 4vw, 2.4rem), env(safe-area-inset-left));
+    padding-right: max(clamp(1.1rem, 4vw, 2.4rem), env(safe-area-inset-right));
+  }
+}
+
+/* Visible focus fallback against the dark theme. Zero-specificity
+   (:where) so any page's own focus style still wins; only fills gaps. */
+:where(a[href], button, [role="button"], summary, input, select, textarea,
+       [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--wx-presence-gold, #C6A24C);
+  outline-offset: 2px;
+}
+/* Programmatic focus target (skip-link destinations) shouldn't draw a ring. */
+:where([tabindex="-1"]):focus { outline: none; }
+
+/* Reusable invisible hit-area expander: gives a small glyph a >=44px
+   touch/click target via a centered pseudo-element, no visual change. */
+.wx-hit { position: relative; }
+.wx-hit::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: max(100%, 44px); height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+

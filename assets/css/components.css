@@ -1,0 +1,95 @@
+/* ============================================================
+   WX 2026 — Shared components (loaded last, after page styles)
+   Centralises cross-page component behaviour that genuinely
+   reduces drift. Each page keeps its bespoke header/footer
+   styling; this file adds the shared responsive countdown fix
+   and shared status/Coming-Soon utilities.
+   ============================================================ */
+
+/* ---- Header day-countdown: narrow-screen overlap fix (≈320–360px) ----
+   At the narrowest widths the absolutely-centred countdown could sit under
+   the logo. Here it becomes a normal in-flow flex item within the shared
+   space-between header bar, so it can never overlap the logo or the
+   Workspace control. Only the day number is shown; the countdown is
+   preserved (not removed) across mobile sizes. */
+@media (max-width: 360px) {
+  .nav-countdown {
+    position: static;
+    transform: none;
+    gap: 0;
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 0 .35rem;
+  }
+  .nav-countdown .cd-lbl { display: none; }
+  .nav-countdown .cd-num { font-size: .82rem; }
+  /* Compact the shared Workspace control so all three header items fit. */
+  .site-nav__ws {
+    padding-left: .6rem;
+    padding-right: .6rem;
+    font-size: .62rem;
+    letter-spacing: .02em;
+  }
+}
+
+/* ---- Shared "Coming Soon" / pending status utility ----
+   Available for any unfinished destination. Non-interactive: never an
+   anchor, never focusable, never depends on href="#". */
+.wx-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--wx-sans, sans-serif);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--wx-bone-dim, #b9b09c);
+  cursor: default;
+}
+
+/* ============================================================
+   Pass 4 — target size (hit area) hardening.
+   Applied ONLY to controls confirmed to sit in normal flow, using a
+   centered transparent ::after that extends the target over the glyph
+   without reflow (clicks bubble to the control). Absolutely/fixed
+   positioned icon & close buttons are intentionally excluded to avoid
+   disturbing their placement; those remain >=24px (WCAG 2.5.8 AA) and
+   are documented in QA-REPORT as an AAA (44px) gap.
+   ============================================================ */
+.site-nav__ws, .site-nav__logo,
+.set-pill, .vtab, .tp-toggle, .pd-btn, .terr__explore,
+.home-prompt, .seg-jump, .es-tab, .rmj-pill,
+.yr, .zn-pill, .ov-eye, .export-btn, .ln-icon, .wc-list a, .toc-link {
+  position: relative;
+}
+.site-nav__ws::after, .site-nav__logo::after,
+.set-pill::after, .vtab::after, .tp-toggle::after, .pd-btn::after,
+.terr__explore::after, .home-prompt::after, .seg-jump::after,
+.es-tab::after, .rmj-pill::after,
+.yr::after, .zn-pill::after, .ov-eye::after, .export-btn::after, .ln-icon::after, .wc-list a::after, .toc-link::after,
+.ref-chip::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+.ref-chip { position: relative; }
+.rx::after { content:""; position:absolute; top:50%; left:50%; width:max(100%,44px); height:max(100%,44px); transform:translate(-50%,-50%); pointer-events:auto; }
+
+/* Native selects: grow to a comfortable target height (normal flow). */
+.filterrow select, .delivbar select { min-height: 44px; }
+
+/* Tiny inline reference links: taller hit area via vertical padding,
+   pulled back with negative margin so line layout is unchanged. */
+.gov-mini, .rmj-mi-link {
+  display: inline-block;
+  padding-block: .45rem;
+  margin-block: -.45rem;
+}
+
+/* Legacy .skip skip-links: comfortable focus target. */
+.skip { min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; }
