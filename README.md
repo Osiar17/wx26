@@ -17,19 +17,19 @@ All pages live at the repository root and use **relative, subpath-safe URLs**
 (no leading `/`, no hard-coded origin), so the site works at either
 `https://user.github.io/<repo>/` or a custom domain root.
 
-| File | H1 / purpose | Key in-page anchors | Indexing |
-|------|--------------|---------------------|----------|
-| `index.html` | Hub landing — gateway to every resource | `#hub` | public |
-| `concept.html` | The Worship Experience concept / story | — | public |
-| `theme-brief.html` | The theme and the four-phase journey | — | public |
+| File                      | H1 / purpose                                                                            | Key in-page anchors                                                                                | Indexing    |
+| ------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| `index.html`              | Hub landing — gateway to every resource                                                 | `#hub`                                                                                             | public      |
+| `concept.html`            | The Worship Experience concept / story                                                  | —                                                                                                  | public      |
+| `theme-brief.html`        | The theme and the four-phase journey                                                    | —                                                                                                  | public      |
 | `creative-direction.html` | Creative-direction workspace (Gethsemane visual world); **Musical Identity lives here** | `#story` `#elements` `#mood` `#identity` `#musical` (hash-routed segments, Back/Forward supported) | **noindex** |
-| `setlist.html` | The setlist — 28 items across four phases + the worship roadmap | `#roadmap-intro` `#setlist` `#item-1`…`#item-28` | public |
-| `lyrics.html` | The Lyric Book — full lyrics keyed to the setlist | `#contents` `#item-1`…`#item-28` | **noindex** |
-| `playbook.html` | Ministries Playbook (operational task/ministry data) | `#mainContent` | **noindex** |
-| `blueprint.html` | The Blueprint — deliverables and routes | `#mainContent` | **noindex** |
-| `music-workshop.html` | Wade-In (The Christian · The Musician · The Performer) | `#beneath` | public |
-| `bible-study.html` | Calibrate — bible study | `#what` | public |
-| `404.html` | Branded not-found page; links back to the Workspace | — | noindex |
+| `setlist.html`            | The setlist — 28 items across four phases + the worship roadmap                         | `#roadmap-intro` `#setlist` `#item-1`…`#item-28`                                                   | public      |
+| `lyrics.html`             | The Lyric Book — full lyrics keyed to the setlist                                       | `#contents` `#item-1`…`#item-28`                                                                   | **noindex** |
+| `playbook.html`           | Ministries Playbook (operational task/ministry data)                                    | `#mainContent`                                                                                     | **noindex** |
+| `blueprint.html`          | The Blueprint — deliverables and routes                                                 | `#mainContent`                                                                                     | **noindex** |
+| `music-workshop.html`     | Wade-In (The Christian · The Musician · The Performer)                                  | `#beneath`                                                                                         | public      |
+| `bible-study.html`        | Calibrate — bible study                                                                 | `#what`                                                                                            | public      |
+| `404.html`                | Branded not-found page; links back to the Workspace                                     | —                                                                                                  | noindex     |
 
 Canonical route notes: **Musical Identity = `creative-direction.html#musical`**
 (there is no `musical-identity.html`). Full route/anchor inventory and the four
@@ -43,7 +43,7 @@ pending "Coming Soon" routes are in `ROUTE-MANIFEST.md`.
 2. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
    The included workflow (`.github/workflows/ci.yml`) runs the checks and then
    deploys the site on every push to `main`.
-   (Alternatively, choose *Deploy from a branch* → root of `main` to skip CI.)
+   (Alternatively, choose _Deploy from a branch_ → root of `main` to skip CI.)
 3. The site is served at `https://<user>.github.io/<repo>/`. Because every link
    is relative, no base-path configuration is required. The `404.html` page also
    resolves its links to the deployment base at runtime, so it works from a
@@ -170,7 +170,7 @@ Setlist, Lyrics and Playbook offer **Download Word**, **Save as PDF** and
 - **Save as PDF / Print** render a standalone export document in an isolated,
   hidden **iframe** (`assets/js/wx-export.js`) and print only that iframe — the
   live page is never mutated and stays fully interactive after cancel. "Save as
-  PDF" opens the browser print dialog with a *Choose Save as PDF* hint; it is a
+  PDF" opens the browser print dialog with a _Choose Save as PDF_ hint; it is a
   print-to-PDF flow, not a direct file download.
 - A browser's **native print dialog cannot be scripted**, so automated tests
   exercise the real print pathway (`--kiosk-printing`) and parent-page
