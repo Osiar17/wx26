@@ -696,16 +696,14 @@ test("footer: creative direction Story footer is scrollable into view (mobile)",
 }) => {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const p = await ctx.newPage();
-  // Wait for full load so late images/videos have grown the page before we scroll
-  // (deterministic — not an arbitrary timeout).
-  await p.goto(`${BASE}/creative-direction.html#story`, { waitUntil: "load" });
-  // On mobile Creative Direction the scroll container is <body> (html,body{height:100%}
-  // + body{overflow:auto} below 1024px), not the documentElement — so window.scrollTo
-  // against documentElement.scrollHeight and a fixed wheel count are unreliable.
-  // Scroll the actual container via Playwright, which resolves whichever ancestor
-  // scrolls and waits for the element to settle, then assert it is genuinely in view.
-  const footer = p.locator(".eco-foot");
-  await footer.scrollIntoViewIfNeeded();
+  await p.goto(`${BASE}/creative-direction.html#story`, { waitUntil: "domcontentloaded" });
+  await p.waitForTimeout(400);
+  await p.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await p.mouse.move(195, 400);
+  for (let i = 0; i < 14; i++) {
+    await p.mouse.wheel(0, 800);
+  }
+  await p.waitForTimeout(300);
   const inView = await p.evaluate(() => {
     const f = document.querySelector(".eco-foot").getBoundingClientRect();
     return f.top < window.innerHeight && f.bottom > 0;
