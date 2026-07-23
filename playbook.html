@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/favicon.svg?v=2026.9.1J" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png?v=2026.9.1J" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 <meta name="robots" content="noindex, nofollow">
 
 <title>WX 2026 Ministries Playbook</title>
@@ -1010,10 +1012,17 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 
 @media(max-width:560px){
   .ov-card{flex-basis:88%}
-  .ov-task{grid-template-columns:70px 1fr auto;row-gap:.15rem}
-  .ov-task:has(.ov-task__min){grid-template-columns:70px 1fr auto}
-  .ov-task__min{grid-column:2;font-size:.5rem}
-  .ov-task__status{grid-column:2}
+  /* Pass 9.1C: stacked grid-areas so each layer has its own row (no overlap). */
+  .ov-task,
+  .ov-task:has(.ov-task__min){
+    grid-template-columns:1fr 40px;
+    grid-template-areas:"due info" "title info" "min info" "status info";
+    align-items:start;height:auto;min-height:0;row-gap:.22rem;column-gap:.6rem}
+  .ov-task__due{grid-area:due;align-self:center}
+  .ov-task__title{grid-area:title;grid-column:auto;white-space:normal;overflow:visible;min-width:0;line-height:1.3}
+  .ov-task__min{grid-area:min;grid-column:auto;font-size:.5rem;min-width:0}
+  .ov-task__status{grid-area:status;grid-column:auto;justify-self:start;white-space:normal}
+  .ov-task .task-info{grid-area:info;align-self:center}
   .ov-card__nums,.ov-crit__nums{grid-template-columns:repeat(2,1fr)}
   .ov-change{grid-template-columns:60px 1fr;gap:.6rem}
 }
@@ -1096,10 +1105,14 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 @media(max-width:620px){.ov-glancegrid{grid-template-columns:1fr}.ov-meeting-table th,.ov-meeting-table td{display:block;width:auto}.ov-meeting-table th{padding-bottom:.15rem}.ov-meeting-table td.focus{padding-top:0}.ov-meeting-table td.state{padding-top:0}.ov-meeting-table tr{display:block;border-bottom:1px solid rgba(236,227,208,.1)}.ov-meeting-table tr:last-child{border-bottom:0}.ov-meeting-table td,.ov-meeting-table th{border-bottom:0}}
 
 /* footer */
-.eco-foot{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;margin-top:2vh;padding:2.6rem clamp(1rem,3.5vw,2.2rem) 3.2rem;border-top:1px solid rgba(var(--gold-rgb),.22)}
+/* Pass 9.1L.1: true three-column identity relationship [YES] [nav] [CCC];
+   navigation mathematically centred regardless of the unequal mark widths. */
+.eco-foot{position:relative;z-index:5;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;margin-top:2vh;padding:2.6rem clamp(1rem,3.5vw,2.2rem) 3.2rem;border-top:1px solid rgba(var(--gold-rgb),.22)}
+.eco-foot .eco-yes{justify-self:start}
+.eco-foot [data-wx-fnav]{justify-self:center}
+.eco-foot .eco-ccc{justify-self:end}
 .eco-foot img{display:block;width:auto;pointer-events:auto}
 .eco-foot .eco-yes img{height:clamp(42px,5vw,56px);opacity:.92}
-.eco-foot .eco-mid{font-family:var(--num);font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);text-align:center}
 .eco-foot .eco-ccc img{height:clamp(28px,3.6vw,38px);opacity:.9}
 @media(max-width:640px){.eco-foot{flex-direction:column;align-items:center;gap:1.4rem;text-align:center}.eco-foot .eco-yes img{height:42px}}
 
@@ -1204,11 +1217,19 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 .ov-changes{max-width:900px}
 
 @media(max-width:760px){
-  .ov-taskpage .ov-task{grid-template-columns:64px minmax(0,1fr) 28px!important;row-gap:.1rem}
-  .ov-taskpage .ov-task__min{grid-column:2;font-size:.48rem}
-  .ov-taskpage .ov-task__title{grid-column:2;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .ov-taskpage .ov-task__status{grid-column:2;text-align:left}
-  .ov-taskpage .task-info{grid-column:3;grid-row:1/4}
+  /* Pass 9.1C: reflow paged task rows into a stacked grid so each layer
+     (due, title, ministry, status) has its own row; details button spans the
+     right edge. Fixed 42px height from the base rule is released here. */
+  .ov-taskpage .ov-task{
+    grid-template-columns:1fr 40px!important;
+    grid-template-areas:"due info" "title info" "min info" "status info"!important;
+    align-items:start!important;height:auto!important;min-height:0!important;
+    row-gap:.22rem!important;column-gap:.6rem!important;padding:.7rem .35rem!important}
+  .ov-taskpage .ov-task__due{grid-area:due!important;align-self:center!important}
+  .ov-taskpage .ov-task__title{grid-area:title!important;white-space:normal!important;overflow:visible!important;display:block!important;-webkit-line-clamp:unset!important;line-height:1.32!important;font-size:.96rem!important;min-width:0!important}
+  .ov-taskpage .ov-task__min{grid-area:min!important;font-size:.5rem!important;min-width:0!important}
+  .ov-taskpage .ov-task__status{grid-area:status!important;text-align:left!important;justify-self:start!important;white-space:normal!important}
+  .ov-taskpage .task-info{grid-area:info!important;grid-row:auto!important;align-self:center!important}
 }
 
 
@@ -1255,6 +1276,7 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
   <script src="assets/js/wx-export.js"></script>
   <script src="assets/js/site.js" defer></script>
@@ -1388,8 +1410,8 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 
 <div class="eco-foot" aria-hidden="false">
   <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
-  <span class="eco-mid">Playbook · WX 2026</span>
-  <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+  <span class="wx-fnav" data-wx-fnav hidden aria-label="Page navigation"></span>
+<span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
 </div>
 
 <!-- Assignment Brief drawer -->

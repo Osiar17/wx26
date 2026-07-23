@@ -93,3 +93,229 @@
 
 /* Legacy .skip skip-links: comfortable focus target. */
 .skip { min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; }
+
+/* =====================================================================
+   Pass 9.1K — Canonical footer identity treatment (shared)
+   One consistent, intentional YES + CCC identity group across every page
+   footer (index/concept .foot-wrap, setlist/lyrics .foot .fy/.fc,
+   theme-brief .wx-foot, and the shared-chrome .eco-foot pages). This
+   standardises the identity BLOCK only — grouping, alignment, spacing and
+   mobile reflow — not each footer's other content. Logo intrinsic sizes are
+   already uniform and are left to each page. !important is used because the
+   per-page footer layout lives in page-inline <style> that would otherwise
+   win the cascade over this shared sheet.
+   ===================================================================== */
+
+/* Marks always keep their natural aspect ratio — never stretched or cropped. */
+.foot-yes img, .foot .fy img, .fy img, .wx-foot-yes, .eco-yes img,
+.foot-ccc img, .foot .fc img, .fc img, .wx-foot-ccc, .eco-ccc img {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Desktop/base: consistent vertical alignment of the identity marks. */
+.eco-foot { align-items: center !important; }
+
+/* Phone widths: YES + CCC read as ONE compact, centred unit; any supporting
+   footer text (e.g. Playbook · WX 2026) sits BELOW the pair, never between the
+   two marks. Respect the mobile bottom safe-area inset. */
+@media (max-width: 760px) {
+  .foot-wrap, .foot, .wx-foot, .eco-foot {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    column-gap: clamp(1.05rem, 5vw, 1.9rem) !important;
+    row-gap: 0.55rem !important;
+    text-align: center !important;
+    padding-bottom: calc(1.35rem + env(safe-area-inset-bottom)) !important;
+  }
+  /* marks lead, supporting text drops onto its own line beneath them */
+  .foot-yes, .fy, .eco-yes, .wx-foot-yes { order: 1; }
+  .foot-ccc, .fc, .eco-ccc, .wx-foot-ccc { order: 2; }
+  .eco-mid { order: 3; flex-basis: 100%; text-align: center; margin-top: 0.15rem; }
+}
+
+/* Pass 9.1K — linked identity marks keep a clearly visible keyboard focus ring. */
+.foot-yes:focus-visible, .fy:focus-visible, .eco-yes:focus-visible {
+  outline: 2px solid var(--accent, #c6a24c);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =====================================================================
+   Pass 9.1L (rebuild) — restrained reader navigation.
+   Two visible parts only: a small All Pages arrow beside Workspace, and
+   dainty Previous/Next controls INSIDE the footer identity row between the
+   YES and CCC marks. No mid-page navigation block anywhere.
+   ===================================================================== */
+
+/* ---- Footer Previous / Next (secondary to the identity marks) ---- */
+.wx-fnav { display: inline-flex; align-items: center; gap: 0.5rem; flex: 0 1 auto; }
+.wx-fnav[hidden] { display: none; }
+.wx-fnav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  padding: 0.3rem 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--ink-soft, #9aa0ad);
+  text-decoration: none;
+  font-family: var(--font-display, "Cinzel", serif);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.wx-fnav__btn:hover { color: var(--accent, #c6a24c); }
+.wx-fnav__btn:focus-visible { outline: 2px solid var(--accent, #c6a24c); outline-offset: 2px; border-radius: 4px; }
+.wx-fnav__ar { font-size: 0.95rem; color: var(--accent, #c6a24c); line-height: 1; }
+.wx-fnav__btn.is-off { opacity: 0.26; }
+.wx-fnav__btn.is-off .wx-fnav__ar { color: var(--ink-soft, #9aa0ad); }
+.wx-fnav__lbl { max-width: 16ch; overflow: hidden; text-overflow: ellipsis; }
+
+/* Reader footers order marks by DOM so the nav sits BETWEEN them; text below. */
+[data-wx-fnav] { order: 0; }
+.foot-yes, .fy, .eco-yes { order: 0; }
+.foot-ccc, .fc, .eco-ccc { order: 0; }
+.eco-mid { order: 5 !important; }
+
+@media (max-width: 760px) {
+  /* arrow-only on phones (destination stays on the anchor aria-label) */
+  .wx-fnav__lbl {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .wx-fnav { gap: 0.15rem; }
+  .wx-fnav__btn { padding: 0.3rem 0.35rem; }
+}
+
+/* ---- Right-side header action group: [ Workspace ] [ ▾ ] ---- */
+/* Pass 9.1L.1: Workspace + All Pages arrow live in ONE flex child at the right,
+   so the arrow never becomes a middle item over the absolutely-centred countdown. */
+.wx-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.45rem, 1vw, 0.7rem);
+  flex: 0 0 auto;
+  min-width: 0;
+}
+.wx-pages-control { position: relative; display: inline-flex; align-items: center; }
+
+/* ---- All Pages arrow beside Workspace ---- */
+.wx-allpages {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--rule, rgba(236, 227, 208, 0.28));
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink, #ece3d0);
+}
+.wx-allpages:hover { border-color: var(--accent, #c6a24c); color: var(--accent, #c6a24c); }
+.wx-allpages:focus-visible { outline: 2px solid var(--accent, #c6a24c); outline-offset: 2px; }
+.wx-allpages__ar { font-size: 0.9rem; line-height: 1; transition: transform 0.25s; }
+.wx-allpages[aria-expanded="true"] .wx-allpages__ar { transform: rotate(180deg); }
+
+/* Narrow phones: keep [ Workspace ] [ ▾ ] inside the header padding — reduce the
+   Workspace padding and the group gap before anything is hidden or clipped, and
+   shrink Workspace's left edge clear of the centred countdown (never reorder). */
+@media (max-width: 480px) {
+  .wx-header-actions { gap: 0.4rem; }
+  .site-nav__ws { padding-left: 0.6rem !important; padding-right: 0.6rem !important; letter-spacing: 0.06em; gap: 0.3rem; }
+  .wx-allpages { min-width: 36px; min-height: 36px; }
+}
+@media (max-width: 414px) {
+  /* trim Workspace's decorative back-arrow (not text) so the button clears the
+     centred countdown once the action group sits to its right. */
+  .site-nav__ws .ar { display: none; }
+}
+@media (max-width: 360px) {
+  .site-nav { gap: 0.5rem !important; padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+  .topbar { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+  .site-nav__ws { padding-left: 0.45rem !important; padding-right: 0.45rem !important; letter-spacing: 0.02em; gap: 0.25rem; }
+  .wx-header-actions { gap: 0.4rem; }
+}
+
+/* ---- All Pages dropdown (anchored popover) ---- */
+.wx-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1100;
+  width: min(280px, 84vw);
+  max-height: min(70vh, 560px);
+  overflow: auto;
+  background: linear-gradient(180deg, #0e1320, #080c15);
+  border: 1px solid var(--rule, rgba(236, 227, 208, 0.2));
+  border-radius: 12px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.55);
+  padding: 0.5rem;
+}
+.wx-menu[hidden] { display: none; }
+.wx-menu__list { list-style: none; margin: 0; padding: 0; }
+.wx-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  color: var(--ink, #ece3d0);
+  text-decoration: none;
+  font-family: var(--font-body, "EB Garamond", serif);
+  font-size: 0.98rem;
+}
+.wx-menu__link:hover { background: rgba(236, 227, 208, 0.06); color: var(--accent, #c6a24c); }
+.wx-menu__link:focus-visible { outline: 2px solid var(--accent, #c6a24c); outline-offset: -2px; }
+/* current page: weight + left border + badge, not colour alone */
+.wx-menu__link[aria-current="page"] {
+  font-weight: 700;
+  border-left: 3px solid var(--accent, #c6a24c);
+  padding-left: 0.5rem;
+  cursor: default;
+}
+.wx-menu__here {
+  font-family: var(--font-display, "Cinzel", serif);
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #9aa0ad);
+  border: 1px solid var(--rule, rgba(236, 227, 208, 0.28));
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+}
+@media (max-width: 480px) {
+  /* compact full-width panel anchored under the header on narrow phones */
+  .wx-menu {
+    position: fixed;
+    left: 0.6rem;
+    right: 0.6rem;
+    width: auto;
+    top: auto;
+    max-height: 62vh;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Never print or export the reader navigation. */
+@media print {
+  .wx-fnav,
+  .wx-allpages,
+  .wx-menu { display: none !important; }
+}

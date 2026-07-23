@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/favicon.svg?v=2026.9.1J" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png?v=2026.9.1J" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 <meta name="description" content="Creative direction for Worship Experience 2026 — the Gethsemane visual world: colour, marks, type, imagery and motion.">
 <meta name="robots" content="noindex, nofollow">
 
@@ -476,6 +478,54 @@ button.home-prompt{background:none;border:0;cursor:pointer;font:inherit;text-ali
   .move-text{margin-right:var(--mx)}
   .hw{position:fixed;right:0;bottom:-40px;top:auto;transform:translate(40%,0);width:320px;height:320px}.hw.hw-tuck{opacity:.06;transform:translate(82%,28%) scale(.5)}
 }
+/* ===== Pass 9.1G — mobile Creative Direction section navigation ===== */
+.cd-navtrigger{display:none}
+.cd-navsheet{display:none}
+body.cd-sheet-open{overflow:hidden !important}
+@media (max-width:760px){
+  .hw{display:none !important}                 /* full wheel no longer sits over the reading column */
+  .ws-content,.workspace{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))} /* content clears the trigger + safe area */
+  .cd-navtrigger{position:fixed;right:calc(1rem + env(safe-area-inset-right,0px));
+    bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:60;
+    display:inline-flex;align-items:center;gap:.5rem;min-height:44px;min-width:44px;
+    padding:.6rem 1rem;border-radius:999px;cursor:pointer;
+    font-family:var(--font-display);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink);background:rgba(14,19,30,.92);border:1px solid var(--rule);
+    box-shadow:0 10px 30px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .cd-navtrigger:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cd-navtrigger svg{width:18px;height:18px;flex:none;stroke:var(--accent);fill:none;stroke-width:1.6}
+  .cd-navsheet{display:block;position:fixed;inset:0;z-index:120}
+  .cd-navsheet[hidden]{display:none}
+  .cd-navsheet__backdrop{position:absolute;inset:0;background:rgba(6,9,16,.6);opacity:0;transition:opacity .28s ease}
+  .cd-navsheet.open .cd-navsheet__backdrop{opacity:1}
+  .cd-navsheet__panel{position:absolute;left:0;right:0;bottom:0;
+    background:linear-gradient(180deg,var(--bg-panel,#141a27),var(--bg-deep,#0b0f1a));
+    border-top:1px solid var(--rule);border-radius:18px 18px 0 0;
+    padding:1.1rem 1.1rem calc(1.2rem + env(safe-area-inset-bottom,0px));
+    box-shadow:0 -18px 50px rgba(0,0,0,.6);
+    transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);max-height:86vh;overflow-y:auto}
+  .cd-navsheet.open .cd-navsheet__panel{transform:translateY(0)}
+  .cd-navsheet__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem}
+  .cd-navsheet__head h2{font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.02em;color:var(--ink);margin:0}
+  .cd-navsheet__close{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);
+    background:none;color:var(--ink);font-size:1.15rem;cursor:pointer;line-height:1}
+  .cd-navsheet__close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cd-navsheet__list{list-style:none;margin:0;padding:0}
+  .cd-navlink{display:flex;align-items:center;gap:.9rem;width:100%;text-align:left;
+    background:none;border:0;border-top:1px solid var(--rule);
+    padding:1rem .3rem;cursor:pointer;color:var(--ink);font-family:var(--font-body);font-size:1.05rem}
+  .cd-navsheet__list li:first-child .cd-navlink{border-top:0}
+  .cd-navlink__num{font-family:var(--font-display);font-size:.78rem;letter-spacing:.12em;color:var(--ink-soft);min-width:1.7rem}
+  .cd-navlink__name{flex:1 1 auto;min-width:0}
+  .cd-navlink__cur{display:none;align-items:center;gap:.3rem;font-family:var(--font-display);
+    font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sc,var(--accent))}
+  .cd-navlink__cur::before{content:"\2713";font-size:.8rem}
+  .cd-navlink[aria-current="true"]{color:#fff;font-weight:600}
+  .cd-navlink[aria-current="true"] .cd-navlink__num{color:var(--sc,var(--accent))}
+  .cd-navlink[aria-current="true"] .cd-navlink__cur{display:inline-flex}
+  .cd-navlink:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+}
+@media (prefers-reduced-motion:reduce){.cd-navsheet__backdrop,.cd-navsheet__panel{transition:none !important}}
 @media (prefers-reduced-motion:reduce){.move-text{opacity:1;transform:none;transition:none}.home-prompt .arrow{animation:none}}
 
 
@@ -535,6 +585,10 @@ body.es-open .es-hint{opacity:0;visibility:hidden}
   box-shadow:0 40px 130px rgba(0,0,0,.6);animation:esIn .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes esIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
 .es-modal-card::-webkit-scrollbar{width:9px}.es-modal-card::-webkit-scrollbar-thumb{background:rgba(236,227,208,.12);border-radius:9px}
+/* Pass 9.1J.6: in-panel reader on the open detail — sticky at the top of the card,
+   right-padded to clear the absolute close button; mirrors the carousel Prev/Next. */
+.es-modal-nav{position:sticky;top:0;z-index:2;margin:-2.8rem -2.8rem 1.8rem;padding:1rem 5.6rem 1rem 2.8rem;background:#0e1320;border-top:0;border-bottom:1px solid var(--rule);max-width:none}
+@media(max-width:760px){.es-modal-nav{margin:-2rem -1.6rem 1.4rem;padding:.85rem 4.6rem .85rem 1.6rem}}
 .es-close{position:absolute;top:1.2rem;right:1.2rem;z-index:3;display:inline-flex;align-items:center;gap:.5rem;
   background:rgba(10,14,26,.6);border:1px solid var(--rule);color:var(--ink);cursor:pointer;border-radius:999px;
   padding:.5rem 1.05rem;font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
@@ -748,6 +802,25 @@ body.es-locked .ws-content{overflow:hidden}
   .moods-note{min-height:0}
 }
 
+/* ===== Pass 9.1H — Mood Board (Moods) mobile card-reader controls ===== */
+.moods-nav{display:none}
+@media (max-width:760px){
+  /* keep name (tabs) -> image (scene) -> descriptor (note) as one tight unit */
+  .moods-stage{gap:1rem}
+  .moods-note{border-top:1px solid var(--rule);padding-top:1.2rem;margin-bottom:0;min-height:0}
+  .moods-nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+    margin-top:1.3rem;border-top:1px solid var(--rule);padding-top:1.1rem}
+  .moods-nav__btn{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;
+    padding:.5rem 1rem;border:1px solid var(--rule);border-radius:999px;background:none;cursor:pointer;
+    font-family:var(--font-display);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .moods-nav__btn[disabled]{opacity:.35;cursor:default}
+  .moods-nav__btn:not([disabled]):hover{border-color:var(--c-focus);color:var(--c-focus)}
+  .moods-nav__btn:focus-visible{outline:2px solid var(--c-focus);outline-offset:2px}
+  .moods-nav__pos{font-family:var(--font-display);font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){.moods-master,.moods-dim,.moods-glow{transition:none !important}}
+
 /* lightbox */
 .mb-lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(4,6,11,.92);cursor:zoom-out;padding:5vh 5vw}
 .mb-lightbox[hidden]{display:none}
@@ -883,7 +956,21 @@ body.es-locked .ws-content{overflow:hidden}
   .mgg-head-rule{height:1px;width:100%;
     background:linear-gradient(90deg,rgba(203,154,84,.5),rgba(236,227,208,.14) 42%,rgba(236,227,208,0));
     margin:1rem 0 3.4rem}
-  .mgg-key{margin:5.5vh 0 0}.mgg-key-top{margin:2.6vh 0 5vh}.mgg-key-list .ks{font-family:var(--font-body);color:var(--ink-soft);font-size:.98rem;line-height:1.5;opacity:.9;max-width:52rem}/*S1 clusters*/.mgg-key-list li{cursor:pointer}.mgg-key-list li .kt{transition:color .25s}.mgg-key-list li:hover .kt,.mgg-key-list li.sel .kt{color:var(--c-focus)}.mgg-tag{cursor:pointer;transition:opacity .35s,color .35s}.mgg-board.sel .mgg-cell{opacity:.24;filter:grayscale(.25) brightness(.66);transition:opacity .45s ease,filter .45s ease,transform .55s cubic-bezier(.2,.72,.24,1),box-shadow .5s}.mgg-board.sel .mgg-cell.clust{opacity:1;filter:none;z-index:30;transform:scale(1.11);outline:1px solid rgba(var(--focus-rgb),.7);box-shadow:0 26px 70px rgba(0,0,0,.72)}.mgg-board.sel .mgg-tag{opacity:.28}.mgg-board.sel .mgg-tag.clust{opacity:1;color:var(--c-focus)}.mgg-cell.open{z-index:60!important;transform:scale(1.66)!important;outline:2px solid var(--c-focus)!important;box-shadow:0 40px 120px rgba(0,0,0,.85)!important}.mgg-cell.open img{filter:brightness(1.06) saturate(1.05)!important}.mgg-reason{position:fixed;left:50%;bottom:4vh;transform:translateX(-50%) translateY(14px);max-width:min(560px,88vw);background:var(--bg-lift);border:1px solid var(--rule);border-radius:9px;padding:1.15rem 2.4rem 1.25rem 1.5rem;box-shadow:0 30px 90px rgba(0,0,0,.72);z-index:120;opacity:0;pointer-events:none;transition:.3s ease}.mgg-reason.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}.mgg-reason .rn{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.14em;text-transform:uppercase;font-size:.68rem;display:block;margin-bottom:.45rem}.mgg-reason .rt{font-family:var(--font-display);color:var(--ink);font-size:1.16rem;display:block;margin-bottom:.5rem}.mgg-reason .rr{color:var(--ink-soft);font-size:1rem;line-height:1.55;font-family:var(--font-body)}.mgg-reason .rx{position:absolute;top:.55rem;right:.75rem;color:var(--ink-soft);cursor:pointer;font-size:1rem;background:none;border:0;line-height:1}/*flip cards*/.mgg-key-list li.kcard{display:block;perspective:1400px;cursor:pointer;min-height:168px;background:none;border:0;padding:0}.kflip{position:relative;width:100%;height:100%;min-height:168px;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}.kcard:hover .kflip,.kcard.sel .kflip{transform:rotateY(180deg)}.kface{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden;border:1px solid var(--rule);border-radius:14px;padding:1.5rem 1.45rem;display:flex;flex-direction:column;background:radial-gradient(130% 110% at 0% 0%,rgba(var(--focus-rgb),.07),transparent 55%),linear-gradient(158deg,var(--bg-panel),var(--bg-lift));box-shadow:0 18px 44px rgba(0,0,0,.34);transition:border-color .4s,box-shadow .4s}.kface::before{content:'';position:absolute;top:0;left:1.45rem;right:1.45rem;height:1px;background:linear-gradient(90deg,var(--c-focus),transparent 72%);opacity:.75}.kcard:hover .kface,.kcard.sel .kface{border-color:rgba(var(--focus-rgb),.5);box-shadow:0 26px 62px rgba(0,0,0,.5)}.kfront{justify-content:flex-start}.kfront .kn{font-family:var(--font-display);font-weight:600;color:var(--c-focus);font-size:1.5rem;letter-spacing:.1em;line-height:1}.kfront .kt{font-family:var(--font-display);font-weight:600;color:var(--ink);font-size:1.14rem;letter-spacing:.03em;margin-top:.8rem;text-transform:none}.kcue{margin-top:auto;font-family:var(--font-display);color:var(--ink-soft);opacity:.6;letter-spacing:.22em;text-transform:uppercase;font-size:.58rem}.kback{transform:rotateY(180deg);justify-content:center;gap:.85rem;background:radial-gradient(130% 110% at 100% 0%,rgba(var(--focus-rgb),.08),transparent 55%),linear-gradient(202deg,var(--bg-lift),var(--bg-panel))}.kbn{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.16em;text-transform:uppercase;font-size:.63rem}.kback .ks{opacity:1;max-width:none;color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.55;font-style:italic}/*mood cluster caption*/.mgg-mood-cap{min-height:1.6rem;margin:0 0 1.3rem;opacity:0;transform:translateY(6px);transition:.4s ease;text-align:center}.mgg-mood-cap.on{opacity:1;transform:none}.mgg-mood-cap .mmc-t{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;margin-right:.8rem}.mgg-mood-cap .mmc-s{font-family:var(--font-body);color:var(--ink-soft);font-style:italic;font-size:1rem}/*editorial legend*/.mgg-editorial{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;margin-top:1rem}.mgg-rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.mgg-rows li.krow{display:flex;align-items:center;gap:1rem;padding:1.15rem .4rem 1.15rem 0;border-bottom:1px solid var(--rule);cursor:pointer;position:relative;transition:padding .3s ease,background .3s ease}.mgg-rows li.krow .kt{flex:1 1 auto;text-transform:none;font-weight:600;font-size:clamp(1rem,1.5vw,1.12rem);letter-spacing:.02em;color:var(--ink-soft);transition:color .3s}.mgg-rows li.krow .kx{flex:0 0 auto;font-family:var(--font-display);color:var(--c-focus);letter-spacing:.18em;text-transform:uppercase;font-size:.58rem;opacity:0;transform:translateX(-8px);transition:.3s}.mgg-rows li.krow::before{content:'';position:absolute;left:0;top:0;bottom:-1px;width:2px;background:var(--c-focus);transform:scaleY(0);transform-origin:top;transition:transform .3s}.mgg-rows li.krow:hover,.mgg-rows li.krow.sel{padding-left:1rem;background:linear-gradient(90deg,rgba(var(--focus-rgb),.07),transparent 78%)}.mgg-rows li.krow:hover .kt,.mgg-rows li.krow.sel .kt{color:var(--ink)}.mgg-rows li.krow:hover .kx,.mgg-rows li.krow.sel .kx{opacity:1;transform:none}.mgg-rows li.krow:hover::before,.mgg-rows li.krow.sel::before{transform:scaleY(1)}.mgg-shared{position:sticky;top:2.4rem;border-left:1px solid var(--rule);padding:.2rem 0 .2rem 2rem;min-height:9rem}.msh-eyebrow{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.2em;text-transform:uppercase;font-size:.66rem;margin:0 0 .75rem}.msh-title{font-family:var(--font-display);color:var(--ink);font-weight:600;font-size:clamp(1.3rem,2.3vw,1.7rem);line-height:1.16;margin:0 0 1.05rem;letter-spacing:.01em}.msh-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.08rem;line-height:1.62;margin:0;font-style:italic}/*cues+transition+close*/.mgg-cue{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.1rem;background:none;border:0;cursor:pointer;font-family:var(--font-display);color:var(--ink-soft);letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;transition:color .3s;padding:0}.mgg-cue:hover{color:var(--c-focus)}.mgg-cue span{font-size:1.05rem;transition:transform .3s}.mgg-cue:hover span{transform:translateY(4px)}.mood-transition{margin:13vh auto 11vh;text-align:center;max-width:44rem}.mt-title{font-family:var(--font-display);color:var(--ink);font-weight:600;font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 1.15rem;letter-spacing:.01em}.mt-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.1rem;line-height:1.62;margin:0 auto;max-width:36rem}.mood-transition .mgg-cue{margin-top:2.4rem}.mb-close-title{font-family:var(--font-display);color:var(--ink);font-weight:700;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0 0 1.4rem;letter-spacing:.01em}.mb-close-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.06rem;line-height:1.62;max-width:40rem;margin:0 auto 1.1rem}.mb-close-bridge{font-family:var(--font-body);color:var(--ink-soft);font-size:1.04rem;line-height:1.62;max-width:40rem;margin:1.5rem auto 2.1rem;font-style:italic}.es-closeout{max-width:54rem;margin:0 auto;padding:14vh 0 16vh;text-align:center}.es-close-title{font-family:var(--font-display);color:var(--ink);font-weight:700;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0 0 1.6rem;letter-spacing:.01em}.es-close-p{font-family:var(--font-body);color:var(--ink-soft);font-size:1.08rem;line-height:1.64;max-width:42rem;margin:0 auto 1.2rem}.es-close-em{font-family:var(--font-body);color:var(--ink);font-style:normal;font-size:1.14rem;line-height:1.6;max-width:40rem;margin:1.7rem auto 2.2rem}.es-close-p.es-close-lead{color:var(--ink);font-style:italic;font-size:clamp(1.35rem,2.3vw,2.05rem);line-height:1.34;max-width:40rem;margin:1.5rem auto 1.6rem}.es-closeout .mb-paths{justify-content:center}/*per-segment colour theming*/.panel[data-panel='story']{--c-focus:#5fb8ad;--accent:#5fb8ad;--focus-rgb:95,184,173}.panel[data-panel='elements']{--c-focus:#9bb16a;--accent:#9bb16a;--focus-rgb:155,177,106}.panel[data-panel='mood']{--c-focus:#b58ac0;--accent:#b58ac0;--focus-rgb:181,138,192}.panel[data-panel='identity']{--c-focus:#c56b52;--accent:#c56b52;--focus-rgb:197,107,82}.panel[data-panel='musical']{--c-focus:#7f9fd8;--accent:#7f9fd8;--focus-rgb:127,159,216}.panel[data-panel='story']{--es-accent:#5fb8ad}.panel[data-panel='elements']{--es-accent:#9bb16a}.panel[data-panel='mood']{--es-accent:#b58ac0}.panel[data-panel='identity']{--es-accent:#c56b52}.panel[data-panel='musical']{--es-accent:#7f9fd8}.panel[data-panel='mood'] .mb{--mgg-gold:#b58ac0}@media(max-width:900px){.mgg-editorial{grid-template-columns:1fr;gap:1.4rem}.mgg-shared{position:static;border-left:0;border-top:1px solid var(--rule);padding:1.4rem 0 0;min-height:0}}/*tile name*/.mgg-name{position:absolute;left:0;right:0;bottom:0;z-index:6;pointer-events:none;padding:.4rem .35rem .38rem;font-family:var(--font-display);color:#fff;letter-spacing:.03em;font-size:.5rem;line-height:1.2;text-transform:uppercase;text-align:center;background:linear-gradient(0deg,rgba(6,9,16,.94),rgba(6,9,16,.55) 62%,transparent)}
+  .mgg-key{margin:5.5vh 0 0}.mgg-key-top{margin:2.6vh 0 5vh}.mgg-key-list .ks{font-family:var(--font-body);color:var(--ink-soft);font-size:.98rem;line-height:1.5;opacity:.9;max-width:52rem}/*S1 clusters*/.mgg-key-list li{cursor:pointer}.mgg-key-list li .kt{transition:color .25s}.mgg-key-list li:hover .kt,.mgg-key-list li.sel .kt{color:var(--c-focus)}.mgg-tag{cursor:pointer;transition:opacity .35s,color .35s}.mgg-board.sel .mgg-cell{opacity:.24;filter:grayscale(.25) brightness(.66);transition:opacity .45s ease,filter .45s ease,transform .55s cubic-bezier(.2,.72,.24,1),box-shadow .5s}.mgg-board.sel .mgg-cell.clust{opacity:1;filter:none;z-index:30;transform:scale(1.11);outline:1px solid rgba(var(--focus-rgb),.7);box-shadow:0 26px 70px rgba(0,0,0,.72)}.mgg-board.sel .mgg-tag{opacity:.28}.mgg-board.sel .mgg-tag.clust{opacity:1;color:var(--c-focus)}.mgg-cell.open{z-index:60!important;transform:scale(1.66)!important;outline:2px solid var(--c-focus)!important;box-shadow:0 40px 120px rgba(0,0,0,.85)!important}.mgg-cell.open img{filter:brightness(1.06) saturate(1.05)!important}.mgg-reason{position:fixed;left:50%;bottom:4vh;transform:translateX(-50%) translateY(14px);max-width:min(560px,88vw);background:var(--bg-lift);border:1px solid var(--rule);border-radius:9px;padding:1.15rem 2.4rem 1.25rem 1.5rem;box-shadow:0 30px 90px rgba(0,0,0,.72);z-index:120;opacity:0;pointer-events:none;transition:.3s ease}.mgg-reason.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}.mgg-reason .rn{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.14em;text-transform:uppercase;font-size:.68rem;display:block;margin-bottom:.45rem}.mgg-reason .rt{font-family:var(--font-display);color:var(--ink);font-size:1.16rem;display:block;margin-bottom:.5rem}.mgg-reason .rr{color:var(--ink-soft);font-size:1rem;line-height:1.55;font-family:var(--font-body)}.mgg-reason .rx{position:absolute;top:.55rem;right:.75rem;color:var(--ink-soft);cursor:pointer;font-size:1rem;background:none;border:0;line-height:1}/*flip cards*/.mgg-key-list li.kcard{display:block;perspective:1400px;cursor:pointer;min-height:168px;background:none;border:0;padding:0}.kflip{position:relative;width:100%;height:100%;min-height:168px;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}.kcard:hover .kflip,.kcard.sel .kflip{transform:rotateY(180deg)}.kface{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden;border:1px solid var(--rule);border-radius:14px;padding:1.5rem 1.45rem;display:flex;flex-direction:column;background:radial-gradient(130% 110% at 0% 0%,rgba(var(--focus-rgb),.07),transparent 55%),linear-gradient(158deg,var(--bg-panel),var(--bg-lift));box-shadow:0 18px 44px rgba(0,0,0,.34);transition:border-color .4s,box-shadow .4s}.kface::before{content:'';position:absolute;top:0;left:1.45rem;right:1.45rem;height:1px;background:linear-gradient(90deg,var(--c-focus),transparent 72%);opacity:.75}.kcard:hover .kface,.kcard.sel .kface{border-color:rgba(var(--focus-rgb),.5);box-shadow:0 26px 62px rgba(0,0,0,.5)}.kfront{justify-content:flex-start}.kfront .kn{font-family:var(--font-display);font-weight:600;color:var(--c-focus);font-size:1.5rem;letter-spacing:.1em;line-height:1}.kfront .kt{font-family:var(--font-display);font-weight:600;color:var(--ink);font-size:1.14rem;letter-spacing:.03em;margin-top:.8rem;text-transform:none}.kcue{margin-top:auto;font-family:var(--font-display);color:var(--ink-soft);opacity:.6;letter-spacing:.22em;text-transform:uppercase;font-size:.58rem}.kback{transform:rotateY(180deg);justify-content:center;gap:.85rem;background:radial-gradient(130% 110% at 100% 0%,rgba(var(--focus-rgb),.08),transparent 55%),linear-gradient(202deg,var(--bg-lift),var(--bg-panel))}.kbn{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.16em;text-transform:uppercase;font-size:.63rem}.kback .ks{opacity:1;max-width:none;color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.55;font-style:italic}/*mood cluster caption*/.mgg-mood-cap{min-height:1.6rem;margin:0 0 1.3rem;opacity:0;transform:translateY(6px);transition:.4s ease;text-align:center}.mgg-mood-cap.on{opacity:1;transform:none}.mgg-mood-cap .mmc-t{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;margin-right:.8rem}.mgg-mood-cap .mmc-s{font-family:var(--font-body);color:var(--ink-soft);font-style:italic;font-size:1rem}/*editorial legend*/.mgg-editorial{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;margin-top:1rem}.mgg-rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.mgg-rows li.krow{display:flex;align-items:center;gap:1rem;padding:1.15rem .4rem 1.15rem 0;border-bottom:1px solid var(--rule);cursor:pointer;position:relative;transition:padding .3s ease,background .3s ease}.mgg-rows li.krow .kt{flex:1 1 auto;text-transform:none;font-weight:600;font-size:clamp(1rem,1.5vw,1.12rem);letter-spacing:.02em;color:var(--ink-soft);transition:color .3s}.mgg-rows li.krow .kx{flex:0 0 auto;font-family:var(--font-display);color:var(--c-focus);letter-spacing:.18em;text-transform:uppercase;font-size:.58rem;opacity:0;transform:translateX(-8px);transition:.3s}.mgg-rows li.krow::before{content:'';position:absolute;left:0;top:0;bottom:-1px;width:2px;background:var(--c-focus);transform:scaleY(0);transform-origin:top;transition:transform .3s}.mgg-rows li.krow:hover,.mgg-rows li.krow.sel{padding-left:1rem;background:linear-gradient(90deg,rgba(var(--focus-rgb),.07),transparent 78%)}.mgg-rows li.krow:hover .kt,.mgg-rows li.krow.sel .kt{color:var(--ink)}.mgg-rows li.krow:hover .kx,.mgg-rows li.krow.sel .kx{opacity:1;transform:none}.mgg-rows li.krow:hover::before,.mgg-rows li.krow.sel::before{transform:scaleY(1)}.mgg-shared{position:sticky;top:2.4rem;border-left:1px solid var(--rule);padding:.2rem 0 .2rem 2rem;min-height:9rem}.msh-eyebrow{font-family:var(--font-display);color:var(--c-focus);letter-spacing:.2em;text-transform:uppercase;font-size:.66rem;margin:0 0 .75rem}.msh-title{font-family:var(--font-display);color:var(--ink);font-weight:600;font-size:clamp(1.3rem,2.3vw,1.7rem);line-height:1.16;margin:0 0 1.05rem;letter-spacing:.01em}.msh-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.08rem;line-height:1.62;margin:0;font-style:italic}/*cues+transition+close*/.mgg-cue{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.1rem;background:none;border:0;cursor:pointer;font-family:var(--font-display);color:var(--ink-soft);letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;transition:color .3s;padding:0}.mgg-cue:hover{color:var(--c-focus)}.mgg-cue span{font-size:1.05rem;transition:transform .3s}.mgg-cue:hover span{transform:translateY(4px)}.mood-transition{margin:13vh auto 11vh;text-align:center;max-width:44rem}.mt-title{font-family:var(--font-display);color:var(--ink);font-weight:600;font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 1.15rem;letter-spacing:.01em}.mt-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.1rem;line-height:1.62;margin:0 auto;max-width:36rem}.mood-transition .mgg-cue{margin-top:2.4rem}.mb-close-title{font-family:var(--font-display);color:var(--ink);font-weight:700;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0 0 1.4rem;letter-spacing:.01em}.mb-close-body{font-family:var(--font-body);color:var(--ink-soft);font-size:1.06rem;line-height:1.62;max-width:40rem;margin:0 auto 1.1rem}.mb-close-bridge{font-family:var(--font-body);color:var(--ink-soft);font-size:1.04rem;line-height:1.62;max-width:40rem;margin:1.5rem auto 2.1rem;font-style:italic}.es-closeout{max-width:54rem;margin:0 auto;padding:14vh 0 16vh;text-align:center}.es-close-title{font-family:var(--font-display);color:var(--ink);font-weight:700;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0 0 1.6rem;letter-spacing:.01em}.es-close-p{font-family:var(--font-body);color:var(--ink-soft);font-size:1.08rem;line-height:1.64;max-width:42rem;margin:0 auto 1.2rem}.es-close-em{font-family:var(--font-body);color:var(--ink);font-style:normal;font-size:1.14rem;line-height:1.6;max-width:40rem;margin:1.7rem auto 2.2rem}.es-close-p.es-close-lead{color:var(--ink);font-style:italic;font-size:clamp(1.35rem,2.3vw,2.05rem);line-height:1.34;max-width:40rem;margin:1.5rem auto 1.6rem}.es-closeout .mb-paths{justify-content:center}/*per-segment colour theming*/.panel[data-panel='story']{--c-focus:#5fb8ad;--accent:#5fb8ad;--focus-rgb:95,184,173}.panel[data-panel='elements']{--c-focus:#9bb16a;--accent:#9bb16a;--focus-rgb:155,177,106}.panel[data-panel='mood']{--c-focus:#b58ac0;--accent:#b58ac0;--focus-rgb:181,138,192}.panel[data-panel='identity']{--c-focus:#c56b52;--accent:#c56b52;--focus-rgb:197,107,82}.panel[data-panel='musical']{--c-focus:#7f9fd8;--accent:#7f9fd8;--focus-rgb:127,159,216}.panel[data-panel='story']{--es-accent:#5fb8ad}.panel[data-panel='elements']{--es-accent:#9bb16a}.panel[data-panel='mood']{--es-accent:#b58ac0}.panel[data-panel='identity']{--es-accent:#c56b52}.panel[data-panel='musical']{--es-accent:#7f9fd8}.panel[data-panel='mood'] .mb{--mgg-gold:#b58ac0}@media(max-width:900px){.mgg-editorial{grid-template-columns:1fr;gap:1.4rem}.mgg-shared{position:static;border-left:0;border-top:1px solid var(--rule);padding:1.4rem 0 0;min-height:0}}
+/* ===== Pass 9.1I — Five Moods mobile card-reader ===== */
+.mgg-reader{display:none}
+@media (max-width:760px){
+  .mgg-reader{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin-top:1.3rem;border-top:1px solid var(--rule);padding-top:1.1rem}
+  .mgg-reader__nav{display:flex;align-items:center;gap:.7rem;margin-left:auto}
+  .mgg-reader__btn{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;padding:.5rem 1rem;border:1px solid var(--rule);border-radius:999px;background:none;cursor:pointer;font-family:var(--font-display);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+  .mgg-reader__btn[disabled]{opacity:.35;cursor:default}
+  .mgg-reader__btn:not([disabled]):hover{border-color:var(--c-focus);color:var(--c-focus)}
+  .mgg-reader__btn:focus-visible{outline:2px solid var(--c-focus);outline-offset:2px}
+  .mgg-reader__explore{border-color:var(--c-focus);color:var(--c-focus)}
+  .mgg-reader__pos{font-family:var(--font-display);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+  .msh-title:focus-visible{outline:2px solid var(--c-focus);outline-offset:3px}
+}
+@media (prefers-reduced-motion:reduce){.mgg-cell,.mgg-tag,.mgg-mood-cap,.mgg-cell img{transition:none !important}}/*tile name*/.mgg-name{position:absolute;left:0;right:0;bottom:0;z-index:6;pointer-events:none;padding:.4rem .35rem .38rem;font-family:var(--font-display);color:#fff;letter-spacing:.03em;font-size:.5rem;line-height:1.2;text-transform:uppercase;text-align:center;background:linear-gradient(0deg,rgba(6,9,16,.94),rgba(6,9,16,.55) 62%,transparent)}
   .mgg-key-rule{height:1px;width:100%;scroll-margin-top:13vh;
     background:linear-gradient(90deg,rgba(203,154,84,.55),rgba(203,154,84,.06));margin:0 0 2.6rem}
   .mgg-key-list{list-style:none;margin:0;padding:0;
@@ -932,7 +1019,9 @@ body.es-locked .ws-content{overflow:hidden}
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
+  <script src="assets/js/wx-detail-reader.js"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body class="workspace is-home">
@@ -1106,6 +1195,12 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
   <div class="es-backdrop" id="esBackdrop"></div>
   <div class="es-modal-card" role="dialog" aria-modal="false" aria-label="Element detail">
     <button class="es-close" aria-label="Close detail">&#10005; <span>Close</span></button>
+    <!-- Pass 9.1J.6: in-panel Prev/Next reader on the open detail (mirrors the carousel) -->
+    <div class="wx-reader-nav es-modal-nav" id="esmReaderNav" role="group" aria-label="Move between elements and symbols">
+      <button class="wx-reader-nav__btn" id="esmPrev" type="button" aria-label="Previous element">&lsaquo;<span>Prev</span></button>
+      <span class="wx-reader-nav__pos" id="esmPos" aria-live="polite">1 of 9</span>
+      <button class="wx-reader-nav__btn" id="esmNext" type="button" aria-label="Next element"><span>Next</span>&rsaquo;</button>
+    </div>
     <article class="es-detail" data-i="0" style="--hl:#e2a96b" aria-label="Garden" hidden><p class="es-detail-num">01 &middot; The place of decision</p><h3 class="es-detail-title">Garden</h3><p class="es-tagline">A sacred natural world — quiet, watchful and waiting.</p><div class="es-tabs" role="tablist" aria-label="Detail sections"><button class="es-tab active" role="tab" data-tab="scripture" data-sub="Where the element appears in the biblical account" aria-selected="true">Scripture</button><button class="es-tab" role="tab" data-tab="echoes" data-sub="The wider biblical themes, parallels and connections it recalls" aria-selected="false">Echoes</button><button class="es-tab" role="tab" data-tab="setting" data-sub="The historical, cultural and physical background" aria-selected="false">Setting</button><button class="es-tab" role="tab" data-tab="imagery" data-sub="The visual details that can reasonably be drawn from that setting" aria-selected="false">Imagery</button><button class="es-tab" role="tab" data-tab="expression" data-sub="The meaning, atmosphere and feeling it should bring to Worship Experience 2026" aria-selected="false">Expression</button></div><p class="es-tab-sub" aria-live="polite"></p><div class="es-tabpanels"><div class="es-tabpanel active" role="tabpanel" data-tabpanel="scripture"><blockquote class="es-verse">“When Jesus had spoken these words, he went out with his disciples across the brook Kidron, where there was a <span class="es-hl">garden</span>, which he and his disciples entered.”<cite>John 18:1</cite></blockquote><blockquote class="es-verse">“And he came out and went, as was his custom, to the <span class="es-hl">Mount of Olives</span>, and the disciples followed him.”<cite>Luke 22:39</cite></blockquote></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="echoes"><p>John's “garden” recalls Eden, the first garden, where humanity was placed by God and given a single command, which Adam and Eve broke (<span class="es-ref" tabindex="0" role="button" data-verse="The LORD God took the man and put him in the garden of Eden to work it and keep it… of the tree of the knowledge of good and evil you shall not eat. (ESV)">Genesis 2:15–17</span>; 3:1–24). Paul draws the explicit theological line between the two Adams: as sin and death entered through the disobedience of one man, grace and life come through the obedience of one man, Jesus Christ (<span class="es-ref" tabindex="0" role="button" data-verse="As by the one man's disobedience the many were made sinners, so by the one man's obedience the many will be made righteous. (Rom 5:19, ESV)">Romans 5:12–19</span>); Adam is described as a type of the one to come, and Christ as “the last Adam” who, unlike Adam, gives life (<span class="es-ref" tabindex="0" role="button" data-verse="“The first man Adam became a living being”; the last Adam became a life-giving spirit. (1 Cor 15:45, ESV)">1 Corinthians 15:45–49</span>).</p><p>Scripture does not narrate this Adam/Eden parallel as an explicit commentary on Gethsemane itself — it is a theological resonance drawn from comparing the two gardens and the two men, not a stated cross-reference in the text.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="setting"><p>John's account places the garden across the Kidron Valley, on the lower slopes of the Mount of Olives (<span class="es-ref" tabindex="0" role="button" data-verse="Jesus went out with his disciples across the brook Kidron, where there was a garden, which he and his disciples entered. (ESV)">John 18:1–2</span>). Matthew and Mark name the specific location Gethsemane (<span class="es-ref" tabindex="0" role="button" data-verse="Then Jesus went with them to a place called Gethsemane, and he said, “Sit here, while I go over there and pray.” (ESV)">Matthew 26:36</span>; <span class="es-ref" tabindex="0" role="button" data-verse="And they went to a place called Gethsemane. And he said to his disciples, “Sit here while I pray.” (ESV)">Mark 14:32</span>), a name derived from the Hebrew/Aramaic <em>gat shemanim</em>, “oil press” — indicating the area was used for olive-oil production.</p><p>The Synoptic Gospels do not describe the garden's plants or layout in detail. Archaeological and historical study supports an agricultural, olive-cultivated landscape on the Mount of Olives during the Second Temple period, consistent with the place-name. Several ancient olive trees survive at traditional sites today, though radiocarbon dating places their current trunks no earlier than the 12th century AD — useful context if visual materials reference “the actual trees,” since this claim cannot be substantiated.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="imagery"><p class="es-avoid">Historically informed creative inference — not directly described in the Gospel accounts.</p><ul class="es-list"><li>Olive trees with twisted trunks and exposed roots</li><li>Silvery-green leaves</li><li>Rough, uneven earth</li><li>Scattered stone</li><li>Cultivated but untamed growth</li><li>A secluded, enclosed feel</li><li>Small wildflowers among the trees</li></ul></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="expression"><p>The garden is a place of decision — where the will is exposed and the answer is settled. For a man about to be betrayed, waiting in the garden was, quite literally, waiting for the betrayer to arrive.</p><p class="es-feel-label">Should feel</p><div class="es-feel"><span>Ancient</span><span>Sacred</span><span>Secluded</span><span>Still</span><span>Living</span><span>Waiting</span></div><p class="es-closing">Its beauty should not feel cheerful or romantic. It is the quiet beauty of a place about to witness a costly Yes.</p></div></div></article>
       <article class="es-detail" data-i="1" style="--hl:#e6b75e" aria-label="Night" hidden><p class="es-detail-num">02 &middot; The hour of darkness</p><h3 class="es-detail-title">Night</h3><p class="es-tagline">Darkness that threatens, yet drives trust deeper when every other support fails.</p><div class="es-tabs" role="tablist" aria-label="Detail sections"><button class="es-tab active" role="tab" data-tab="scripture" data-sub="Where the element appears in the biblical account" aria-selected="true">Scripture</button><button class="es-tab" role="tab" data-tab="echoes" data-sub="The wider biblical themes, parallels and connections it recalls" aria-selected="false">Echoes</button><button class="es-tab" role="tab" data-tab="setting" data-sub="The historical, cultural and physical background" aria-selected="false">Setting</button><button class="es-tab" role="tab" data-tab="imagery" data-sub="The visual details that can reasonably be drawn from that setting" aria-selected="false">Imagery</button><button class="es-tab" role="tab" data-tab="expression" data-sub="The meaning, atmosphere and feeling it should bring to Worship Experience 2026" aria-selected="false">Expression</button></div><p class="es-tab-sub" aria-live="polite"></p><div class="es-tabpanels"><div class="es-tabpanel active" role="tabpanel" data-tabpanel="scripture"><blockquote class="es-verse">“While he was still speaking, Judas came, one of the twelve, and with him a crowd with swords and clubs…”<cite>Mark 14:43 (cf. Matthew 26:47)</cite></blockquote><blockquote class="es-verse">“While I was with you day after day in the temple, you did not lay hands on me. But this is your hour, and the <span class="es-hl">power of darkness</span>.”<cite>Luke 22:53</cite></blockquote><blockquote class="es-verse">“So, after receiving the morsel of bread, he immediately went out. And it was <span class="es-hl">night</span>.”<cite>John 13:30</cite></blockquote><blockquote class="es-verse">“For I received from the Lord what I also delivered to you, that the Lord Jesus on the <span class="es-hl">night</span> when he was betrayed took bread…”<cite>1 Corinthians 11:23</cite></blockquote></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="echoes"><p>The first Passover unfolded at night: the lamb was eaten that night, and at midnight the LORD's judgment passed through Egypt while Israel sheltered under the blood (Exodus 12:8, 12, 29–31); the Passover sacrifice was to be offered at evening (<span class="es-ref" tabindex="0" role="button" data-verse="…there you shall offer the Passover sacrifice, in the evening at sunset, at the time you came out of Egypt. (ESV)">Deuteronomy 16:6</span>). The New Testament names Jesus the Lamb of God (<span class="es-ref" tabindex="0" role="button" data-verse="Behold, the Lamb of God, who takes away the sin of the world! (ESV)">John 1:29</span>), “Christ, our Passover lamb” who has been sacrificed (<span class="es-ref" tabindex="0" role="button" data-verse="For Christ, our Passover lamb, has been sacrificed. (ESV)">1 Corinthians 5:7</span>), redeemed “with the precious blood of Christ, like that of a lamb without blemish or spot” (<span class="es-ref" tabindex="0" role="button" data-verse="…you were ransomed… with the precious blood of Christ, like that of a lamb without blemish or spot. (ESV)">1 Peter 1:18–19</span>). Paul anchors the Lord's Supper to this same night (<span class="es-ref" tabindex="0" role="button" data-verse="…the Lord Jesus on the night when he was betrayed took bread. (ESV)">1 Corinthians 11:23</span>) — the meal Jesus has just left and the garden he now enters belong to a single, continuous Passover night.</p><p>Both facets of night below are true of this exact night: it is the night in which “the power of darkness” closes in, and the night Jesus prays most intensely. Night does not turn evil away from him, and it does not stop him praying.</p><p class='es-sub'>Of danger or evil</p><ul class='es-mini'><li>“You will not fear the terror of the night” (<span class="es-ref" tabindex="0" role="button" data-verse="You will not fear the terror of the night, nor the arrow that flies by day. (ESV)">Psalm 91:5</span>)</li><li>“People loved the darkness rather than the light because their works were evil…” (<span class="es-ref" tabindex="0" role="button" data-verse="…people loved the darkness rather than the light because their works were evil… lest his works should be exposed. (ESV)">John 3:19–20</span>)</li><li>Jesus names the arrest itself as “the power of darkness” (<span class="es-ref" tabindex="0" role="button" data-verse="…But this is your hour, and the power of darkness. (ESV)">Luke 22:53</span>)</li></ul><p class='es-sub'>Of seeking God</p><ul class='es-mini'><li>“When I remember you upon my bed, and meditate on you in the watches of the night” (<span class="es-ref" tabindex="0" role="button" data-verse="…when I remember you upon my bed, and meditate on you in the watches of the night. (ESV)">Psalm 63:6</span>)</li><li>Jesus himself “continued all night in prayer to God” (<span class="es-ref" tabindex="0" role="button" data-verse="In these days he went out to the mountain to pray, and all night he continued in prayer to God. (ESV)">Luke 6:12</span>)</li></ul></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="setting"><p>The Jewish day began at evening. Passover followed a lunar calendar, and the feast fell at the full moon, so some natural moonlight would likely have been present; even so, the slopes, trees, and distance from the city would have created substantial areas of deep shadow on the Mount of Olives that night.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="imagery"><ul class="es-list"><li>Deep midnight blue</li><li>Blue-black and charcoal tones</li><li>Silver moonlight</li><li>Soft cloud cover</li><li>Low horizons</li><li>Long shadows</li><li>Dim outlines of trees</li><li>Large areas of negative space</li><li>Small pockets of light within darkness</li></ul><p class="es-avoid">Avoid fantasy skies, excessive stars, magical light, or bright purple gradients.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="expression"><p>Night is the hour of hidden struggle — where the way ahead is dark, but trust remains possible.</p><p class="es-feel-label">Should feel</p><div class="es-feel"><span>Dark</span><span>Silent</span><span>Watchful</span><span>Lonely</span><span>Uncertain</span><span>Heavy</span></div><p class="es-closing">The darkness should feel real without suggesting the Father is absent. It is the darkness through which Jesus continues to trust.</p></div></div></article>
       <article class="es-detail" data-i="2" style="--hl:#6fb6b0" aria-label="Earth" hidden><p class="es-detail-num">03 &middot; The ground that received Him</p><h3 class="es-detail-title">Earth</h3><p class="es-tagline">Dust, stone and soil receiving the full weight of human weakness.</p><div class="es-tabs" role="tablist" aria-label="Detail sections"><button class="es-tab active" role="tab" data-tab="scripture" data-sub="Where the element appears in the biblical account" aria-selected="true">Scripture</button><button class="es-tab" role="tab" data-tab="echoes" data-sub="The wider biblical themes, parallels and connections it recalls" aria-selected="false">Echoes</button><button class="es-tab" role="tab" data-tab="setting" data-sub="The historical, cultural and physical background" aria-selected="false">Setting</button><button class="es-tab" role="tab" data-tab="imagery" data-sub="The visual details that can reasonably be drawn from that setting" aria-selected="false">Imagery</button><button class="es-tab" role="tab" data-tab="expression" data-sub="The meaning, atmosphere and feeling it should bring to Worship Experience 2026" aria-selected="false">Expression</button></div><p class="es-tab-sub" aria-live="polite"></p><div class="es-tabpanels"><div class="es-tabpanel active" role="tabpanel" data-tabpanel="scripture"><blockquote class="es-verse">“And going a little farther, he fell on the <span class="es-hl">ground</span> and prayed that, if it were possible, the hour might pass from him.”<cite>Mark 14:35</cite></blockquote><blockquote class="es-verse">“And he withdrew from them about a stone's throw, and knelt down and prayed… and his sweat became like great drops of blood falling down <span class="es-hl">to the ground</span>.”<cite>Luke 22:41, 44</cite></blockquote></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="echoes"><p>Humanity is formed “of dust from the ground” and is told, “you are dust, and to dust you shall return” (<span class="es-ref" tabindex="0" role="button" data-verse="…the LORD God formed the man of dust from the ground and breathed into his nostrils the breath of life. (ESV)">Genesis 2:7</span>; 3:17–19) — earth carries creatureliness, mortality and dependence on God from the human story's origin. Falling to the ground recurs across Scripture as worship, fear, grief or submission: Israel's elders “bowed their heads and worshiped” in confession and crisis (<span class="es-ref" tabindex="0" role="button" data-verse="Then Joshua tore his clothes and fell to the earth on his face before the ark of the LORD… (ESV)">Joshua 7:6</span>); David goes up the Mount of Olives “weeping… barefoot,” humbled in flight (<span class="es-ref" tabindex="0" role="button" data-verse="David went up the ascent of the Mount of Olives, weeping as he went, barefoot and with his head covered. (ESV)">2 Samuel 15:30</span>); Ezekiel “fell on his face” before the glory of the LORD (<span class="es-ref" tabindex="0" role="button" data-verse="…such was the appearance of the likeness of the glory of the LORD. And when I saw it, I fell on my face. (ESV)">Ezekiel 1:28</span>).</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="setting"><p>The Synoptic accounts place Jesus' body directly on the unworked ground of the garden — falling on his face (<span class="es-ref" tabindex="0" role="button" data-verse="Then Jesus went with them to a place called Gethsemane, and he said, “Sit here, while I go over there and pray.” (ESV)">Matthew 26:36</span> area), falling to the ground (Mark 14:35), and kneeling. None of the Gospels describe the surface itself; “rough, uneven, stony ground” is a reasonable historical inference for an olive grove on the Mount of Olives, not a detail stated in the text.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="imagery"><ul class="es-list"><li>Dry soil and dust</li><li>Natural cracks in the ground</li><li>Rough limestone</li><li>Scattered stones</li><li>Exposed roots</li><li>Muted clay tones</li><li>Close, ground-level viewpoints</li></ul><p class="es-avoid">Should not resemble a broad desert landscape — the focus is the immediate ground beneath Jesus, not a wide vista.</p></div><div class="es-tabpanel" role="tabpanel" data-tabpanel="expression"><p>The earth is the ground that receives the weight of surrender and the lowering of oneself before God.</p><p class="es-feel-label">Should feel</p><div class="es-feel"><span>Rough</span><span>Low</span><span>Physical</span><span>Humble</span><span>Weight-bearing</span><span>Honest</span></div><p class="es-closing">It shows that surrender is not merely an idea spoken by the mouth — it is something the whole body can carry low before God.</p></div></div></article>
@@ -1154,6 +1249,15 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
             <p class="msh-eyebrow" id="mshEye">The Five Moods</p>
             <h3 class="msh-title" id="mshTitle">A journey, not a single emotion</h3>
             <p class="msh-body" id="mshBody">Hover a mood to read where it sits in the journey from solitude to surrender.</p>
+          </div>
+        </div>
+        <!-- Pass 9.1I: mobile card-reader controls for the Five Moods (phones only). -->
+        <div class="mgg-reader" role="group" aria-label="Step through the five moods">
+          <button class="mgg-reader__btn mgg-reader__explore" id="mggExplore" type="button">Explore this mood</button>
+          <div class="mgg-reader__nav">
+            <button class="mgg-reader__btn" id="mggPrev" type="button" aria-label="Previous mood">&lsaquo;</button>
+            <span class="mgg-reader__pos" id="mggPos" aria-live="polite">1 of 5</span>
+            <button class="mgg-reader__btn" id="mggNext" type="button" aria-label="Next mood">&rsaquo;</button>
           </div>
         </div>
         </div>
@@ -1229,6 +1333,11 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
               <p class="mnote-cap2" id="mnoteCap2t"></p>
               <p class="mnote-prompt" id="mnotePrompt">The full garden holds every mood at once. Tap any circle to read what it carries.</p>
             </div>
+          </div>
+          <div class="moods-nav" role="group" aria-label="Step through the moods">
+            <button class="moods-nav__btn" id="moodsPrev" type="button" aria-label="Previous mood">&lsaquo;<span>Prev</span></button>
+            <span class="moods-nav__pos" id="moodsPos" aria-live="polite">All moods</span>
+            <button class="moods-nav__btn" id="moodsNext" type="button" aria-label="Next mood"><span>Next</span>&rsaquo;</button>
           </div>
       </div>
 <style>
@@ -1323,6 +1432,12 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
         <div class="fjp-moods" id="fjpMoods"></div>
         <p class="fjp-note" id="fjpNote"></p>
       </div>
+      <!-- Pass 9.1J.5: phase-to-phase reader for the four journey phases -->
+      <div class="wx-reader-nav" id="fjiReaderNav" role="group" aria-label="Move between the four journey phases">
+        <button class="wx-reader-nav__btn" id="fjiPrev" type="button" aria-label="Previous phase">&lsaquo;<span>Prev</span></button>
+        <span class="wx-reader-nav__pos" id="fjiPos" aria-live="polite">1 of 4</span>
+        <button class="wx-reader-nav__btn" id="fjiNext" type="button" aria-label="Next phase"><span>Next</span>&rsaquo;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1380,6 +1495,25 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
     f.addEventListener('click',function(e){e.stopPropagation();active===k?reset():open(k);});
   })(k);}
   stage.addEventListener('click',function(){if(active)reset();});
+  /* Pass 9.1J.5: shared reader Prev/Next + position for the four journey phases.
+     STOPS is keyed "1".."4"; the adapter reuses open()/reset() so the active
+     marker, figure and eyebrow/title/moods/note stay in sync from one source.
+     Panel stays open while stepping; canonical order and names are unchanged. */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var section=document.getElementById('flowJourney');
+    var fjPrev=document.getElementById('fjiPrev'),fjNext=document.getElementById('fjiNext'),fjPos=document.getElementById('fjiPos');
+    if(!section||!fjPrev||!fjNext||!fjPos) return;
+    var fjReader=WXDetailReader.attach({
+      count:4, start:0, prevBtn:fjPrev, nextBtn:fjNext, posEl:fjPos,
+      arrowKeys:true, arrowRoot:section, resetScroll:detail,
+      label:function(n){return (n+1)+' of 4';},
+      select:function(n){ open(String(n+1)); }
+    });
+    // keep the reader index in step when a marker or figure is clicked on the path
+    section.addEventListener('click',function(e){ var t=e.target.closest('.fji-node,.fji-fig'); if(!t)return; if(active) fjReader.go(Number(active)-1); });
+    open('1'); fjReader.update();   // open the first phase by default so 1 of 4 is accurate
+  })();
 })();
 </script>
 
@@ -1500,6 +1634,38 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
         document.querySelectorAll(".moods-btn").forEach(function(b){
           b.addEventListener("click",function(){show(b.getAttribute("data-mood"));});});
         show("all");
+      })();
+      </script>
+      <script>
+      /* Pass 9.1H — mobile Mood reader: Prev/Next + position stepping the five
+         moods. Reuses the existing tab-driven show() by clicking the matching
+         .moods-btn, so the active-mood state, scene highlight and descriptor stay
+         the single source of truth. Controls are hidden on tablet/desktop. */
+      (function(){
+        var prev=document.getElementById('moodsPrev'),next=document.getElementById('moodsNext'),pos=document.getElementById('moodsPos');
+        if(!prev||!next||!pos) return;
+        var SEQ=['all','1','2','3','4','5'];
+        function tab(k){return document.querySelector('.moods-btn[data-mood="'+k+'"]');}
+        function activeKey(){var b=document.querySelector('.moods-btn.is-active');return b?b.getAttribute('data-mood'):'all';}
+        function idx(){var i=SEQ.indexOf(activeKey());return i<0?0:i;}
+        function update(){
+          var i=idx();
+          pos.textContent=(SEQ[i]==='all')?'All moods':(i+' of 5');
+          prev.disabled=(i<=0);
+          next.disabled=(i>=SEQ.length-1);
+        }
+        function go(delta){
+          var i=idx(),ni=Math.max(0,Math.min(SEQ.length-1,i+delta));
+          if(ni===i) return;
+          var t=tab(SEQ[ni]); if(t) t.click();
+          update();
+          if(delta<0 && prev.disabled) next.focus();
+          else if(delta>0 && next.disabled) prev.focus();
+        }
+        prev.addEventListener('click',function(){go(-1);});
+        next.addEventListener('click',function(){go(1);});
+        document.querySelectorAll('.moods-btn').forEach(function(b){b.addEventListener('click',update);});
+        update();
       })();
       </script>
     </section>
@@ -2320,7 +2486,7 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
       <p class="w-tests-lead">Every layout or motion used for WX2026 must pass two tests</p>
       <div class="w-tests"><span class="w-test">It must guide the journey.</span><span class="w-test">Every motion must be restrained.</span></div>
       <div class="w-grid w-boards" id="rhythmGrid"></div>
-      <div class="sys-use">
+      <div class="sys-use" id="sysUse">
         <p class="sys-eyebrow">The System in Use</p>
         <h2 class="sys-title">Every Touchpoint Must Draw From the Zones</h2>
         <p class="sys-p">The six zones are not separate departments. They are the source system for every WX2026 application. Every design decision must draw from them.</p>
@@ -2331,6 +2497,12 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
           <div class="sys-ask sys-ask-main">
             <h4>What are you making?</h4>
             <ol class="sys-qs" id="sysQs"></ol>
+            <!-- Pass 9.1J.5: card-to-card reader across the decision framework -->
+            <div class="wx-reader-nav" id="sysReaderNav" role="group" aria-label="Move between the decision cards">
+              <button class="wx-reader-nav__btn" id="sysPrev" type="button" aria-label="Previous card">&lsaquo;<span>Prev</span></button>
+              <span class="wx-reader-nav__pos" id="sysPos" aria-live="polite">1 of 7</span>
+              <button class="wx-reader-nav__btn" id="sysNext" type="button" aria-label="Next card"><span>Next</span>&rsaquo;</button>
+            </div>
           </div>
           <div class="sys-ask sys-child" id="sysChild">
             <p class="sys-child-eyebrow" id="sysChildZone">Trace it to a zone</p>
@@ -2372,6 +2544,12 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
         </div>
         <div class="mij-card" id="mijCard" aria-live="polite"></div>
       </div>
+      <!-- Pass 9.1J.2: shared reader Prev/Next + position for the four phases -->
+      <div class="wx-reader-nav" id="mijReaderNav" role="group" aria-label="Move between the four phases">
+        <button class="wx-reader-nav__btn" id="mijPrev" type="button" aria-label="Previous phase">&lsaquo;<span>Prev</span></button>
+        <span class="wx-reader-nav__pos" id="mijPos" aria-live="polite">1 of 4</span>
+        <button class="wx-reader-nav__btn" id="mijNext" type="button" aria-label="Next phase"><span>Next</span>&rsaquo;</button>
+      </div>
       <div class="mij-close">
         <p class="mij-close-line">Every song, part, cue, silence, transition, and mix decision must serve the journey by playing its part.</p>
       </div>
@@ -2382,6 +2560,16 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
 .panel[data-panel='musical'] .es-grand{margin-bottom:2.4vh}
 .panel[data-panel='musical'] .oc-wrap{margin:0 0 1.2vh}
 .mij-intro{font-family:var(--font-body);color:var(--ink-soft);font-size:1.04rem;line-height:1.6;max-width:44rem;margin:0 0 3.2vh}
+/* Pass 9.1J.2: shared detail-reader Prev/Next + position bar (musical phases) */
+.wx-reader-nav{display:flex;align-items:center;gap:.9rem;max-width:520px;margin:2.2vh auto 0;padding-top:1.2rem;border-top:1px solid var(--rule)}
+.wx-reader-nav__pos{font-family:var(--font-display);font-weight:600;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;margin:0 auto}
+.wx-reader-nav__btn{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;padding:.5rem 1rem;border:1px solid var(--rule);border-radius:999px;background:none;cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.wx-reader-nav__btn[disabled]{opacity:.35;cursor:default}
+.wx-reader-nav__btn:not([disabled]):hover{border-color:var(--c-focus,#7f9fd8);color:var(--c-focus,#7f9fd8)}
+.wx-reader-nav__btn:focus-visible{outline:2px solid var(--c-focus,#7f9fd8);outline-offset:2px}
+/* Pass 9.1J.3: palette reader nav pinned to the overlay's bottom action area */
+.vi-reader-nav{position:sticky;bottom:0;margin:0;max-width:none;padding:1rem 1.2rem calc(1rem + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,var(--bg-panel,#141a27) 68%,transparent);border-top:1px solid var(--rule);z-index:5}
+.vi-panel{position:relative}
 .mij-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:clamp(1.6rem,3.4vw,3.4rem);align-items:start}
 .mij-graph-col{position:sticky;top:9vh}
 .mij-graph{background:linear-gradient(200deg,var(--bg-lift),var(--bg-panel));border:1px solid var(--rule);border-radius:16px;padding:1.1rem 1.2rem .6rem;box-shadow:0 20px 60px rgba(0,0,0,.4)}
@@ -2577,6 +2765,26 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
     renderCard(); syncGraph();
   }
   buildGraph(); buildPills(); select(0);
+  /* Pass 9.1J.2: shared reader Prev/Next + position for the four musical phases.
+     Reuses the existing select() by clicking the matching phase pill, so the graph
+     marker, pills and detail card stay in sync from one source. Arrow keys are
+     guarded by the controller (ignored on the role=tab pills). */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var mijPrev=document.getElementById('mijPrev'),mijNext=document.getElementById('mijNext'),mijPos=document.getElementById('mijPos');
+    var root=document.getElementById('mijRoot');
+    if(!mijPrev||!mijNext||!mijPos) return;
+    function pill(n){return pills.querySelectorAll('.mij-pill')[n];}
+    var r=WXDetailReader.attach({
+      count:PHASES.length, start:0, prevBtn:mijPrev, nextBtn:mijNext, posEl:mijPos,
+      arrowKeys:true, arrowRoot:root, resetScroll:card,
+      label:function(n){return (n+1)+' of '+PHASES.length;},
+      select:function(n){ var b=pill(n); if(b) b.click(); }
+    });
+    // keep the reader index in sync when a pill or graph dot selects a phase
+    root.addEventListener('click',function(e){ var t=e.target.closest('.mij-pill,.mij-dot'); if(!t)return; var i=t.classList.contains('mij-pill')?[].indexOf.call(pills.children,t):+t.getAttribute('data-d'); if(i>=0) r.go(i); });
+    r.go(0);
+  })();
 })();</script>
     <section class="fyp" id="miFYP">
       <div class="fyp-head"><span class="fyp-n">03</span><h2 class="fyp-title">Find Your Part</h2></div>
@@ -2589,6 +2797,12 @@ Before Him is a cup filled with beatings, ridicule, shame, blood and physical de
           <div class="fyp-legend" id="fypLegend" hidden></div>
         </div>
         <div class="fyp-detail" id="fypDetail"></div>
+      </div>
+      <!-- Pass 9.1J.5: read-through reader across the Find Your Part hierarchy -->
+      <div class="wx-reader-nav" id="fypReaderNav" role="group" aria-label="Read through every part in order">
+        <button class="wx-reader-nav__btn" id="fypPrev" type="button" aria-label="Previous part">&lsaquo;<span>Prev</span></button>
+        <span class="wx-reader-nav__pos" id="fypPos" aria-live="polite">1 of 12</span>
+        <button class="wx-reader-nav__btn" id="fypNext" type="button" aria-label="Next part"><span>Next</span>&rsaquo;</button>
       </div>
     </section>
 <div class="fyp-peekzone" id="fypPeek" aria-hidden="true"></div>
@@ -2653,7 +2867,8 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
   .fyp-shell{grid-template-columns:1fr;gap:1.6rem}
   .fyp-map-panel{position:static}
   .fyp-hexmap{display:grid;grid-template-columns:repeat(2,minmax(118px,1fr));gap:12px;position:static;min-height:0}
-  .fyp-hex{position:static !important;width:100% !important;height:auto !important;aspect-ratio:1.15/1;left:auto !important;top:auto !important;transform:none !important}
+  /* Pass 9.1D: relative (not static) keeps each hex flowing in the grid while restoring it as the containing block for its absolute .fyp-hexshape (inset:0), so the decorative shape stays confined to the hex instead of escaping to a positioned ancestor and filling the whole page. */
+  .fyp-hex{position:relative !important;width:100% !important;height:auto !important;aspect-ratio:1.15/1;left:auto !important;top:auto !important;transform:none !important}
   .fyp-prow{grid-template-columns:1fr;gap:.3rem}
   body.wheel-tuck .fyp-peekzone{display:none}
 }
@@ -2825,6 +3040,44 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
     setTimeout(checkTuck,300);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initTuck); else initTuck();
+  /* Pass 9.1J.5: read-through reader across the Find Your Part hierarchy.
+     Sequence is depth-first by displayed grid order: every instrument subgroup
+     in full before the next subgroup, then the standalone Brass, then the voices
+     (Lead, then Backing). The adapter sets the path + selection and reuses
+     renderDetail()/renderMap() so name, role, instructions and the active-card
+     highlight update together. Exact sequence (12 parts):
+       Guitars: Acoustic, Electric, Bass · Keys: Piano/Keys, Pads, Strings, Organ
+       · Rhythm: Drums, Aux Perc. · Brass · Voices: Lead, Backing. */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var fpPrev=document.getElementById('fypPrev'),fpNext=document.getElementById('fypNext'),fpPos=document.getElementById('fypPos');
+    if(!fpPrev||!fpNext||!fpPos) return;
+    var SEQ=[
+      {k:'acoustic',path:['instruments','guitars']},
+      {k:'electric',path:['instruments','guitars']},
+      {k:'bass',path:['instruments','guitars']},
+      {k:'piano',path:['instruments','keys']},
+      {k:'pads',path:['instruments','keys']},
+      {k:'strings',path:['instruments','keys']},
+      {k:'organ',path:['instruments','keys']},
+      {k:'drums',path:['instruments','rhythm']},
+      {k:'aux',path:['instruments','rhythm']},
+      {k:'brass',path:['instruments']},
+      {k:'lead',path:['voices']},
+      {k:'backing',path:['voices']}
+    ];
+    function seqIdx(k){ for(var j=0;j<SEQ.length;j++){ if(SEQ[j].k===k) return j; } return -1; }
+    var fpReader=WXDetailReader.attach({
+      count:SEQ.length, start:0, prevBtn:fpPrev, nextBtn:fpNext, posEl:fpPos,
+      arrowKeys:true, arrowRoot:root, resetScroll:detEl,
+      label:function(n){return (n+1)+' of '+SEQ.length;},
+      select:function(n){ var s=SEQ[n]; fyp.path=s.path.slice(); fyp.sel=s.k; renderDetail(); renderMap(); }
+    });
+    // keep the reader index in step when a part is picked directly on the hex map
+    mapEl.addEventListener('click',function(){ var idx=seqIdx(fyp.sel); if(idx>=0) fpReader.go(idx); });
+    // open the first part so the position (1 of 12) is accurate and none is skipped
+    fyp.path=SEQ[0].path.slice(); fyp.sel=SEQ[0].k; renderDetail(); renderMap(); fpReader.update();
+  })();
 })();</script>
     <div class="mi-craft" id="miCraft">
     <div class="ele-nav" id="eleNav"></div>
@@ -2833,6 +3086,12 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
       <p class="mi-ssub">The craft beneath the journey — the practical decisions that carry each phase. Tap any element to open how it works.</p>
       <div class="ele-board" id="eleBoard"></div>
       <div class="ele-detail" id="eleDetail"></div>
+      <!-- Pass 9.1J.5: element-to-element reader (Tempo & Pulse + all element cards) -->
+      <div class="wx-reader-nav" id="eleReaderNav" role="group" aria-label="Move between the musical elements">
+        <button class="wx-reader-nav__btn" id="elePrev" type="button" aria-label="Previous element">&lsaquo;<span>Prev</span></button>
+        <span class="wx-reader-nav__pos" id="elePos" aria-live="polite">1 of 7</span>
+        <button class="wx-reader-nav__btn" id="eleNext" type="button" aria-label="Next element"><span>Next</span>&rsaquo;</button>
+      </div>
     </section>
 
     <section class="spx" id="miSpx">
@@ -3125,6 +3384,29 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
     });
   }
   apply(false);
+  /* Pass 9.1J.5: shared reader Prev/Next + position for the musical elements.
+     The controller owns index / boundary / position / guarded arrow keys; this
+     adapter keeps ELEMENTS + apply() as the local render source of truth so
+     title, content and active-element state update together. Tempo & Pulse is
+     ELEMENTS[0] — reachable like any other element, never isolated. */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var ePrev=document.getElementById('elePrev'),eNext=document.getElementById('eleNext'),ePos=document.getElementById('elePos'),root=document.getElementById('miEle');
+    if(!ePrev||!eNext||!ePos||!root) return;
+    function eIdx(k){ return ELEMENTS.map(function(x){return x.k;}).indexOf(k); }
+    var eReader=WXDetailReader.attach({
+      count:ELEMENTS.length, start:0, prevBtn:ePrev, nextBtn:eNext, posEl:ePos,
+      arrowKeys:true, arrowRoot:root, resetScroll:detail,
+      label:function(n){return (n+1)+' of '+ELEMENTS.length;},
+      select:function(n){ sel=ELEMENTS[n].k; apply(false); }
+    });
+    // Show the first element (Tempo & Pulse) by default so the reader position is
+    // accurate and Tempo is never skipped by a first Next; no page scroll on load.
+    sel=ELEMENTS[0].k; apply(false); eReader.update();
+    // keep the reader index in step when an element is chosen from the board or nav pills
+    root.addEventListener('click',function(e){ var c=e.target.closest('.ele-card[data-k]'); if(!c)return; var idx=eIdx(c.getAttribute('data-k')); if(idx>=0&&sel===c.getAttribute('data-k')) eReader.go(idx); });
+    if(navEl) navEl.addEventListener('click',function(e){ var p=e.target.closest('.ele-navpill[data-k]'); if(!p)return; var idx=eIdx(p.getAttribute('data-k')); if(idx>=0) eReader.go(idx); });
+  })();
 })();</script>
 
 
@@ -3132,7 +3414,8 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
   </section>
   <div class="eco-foot" aria-hidden="false">
     <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
-    <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+    <span class="wx-fnav" data-wx-fnav hidden aria-label="Page navigation"></span>
+<span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
   </div>
 </main>
 <p class="breadcrumb" id="breadcrumb">Creative Direction · <b id="bcSeg">The Story</b></p>
@@ -3198,6 +3481,30 @@ body.wheel-tuck .fyp-peekzone{display:block;position:fixed;top:0;right:0;width:3
  </g>
 </svg>
 </aside>
+
+<!-- Pass 9.1G: compact mobile section-navigation (phones only; wheel remains on tablet/desktop) -->
+<button class="cd-navtrigger" id="cdNavTrigger" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="cdNavSheet">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+  <span>Explore sections</span>
+</button>
+<div class="cd-navsheet" id="cdNavSheet" role="dialog" aria-modal="true" aria-labelledby="cdNavSheetTitle" hidden>
+  <div class="cd-navsheet__backdrop" data-close="1"></div>
+  <div class="cd-navsheet__panel">
+    <div class="cd-navsheet__head">
+      <h2 id="cdNavSheetTitle">Explore sections</h2>
+      <button class="cd-navsheet__close" id="cdNavClose" type="button" aria-label="Close section menu">&times;</button>
+    </div>
+    <nav aria-label="Creative Direction sections">
+      <ul class="cd-navsheet__list">
+        <li><button class="cd-navlink" type="button" data-target="story" style="--sc:#5fb8ad"><span class="cd-navlink__num">01</span><span class="cd-navlink__name">The Story</span><span class="cd-navlink__cur">Current</span></button></li>
+        <li><button class="cd-navlink" type="button" data-target="elements" style="--sc:#9bb16a"><span class="cd-navlink__num">02</span><span class="cd-navlink__name">Elements &amp; Symbols</span><span class="cd-navlink__cur">Current</span></button></li>
+        <li><button class="cd-navlink" type="button" data-target="mood" style="--sc:#b58ac0"><span class="cd-navlink__num">03</span><span class="cd-navlink__name">Mood Board</span><span class="cd-navlink__cur">Current</span></button></li>
+        <li><button class="cd-navlink" type="button" data-target="identity" style="--sc:#c56b52"><span class="cd-navlink__num">04</span><span class="cd-navlink__name">Visual Identity</span><span class="cd-navlink__cur">Current</span></button></li>
+        <li><button class="cd-navlink" type="button" data-target="musical" style="--sc:#7f9fd8"><span class="cd-navlink__num">05</span><span class="cd-navlink__name">Musical Identity</span><span class="cd-navlink__cur">Current</span></button></li>
+      </ul>
+    </nav>
+  </div>
+</div>
 <script>
 /* ============================================================
    Scroll-cinema reveal + earned dawn.
@@ -3266,27 +3573,52 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
   var core=document.querySelector(".hw-core");
   var mio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");mio.unobserve(e.target);}});},{threshold:.25});
   document.querySelectorAll(".movement").forEach(function(m){mio.observe(m);});
-  function activate(key){
+  /* Pass 9.1I: reset whichever container actually scrolls so an activated segment
+     starts at its top. Desktop scrolls #ws-content; on mobile #ws-content is
+     overflow:visible so the window scrolls. Panels are mutually exclusive
+     (display:none/block), so window.scrollTo(0,0) lands on the active segment's
+     top (its padding clears the sticky header). Skipped for Back/Forward
+     (toTop:false) so the browser can restore prior scroll. */
+  function segTop(){
+    // Reset every candidate scroller: desktop scrolls #ws-content; on mobile the
+    // body scrolls (html,body{height:100%};body{overflow:auto}) and window.scrollY
+    // is capped. Run now and again after layout (rAF) to beat any late reflow.
+    var reset=function(){
+      if(content)content.scrollTop=0;
+      document.body.scrollTop=0;
+      document.documentElement.scrollTop=0;
+      window.scrollTo(0,0);
+    };
+    reset();
+    requestAnimationFrame(reset);
+  }
+  function activate(key,toTop){
     document.body.classList.remove("is-home");
     segs.forEach(function(g){g.classList.toggle("active",g.getAttribute("data-target")===key);});
     panels.forEach(function(p){p.classList.toggle("active",p.getAttribute("data-panel")===key);});
     var a=document.querySelector('.panel[data-panel="'+key+'"]');
     if(a){a.querySelectorAll(".movement,.section-block").forEach(function(el){el.classList.add("in");});}
-    if(content)content.scrollTop=0;
     if(bc){bc.innerHTML=SEGN[key];bc.style.color=(SEGCOL[key]||"");}
+    if(toTop!==false) segTop();
   }
   function goHome(){document.body.classList.add("is-home");segs.forEach(function(g){g.classList.remove("active");});}
   /* ---- hash routing: deep links (#story #elements #mood #identity #musical) + Back/Forward ---- */
   function keyFromHash(){var h=(location.hash||"").replace(/^#/,"");return Object.prototype.hasOwnProperty.call(SEGN,h)?h:null;}
-  function applyHash(){var k=keyFromHash();if(k)activate(k);else goHome();}
-  function navTo(key){ if(!key)return; if(keyFromHash()===key){activate(key);} else {location.hash=key;} }
+  function applyHash(toTop){var k=keyFromHash();if(k)activate(k,toTop);else goHome();}
+  function navTo(key){ if(!key)return; if(keyFromHash()===key){activate(key,true);} else {location.hash=key;} }
   function navHome(){ if(location.hash){ history.pushState(null,"",location.pathname+location.search); } goHome(); }
   segs.forEach(function(g){g.addEventListener("click",function(){navTo(g.getAttribute("data-target"));});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();navTo(g.getAttribute("data-target"));}});});
   if(core){core.addEventListener("click",navHome);core.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();navHome();}});}
   document.querySelectorAll(".seg-jump,.home-prompt").forEach(function(b){b.addEventListener("click",function(){navTo(b.getAttribute("data-target"));});});
-  window.addEventListener("hashchange",applyHash);
-  window.addEventListener("popstate",applyHash);
-  if(keyFromHash()) applyHash();
+  /* Manual scroll restoration so the browser cannot re-apply a prior scroll onto
+     a freshly-activated segment; segment activation always lands at the top
+     (ordinary Explore/nav, direct hash entry, and Back/Forward between segments).
+     In-segment mood-detail reveals scroll in-page and add no history entries, so
+     Back/Forward never loops or lands away from an intended segment. */
+  if('scrollRestoration' in history){ try{history.scrollRestoration='manual';}catch(e){} }
+  window.addEventListener("hashchange",function(){ applyHash(true); });
+  window.addEventListener("popstate",function(){ applyHash(true); });
+  if(keyFromHash()) applyHash(true);
   document.querySelectorAll(".flip-card").forEach(function(c){c.addEventListener("click",function(){c.classList.toggle("flipped");});c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();c.classList.toggle("flipped");}});});
   document.querySelectorAll(".ref-chip").forEach(function(b){b.addEventListener("click",function(){var it=b.parentNode;it.classList.toggle("open");b.setAttribute("aria-expanded",it.classList.contains("open"));});});
 })();
@@ -3327,6 +3659,11 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
     s.querySelectorAll('.es-tab').forEach(function(t,ti){t.classList.toggle('active',ti===0);t.setAttribute('aria-selected',ti===0?'true':'false');});
     s.querySelectorAll('.es-tabpanel').forEach(function(p,pi){p.classList.toggle('active',pi===0);});
     var sub=s.querySelector('.es-tab-sub'); if(sub) sub.classList.remove('show');
+    /* Pass 9.1J.5: reset the modal card's internal scroll so a stepped-to item
+       starts at the top (no stale scroll position carried between items). */
+    var mc=modal.querySelector('.es-modal-card'); if(mc){ mc.scrollTop=0; }
+    /* Pass 9.1J.6: keep the in-panel reader position in step with the open detail. */
+    var emp=document.getElementById('esmPos'); if(emp){ emp.textContent=(i+1)+' of '+N; }
   }
   function openModal(i){
     lastFocus=document.activeElement;
@@ -3344,6 +3681,14 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
   cards.forEach(function(c,i){ c.addEventListener('click',function(){ select(i); }); });
   document.getElementById('esPrev').addEventListener('click',function(){rotate(active-1);});
   document.getElementById('esNext').addEventListener('click',function(){rotate(active+1);});
+  /* Pass 9.1J.6: in-panel Prev/Next on the open detail — reuses rotate() so the
+     carousel, the open detail and both position indicators stay in one sync. It
+     steps the element itself (not the tabs) and matches the carousel's wrap-around. */
+  (function(){
+    var emPrev=document.getElementById('esmPrev'),emNext=document.getElementById('esmNext');
+    if(emPrev) emPrev.addEventListener('click',function(){ rotate(active-1); });
+    if(emNext) emNext.addEventListener('click',function(){ rotate(active+1); });
+  })();
   var lastWheel=0;
   rail.addEventListener('wheel',function(e){e.preventDefault();var now=Date.now();if(now-lastWheel<150)return;lastWheel=now;rotate(active+(e.deltaY>0?1:-1));},{passive:false});
   rail.addEventListener('keydown',function(e){
@@ -3580,6 +3925,12 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
       <article class="vi-detail" data-key="crimson" hidden aria-label="Deep Crimson"><div class="vi-d-img"><picture><source type="image/webp" srcset="assets/58f0385bb9e2.webp"><img src="assets/58f0385bb9e2.jpg" alt="Deep Crimson" loading="lazy" decoding="async"></picture></div><div class="vi-d-head"><span class="vi-d-swatch" style="--sw:#8A171B" aria-hidden="true"></span><div class="vi-d-id"><h3 class="vi-d-name">Deep Crimson</h3><p class="vi-d-hex">#8A171B</p></div></div><span class="vi-d-cat">Accent</span><h4 class="vi-d-role">Cost</h4><p class="vi-d-meaning">Pressure, cost, surrender.</p><p class="vi-d-label">Applications</p><div class="vi-d-rule"></div><p class="vi-d-text">surrender moments, pressure markers, solemn section breaks, strong emphasis, cost-related visuals.</p><p class="vi-d-label">Guardrails</p><div class="vi-d-rule"></div><p class="vi-d-text">body text, casual CTA buttons, random decoration, or simultaneous equal use with Gold and Purple.</p><p class="vi-d-label">Works with</p><div class="vi-d-rule"></div><div class="vi-d-pills"><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#0A0E1A"></span>Blue-Black</span><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#262B3A"></span>Charcoal</span><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#ECE3D0"></span>Bone</span></div></article>
       <article class="vi-detail" data-key="wildflower" hidden aria-label="Wildflower Purple"><div class="vi-d-img"><picture><source type="image/webp" srcset="assets/89721d9f8c2b.webp"><img src="assets/89721d9f8c2b.jpg" alt="Wildflower Purple" loading="lazy" decoding="async"></picture></div><div class="vi-d-head"><span class="vi-d-swatch" style="--sw:#7A4CB8" aria-hidden="true"></span><div class="vi-d-id"><h3 class="vi-d-name">Wildflower Purple</h3><p class="vi-d-hex">#7A4CB8</p></div></div><span class="vi-d-cat">Accent</span><h4 class="vi-d-role">Assurance</h4><p class="vi-d-meaning">Reflection, assurance, quiet confidence.</p><p class="vi-d-label">Applications</p><div class="vi-d-rule"></div><p class="vi-d-text">reflective sections, selected states, devotional moments, quiet transitions, assurance-based visuals.</p><p class="vi-d-label">Guardrails</p><div class="vi-d-rule"></div><p class="vi-d-text">large purple backgrounds, purple gradients, decorative floral styling, or equal use with Gold and Crimson.</p><p class="vi-d-label">Works with</p><div class="vi-d-rule"></div><div class="vi-d-pills"><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#16203D"></span>Midnight Blue</span><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#262B3A"></span>Charcoal</span><span class="vi-pill"><span class="vi-pill-dot" style="--sw:#ECE3D0"></span>Bone</span></div></article>
     </div>
+    <!-- Pass 9.1J.3: shared reader Prev/Next + position for the colour palette -->
+    <div class="wx-reader-nav vi-reader-nav" id="viReaderNav" role="group" aria-label="Move between the palette colours">
+      <button class="wx-reader-nav__btn" id="viPrev" type="button" aria-label="Previous colour">&lsaquo;<span>Prev</span></button>
+      <span class="wx-reader-nav__pos" id="viPos" aria-live="polite">1 of 7</span>
+      <button class="wx-reader-nav__btn" id="viNext" type="button" aria-label="Next colour"><span>Next</span>&rsaquo;</button>
+    </div>
   </aside>
 </div>
 <div class="vi-overlay vi-zoverlay" id="zoneBoard" hidden>
@@ -3587,6 +3938,12 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
   <div class="vi-zpanel" role="dialog" aria-modal="false" aria-label="Detail board">
     <div class="vi-zbar"><button class="vi-zback" id="zBack">&#8592; Back</button><span class="vi-zcrumb" id="zCrumb"></span><button class="vi-close" id="zClose" aria-label="Close">&#10005; <span>Close</span></button></div>
     <div class="vi-zbody" id="zBody"></div>
+    <!-- Pass 9.1J.4: card-to-card reader for the zone boards (Logo & Wordmarks, Typography) -->
+    <div class="wx-reader-nav vi-reader-nav" id="zReaderNav" role="group" aria-label="Move between the cards in this board">
+      <button class="wx-reader-nav__btn" id="zPrev" type="button" aria-label="Previous card">&lsaquo;<span>Prev</span></button>
+      <span class="wx-reader-nav__pos" id="zPos" aria-live="polite">Card 1 of 1</span>
+      <button class="wx-reader-nav__btn" id="zNext" type="button" aria-label="Next card"><span>Next</span>&rsaquo;</button>
+    </div>
   </div>
 </div>
 <div class="vi-overlay vi-zoverlay vi-woverlay" id="worldBoard" hidden>
@@ -3605,16 +3962,28 @@ var SEGCOL={story:'#5fb8ad',elements:'#9bb16a',mood:'#b58ac0',identity:'#c56b52'
   var ov=document.getElementById('viOverlay');
   if(ov){
     var bd=document.getElementById('viBackdrop'),cb=document.getElementById('viClose');
-    var dets=ov.querySelectorAll('.vi-detail');
+    var dets=[].slice.call(ov.querySelectorAll('.vi-detail'));
+    var KEYS=dets.map(function(d){return d.getAttribute('data-key');});
     var openers=document.querySelectorAll('.vi-cell,.vi-onimg[data-key],.vi-swatch[data-key]');
-    var lf=null;
+    var panelBody=ov.querySelector('.vi-panel');
+    var viPrev=document.getElementById('viPrev'),viNext=document.getElementById('viNext'),viPos=document.getElementById('viPos');
     function sel(k){document.querySelectorAll('.vi-cell').forEach(function(c){c.classList.toggle('sel',c.getAttribute('data-key')===k);});}
-    function show(k){dets.forEach(function(d){d.hidden=(d.getAttribute('data-key')!==k);});ov.hidden=false;requestAnimationFrame(function(){ov.classList.add('open');});var b=ov.querySelector('.vi-panel');if(b)b.scrollTop=0;}
-    function close(){ov.classList.remove('open');setTimeout(function(){ov.hidden=true;},480);sel(null);if(lf){try{lf.focus();}catch(e){}}}
-    openers.forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();var k=el.getAttribute('data-key');lf=el;sel(k);show(k);});});
-    if(bd)bd.addEventListener('click',close);if(cb)cb.addEventListener('click',close);
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
-    ov._close=close;
+    /* Pass 9.1J.3: the colour palette is the one flat, self-contained #viOverlay
+       family — route it through the shared controller's modal mode (focus trap,
+       Escape, background inert + scroll lock, focus restoration) and add
+       Prev/Next + position + scroll reset over the seven ordered colours. */
+    var reader=null;
+    if(window.WXDetailReader && viPrev && viNext && viPos){
+      reader=WXDetailReader.attach({
+        count:dets.length, modal:true, dialog:ov, prevBtn:viPrev, nextBtn:viNext, posEl:viPos,
+        arrowKeys:true, arrowRoot:ov, resetScroll:panelBody, closeBtn:cb, backdrop:bd, focusOnOpen:cb,
+        label:function(i){return (i+1)+' of '+dets.length;},
+        select:function(i){ dets.forEach(function(d,j){d.hidden=(j!==i);}); sel(KEYS[i]); },
+        onClose:function(){ sel(null); }
+      });
+    }
+    openers.forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();var k=el.getAttribute('data-key');var i=KEYS.indexOf(k);if(i<0)return; if(el.focus){try{el.focus();}catch(_){}}; if(reader){reader.open(i);}});});
+    ov._close=function(){ if(reader) reader.close(); };
   }
   /* ---------- cards scroll ---------- */
   document.querySelectorAll('.vi-card').forEach(function(c){
@@ -3636,6 +4005,23 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
   var zBody=document.getElementById('zBody');
   function zopen(html){zBody.innerHTML=html;zb.hidden=false;requestAnimationFrame(function(){zb.classList.add('open');});zb.querySelector('.vi-zpanel').scrollTop=0;}
   function zclose(){zb.classList.remove('open');setTimeout(function(){zb.hidden=true;},480);}
+  /* Pass 9.1J.4: card-to-card reader for the single-card zone boards. The shared
+     controller owns index / Prev-Next / boundary / position / arrow keys / scroll
+     reset + modal focus-trap, Escape, inert and focus restoration; the family
+     adapter keeps markBoard()/faceBoard() as the render source of truth. */
+  var zPanel=zb.querySelector('.vi-zpanel');
+  var zPrevBtn=document.getElementById('zPrev'),zNextBtn=document.getElementById('zNext'),zPosEl=document.getElementById('zPos'),zCrumbEl=document.getElementById('zCrumb');
+  var zFam=[], zRender=null, zFamName='';
+  var zReader=(window.WXDetailReader && zPrevBtn) ? WXDetailReader.attach({
+    count:1, modal:true, dialog:zb, prevBtn:zPrevBtn, nextBtn:zNextBtn, posEl:zPosEl,
+    closeBtn:document.getElementById('zClose'), backdrop:document.getElementById('zBackdrop'),
+    arrowKeys:true, arrowRoot:zb, resetScroll:zPanel, focusOnOpen:document.getElementById('zClose'),
+    label:function(i){return 'Card '+(i+1)+' of '+zFam.length;},
+    select:function(i){ zBody.innerHTML=zRender(zFam[i]); if(zCrumbEl) zCrumbEl.textContent=zFamName+' — '+(zFam[i].name||''); }
+  }):null;
+  function zOpenFamily(fam,render,name,idx,trigger){ zFam=fam; zRender=render; zFamName=name;
+    if(zReader){ zReader.setCount(fam.length); if(trigger&&trigger.focus){try{trigger.focus();}catch(_){}} zReader.open(idx); }
+    else { zopen(render(fam[idx])); } }
   function markBoard(m){
     var bk=document.getElementById('zBack'); if(bk) bk.innerHTML='&#8592; Back to marks';
     var cr=document.getElementById('zCrumb'); if(cr) cr.textContent='02 \u00b7 Logo & Wordmarks \u2014 '+m.name;
@@ -3720,7 +4106,7 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
     else prev='<div class="vi-mprev '+(m.surface==='light'?'light':'')+'"><img src="'+IMG[m.hero]+'" alt="'+esc(m.name)+'"></div>';
     var b=document.createElement('button');b.className='vi-mcard';b.setAttribute('type','button');
     b.innerHTML=prev+'<div class="vi-mbody"><p class="vi-mname">'+esc(m.name)+'</p><p class="vi-mtag">'+esc(m.tag)+'</p><span class="vi-mopen">Open board →</span></div>';
-    b.addEventListener('click',function(){zopen(markBoard(m));});
+    b.addEventListener('click',function(){zOpenFamily(MARKS,markBoard,'Logo & Wordmarks',MARKS.indexOf(m),b);});
     mg.appendChild(b);
   });}
   // render face cards
@@ -3732,12 +4118,11 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
       prev='<div class="vi-mprev"><span class="'+cls+'">'+esc(f.previewText)+'</span></div>';}
     var b=document.createElement('button');b.className='vi-mcard';b.setAttribute('type','button');
     b.innerHTML=prev+'<div class="vi-mbody"><p class="vi-mkind">'+esc(f.kind)+'</p><p class="vi-mname">'+esc(f.name)+'</p><span class="vi-mopen">Open board →</span></div>';
-    b.addEventListener('click',function(){zopen(faceBoard(f));});
+    b.addEventListener('click',function(){zOpenFamily(FACES,faceBoard,'Typography & Typeface',FACES.indexOf(f),b);});
     tg.appendChild(b);
   });}
-  var zbd=document.getElementById('zBackdrop'),zc=document.getElementById('zClose'),zbk=document.getElementById('zBack');
-  if(zbd)zbd.addEventListener('click',zclose);if(zc)zc.addEventListener('click',zclose);if(zbk)zbk.addEventListener('click',zclose);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&zb&&!zb.hidden)zclose();});
+  var zbk=document.getElementById('zBack');
+  if(zbk)zbk.addEventListener('click',function(){ if(zReader) zReader.close(); else zclose(); });
 })();</script>
 <script>(function(){
   var ZONES=[{"key": "harmony", "grid": "harmonyGrid", "label": "01 \u00b7 Colour", "cards": [{"id": "ch1", "n": "", "title": "Colour Spectrum", "rule": "How far the palette may breathe \u2014 tints, shades and blends that keep the weight of the night.", "kind": "harmony", "editorial": true}]}, {"key": "world", "grid": "worldGrid", "label": "04 \u00b7 The World", "cards": [{"id": "w1", "n": "01", "title": "The Image Must Be Symbolic", "rule": "An image is not decoration. It must carry atmosphere, expression, information, or memory.", "kind": "plates4", "editorial": true}, {"id": "w2", "n": "02", "title": "The Eye Must Know Where to Rest", "rule": "Do not lead the eye to status. Lead it to meaning.", "kind": "framing", "editorial": true}, {"id": "w3", "n": "03", "title": "The Night Must Be Dark But Remain Visible", "rule": "Darkness is atmosphere. Light is guidance. Grade is control.", "kind": "triptych", "editorial": true}]}, {"key": "surface", "grid": "surfaceGrid", "label": "05 \u00b7 The Surface", "cards": [{"id": "su1", "n": "01", "title": "The Surface Must Serve", "rule": "A surface is not decoration. It must support weight, atmosphere, response, humanity, or depth.", "kind": "surfaces", "editorial": true}, {"id": "su2", "n": "02", "title": "Texture Must Stay Behind the Message", "rule": "Texture is support, not the subject. If it competes with the message, reduce it.", "kind": "intensity", "previmg": "tx_support", "editorial": true}]}, {"key": "rhythm", "grid": "rhythmGrid", "label": "06 \u00b7 The Rhythm", "cards": [{"id": "ry1", "n": "01", "title": "The Journey Must Be Clear", "rule": "One screen, one idea, one clear next step.", "kind": "journey", "editorial": true}, {"id": "ry2", "n": "02", "title": "Every Motion Must Be Restrained", "rule": "Motion should unveil, not entertain.", "kind": "reveal", "previmg": "mot_fade", "editorial": true}]}], SLIDES={"w1": [{"tag": "The Board", "title": "The Image Must Be Symbolic", "visual": null, "blocks": [{"t": "plates", "items": [{"label": "WORLD", "sub": "Atmosphere", "meaning": "Expresses the night and pressure of Gethsemane", "img": "world"}, {"label": "EXPRESSION", "sub": "Human response", "meaning": "Reveals surrender, trust, cry, worship", "img": "expression"}, {"label": "INFORMATION", "sub": "Message support", "meaning": "Carries text clearly", "img": "information"}, {"label": "MEMORY", "sub": "Real record", "meaning": "Preserves an actual moment", "img": "memory"}]}, {"t": "reject", "x": "filler image \u00b7 random garden \u00b7 posed worship \u00b7 busy background \u00b7 bright recap"}]}, {"tag": "Slide 01 \u00b7 World", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Does the image build the atmosphere?"}, {"t": "exp", "x": "World images set the emotional ground \u2014 the night, the pressure, the stillness of Gethsemane \u2014 before a single word is read."}, {"t": "plate", "label": "World", "img": "world", "cap": "Moonlight over the olive press: the garden's weight, established in one frame."}, {"t": "p", "x": "Use any of the elements and symbols of the garden to portray the Gethsemane world."}, {"t": "refer", "x": "Refer to the Mood Board", "target": "mood", "anchor": "mggRows"}]}, {"tag": "Slide 02 \u00b7 Expression", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Does the image reveal the journey?"}, {"t": "exp", "x": "Expression images carry the human response inside the theme \u2014 the cry, the trust, the surrender the garden asks for."}, {"t": "plate", "label": "Expression", "img": "expression", "cap": "A face in prayer under pressure: the inner journey made visible."}, {"t": "p", "x": "Use prayer, surrender, trust, cry for help, shared worship."}, {"t": "refer", "x": "Refer to The Flow of Our Journey", "target": "musical"}]}, {"tag": "Slide 03 \u00b7 Information", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Does the image help the message speak?"}, {"t": "exp", "x": "Information images work quietly behind text \u2014 they support the words without competing for the eye."}, {"t": "plate", "label": "Information", "img": "information", "cap": "A calm, low-detail field that lets a title or verse sit clearly on top."}, {"t": "p", "x": "Use quiet backgrounds, text-safe space, low-detail texture."}]}, {"tag": "Slide 04 \u00b7 Memory", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Does the image preserve the moment faithfully?"}, {"t": "exp", "x": "Memory images record what actually happened \u2014 real people, real worship \u2014 graded so the record still belongs to WX2026."}, {"t": "plate", "label": "Memory", "img": "memory", "cap": "An unposed moment from the room, held with restraint rather than spectacle."}, {"t": "p", "x": "Use real rehearsal, service, response, archive \u2014 graded with restraint."}]}, {"tag": "Final Test", "title": "", "visual": null, "blocks": [{"t": "bigq", "x": "All your images must do some real work."}, {"t": "p", "x": "Is it building the Gethsemane World, expressing the Experience, conveying a Message, or preserving a Moment?"}, {"t": "verdict", "k": "no", "x": "If it isn't, drop it."}]}], "w2": [{"tag": "The Board", "title": "The Eye Must Know Where to Rest", "visual": null, "blocks": [{"t": "framing", "hero_img": "one_clear", "labels": [{"label": "WIDE", "note": "establishes the night"}, {"label": "MEDIUM", "note": "reveals pressure"}, {"label": "TIGHT", "note": "brings intimacy close"}], "editorial": "Primary voice, shared surrender."}]}, {"tag": "Slide 01 \u00b7 One Focus", "title": "", "visual": null, "blocks": [{"t": "q", "x": "What carries the burden of the image?"}, {"t": "exp", "x": "Focus is about meaning, not status \u2014 the eye should be led to what the moment is really about."}, {"t": "compare", "left": {"label": "One clear subject", "img": "one_clear", "cap": "The singer sits in sharp focus while the background falls away."}, "right": {"label": "Competing subjects", "img": "competing", "cap": "Subject and setting compete \u2014 several things pull the eye at once."}}]}, {"tag": "Slide 02 \u00b7 Wide", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Wide establishes the sacred night."}, {"t": "exp", "x": "A wide frame sets the world and the atmosphere before any single figure \u2014 it gives the night room to be felt."}, {"t": "plate", "label": "Wide", "img": "wide", "cap": "Room, depth and darkness: the sacred night established at scale."}, {"t": "p", "x": "Use for atmosphere, room, stage, opening screen."}]}, {"tag": "Slide 03 \u00b7 Medium", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Medium reveals people, posture, pressure, and space."}, {"t": "exp", "x": "A medium frame brings people and posture close enough to read the pressure, while keeping them inside the room."}, {"t": "plate", "label": "Medium", "img": "medium", "cap": "A worshipper in posture \u2014 near enough to feel, not so near it becomes a portrait."}, {"t": "p", "x": "Use for worship team, lead singer with backing vocalists, programme cover."}]}, {"tag": "Slide 04 \u00b7 Tight", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Tight brings evidence close."}, {"t": "exp", "x": "A tight frame holds a single detail \u2014 a hand, a stone, a path \u2014 so intimacy and evidence sit right against the eye."}, {"t": "plate", "label": "Tight", "img": "tight", "cap": "One detail, held close: the texture of surrender."}, {"t": "p", "x": "Use hand, stone, bark, path, moonlit leaf, ground shadow, cloth."}]}, {"tag": "Final Test", "title": "Guiding the Eye", "visual": null, "blocks": [{"t": "lead", "x": "Every image must lead the eye toward the sacredness of the moment, not the importance of the person."}, {"t": "stack", "items": ["The subject may be visible, but must never feel like the star.", "The posture may be expressive, but must never feel performed."]}, {"t": "verdict", "k": "no", "x": "If the viewer's first response is \u201cwhat a powerful person,\u201d reject it."}, {"t": "verdict", "k": "ok", "x": "If the viewer's first response is \u201csomething sacred is happening,\u201d it belongs."}]}], "w3": [{"tag": "The Board", "title": "The Night Must Be Dark But Remain Visible", "visual": null, "blocks": [{"t": "triptych", "panels": [{"k": "dark", "label": "Too Dark", "sub": "Lost", "img": "dark"}, {"k": "bright", "label": "Too Bright", "sub": "Exposed", "img": "bright"}, {"k": "correct", "label": "Correct", "sub": "Visible", "img": "correct"}]}, {"t": "palettestrip", "items": ["Blue-Black", "Midnight Blue", "Charcoal"]}]}, {"tag": "Slide 01 \u00b7 The Night World", "title": "", "visual": null, "blocks": [{"t": "q", "x": "WX2026 darkness is defined by the palette."}, {"t": "exp", "x": "The night is built from the dark trio \u2014 deep enough to carry weight, controlled enough to stay readable."}, {"t": "imgpair", "a": "nw1", "b": "nw2"}, {"t": "palettestrip", "items": ["Blue-Black", "Midnight Blue", "Charcoal"]}]}, {"tag": "Slide 02 \u00b7 Use", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Use light to guide the eye."}, {"t": "exp", "x": "Light is guidance, not performance \u2014 a restrained edge reveals form and points the eye without breaking the night."}, {"t": "plate", "label": "Correct", "img": "use", "cap": "Dark grade with a restrained edge light: form revealed, night kept."}, {"t": "p", "x": "Dark grade, restrained edge light, readable shadow, controlled contrast."}]}, {"tag": "Slide 03 \u00b7 Avoid", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Do not let the lighting perform."}, {"t": "exp", "x": "When light starts performing, the image stops inviting \u2014 brightness and beams pull attention to the show."}, {"t": "plate", "label": "Avoid", "img": "avoid", "cap": "Over-bright, over-coloured, theatrical: the pressure of the night is gone."}, {"t": "p", "x": "Avoid crushed black, bright flyer light, concert beams, glowing effects, over-coloured grade."}]}], "ch1": [{"tag": "The Board", "title": "Colour Spectrum", "visual": null, "blocks": [{"t": "lead", "x": "The palette may breathe \u2014 tints, shades \u2014 but the pressure and weight of the night must not lift."}]}, {"tag": "Slide 01 \u00b7 Midnight Blue", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Midnight Blue"}, {"t": "exp", "x": "The night colour. Drag the slider \u2014 Midnight may shift within the approved band, but leave it and the night is gone."}, {"t": "harmonyctrl", "name": "Midnight & Blue-Black", "hex": "#0A0E1A \u2192 #262E48", "from": "#0a0e1a", "to": "#262e48", "trait": "night", "lowfail": "flat black \u2014 the night dies", "highfail": "bright royal blue \u2014 no longer sacred", "scale": ["#0A0E1A", "approved night", "#262E48"]}, {"t": "qset", "items": ["Still night?", "Still intimate?", "Still readable?"]}, {"t": "reject", "x": "bright blue \u00b7 royal blue \u00b7 corporate navy \u00b7 flat black"}, {"t": "memline", "x": "Midnight may move, but it must remain night."}]}, {"tag": "Slide 02 \u00b7 The Accents", "title": "", "visual": null, "blocks": [{"t": "q", "x": "The Accents"}, {"t": "exp", "x": "Meaning colours. They may breathe within a band, but must not decorate \u2014 drag each to feel where the meaning breaks."}, {"t": "harmonyctrl", "name": "Presence Gold", "hex": "#6E5B2F \u2192 #C6A24C", "from": "#6e5b2f", "to": "#c6a24c", "trait": "help", "lowfail": "muddy, lifeless gold", "highfail": "luxury / washed pale gold", "scale": ["#6E5B2F", "gold range", "#C6A24C"], "tag": "Help"}, {"t": "harmonyctrl", "name": "Deep Crimson", "hex": "#4D1015 \u2192 #8A171B", "from": "#4d1015", "to": "#8a171b", "trait": "cost", "lowfail": "near-black \u2014 the cost is hidden", "highfail": "bright pink-red \u2014 melodrama", "scale": ["#4D1015", "crimson range", "#8A171B"], "tag": "Cost"}, {"t": "harmonyctrl", "name": "Wildflower Purple", "hex": "#715880 \u2192 #7A4CB8", "from": "#715880", "to": "#7A4CB8", "trait": "assurance", "lowfail": "murky, uncertain purple", "highfail": "neon / worship-gradient violet", "scale": ["#715880", "purple range", "#7A4CB8"], "tag": "Assurance"}, {"t": "qset", "items": ["Does the meaning remain?"]}, {"t": "reject", "x": "luxury gold \u00b7 bright red \u00b7 pink crimson \u00b7 neon violet \u00b7 worship purple gradient"}, {"t": "memline", "x": "Accents may move, but must remain meaningful."}]}, {"tag": "Slide 03 \u00b7 Gradients", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Gradients"}, {"t": "exp", "x": "Move the story. Do not decorate the surface."}, {"t": "p", "x": "A gradient blends two palette colours to move the story \u2014 and it never includes Bone."}, {"t": "p", "x": "The Spectrum encourages more than simple gradients: overlays, layered tones, and richer blends are welcome, as long as they keep the weight and pressure of Gethsemane."}, {"t": "memline", "x": "Let the colour move the story \u2014 never only decorate the surface."}]}], "su1": [{"tag": "The Board", "title": "The Surface Must Serve", "visual": null, "blocks": [{"t": "plates", "items": [{"label": "STONE", "meaning": "weight and structure", "img": "tex_stone"}, {"label": "NIGHT GRAIN", "meaning": "depth and atmosphere", "img": "tex_grain"}, {"label": "GROUND", "meaning": "humility and response", "img": "tex_ground"}, {"label": "RUGGED CLOTH", "meaning": "humanity and closeness", "img": "tex_cloth"}]}, {"t": "reject", "x": "luxury marble \u00b7 purple gradient \u00b7 floral wallpaper \u00b7 olive border \u00b7 random texture"}]}, {"tag": "Slide 01 \u00b7 Carry the Garden", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Every Surface Must Carry the Garden"}, {"t": "exp", "x": "A WX2026 surface is never just a background. It must carry the ruggedness of stone, the weight of the press, or the darkness of Gethsemane night."}, {"t": "plates", "items": [{"label": "Stone", "img": "tex_stone"}, {"label": "Night Grain", "img": "tex_grain"}, {"label": "Ground", "img": "tex_ground"}, {"label": "Rugged Cloth", "img": "tex_cloth"}]}, {"t": "p", "x": "Use texture to give the design structure, pressure, and atmosphere."}]}, {"tag": "Slide 02 \u00b7 Reject Empty Texture", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Texture Must Not Feel Luxurious"}, {"t": "exp", "x": "WX2026 texture must feel grounded, pressured, and sacred. Avoid anything polished, shiny, luxurious, decorative, noisy, or visually empty."}, {"t": "intensitybar", "title": "Texture density", "note": "Usable range 10\u2013 35%"}, {"t": "reject", "x": "Reject anything that feels like marble luxury, glossy d\u00e9cor, loud grain, ornamental texture, or empty background styling. If it beautifies the design without carrying the garden, reject it."}]}], "su2": [{"tag": "The Board", "title": "Texture Must Stay Behind the Message", "visual": null, "blocks": [{"t": "lead", "x": "A WX2026 surface should carry weight, darkness, ruggedness, or atmosphere \u2014 but it must never compete with what needs to be read, seen, or understood."}, {"t": "p", "x": "The more important the message is, the quieter the texture must become."}]}, {"tag": "Slide 01 \u00b7 Texture Serves", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Texture is support, not the subject."}, {"t": "exp", "x": "A WX2026 surface must help the message feel grounded, weighted, dark, or sacred. It must never become the first thing the viewer notices."}, {"t": "exp", "x": "When the surface stays quiet, the words lead and the atmosphere still carries."}, {"t": "exgrid", "items": [{"img": "tx_support", "verdict": "ok", "reason": "Let the texture support the text."}, {"img": "tx_moretext", "verdict": "ok", "reason": "More text, less texture."}]}]}, {"tag": "Slide 02 \u00b7 Done Wrong", "title": "", "visual": null, "blocks": [{"t": "q", "x": "When texture competes, the message loses."}, {"t": "exp", "x": "If the surface is noticed before the words, the reader has to work to settle."}, {"t": "exgrid", "items": [{"img": "tx_compete", "verdict": "no", "reason": "The text and texture must not compete."}, {"img": "tx_longer", "verdict": "no", "reason": "When there is more texture, the eye takes longer to settle."}]}]}, {"tag": "Final Test", "title": "", "visual": null, "blocks": [{"t": "bigq", "x": "Can the message be read immediately?"}, {"t": "p", "x": "If the viewer notices the texture before the message, it is too loud."}]}], "ry1": [{"tag": "The Board", "title": "The Journey Must Be Clear", "visual": null, "blocks": [{"t": "p", "x": "Every WX2026 layout must guide the viewer through a clear visual journey."}, {"t": "exp", "x": "Click each node to see how a WX2026 layout should unfold:"}, {"t": "journeynodes", "nodes": [{"label": "Atmosphere", "detail": "Let the mood arrive. Does it feel like WX2026 before the words explain it?"}, {"label": "Main Idea", "detail": "What is the one thing the viewer must understand? Will they understand quickly?"}, {"label": "Board", "detail": "If possible, show the visual world. Do the examples make the idea clearer?"}, {"label": "Detail", "detail": "Focus the eye. Does the viewer know exactly what to look at?"}, {"label": "Rule", "detail": "Give the instruction. Can someone apply it immediately?"}, {"label": "Memory", "detail": "Leave one line. Can the viewer remember it after leaving?"}]}, {"t": "colorchips", "label": "Applies to", "items": ["website pages", "visual identity workspace", "social carousels", "presentations", "lyric screens", "programmes", "announcements", "stage screen sequences"]}]}, {"tag": "Final Test", "title": "", "visual": null, "blocks": [{"t": "bigq", "x": "If everything is important, nothing is guiding."}, {"t": "p", "x": "One screen. One idea. One next step."}]}], "ry2": [{"tag": "The Board", "title": "Every Motion Must Be Restrained", "visual": null, "blocks": [{"t": "p", "x": "Motion in WX2026 must help the viewer enter the idea slowly. It must guide attention, reveal meaning, and settle into stillness."}, {"t": "journeynodes", "nodes": [{"label": "Enter Slowly", "detail": "Motion should help the viewer arrive, not surprise them."}, {"label": "Guide the Eye", "detail": "Movement should direct attention to one clear place."}, {"label": "Settle Into Stillness", "detail": "Every motion should end calmly."}, {"label": "Reject Performance", "detail": "If the motion asks to be admired, it is wrong."}, {"label": "Reduce Restlessness", "detail": "Nothing should keep moving without purpose."}]}, {"t": "colorchips", "label": "This rule applies to", "items": ["website interactions", "visual identity workspace", "section reveals", "card openings", "detail panels", "selected states", "video pacing", "lyric screens", "announcement screens", "stage screen sequences", "social motion graphics"]}, {"t": "callout", "x": "Videography belongs to both Zone 04 \u00b7 The World and Zone 06 \u00b7 The Rhythm. Every video frame must pass the image rules and obey these motion rules \u2014 no video is exempt."}]}, {"tag": "Slide 01 \u00b7 Approved Motion", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Observe, do not perform."}, {"t": "exp", "x": "These moves reveal meaning and settle quickly into stillness."}, {"t": "exgrid", "items": [{"img": "mot_fade", "label": "Fade", "verdict": "ok", "reason": "Fade \u2014 dissolves in, calm and quiet"}, {"img": "mot_pan", "label": "Pan", "verdict": "ok", "reason": "Pan \u2014 a slow drift across the frame"}, {"img": "mot_simple", "label": "Simple", "verdict": "ok", "reason": "Simple \u2014 one clear, restrained move"}, {"img": "mot_wipe", "label": "Wipe", "verdict": "ok", "reason": "Wipe \u2014 a gentle reveal in one direction"}, {"img": "mot_rise", "label": "Rise", "verdict": "ok", "reason": "Rise \u2014 a slight upward settle"}]}]}, {"tag": "Slide 02 \u00b7 Unapproved Motion", "title": "", "visual": null, "blocks": [{"t": "q", "x": "Do not let motion perform."}, {"t": "exp", "x": "These moves ask to be admired and never settle \u2014 they perform instead of serving."}, {"t": "exgrid", "items": [{"img": "mot_wave", "label": "Chrome Wave", "verdict": "no", "reason": "Chrome Wave \u2014 glossy and showy"}, {"img": "mot_neon", "label": "Neon", "verdict": "no", "reason": "Neon \u2014 glowing, never settles"}, {"img": "mot_party", "label": "Party", "verdict": "no", "reason": "Party \u2014 festive and attention-seeking"}, {"img": "mot_rotate", "label": "Rotate", "verdict": "no", "reason": "Rotate \u2014 spins, draws the eye to itself"}, {"img": "mot_stomp", "label": "Stomp", "verdict": "no", "reason": "Stomp \u2014 punchy and aggressive"}]}]}, {"tag": "Final Test", "title": "", "visual": null, "blocks": [{"t": "bigq", "x": "Does the motion help the viewer enter the idea?"}, {"t": "stack", "items": ["Does it guide the eye without drawing attention to itself?", "Does it end in stillness?"]}, {"t": "verdict", "k": "no", "x": "If the motion performs, remove it."}]}]}, IMG={"world": "assets/a4d9ed967267.webp", "expression": "assets/c9fa9b929f27.webp", "information": "assets/d65c47c4263a.webp", "memory": "assets/8d639ed77c0a.webp", "one_clear": "assets/7b7fe5b9c3ee.webp", "competing": "assets/60eb94dfd14b.webp", "wide": "assets/81cf9a1605f5.webp", "medium": "assets/ce3b733939ce.webp", "tight": "assets/47cba667b50f.webp", "dark": "assets/16b84261fdca.webp", "bright": "assets/38624a2e79f2.webp", "correct": "assets/9e126222a20c.webp", "use": "assets/9bf7397b610f.webp", "avoid": "assets/e59d753cbcd9.webp", "nw1": "assets/9e126222a20c.webp", "nw2": "assets/8ce2afde8dd3.webp", "tex_stone": "assets/7cef5762d5ff.webp", "tex_grain": "assets/fcec588bfe85.webp", "tex_ground": "assets/bccccd0c2699.webp", "tex_cloth": "assets/637aa5fa75ce.webp", "tx_support": "assets/d1855479addc.webp", "tx_moretext": "assets/41363ea30126.webp", "tx_compete": "assets/b8f16c34a87a.webp", "tx_longer": "assets/1066e22756d9.webp", "mot_fade": "assets/448a916677dd.mp4", "mot_pan": "assets/32a964610153.mp4", "mot_simple": "assets/7857eddaf2fc.mp4", "mot_wipe": "assets/47c8a1a2af17.mp4", "mot_rise": "assets/2b84b9e765c6.mp4", "mot_wave": "assets/d914da258a90.mp4", "mot_neon": "assets/715d1f347d5b.mp4", "mot_party": "assets/c9be1b27b5e7.mp4", "mot_rotate": "assets/2663e55cf358.mp4", "mot_stomp": "assets/b6043dcf3e0c.mp4"}, RJOURNEY=[{"label": "Online", "detail": "The journey begins before arrival. Every touch before the day must feel like WX2026."}, {"label": "Entrance", "detail": "The room starts at the door. Does arrival feel intentional, quiet, and sacred?"}, {"label": "Seat", "detail": "The person must feel placed inside the journey. Does the seat, programme, or immediate environment prepare the heart?"}, {"label": "Screen", "detail": "The screen must guide, not distract. Does every visual support the moment happening in the room?"}, {"label": "Stage", "detail": "The stage must carry the garden without becoming a show. Does it feel sacred, grounded, and restrained?"}, {"label": "Response", "detail": "The room must make surrender possible. Does the environment help people pray, sing, reflect, or say Yes?"}, {"label": "Archive", "detail": "What remains must still carry the weight. Do photos, videos, documents, and memories preserve the journey faithfully?"}], ASKS=[{"q": "Which zones govern it?", "zone": "Every zone", "anchor": "viCards", "sum": "List the zones this asset must draw from before choosing anything else."}, {"q": "Does it use the right colours?", "zone": "01 \u00b7 Colour", "anchor": "viAtlas", "sum": "The dark trio builds the world, Bone carries the reading, and one accent may lead \u2014 never all three accents at once."}, {"q": "Does it use the right marks?", "zone": "02 \u00b7 Marks", "anchor": "zoneSignature", "sum": "YES leads on campaign pieces; CCC hosts and WX signs the parent event. Use official artwork only."}, {"q": "Does it speak in the right type?", "zone": "03 \u00b7 Type", "anchor": "zoneVoice", "sum": "TFArrow speaks, Cinzel declares, EB Garamond reads. The YES wordmark signs \u2014 it is never typed."}, {"q": "Does it belong to the visual world?", "zone": "04 \u00b7 Imagery", "anchor": "zoneWorld", "sum": "Every image must be symbolic, guide the eye, and keep the night dark but visible."}, {"q": "Does the surface support the message?", "zone": "05 \u00b7 Surface", "anchor": "zoneSurface", "sum": "Texture carries the garden quietly and always stays behind what must be read."}, {"q": "Does the structure guide the eye?", "zone": "06 \u00b7 Rhythm", "anchor": "zoneRhythm", "sum": "One screen, one idea, one next step; motion reveals slowly and settles into stillness."}];
@@ -3826,13 +4211,19 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
   function openW(card){ rmReturn(); lastFocus=document.activeElement; cur.card=card; cur.zone=ZBY[card.id]; cur.i=0; cur.n=SLIDES[card.id].length;
     panel.classList.toggle('w-editorial',!!card.editorial);
     backB.innerHTML='\u2190 '+(card.editorial?'Back to boards':'Back to principles');
-    renderStrip(); wb.hidden=false; requestAnimationFrame(function(){ wb.classList.add('open'); }); paint(); }
+    renderStrip(); wb.hidden=false; requestAnimationFrame(function(){ wb.classList.add('open'); }); wLock(); paint(); }
   function openAt(card,i){ openW(card); cur.i=i; paint(); }
-  function closeW(){ wb.classList.remove('open'); setTimeout(function(){ wb.hidden=true; },480); if(lastFocus){try{lastFocus.focus();}catch(e){}} }
+  /* Pass 9.1J.4: background scroll-lock + inert while the modal board is open. */
+  var wBg=[];
+  function wLock(){ document.body.style.overflow='hidden'; wBg=[].slice.call(document.body.children).filter(function(el){return el!==wb && el.nodeType===1 && el.tagName!=='SCRIPT';}); wBg.forEach(function(el){el.setAttribute('inert','');el.setAttribute('aria-hidden','true');}); }
+  function wUnlock(){ document.body.style.overflow=''; wBg.forEach(function(el){el.removeAttribute('inert');el.removeAttribute('aria-hidden');}); wBg=[]; }
+  function closeW(){ wb.querySelectorAll('video').forEach(function(v){try{v.pause();}catch(e){}}); wb.classList.remove('open'); setTimeout(function(){ wb.hidden=true; },480); wUnlock(); if(lastFocus){try{lastFocus.focus();}catch(e){}} }
   prevB.addEventListener('click',function(){ stepFlow(-1); });
   nextB.addEventListener('click',function(){ stepFlow(1); });
   backB.addEventListener('click',closeW); closeB.addEventListener('click',closeW); bdrop.addEventListener('click',closeW);
-  document.addEventListener('keydown',function(e){ if(wb.hidden) return; if(e.key==='Escape') closeW(); else if(e.key==='ArrowLeft') stepFlow(-1); else if(e.key==='ArrowRight') stepFlow(1); });
+  /* reader arrows must not hijack media controls, sliders, tabs or text fields. */
+  function wTyping(el){ if(!el) return false; var t=(el.tagName||'').toLowerCase(); if(t==='input'||t==='textarea'||t==='select'||t==='video'||t==='audio') return true; if(el.isContentEditable) return true; var r=el.getAttribute&&el.getAttribute('role'); return r==='tab'||r==='slider'; }
+  document.addEventListener('keydown',function(e){ if(wb.hidden) return; if(e.key==='Escape'){ closeW(); return; } if(wTyping(e.target)) return; if(e.key==='ArrowLeft') stepFlow(-1); else if(e.key==='ArrowRight') stepFlow(1); });
   function zoneIdx(){ if(!cur.zone) return -1; for(var q=0;q<cur.zone.cards.length;q++){ if(cur.zone.cards[q].id===cur.card.id) return q; } return -1; }
   function isFirstOverall(){ return cur.i===0 && zoneIdx()<=0; }
   function isLastOverall(){ var z=cur.zone; return cur.i===cur.n-1 && (!z || zoneIdx()===z.cards.length-1); }
@@ -3871,6 +4262,27 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
       var rf=document.getElementById('sysChildRefer'); rf.hidden=false; rf.textContent='Go to '+a.zone+' \u2192';
       rf.onclick=function(){ var el=document.getElementById(a.anchor); if(el) el.scrollIntoView({behavior:window.WX.smoothBehavior(),block:'start'}); };
     }); li.appendChild(btn); qs.appendChild(li); }); }
+  /* Pass 9.1J.5: card-to-card reader for the "What are you making?" decision
+     framework. The adapter reuses each question's own click handler (via the
+     generated <button>) so the selection highlight, the zone/summary child card
+     and the "Go to <zone>" jump all stay wired from one source. The "Every zone"
+     card is ASKS[0] — included and first, matching the displayed framework order.
+     The underlying zone-scroll (the refer button's scrollIntoView) is untouched. */
+  (function(){
+    if(!window.WXDetailReader || !qs) return;
+    var sPrev=document.getElementById('sysPrev'),sNext=document.getElementById('sysNext'),sPos=document.getElementById('sysPos'),sRoot=document.getElementById('sysUse'),sChild=document.getElementById('sysChild');
+    if(!sPrev||!sNext||!sPos||!sRoot) return;
+    function qBtn(n){ return qs.querySelectorAll('button')[n]; }
+    var sReader=WXDetailReader.attach({
+      count:ASKS.length, start:0, prevBtn:sPrev, nextBtn:sNext, posEl:sPos,
+      arrowKeys:true, arrowRoot:sRoot, resetScroll:sChild,
+      label:function(n){return (n+1)+' of '+ASKS.length;},
+      select:function(n){ var b=qBtn(n); if(b) b.click(); }
+    });
+    // keep the reader index in step when a question is tapped directly in the list
+    qs.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b)return; var all=[].slice.call(qs.querySelectorAll('button')); var idx=all.indexOf(b); if(idx>=0) sReader.go(idx); });
+    var b0=qBtn(0); if(b0) b0.click(); sReader.update();   // open the first card ("Every zone") so 1 of 7 is accurate
+  })();
   var oc=document.getElementById('viOutroCta'); if(oc){ oc.addEventListener('click',function(){ var seg=document.querySelector('.seg-jump[data-target="musical"]'); if(seg) seg.click(); }); }
   var sr=document.getElementById('storyRefer'); if(sr){ sr.addEventListener('click',function(){ rmReturn(); var btn=document.createElement('button'); btn.id='wReturn'; btn.className='w-return'; btn.type='button'; btn.textContent='\u21a9 Back to Visual Identity'; btn.addEventListener('click',function(){ var id=document.querySelector('.seg-jump[data-target="identity"]'); if(id) id.click(); rmReturn(); }); document.body.appendChild(btn); }); }
 
@@ -3885,5 +4297,125 @@ const FACES=[{"id": "f1", "name": "YES Wordmark", "kind": "Locked artwork", "fon
   if(idp&&'MutationObserver' in window){ new MutationObserver(upd).observe(idp,{attributes:true,attributeFilter:['class']}); }
 })();</script>
 <script>(function(){var t=new Date(2026,10,29),n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());var d=Math.max(0,Math.round((t-t0)/86400000));var e=document.querySelectorAll('.cd-num');for(var i=0;i<e.length;i++)e[i].textContent=d;})();</script>
+<script>
+/* Pass 9.1G — mobile section-navigation sheet. Reuses the existing hash routing
+   (setting location.hash triggers the page's hashchange handler); does not add a
+   separate state system. Phones only; the desktop wheel is untouched. */
+(function(){
+  var trigger=document.getElementById('cdNavTrigger');
+  var sheet=document.getElementById('cdNavSheet');
+  if(!trigger||!sheet) return;
+  var panel=sheet.querySelector('.cd-navsheet__panel');
+  var closeBtn=document.getElementById('cdNavClose');
+  var links=[].slice.call(sheet.querySelectorAll('.cd-navlink'));
+  var KEYS={story:1,elements:1,mood:1,identity:1,musical:1};
+  var lastFocus=null, bgEls=[];
+  function currentKey(){var h=(location.hash||'').replace(/^#/,'');return KEYS[h]?h:null;}
+  function markCurrent(){
+    var k=currentKey();
+    links.forEach(function(b){
+      var on=b.getAttribute('data-target')===k;
+      if(on){b.setAttribute('aria-current','true');}else{b.removeAttribute('aria-current');}
+    });
+  }
+  function focusables(){
+    return [].slice.call(panel.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'))
+      .filter(function(el){return !el.disabled && el.offsetParent!==null;});
+  }
+  function isOpen(){return sheet.classList.contains('open');}
+  function openSheet(){
+    if(isOpen()) return;
+    lastFocus=document.activeElement;
+    sheet.hidden=false;
+    // make everything behind the sheet inert + lock background scroll
+    bgEls=[].slice.call(document.body.children).filter(function(el){
+      return el!==sheet && el.nodeType===1 && el.tagName!=='SCRIPT';
+    });
+    bgEls.forEach(function(el){el.setAttribute('inert','');el.setAttribute('aria-hidden','true');});
+    document.body.classList.add('cd-sheet-open');
+    markCurrent();
+    requestAnimationFrame(function(){ sheet.classList.add('open'); });
+    trigger.setAttribute('aria-expanded','true');
+    var cur=sheet.querySelector('.cd-navlink[aria-current="true"]')||closeBtn;
+    cur.focus();
+  }
+  function closeSheet(restore){
+    if(!isOpen()) return;
+    sheet.classList.remove('open');
+    trigger.setAttribute('aria-expanded','false');
+    bgEls.forEach(function(el){el.removeAttribute('inert');el.removeAttribute('aria-hidden');});
+    bgEls=[];
+    document.body.classList.remove('cd-sheet-open');
+    var done=function(){ sheet.hidden=true; sheet.removeEventListener('transitionend',done); };
+    // hide after the slide-out (fallback timeout if transition is suppressed)
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(reduce){ sheet.hidden=true; } else { sheet.addEventListener('transitionend',done); setTimeout(done,360); }
+    if(restore!==false && lastFocus && lastFocus.focus){ lastFocus.focus(); }
+  }
+  trigger.addEventListener('click',openSheet);
+  closeBtn.addEventListener('click',function(){closeSheet();});
+  sheet.addEventListener('click',function(e){ if(e.target&&e.target.getAttribute('data-close')){ closeSheet(); } });
+  links.forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.getAttribute('data-target');
+      if(k && location.hash.replace(/^#/,'')!==k){ location.hash=k; }
+      closeSheet();
+    });
+  });
+  sheet.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ e.preventDefault(); closeSheet(); return; }
+    if(e.key==='Tab'){
+      var f=focusables(); if(!f.length) return;
+      var first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  });
+  // keep the current marker in sync with routing (hash entry, Back/Forward)
+  window.addEventListener('hashchange',markCurrent);
+  window.addEventListener('popstate',markCurrent);
+  markCurrent();
+})();
+</script>
+<script>
+/* Pass 9.1I — Five Moods mobile card-reader. Reuses the existing .mgg-rows
+   click handler (which runs apply(m): highlights the mood cluster and fills the
+   #mggShared detail). Prev/Next step the five moods; Explore selects the mood and
+   scrolls its detail into view with focus on the heading. Phones only. */
+(function(){
+  var prev=document.getElementById('mggPrev'),next=document.getElementById('mggNext'),
+      pos=document.getElementById('mggPos'),explore=document.getElementById('mggExplore');
+  var rows=[].slice.call(document.querySelectorAll('.mgg-rows li'));
+  var shared=document.getElementById('mggShared'),shTitle=document.getElementById('mshTitle');
+  if(!prev||!next||!pos||!explore||rows.length!==5) return;
+  var mq=window.matchMedia('(max-width:760px)');
+  function curMood(){var sEl=document.querySelector('.mgg-rows li.sel');return sEl?sEl.getAttribute('data-mood'):null;}
+  function idx(){var m=curMood();return m?parseInt(m,10):0;}
+  function rowFor(n){return rows.filter(function(r){return r.getAttribute('data-mood')===String(n);})[0];}
+  function update(){var i=idx();pos.textContent=(i||1)+' of 5';prev.disabled=(i<=1);next.disabled=(i>=5);}
+  function select(n){
+    n=Math.max(1,Math.min(5,n));
+    if(curMood()!==String(n)){var r=rowFor(n);if(r)r.click();}
+    update();
+  }
+  prev.addEventListener('click',function(e){e.stopPropagation();var i=idx()||1;select(i-1);if(prev.disabled)next.focus();});
+  next.addEventListener('click',function(e){e.stopPropagation();var i=idx()||1;select(i+1);if(next.disabled)prev.focus();});
+  explore.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(!curMood())select(idx()||1);
+    if(!shTitle||!shared)return;
+    shTitle.setAttribute('tabindex','-1');
+    var hdr=document.querySelector('.nav');var off=hdr?hdr.getBoundingClientRect().height+8:8;
+    var y=shared.getBoundingClientRect().top+window.pageYOffset-off;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    window.scrollTo({top:Math.max(0,y),behavior:reduce?'auto':'smooth'});
+    shTitle.focus({preventScroll:true});
+  });
+  rows.forEach(function(r){r.addEventListener('click',update);});
+  function init(){if(mq.matches&&!curMood()){select(1);}update();}
+  init();
+  if(mq.addEventListener)mq.addEventListener('change',init);
+})();
+</script>
 </body>
 </html>

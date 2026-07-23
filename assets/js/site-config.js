@@ -12,8 +12,8 @@
 
   /* Release identifier — bumped each pass. Also recorded in README.md, VERSION
      and CHANGELOG.md. Format: 2026.<pass>[.patch]. */
-  WX.version = "2026.9.0";
-  WX.releaseName = "Pass 9 — independent final QA & release";
+  WX.version = "2026.9.1L";
+  WX.releaseName = "Pass 9.1A — WX monogram icon correction";
 
   WX.theme = "YES: Not My Will, But Yours.";
   WX.themePlain = "YES: Not My Will, But Yours";

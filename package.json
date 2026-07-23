@@ -1,6 +1,6 @@
 {
   "name": "wx-2026-site",
-  "version": "2026.9.0",
+  "version": "2026.9.1-l.1",
   "private": true,
   "description": "Worship Experience 2026 — static site (The Flow Experience). Dev tooling only; the published site is plain static HTML/CSS/JS with no runtime dependency.",
   "type": "module",

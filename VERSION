@@ -1,3 +1,26 @@
-WX 2026 — v2026.9.0 (Pass 9 — independent final QA, regression review & release package)
-Released: 2026-07-21
-Baseline: Pass 8 (v2026.8.0)
+WX 2026 — v2026.9.1L (Pass 9.1L.1 — Header Action Grouping and Playbook Footer Correction)
+Released: 2026-07-23
+Package: 2026.9.1-l.1
+Two integration corrections on the accepted 9.1L rebuild: (1) the All Pages arrow is now
+grouped WITH the Workspace control in one right-side flex action group (.wx-header-actions,
+order [Workspace][arrow]) instead of being an independent middle flex child — so it no
+longer lands over the absolutely-centred countdown; narrow phones tighten the Workspace
+padding/gap (and drop its decorative back-arrow) so nothing clips or overlaps and the
+countdown stays viewport-centred. (2) The Playbook footer's legacy "Playbook · WX 2026"
+label (.eco-mid) is removed and the footer uses a true three-column grid
+[minmax(0,1fr) auto minmax(0,1fr)] so it is the canonical YES / navigation / CCC with the
+nav mathematically centred. Navigation order, branching, dropdown contents, Workspace
+ordering, content and exports are unchanged; wx-detail-reader.js is byte-identical.
+Rebuilt from the accepted Pass 9.1K base (the discarded 9.1L mid-page block was NOT
+reused). Reader navigation now has exactly two restrained parts: (1) a small "All
+Pages" arrow beside the existing Workspace control that opens a compact anchored
+dropdown of the nine reader-facing pages; (2) dainty Previous/Next controls inside the
+footer identity row, between the YES Crimson and CCC marks (two destinations only, no
+current-page title). The reader sequence branches at Creative Direction — Visual
+Identity (#identity) -> Playbook, Musical Identity (#musical) -> Blueprint — and
+re-merges at Setlist, which reads a validated ?from={playbook|blueprint} to pick its
+Previous. The footer Next stays unavailable on the earlier CD segments so Explore
+Sections keeps owning the internal journey. Shared source: assets/js/site-nav.js.
+Workspace card order, all fifteen readers, segment routing, content, exports and
+Setlist/Lyrics data are unchanged; wx-detail-reader.js is byte-identical. Navigation is
+hidden from print/export.

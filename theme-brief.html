@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/favicon.svg?v=2026.9.1J" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png?v=2026.9.1J" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 <meta name="description" content="The Worship Experience 2026 theme — YES: Not My Will, But Yours — and its four-phase journey from God is Good to God is Glorified.">
 
 <title>Our Theme — Worship Experience 2026</title>
@@ -193,6 +195,34 @@
   .gm-arrows button{background:transparent;border:1px solid var(--rule);color:var(--gold);
     width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.05rem;transition:border-color .25s,background .25s}
   .gm-arrows button:hover{border-color:var(--gold);background:rgba(200,162,75,.08)}
+  /* interaction cue (mobile only; shown via the max-width:760px block) */
+  .gm-cue{display:none}
+  /* ===== Pass 9.1F — Journey panorama: native horizontal swipe on phones =====
+     Desktop keeps its 320vh pinned, scroll-linked pan (untouched). On phones the
+     stage drops its 320vh height and the sticky pane becomes a normal-flow
+     horizontal scroller, so the full 400vw panorama is inspectable by swiping
+     without trapping vertical page scroll. */
+  @media(max-width:760px){
+    .gm-stage{height:auto}
+    .gm-sticky{position:static;height:72svh;min-height:320px;overflow-x:auto;overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;
+      touch-action:pan-x pan-y;scroll-snap-type:x proximity}
+    .gm-sticky:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+    .gm-track{transform:none !important;width:400vw;height:100%}
+    .station{scroll-snap-align:start}
+    /* controls anchor to .gm-stage (now the nearest positioned ancestor) so they
+       stay fixed over the viewport instead of scrolling with the panorama */
+    .gm-controls{position:absolute}
+    /* restrained, animation-free cues that more exists to the right */
+    .gm-stage::after{content:"";position:absolute;top:0;bottom:0;right:0;width:56px;z-index:5;
+      pointer-events:none;background:linear-gradient(90deg,transparent,rgba(8,6,12,.6))}
+    .gm-cue{display:inline-flex;align-items:center;gap:.4rem;position:absolute;top:.8rem;right:.7rem;z-index:7;
+      pointer-events:none;font-family:var(--body);font-weight:600;font-size:.66rem;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--gold-bright);background:rgba(10,8,12,.6);
+      border:1px solid var(--rule);border-radius:999px;padding:.42rem .72rem}
+    .gm-cue,.gm-stage::after{transition:opacity .3s ease}
+    .gm-stage.gm-explored .gm-cue,.gm-stage.gm-explored::after{opacity:0}
+  }
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--rule);text-align:center;padding:3.4rem 1.4rem 4.4rem;background:rgba(8,6,12,.5)}
@@ -303,6 +333,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
@@ -509,7 +540,7 @@
       <div class="st-num">Phase IV</div>
       <div class="st-ref">The Gateway to Glory</div>
       <h3 class="st-title">God Is Glorified</h3>
-      <p class="st-lines">Surrender is never the end of the story.<br>The will laid down, the Father is lifted high.</p>
+      <p class="st-lines">Surrender is never the end of the story.<br>When the will is laid down, the Father is glorified.</p>
       <p class="st-pause">Glory is what obedience becomes.</p>
     </article>
       </div>
@@ -526,6 +557,7 @@
         </div>
       </div>
     </div>
+    <div class="gm-cue" aria-hidden="true"><span>Swipe to explore</span><span aria-hidden="true">&rarr;</span></div>
   </div>
 </section>
 
@@ -533,7 +565,8 @@
 
 <footer class="wx-foot">
   <picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img class="wx-foot-yes" src="assets/yes-crimson-vertical.png" alt="YES: Not My Will, But Yours" decoding="async"></picture>
-  <picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img class="wx-foot-ccc" src="assets/ccc-logo.png" alt="Calvary Charismatic Centre, Apenkwa" loading="lazy" decoding="async"></picture>
+  <span class="wx-fnav" data-wx-fnav hidden aria-label="Page navigation"></span>
+<picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img class="wx-foot-ccc" src="assets/ccc-logo.png" alt="Calvary Charismatic Centre, Apenkwa" loading="lazy" decoding="async"></picture>
 </footer>
 
 <script>
@@ -579,36 +612,71 @@
   window.addEventListener('resize',()=>{clearTimeout(window.__tt);window.__tt=setTimeout(buildAll,150);});
   setTimeout(buildAll,400);
 
-  // ---- garden map: pinned, seamless horizontal scroll ----
+  // ---- garden map: desktop pinned scroll-linked pan / mobile native swipe ----
+  // Pass 9.1F: on phones the panorama is a native horizontal scroller (direct
+  // swipe + arrow keys); desktop keeps the 320vh scroll-linked pan unchanged.
   const stage=document.getElementById('gmstage');
   const track=document.getElementById('gmtrack');
   if(stage&&track){
+    const sticky=stage.querySelector('.gm-sticky');
     const stations=[...track.querySelectorAll('.station')];
     const dots=[...document.querySelectorAll('#gmrail .dot')];
     const n=stations.length;
+    const mq=window.matchMedia('(max-width:760px)');
     let maxX=0,total=1,top=0;
     const measure=()=>{
       maxX=Math.max(0,track.scrollWidth-window.innerWidth);
       total=Math.max(1,stage.offsetHeight-window.innerHeight);
       top=stage.getBoundingClientRect().top+window.scrollY;
     };
+    const setActive=i=>{i=Math.max(0,Math.min(n-1,i));dots.forEach((d,j)=>d.classList.toggle('active',j===i));};
     const progress=()=>Math.min(Math.max(window.scrollY-top,0),total)/total;
+    const curIndex=()=>{
+      if(mq.matches){const m=sticky.scrollWidth-sticky.clientWidth;return m>0?Math.round(sticky.scrollLeft/m*(n-1)):0;}
+      return Math.round(progress()*(n-1));
+    };
     const render=()=>{
+      if(mq.matches){return;} // mobile: native horizontal scroll, no scroll-linked transform
       const p=progress();
       track.style.transform='translate3d('+(-p*maxX)+'px,0,0)';
-      const i=Math.round(p*(n-1));
-      dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+      setActive(Math.round(p*(n-1)));
     };
     let ticking=false;
     const onScroll=()=>{if(!ticking){requestAnimationFrame(()=>{render();ticking=false;});ticking=true;}};
     window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',()=>{measure();render();});
+    window.addEventListener('resize',()=>{measure();syncMode();render();});
     window.addEventListener('load',()=>{measure();render();});
-    const goTo=i=>{i=Math.max(0,Math.min(n-1,i));window.scrollTo({top:Math.round(top+(i/(n-1))*total),behavior:window.WX.smoothBehavior()});};
+    const goTo=i=>{
+      i=Math.max(0,Math.min(n-1,i));
+      if(mq.matches){sticky.scrollTo({left:stations[i].offsetLeft,behavior:window.WX.smoothBehavior()});}
+      else{window.scrollTo({top:Math.round(top+(i/(n-1))*total),behavior:window.WX.smoothBehavior()});}
+    };
     dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
-    document.querySelector('.gm-prev').addEventListener('click',()=>goTo(Math.round(progress()*(n-1))-1));
-    document.querySelector('.gm-next').addEventListener('click',()=>goTo(Math.round(progress()*(n-1))+1));
-    measure();render();
+    document.querySelector('.gm-prev').addEventListener('click',()=>goTo(curIndex()-1));
+    document.querySelector('.gm-next').addEventListener('click',()=>goTo(curIndex()+1));
+    // mobile: horizontal scroll updates the active phase and retires the cue
+    sticky.addEventListener('scroll',()=>{if(!mq.matches)return;setActive(curIndex());if(sticky.scrollLeft>8)stage.classList.add('gm-explored');},{passive:true});
+    sticky.addEventListener('keydown',e=>{
+      if(!mq.matches)return;
+      if(e.key==='ArrowRight'){e.preventDefault();goTo(curIndex()+1);}
+      else if(e.key==='ArrowLeft'){e.preventDefault();goTo(curIndex()-1);}
+    });
+    const syncMode=()=>{
+      if(mq.matches){
+        track.style.transform=''; // drop any desktop transform
+        sticky.setAttribute('tabindex','0');
+        sticky.setAttribute('role','region');
+        sticky.setAttribute('aria-label','Journey panorama — scroll sideways or use the arrow keys to explore all four phases');
+        setActive(curIndex());
+      }else{
+        sticky.removeAttribute('tabindex');
+        sticky.removeAttribute('role');
+        sticky.removeAttribute('aria-label');
+        stage.classList.remove('gm-explored');
+      }
+    };
+    if(mq.addEventListener){mq.addEventListener('change',()=>{measure();syncMode();render();});}
+    measure();syncMode();render();
   }
 </script>
 <script>(function(){var t=new Date(2026,10,29),n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());var d=Math.max(0,Math.round((t-t0)/86400000));var e=document.querySelectorAll('.cd-num');for(var i=0;i<e.length;i++)e[i].textContent=d;})();</script>

@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/favicon.svg?v=2026.9.1J" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png?v=2026.9.1J" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 
 <title>Calibrate · Worship Experience 2026 · The Flow Experience</title>
 <meta name="description" content="Calibrate — The Flow Experience's Word Formation journey. Where Scripture brings a life into alignment with God, preparing us to say Yes at Worship Experience 2026.">
@@ -268,9 +270,15 @@
     .works__stations{grid-template-columns:1fr;gap:0}
     .works__line,.works__line-fill{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--ink-ghost) 0 8px,transparent 8px 15px)}
     .works__line-fill{height:calc(var(--wp,0) * 100%);width:2px;background:linear-gradient(180deg,rgba(var(--gold-rgb),.4),var(--gold))}
-    .station{display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start;padding:0 0 2rem 0}
-    .station__name{margin-top:.15rem}
-    .station__glyph{margin-top:.3rem}
+    /* Pass 9.1E: explicit grid-areas keep the node in col 1 while name, question
+       and explanation stack together in the wide col 2 (one readable group).
+       Previously four auto-flowed children dropped the question into the 44px
+       node column — word-by-word squeeze — and the explanation into col 2. */
+    .station{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-areas:"node name" "node q" "node glyph";column-gap:1rem;row-gap:.15rem;align-items:start;padding:0 0 2rem 0}
+    .station__node{grid-area:node;align-self:start}
+    .station__name{grid-area:name;margin-top:.15rem;min-width:0}
+    .station__q{grid-area:q;margin-top:.5rem;min-width:0}
+    .station__glyph{grid-area:glyph;margin-top:.3rem;min-width:0;max-width:none}
   }
 
   /* detail panel for the active work */
@@ -281,6 +289,14 @@
   .wd-tag{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
   .wd-title{font-family:var(--display);font-weight:600;font-size:clamp(1.35rem,3vw,1.9rem);color:var(--ink);margin-bottom:.9rem}
   .wd-body{font-size:1.06rem;color:var(--ink-soft);max-width:46rem}
+  /* Pass 9.1J: shared detail-reader Prev/Next + position bar */
+  .wx-reader-nav{display:flex;align-items:center;gap:.9rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--rule)}
+  .wx-reader-nav__pos{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;margin:0 auto}
+  .wx-reader-nav__btn{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;padding:.5rem 1rem;border:1px solid var(--rule);border-radius:999px;background:none;cursor:pointer;font-family:var(--num);font-weight:800;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .wx-reader-nav__btn[disabled]{opacity:.35;cursor:default}
+  .wx-reader-nav__btn:not([disabled]):hover{border-color:var(--gold);color:var(--gold)}
+  .wx-reader-nav__btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .wd-title:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
   /* synthesis chain */
   .synth{margin-top:clamp(3rem,6vh,4.5rem);display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;justify-content:center}
@@ -293,7 +309,9 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
+  <script src="assets/js/wx-detail-reader.js"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
@@ -521,8 +539,14 @@
       <div class="works__detail" id="wk-panel" role="tabpanel" aria-live="polite" hidden>
         <div class="works__detail-inner">
           <p class="wd-tag" id="wd-tag">01 · Teaching</p>
-          <h3 class="wd-title" id="wd-title">Truth is revealed</h3>
+          <h3 class="wd-title" id="wd-title" data-reader-title tabindex="-1">Truth is revealed</h3>
           <p class="wd-body" id="wd-body"></p>
+          <!-- Pass 9.1J: shared reader Prev/Next + position for the four works -->
+          <div class="wx-reader-nav" role="group" aria-label="Move between the four works of Scripture">
+            <button class="wx-reader-nav__btn" id="wkPrev" type="button" aria-label="Previous work">&lsaquo;<span>Prev</span></button>
+            <span class="wx-reader-nav__pos" id="wkPos" aria-live="polite">1 of 4</span>
+            <button class="wx-reader-nav__btn" id="wkNext" type="button" aria-label="Next work"><span>Next</span>&rsaquo;</button>
+          </div>
         </div>
       </div>
 
@@ -759,8 +783,14 @@
           <div class="detail__inner">
             <div class="detail__top">
               <p class="detail__idx" id="d-idx">Session One</p>
-              <h3 class="detail__title" id="d-title">Trust Even in Darkness</h3>
+              <h3 class="detail__title" id="d-title" data-reader-title tabindex="-1">Trust Even in Darkness</h3>
               <p class="detail__fmt" id="d-fmt">Format · Small groups</p>
+              <!-- Pass 9.1J: shared reader Prev/Next + position for the five sessions -->
+              <div class="wx-reader-nav" role="group" aria-label="Move between the five sessions">
+                <button class="wx-reader-nav__btn" id="ssPrev" type="button" aria-label="Previous session">&lsaquo;<span>Prev</span></button>
+                <span class="wx-reader-nav__pos" id="ssPos" aria-live="polite">1 of 5</span>
+                <button class="wx-reader-nav__btn" id="ssNext" type="button" aria-label="Next session"><span>Next</span>&rsaquo;</button>
+              </div>
             </div>
 
             <!-- 30-second overview (simpler first view) -->
@@ -845,7 +875,8 @@
   <!-- ============ SHARED CHROME · FOOTER ============ -->
   <div class="eco-foot" aria-hidden="false">
     <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
-    <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+    <span class="wx-fnav" data-wx-fnav hidden aria-label="Page navigation"></span>
+<span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
   </div>
 </main>
 
@@ -1164,6 +1195,23 @@
   });
   rovingKeys(workTabs, function(t){ t.click(); });
   selectWork('1'); // one work in focus by default
+  /* Pass 9.1J: shared reader Prev/Next + position for the four works (inline panel;
+     reuses selectWork, resets the panel scroll, arrow keys guarded by focus). */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var wkPrev=document.getElementById('wkPrev'),wkNext=document.getElementById('wkNext'),wkPos=document.getElementById('wkPos');
+    var panel=document.getElementById('wk-panel');
+    if(!wkPrev||!wkNext||!wkPos) return;
+    var r=WXDetailReader.attach({
+      count:4, start:0, prevBtn:wkPrev, nextBtn:wkNext, posEl:wkPos,
+      arrowKeys:true, arrowRoot:panel, resetScroll:panel,
+      label:function(n){return (n+1)+' of 4';},
+      select:function(n){ selectWork(String(n+1)); }
+    });
+    // keep the reader index in sync when a station tab is chosen directly
+    workTabs.forEach(function(t){ t.addEventListener('click', function(){ r.go(parseInt(t.getAttribute('data-work'),10)-1); }); });
+    r.go(0);
+  })();
 
   /* ============================================================
      3 · CALIBRATION PATH — session tablist + tabbed detail
@@ -1265,6 +1313,25 @@
     });
   });
   rovingKeys(stops, function(t){ t.click(); }, true);
+  /* Pass 9.1J: shared reader Prev/Next + position for the five sessions (inline
+     panel; reuses selectSession, resets scroll, arrow keys guarded). The panel
+     keeps its "choose a station" empty-first state; the nav lives inside the
+     detail and appears once a session is open. */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var ssPrev=document.getElementById('ssPrev'),ssNext=document.getElementById('ssNext'),ssPos=document.getElementById('ssPos');
+    if(!ssPrev||!ssNext||!ssPos) return;
+    var r=WXDetailReader.attach({
+      count:5, start:0, prevBtn:ssPrev, nextBtn:ssNext, posEl:ssPos,
+      arrowKeys:true, arrowRoot:detail, resetScroll:detail,
+      label:function(n){return (n+1)+' of 5';},
+      isActive:function(){return detail.getAttribute('data-active')==='1';},
+      select:function(n){ selectSession(String(n+1)); }
+    });
+    // sync the reader index when a stop is chosen directly (no re-render loop)
+    stops.forEach(function(t){ t.addEventListener('click', function(){ r.go(parseInt(t.getAttribute('data-session'),10)-1); }); });
+    window.__ssReader=r;
+  })();
 
   if(detailMore){ detailMore.addEventListener('click', function(){ setDeep(detailDeep.hidden); }); }
 

@@ -1,4 +1,401 @@
-# WX 2026 — CHANGELOG (Pass 1)
+# WX 2026 — CHANGELOG
+
+## Pass 9.1L.1 — Header Action Grouping and Playbook Footer Correction (display v2026.9.1L, semver 2026.9.1-l.1)
+
+Two visual-integration corrections on the accepted 9.1L rebuild; strictly limited to
+these two defects.
+
+- **Header root cause:** the All Pages arrow was injected as an independent flex child
+  *between* the logo and Workspace. Because the countdown is `position:absolute;
+  left:50%;transform:translateX(-50%)` (out of flow) and the header uses
+  `justify-content:space-between`, the injected arrow became the middle flex item and
+  landed over the centred countdown. **Fix:** `site-nav.js` now wraps the existing
+  Workspace link and the arrow in one right-side `.wx-header-actions` flex group
+  (`justify-content:flex-end`, order `[Workspace][▾]`), so the header is again
+  `logo | centred countdown | right action group`. The countdown stays mathematically
+  viewport-centred (±≤2px). Narrow phones tighten the Workspace padding/gap and drop the
+  Workspace back-arrow so the group never clips, overflows or overlaps the countdown at
+  320–414px. The dropdown anchors to the group's right edge inside the viewport.
+- **Playbook footer root cause:** the footer kept the legacy `.eco-mid`
+  "Playbook · WX 2026" label alongside the new `.wx-fnav`, making four items and pushing
+  the nav off-centre. **Fix:** the `.eco-mid` element is removed (it had no remaining
+  semantic or print purpose) and the Playbook footer uses a true three-column grid
+  `grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)` — YES start, navigation
+  mathematically centred, CCC end — matching the canonical identity relationship, with
+  the compact height and mobile reflow preserved.
+- Navigation order, Creative Direction branch logic, Setlist branch metadata, dropdown
+  contents, Workspace ordering, page content, countdown wording, logos, all fifteen
+  readers, exports and routes are unchanged; `wx-detail-reader.js` is byte-identical.
+
+See `PASS-9.1L-1-REPORT.md`.
+
+## Pass 9.1L — Restrained Header Directory and Footer Navigation (display v2026.9.1L, semver 2026.9.1-l)
+
+Rebuilt from the accepted **Pass 9.1K** base; the discarded 9.1L mid-page navigation
+block/markup/CSS was **not** reused. Reader navigation now has exactly two restrained,
+visible parts and nothing in the body of any page:
+
+- **Small "All Pages" arrow beside Workspace** (`.wx-allpages`, injected next to the
+  existing Workspace control): a dainty ~38px chevron button, lighter than the
+  Workspace button, `aria-haspopup` + `aria-expanded` + `aria-controls`. It opens a
+  compact anchored dropdown (`.wx-menu`, real anchors) of the nine reader-facing pages
+  in order — Concept, Theme Brief, Creative Direction, Playbook, Blueprint, Setlist,
+  Lyrics Book, Music Workshop, Bible Study — with the current page marked by weight +
+  border + a "Current" badge and `aria-current`; closes on Escape, outside click and
+  selection, returning focus to the arrow. Compact full-width panel on narrow phones.
+- **Dainty Previous/Next inside the footer identity row** (`.wx-fnav`, between the YES
+  and CCC marks): two destinations only — no current-page title — named on desktop and
+  arrow-only with `aria-label`s on phones, genuine non-link boundaries, visible focus,
+  visually secondary to the marks, no separate section or blank band, no footer-height
+  explosion, no horizontal overflow.
+- **Branch logic:** the reader sequence branches at Creative Direction. Footer Next is
+  `#identity → Playbook`, `#musical → Blueprint`, and stays unavailable on
+  `#story/#elements/#mood` (Explore Sections keeps the internal journey); the footer
+  updates live on hash change / Back-Forward with no stale state. Playbook → Setlist and
+  Blueprint → Setlist carry `?from={playbook|blueprint}`, and Setlist reads only those
+  whitelisted values (anything else → Playbook default) to set its Previous — never a
+  blind `history.back()`, never affecting content or exports.
+- Concept page resolved to `concept.html` (reader label "The Worship Experience
+  Concept"). Workspace card order, the fifteen readers (`wx-detail-reader.js`
+  byte-identical), CD segment routing, Theme Brief panorama, page content and
+  Setlist/Lyrics data are unchanged. Navigation is hidden from print/export.
+
+See `PASS-9.1L-REPORT.md`.
+
+## Pass 9.1K — Footer Identity Consistency (display v2026.9.1K, semver 2026.9.1-k)
+
+Scope: **footer identity only.** One consistent, intentional YES Crimson + CCC
+identity treatment across every page footer, especially on mobile. No global
+navigation, page directory or cross-page return paths were added.
+
+- **Root cause:** every page hand-styled its footer identity block in page-inline
+  `<style>`, so the marks diverged — Theme Brief (`.wx-foot`) and Playbook
+  (`.eco-foot`) stacked into an awkward centred column on phones (Playbook with its
+  label *between* the two marks), while the `.eco-foot` chrome pages bottom-aligned
+  and index/setlist pushed the marks to opposite edges. Logo intrinsic sizes were
+  already uniform.
+- **Fix:** a single canonical footer-identity treatment now lives in shared
+  `assets/css/components.css`, covering all four footer class systems
+  (`.foot-wrap`/`.foot`/`.wx-foot`/`.eco-foot`). At ≤760px the two marks read as one
+  compact, centred unit; supporting footer text (e.g. *Playbook · WX 2026*) drops
+  below the pair rather than between the marks; a consistent gap and the bottom
+  safe-area inset apply everywhere. Desktop keeps each page's existing footer
+  structure, now with the marks vertically centred. Linked marks get a visible
+  keyboard focus ring.
+- **Creative Direction:** confirmed one shared `.eco-foot` (no per-panel
+  duplication) reachable on all five segments (#story #elements #mood #identity
+  #musical) at mobile and desktop; only the intentional landing splash (`is-home`)
+  omits it. Segment routing, the fifteen reader systems and Explore Sections are
+  untouched.
+- **Unchanged:** logo artwork, aspect ratios, link destinations, approved wording,
+  favicon, 404, routes; `assets/js/wx-detail-reader.js` is byte-identical.
+
+See `PASS-9.1K-REPORT.md`.
+
+## Pass 9.1J.6 — Elements & Symbols in-panel reader (display v2026.9.1J, semver 2026.9.1-j.6)
+
+Scope: **creative-direction.html only** (plus one Playwright smoke addition). Adds a
+Prev/Next reader **on the open Elements & Symbols detail panel itself**, in addition
+to the existing carousel arrows, so a viewer can move element-to-element without
+returning to the carousel.
+
+- New `.es-modal-nav` bar (`#esmPrev`/`#esmPos`/`#esmNext`) sits at the top of the
+  modal card, sticky and right-padded to clear the Close button.
+- It reuses the carousel's own `rotate()` stepping, so the carousel, the open detail
+  and **both** position indicators (`#esLive` and the new `#esmPos`) stay in one
+  sync, and it inherits the carousel's wrap-around character. Stepping resets the
+  modal card's internal scroll to the top (9.1J.5 behaviour, extended to the new
+  control).
+- No new controller behaviour; `assets/js/wx-detail-reader.js` is unchanged. No other
+  family changed. All 15 reader families remain complete.
+
+See `PASS-9.1J-6-REPORT.md`.
+
+## Pass 9.1J.5 — Final detail-reader families (display v2026.9.1J, semver 2026.9.1-j.5)
+
+Scope: **creative-direction.html only** (plus Playwright smoke additions). Completes
+the unified detail-reader requirement by adding read-through-without-closing
+navigation to the final five families, bringing the total to **15 of 15**.
+
+- **What Are You Making?** (`#sysQs` decision framework, inline) — a card reader
+  across the seven questions, "Every zone" first, matching the displayed framework
+  order. Reuses each question's own click so the zone/summary child card and the
+  "Go to <zone>" jump stay wired; the underlying zone-scroll is untouched.
+- **Elements & Symbols** (`#esModal` carousel modal) — already had Prev/Next,
+  position and browse-while-open; **normalised** so the modal card's internal
+  scroll resets to the top on every item switch (no stale scroll). Its carousel is
+  intentionally kept interactive while open (`aria-modal="false"`), so background
+  inert is deliberately not applied.
+- **Flow of Our Journey** (`#fjiStage`, inline) — a phase reader 1 of 4 → 4 of 4 in
+  canonical order (Threshold of Goodness → Help in the Dark → Will Laid Down →
+  Gateway to Glory), reusing `open()` so the marker, figure and text stay synced.
+- **Find Your Part** (`#miFYP`, inline, hierarchical) — a read-through across all 12
+  parts: each instrument subgroup in full, then Brass, then the voices. Sets the
+  path + selection and reuses `renderDetail()`/`renderMap()`.
+- **Musical Identity Elements** (`#miEle`, inline) — an element reader across the
+  seven cards in displayed order; **Tempo & Pulse is the first item**, reachable
+  like any other, never isolated. The phases graph is untouched.
+
+All five use `WXDetailReader` only for the common behaviour (index, Prev/Next,
+boundary, position, guarded arrow keys scoped per-component, scroll reset).
+Family data and rendering stay local. The shared controller
+`assets/js/wx-detail-reader.js` is **unchanged (byte-identical)**. **15 of 15
+reader families complete.** See `PASS-9.1J-5-REPORT.md`.
+
+## Pass 9.1J.4 — Visual Identity board & slide navigation (display v2026.9.1J, semver 2026.9.1-j.4)
+
+Scope: **creative-direction.html only** (plus one Playwright smoke addition). Adds
+read-through-without-closing navigation to the five Visual Identity families:
+Logo & Wordmarks, Typography & Typeface, Imagery & Photography, Textures & Surface
+Rules, and Structure & Motion.
+
+- **Logo (`#zoneBoard`, 7 marks) and Typography (`#zoneBoard`, 5 faces)** previously
+  opened a single card with no way to step to the next without closing the board.
+  Both now get a card reader — "‹ Prev / Card N of M / Next ›" — via a family-specific
+  adapter (`zOpenFamily`) that drives the shared `WXDetailReader` controller in modal
+  mode. Cross-family reuse resets count and index correctly (Logo 7 → Typography 5).
+- **Imagery, Textures, Structure & Motion (`#worldBoard`)** already had the unified
+  slide+card `stepFlow` navigation (retained as the source of truth — not duplicated).
+  Normalised only: background scroll-lock + `inert`/`aria-hidden` on open, all
+  `<video>` paused on close, and arrow keys guarded so they are ignored on media
+  controls, sliders, tabs and form fields. No autoplay; no hidden video left playing.
+- The shared controller `assets/js/wx-detail-reader.js` is **unchanged (byte-identical)**;
+  all family data and rendering stay in-page.
+
+Reader/navigation families corrected to **15 total** (the earlier "12" grouped the
+four Visual Identity subsections as one). **10 of 15 complete** after this batch;
+5 pending (What Are You Making?, Elements & Symbols, Flow of Our Journey, Find Your
+Part, Musical Identity Elements). See `PASS-9.1J-4-REPORT.md`.
+
+## Pass 9.1I — Five Moods reader, detail linking & segment landing (display v2026.9.1I, semver 2026.9.1-i)
+
+Scope: **creative-direction.html only** — a mobile CSS block + control-bar markup
++ one enhancer script for the Five Moods, and a segment-scroll fix in the routing
+script. No mood wording/imagery, the Moods-Within-the-Garden reader (9.1H), the
+Explore Sections sheet (9.1G), footer, or any other page changed. Desktop is
+structurally preserved.
+
+**Component inventory.** #mood contains three distinct pieces: "The Moods Within
+the Garden" (`.moods`, 9.1H reader), "The Five Moods" / "Mood Board at a Glance"
+(`.mgg` editorial: `#mggRows` + `#mggShared`, driven by `apply(m)`), and the
+masonry board. This pass addresses the **Five Moods** (`.mgg`) and the segment
+landing links — not the 9.1H component.
+
+**Defects.**
+1. On phones the Five Moods (`.mgg-rows`) had no coherent reader — no Prev/Next,
+   no position, and selection relied on hover; a document-level click handler
+   (`if(sticky){sticky=null;apply(null)}`) deselected the mood on any bubbling
+   click, so an "Explore" tap did not reliably lead to the mood's detail (the
+   first item especially).
+2. "Explore the Visual Identity →" / "Explore the Musical Identity →" (and direct
+   `#identity` / `#musical`) activated the right segment but landed the viewer
+   near its **end**: `activate()` only reset `#ws-content.scrollTop`, but on mobile
+   `#ws-content` is `overflow:visible` (the **body** scrolls), so the reset was a
+   no-op and `scrollRestoration:auto` re-applied the prior scroll.
+
+**Fixes.**
+- Five Moods mobile reader (≤760px): a Prev/Next + "N of 5" bar and an "Explore
+  this mood" button. It reuses the existing `apply(m)` by clicking the matching
+  `.mgg-rows` item (with `stopPropagation` so the document deselect can't fire),
+  keeping exactly one mood active. Explore selects the mood and scrolls its detail
+  (`#mggShared`: title + explanation) into view, moving focus to the heading
+  (`tabindex="-1"`). ≥44px targets, visible focus, keyboard, disabled ends,
+  reduced-motion.
+- Segment landing: `segTop()` now resets every candidate scroller
+  (`#ws-content`, `body`, `documentElement`, `window`) after layout (rAF), and
+  `history.scrollRestoration` is set to `manual`. Ordinary Explore/nav, direct
+  hash entry, and Back/Forward all begin at the segment top; in-segment
+  mood-detail reveals scroll in-page and add no history entries (no loops).
+
+See `PASS-9.1I-REPORT.md`. Footer work was **not** started (postponed to 9.1J).
+
+---
+
+
+## Pass 9.1H — Mood Board mobile card-reader (display v2026.9.1H, semver 2026.9.1-h)
+
+Scope: **creative-direction.html only** — a mobile CSS block, a Prev/Next +
+position control-bar in the Moods markup, and one self-contained enhancer script.
+No mood data, wording, order, image, routes, indexing, the Explore Sections sheet,
+or any other page/segment changed. Desktop/tablet (≥768px) are structurally
+identical.
+
+**Defect.** In the "The Moods Within the Garden" selector (#mood), the mood name
+(selector tab), the scene image and the descriptor are separate regions. On small
+phones a viewer could select a mood without the visual/descriptor being an obvious,
+navigable unit, and there was no direct step-through — moods were reachable only by
+finding the right tab and tapping the scene.
+
+**Root cause.** `.moods-stage` is a 2-column grid (scene | note) that at
+`@media(max-width:900px)` stacks to one column, and the selector tabs sit above the
+scene; there were **no Previous/Next controls or position indicator**, so the mood
+name, image and descriptor did not read as one coherent, steppable card on mobile.
+
+**Fix (phones ≤760px only).** A Prev/Next control bar with an accurate position
+indicator ("1 of 5" … "5 of 5", "All moods") is added beneath the descriptor, so
+each mood reads as one unit: selector name → scene image (mood-highlighted) →
+descriptor → Prev · position · Next. The controls reuse the existing tab-driven
+`show()` (by clicking the matching `.moods-btn`), keeping exactly one active mood,
+updating name/image/descriptor together, with ≥44px targets, visible focus,
+keyboard activation, and correct disabled states at either end. Reduced-motion
+disables the scene transitions. Tablet/desktop keep the existing composition (the
+control bar is `display:none`). See `PASS-9.1H-REPORT.md`.
+
+---
+
+
+## Pass 9.1G — Creative Direction mobile section-navigation (display v2026.9.1G, semver 2026.9.1-g)
+
+Scope: **creative-direction.html only** — a mobile CSS block, a compact trigger +
+bottom-sheet dialog markup, and one self-contained menu script. No segment
+content, wording, routes, indexing, Mood Board, detail panels, footer, global
+navigation, Workspace control, or any other page changed. Desktop/tablet
+(≥768px) are byte-identical.
+
+**Defect.** On phones the large fixed circular navigation wheel (`.hw`,
+`position:fixed`, 320×320) sat over the reading column — ~21.5% of a 375×667
+viewport — obscuring Scripture, headings and body content.
+
+**Fix (phones ≤760px only).** The wheel is hidden (`display:none`) and replaced by
+a compact "Explore sections" trigger (≥44×44, `aria-haspopup=dialog`,
+`aria-expanded`, `aria-controls`) that opens an accessible bottom-sheet dialog
+(`role=dialog`, `aria-modal=true`, labelled heading) listing all five sections
+(The Story, Elements & Symbols, Mood Board, Visual Identity, Musical Identity).
+The sheet marks the current section (`aria-current` + a "✓ Current" badge and a
+bold title — not colour alone), traps focus, makes the background `inert`, locks
+background scroll, and closes on Escape, backdrop, or selection — returning focus
+to the trigger. Selecting a section sets `location.hash`, so the **existing hash
+routing** (deep links, Back/Forward) is reused unchanged; the current marker
+updates on `hashchange`/`popstate`. Tablet and desktop keep the full wheel. Panels
+gain safe-area-aware bottom padding so content scrolls clear of the trigger. See
+`PASS-9.1G-REPORT.md`.
+
+---
+
+
+## Pass 9.1F — Journey panorama mobile horizontal swipe (display v2026.9.1F, semver 2026.9.1-f)
+
+Scope: **theme-brief.html only** (the "Path Through the Garden" Journey panorama),
+one mobile CSS block + the garden-map JS. No content, artwork, wording, phase
+names/subtitles, footer, navigation, exports, routes, indexing, or any other page
+changed. Desktop and tablet (≥768px) are byte-identical.
+
+**Defect.** On phones the wide panorama kept its desktop presentation: a 320vh
+pinned section whose horizontal pan was driven by *vertical* scroll, inside an
+`overflow:hidden` sticky pane. The viewer could not directly swipe to inspect the
+full width and was trapped in a tall vertical-scroll region.
+
+**Root cause.** `.gm-stage{height:320vh}` + `.gm-sticky{position:sticky; overflow:hidden}`
++ a scroll listener applying `track.style.transform=translate3d(-progress*maxX,0,0)`
+from `window.scrollY`. The 400vw `.gm-track` was only reachable by scrolling through
+320vh; nothing responded to a horizontal swipe.
+
+**Fix (mobile ≤760px only).** `.gm-stage` drops to `height:auto`; `.gm-sticky`
+becomes a normal-flow horizontal scroller (`position:static; height:72svh;
+overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
+overscroll-behavior-inline:contain; touch-action:pan-x pan-y; scroll-snap-type:x
+proximity`); `.gm-track` transform is cleared. The JS now branches on
+`matchMedia('(max-width:760px)')`: on mobile it skips the scroll-linked transform,
+makes the pane keyboard-focusable (`role=region`, aria-label, Arrow Left/Right),
+and wires the phase dots/arrows to horizontal `scrollTo`. A restrained,
+animation-free cue ("Swipe to explore →" chip + right-edge fade) signals more
+content and retires once the user scrolls. Desktop/tablet keep the pinned pan
+untouched. See `PASS-9.1F-REPORT.md`.
+
+---
+
+
+## Pass 9.1E — Calibrate four-works mobile text & timeline reflow (display v2026.9.1E, semver 2026.9.1-e)
+
+Scope: **bible-study.html only** (the "Calibrate" page — the four works of
+Scripture: Teaching, Reproof, Correction, Training in Righteousness), one mobile
+CSS rule block. The composition the brief called "Theme Brief" is in fact this
+Calibrate four-works timeline; the actual defect page was located and fixed. No
+content, wording, questions, explanations, ordering, panorama, footer, navigation,
+exports, routes, indexing, or any other page changed. Desktop/tablet unchanged.
+
+**Defect.** On small phones each work's guiding question was squeezed into a
+44px-wide column and stacked word-by-word ("What / is / true?"), while its
+explanation sat detached in a second column — practically unreadable despite
+fitting the viewport.
+
+**Root cause.** At `@media(max-width:760px)` the rule
+`.station{display:grid; grid-template-columns:44px 1fr}` combined with four
+auto-flowed block children (`.station__node`, `.station__name`, `.station__q`,
+`.station__glyph`). Grid auto-placement dropped the **question** into the 44px
+node column (row 2, col 1) and the **explanation** into col 2 — breaking reading
+order and crushing the question to 44px / 3 lines.
+
+**Fix.** The mobile `.station` now uses explicit `grid-template-areas`
+(`"node name" / "node q" / "node glyph"`) with `minmax(0,1fr)` and `min-width:0`
+on the text children, so the node stays in col 1 while title, question and
+explanation stack together in the wide col 2 as one readable group. The
+decorative connecting line stays behind the content in its own container. The
+question column widens from 44px to 234–321px (1–2 lines) at 320–414px. Desktop
+and tablet (≥768px, 4-column) are byte-identical. See `PASS-9.1E-REPORT.md`.
+
+---
+
+
+## Pass 9.1D — Musical Identity mobile artefact repair (display v2026.9.1D, semver 2026.9.1-d)
+
+Scope: **creative-direction.html only** (Musical Identity segment,
+`#musical`), one mobile CSS declaration. No content, instrument data, wording,
+routes, indexing, navigation wheel, Mood Board, exports, favicon/404, or any
+other page changed. Desktop design unchanged.
+
+**Defect.** On small phones a large solid/gradient vertical shape ran the full
+length of the Musical Identity page, covering the heading and body text.
+
+**Root cause.** The mobile rule `@media(max-width:900px) .fyp-hex{position:static
+!important; …}` removed each journey node's positioning context, while its
+decorative child `.fyp-hexshape{position:absolute; inset:0}` remained absolutely
+positioned. With `.fyp-hex`, `.fyp-hexmap` and `.fyp-map-panel` all `static`, the
+shape climbed to the nearest positioned ancestor (`.ws-content`) and filled it —
+measured **375 × 9186 px** (the entire page height) at 375px width.
+
+**Fix.** Changed that one declaration from `position:static !important` to
+`position:relative !important`. Relative flows identically inside the mobile grid
+but restores `.fyp-hex` as the containing block, so `.fyp-hexshape` (inset:0) is
+confined to its hex again. Post-fix the shape measures **375 × 136 px** at 375px
+(offsetParent `.fyp-hex`), the hexagonal appearance is preserved, and inactive
+Musical Identity panels remain `display:none`. See `PASS-9.1D-REPORT.md`.
+
+---
+
+
+## Pass 9.1C — Playbook Overview mobile task-layout repair (display v2026.9.1C, semver 2026.9.1-c)
+
+Scope: **playbook.html only**, and within it only the Overview task-stream rows
+and their directly-related responsive CSS. No content, data, wording, statuses,
+ministry names, due dates, order, filters, search, task-detail controls, exports,
+navigation, favicon/404 assets or any other page was changed. Desktop Overview is
+visually unchanged.
+
+**Defect.** On small-mobile widths the Overview task rows overlapped: ministry
+label, two-line title and status text collided in the same grid column and were
+clamped to a fixed row height, producing overlapping / duplicated-looking text.
+
+**Root cause.** `.ov-taskpage .ov-task` carried a global `height:42px` /
+`min-height:42px` (intended for the ten-rows-per-view desktop pager). At the
+mobile breakpoints the rule set placed `.ov-task__min`, `.ov-task__title`
+(`-webkit-line-clamp:2`) and `.ov-task__status` all into `grid-column:2`, so three
+stacked layers were forced into a single 42px-high row and painted on top of one
+another. The plain `.ov-task` mobile rule (max-width:560px) had the same
+column-2 collision.
+
+**Fix.** Both mobile rule sets now use `grid-template-areas` to give every layer
+its own row — `"due"`, `"title"`, `"min"` (ministry/workstream), `"status"` — with
+the details (`.task-info`) button spanning the right edge as a touch-friendly
+target. Fixed heights are released (`height:auto; min-height:0`), titles wrap
+freely (`white-space:normal; overflow:visible; -webkit-line-clamp:unset`), and
+shrinking children carry `min-width:0`. Changes live entirely inside the existing
+`@media(max-width:560px)` and `@media(max-width:760px)` blocks, so desktop layout
+is untouched. See `PASS-9.1C-REPORT.md` for exact selectors and before/after
+evidence.
+
+---
+
 
 Pass 1 scope: source-of-truth canonical content, broken routes, missing local
 references, availability states, and the two confirmed mobile layout blockers.
@@ -795,3 +1192,22 @@ checks; 320–1920 px with 0 horizontal overflow; deep links/Back-Forward;
 keyboard/zoom/reduced-motion; export engine parent-safety + Word downloads; real
 performance measurements (all pages <1 MB first-load, CLS ≤0.0009); 0 JS errors /
 0 failed requests on all 11 pages.
+
+---
+
+## Pass 9.1A — WX monogram icon correction only (v2026.9.1A)
+
+Icon-only patch on the v2026.9.0 baseline. No page layout, mobile layout,
+navigation, Creative Direction wheel, Theme Brief, Playbook, Setlist/Lyrics data,
+exports, wording, footer, routes or indexing policy was changed.
+
+- Replaced the generic "W" favicon and the 404 mark with the **official WX
+  monogram** (extracted from `assets/wx-logo.png`). New set:
+  `assets/icons/{favicon.svg,favicon-32.png,favicon-16.png,apple-touch-icon.png}`.
+- Every HTML page now references the icon set via relative, subpath-safe paths
+  with a `?v=2026.9.1A` cache-buster. `404.html` shows the monogram
+  (decorative `alt=""`).
+- Removed the old generic `assets/favicon.svg` and `assets/apple-touch-icon.png`
+  after proving no page referenced them.
+- Version → **2026.9.1A** (VERSION, README, page `generator` meta, `WX.version`);
+  `package.json` / `package-lock.json` → `2026.9.1-a` (valid semver).

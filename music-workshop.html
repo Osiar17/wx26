@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/favicon.svg?v=2026.9.1J" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png?v=2026.9.1J" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.0">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 
 <title>Wade-In 2026 · Found Faithful · The Flow Experience</title>
 <meta name="description" content="Wade-In 2026 — The Flow Experience's annual movement deeper into formation. Go deeper into the Flow: the life, the craft and the room — and, for 2026, found faithful with the will and with the gift.">
@@ -166,6 +168,15 @@
 
   .pillar-detail{border:1px solid var(--rule);border-radius:14px;background:linear-gradient(180deg,rgba(22,32,61,.34),rgba(12,17,32,.5));
     padding:clamp(1.6rem,3.5vw,2.4rem);min-height:280px}
+  /* Pass 9.1J.2: shared detail-reader Prev/Next + position bar */
+  .wx-reader-nav{display:flex;align-items:center;gap:.9rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--rule)}
+  .wx-reader-nav__pos{font-family:var(--display);font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;margin:0 auto}
+  .wx-reader-nav__btn{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;padding:.5rem 1rem;border:1px solid var(--rule);border-radius:999px;background:none;cursor:pointer;font-family:var(--display);font-weight:700;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .wx-reader-nav__btn[disabled]{opacity:.35;cursor:default}
+  .wx-reader-nav__btn:not([disabled]):hover{border-color:var(--gold);color:var(--gold)}
+  .wx-reader-nav__btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .pd-title:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  #pillarBody.is-center #pillarReaderNav{display:none}
   .pillar-detail__empty{color:var(--ink-faint);font-family:var(--display);font-weight:500;font-style:italic;font-size:1.15rem;line-height:1.5}
   .pillar-detail__empty .en{color:var(--ink-soft)}
   .pd-idx{font-family:var(--num);font-weight:800;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
@@ -429,7 +440,9 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
+  <script src="assets/js/wx-detail-reader.js"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
@@ -517,13 +530,19 @@
           <p class="pillar-detail__empty" id="pillarEmpty"><span class="en">Three dimensions, one service.</span> Choose one to explore &mdash; and see what becomes distorted when it stands alone.</p>
           <div id="pillarBody" hidden>
             <p class="pd-idx" id="pd-idx"></p>
-            <h3 class="pd-title" id="pd-title">Pillar</h3>
+            <h3 class="pd-title" id="pd-title" data-reader-title tabindex="-1">Pillar</h3>
             <p class="pd-role" id="pd-role"></p>
             <p class="pd-h">What it forms</p><p class="pd-p" id="pd-forms"></p>
             <p class="pd-h">Why it matters</p><p class="pd-p" id="pd-matters"></p>
             <div class="pd-tension">
               <p class="t-name" id="pd-tname"></p>
               <p class="t-line" id="pd-tline"></p>
+            </div>
+            <!-- Pass 9.1J.2: shared reader Prev/Next + position for the three dimensions -->
+            <div class="wx-reader-nav" id="pillarReaderNav" role="group" aria-label="Move between the three dimensions">
+              <button class="wx-reader-nav__btn" id="pilPrev" type="button" aria-label="Previous dimension">&lsaquo;<span>Prev</span></button>
+              <span class="wx-reader-nav__pos" id="pilPos" aria-live="polite">1 of 3</span>
+              <button class="wx-reader-nav__btn" id="pilNext" type="button" aria-label="Next dimension"><span>Next</span>&rsaquo;</button>
             </div>
           </div>
         </div>
@@ -709,7 +728,8 @@
   <!-- ============ SHARED CHROME · FOOTER ============ -->
   <div class="eco-foot" aria-hidden="false">
     <a class="eco-yes" href="index.html#hub" aria-label="YES — Not My Will, But Yours"><picture><source type="image/webp" srcset="assets/yes-crimson-vertical.webp"><img src="assets/yes-crimson-vertical.png" alt="YES — Not My Will, But Yours" decoding="async"></picture></a>
-    <span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
+    <span class="wx-fnav" data-wx-fnav hidden aria-label="Page navigation"></span>
+<span class="eco-ccc" aria-label="Calvary Charismatic Centre"><picture><source type="image/webp" srcset="assets/ccc-logo.webp"><img src="assets/ccc-logo.png" alt="Calvary Charismatic Centre" loading="lazy" decoding="async"></picture></span>
   </div>
 </main>
 
@@ -761,6 +781,26 @@
     pEmpty.style.display='none'; pBody.hidden=false;
   }
   pnodes.forEach(function(b){ b.addEventListener('click', function(){ selectPillar(b.getAttribute('data-pillar')); }); });
+  /* Pass 9.1J.2: shared reader Prev/Next + position for the three dimensions
+     (inline panel; reuses selectPillar for 1-3, resets scroll, arrow keys guarded).
+     The centre "Faithful Service" (pillar 4) is a separate interaction and hides
+     the reader nav (see CSS #pillarBody.is-center). */
+  (function(){
+    if(!window.WXDetailReader) return;
+    var pilPrev=document.getElementById('pilPrev'),pilNext=document.getElementById('pilNext'),pilPos=document.getElementById('pilPos');
+    var panel=document.getElementById('pillar-detail');
+    if(!pilPrev||!pilNext||!pilPos) return;
+    var r=WXDetailReader.attach({
+      count:3, start:0, prevBtn:pilPrev, nextBtn:pilNext, posEl:pilPos,
+      arrowKeys:true, arrowRoot:panel, resetScroll:panel,
+      label:function(n){return (n+1)+' of 3';},
+      isActive:function(){ return !pBody.hidden && !pBody.classList.contains('is-center'); },
+      select:function(n){ selectPillar(String(n+1)); }
+    });
+    // sync reader index when a dimension node (1-3) is chosen directly
+    pnodes.forEach(function(b){ b.addEventListener('click', function(){ var d=b.getAttribute('data-pillar'); if(d==='1'||d==='2'||d==='3'){ r.go(parseInt(d,10)-1); } }); });
+    window.__pilReader=r;
+  })();
 
   /* ============================================================
      2 · TWO CURRENTS — expandable cards
