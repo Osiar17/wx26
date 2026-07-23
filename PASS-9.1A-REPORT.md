@@ -5,6 +5,7 @@ monogram**, on the v2026.9.0 baseline. Nothing else was changed. See
 BASELINE-CHECK.md for the pre-edit baseline verification.
 
 ## What changed (before → after)
+
 - **Before:** a generic double-chevron "W" served as both the browser tab favicon
   (`assets/favicon.svg` / `assets/apple-touch-icon.png`) and the 404 page mark
   (an inline `<svg>` W path).
@@ -22,7 +23,9 @@ with a `?v=2026.9.1A` cache-buster. The old generic `assets/favicon.svg` and
 them.
 
 ## Exact file-change list
+
 **Added**
+
 - `assets/icons/favicon.svg`
 - `assets/icons/favicon-32.png`
 - `assets/icons/favicon-16.png`
@@ -30,10 +33,12 @@ them.
 - `BASELINE-CHECK.md`, `PASS-9.1A-REPORT.md`
 
 **Removed**
+
 - `assets/favicon.svg` (old generic W)
 - `assets/apple-touch-icon.png` (old generic W)
 
 **Modified**
+
 - `index.html`, `concept.html`, `creative-direction.html`, `theme-brief.html`,
   `setlist.html`, `lyrics.html`, `playbook.html`, `blueprint.html`,
   `music-workshop.html`, `bible-study.html` — favicon `<link>` set + `generator`
@@ -48,25 +53,28 @@ them.
   docs).
 
 ## Version consistency (2026.9.1A)
+
 `VERSION` 2026.9.1A · `WX.version` 2026.9.1A · page `generator` v2026.9.1A ×10 ·
 `README` 2026.9.1A · `package.json` / `package-lock.json` 2026.9.1-a ·
 cache-buster `?v=2026.9.1A`.
 
 ## Validation (working copy, after edits)
-| Check | Result |
-|-------|--------|
-| `npm run audit` | **PASS** — 0 errors / 0 warnings |
-| `npm run validate:html` | **PASS** |
-| `npm run format:check` | **PASS** |
-| `npm run lint` | **PASS** |
-| `npm run test:smoke` | **PASS** — 24 / 24 |
-| All icon references resolve | **PASS** — 0 failed requests |
-| Old generic W icon still in use | **None** (fully removed) |
-| Every page shows the WX monogram favicon | **11 / 11** |
-| 404 shows the WX monogram | **PASS** (renders, `complete`) |
-| JS errors | **0** |
-| Layout / content changes | **None** (0 non-icon lines per page) |
+
+| Check                                    | Result                               |
+| ---------------------------------------- | ------------------------------------ |
+| `npm run audit`                          | **PASS** — 0 errors / 0 warnings     |
+| `npm run validate:html`                  | **PASS**                             |
+| `npm run format:check`                   | **PASS**                             |
+| `npm run lint`                           | **PASS**                             |
+| `npm run test:smoke`                     | **PASS** — 24 / 24                   |
+| All icon references resolve              | **PASS** — 0 failed requests         |
+| Old generic W icon still in use          | **None** (fully removed)             |
+| Every page shows the WX monogram favicon | **11 / 11**                          |
+| 404 shows the WX monogram                | **PASS** (renders, `complete`)       |
+| JS errors                                | **0**                                |
+| Layout / content changes                 | **None** (0 non-icon lines per page) |
 
 ## Enlarged previews
+
 Provided alongside this report: `favicon.svg` (rendered), `favicon-32.png`
 (enlarged), `apple-touch-icon.png`, and the rendered 404-page mark (before/after).

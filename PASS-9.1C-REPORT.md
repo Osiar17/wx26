@@ -33,6 +33,7 @@ rule (`@media(max-width:560px)`) had the identical column-2 collision.
 File: **`playbook.html`** (only file changed apart from version strings).
 
 ### 3a. `@media(max-width:560px)` — plain `.ov-task`
+
 Replaced the three column-2 placements with a stacked `grid-template-areas`
 layout (`"due info" "title info" "min info" "status info"`), `align-items:start`,
 `height:auto; min-height:0`, `row-gap:.22rem`, per-cell `grid-area`, title
@@ -40,6 +41,7 @@ layout (`"due info" "title info" "min info" "status info"`), `align-items:start`
 `.task-info` → `grid-area:info` (right edge, spans rows).
 
 ### 3b. `@media(max-width:760px)` — paged `.ov-taskpage .ov-task`
+
 Replaced `grid-template-columns:64px minmax(0,1fr) 28px` + column-2 stacking with
 the same stacked `grid-template-areas` set (`!important` to override the global
 fixed-height rule): `height:auto!important; min-height:0!important`,
@@ -57,21 +59,22 @@ No JS was changed. No desktop rule (`>760px`) was touched.
 Automated (Chromium/Playwright, dependency-free static server over a repo subpath).
 
 | Width | Rows measured | Overlaps | Clipped titles | H-overflow | JS errors* | Failed reqs* |
-|------:|--------------:|---------:|---------------:|-----------:|-----------:|-------------:|
-| 320  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 360  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 375  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 390  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 414  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 768  | 147 | **0** | 0 | 0 | 0 | 0 |
-| 1366 | 147 | **0** | 0 | 0 | 0 | 0 |
-| 1440 | 147 | **0** | 0 | 0 | 0 | 0 |
+| ----: | ------------: | -------: | -------------: | ---------: | ---------: | -----------: |
+|   320 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|   360 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|   375 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|   390 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|   414 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|   768 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|  1366 |           147 |    **0** |              0 |          0 |          0 |            0 |
+|  1440 |           147 |    **0** |              0 |          0 |          0 |            0 |
 
 \* The only console/request error observed is `ERR_TUNNEL_CONNECTION_FAILED` for
 `fonts.googleapis.com`, an environment network limitation (Google Fonts host
 blocked in the sandbox), not a site defect. Counts above exclude it.
 
 Interaction (375px, Overview → All Ministries):
+
 - Details **i** button opens the correct task panel (verified ref `MM-PS1`).
 - **Escape** closes the panel and **restores focus** to the triggering i button.
 - All five filters present: **All, Overdue, Due Soon, Complete, Not Yet Updated**.
@@ -85,6 +88,7 @@ row — all reflow cleanly with no overlap or clipping.
 ## 5. Before / after evidence
 
 Task-stream element screenshots (device scale 2):
+
 - `screenshots/pass-9.1c/before-320.png`, `after-320.png`
 - `screenshots/pass-9.1c/before-375.png`, `after-375.png`
 - `screenshots/pass-9.1c/before-390.png`, `after-390.png`

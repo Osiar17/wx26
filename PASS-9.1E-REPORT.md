@@ -11,7 +11,7 @@ Correction / Training-in-Righteousness composition and its connecting timeline �
 the content in the supplied screenshots ("What is true?", "Truth is revealed.",
 "Misalignment is exposed.") — is rendered on **bible-study.html** (the
 "Calibrate" page), not theme-brief.html. theme-brief.html contains the
-four *phase* stations (God Is Good … God Is Glorified) and has no Teaching/Reproof
+four _phase_ stations (God Is Good … God Is Glorified) and has no Teaching/Reproof
 content. The fix was therefore applied to the page that actually shows the defect,
 `bible-study.html`; this is the narrowest correct change.
 
@@ -31,10 +31,10 @@ Mobile rule (`@media(max-width:760px)`):
 `.station{display:grid; grid-template-columns:44px 1fr}`. With four auto-flowed
 block children, CSS grid auto-placement produced a 2×2 layout:
 
-| col 1 (44px) | col 2 (1fr) |
-|---|---|
-| `.station__node` (r1) | `.station__name` (r1) |
-| `.station__q` (r2) | `.station__glyph` (r2) |
+| col 1 (44px)          | col 2 (1fr)            |
+| --------------------- | ---------------------- |
+| `.station__node` (r1) | `.station__name` (r1)  |
+| `.station__q` (r2)    | `.station__glyph` (r2) |
 
 So the **question** resolved into the 44px node column and wrapped word-by-word,
 and the **explanation** landed in col 2, detached from its question.
@@ -70,30 +70,30 @@ No markup, no JS, no desktop rule, no other selector or page changed.
 
 ## 4. Before / after computed (question column width × line count)
 
-| Width | Before `.station__q` | After `.station__q` |
-|------:|----------------------|---------------------|
-| 320 | 44px / 3 lines | **234px / 2 lines** |
-| 360 | 44px / 3 lines | **271px / 1 line** |
-| 375 | 44px / 3 lines | **285px / 1 line** |
-| 390 | 44px / 3 lines | **299px / 1 line** |
-| 414 | 44px / 3 lines | **321px / 1 line** |
-| 768 (tablet) | 4-col, unchanged | 4-col, unchanged |
-| 1366 / 1440 | 4-col, unchanged | 4-col, unchanged |
+|        Width | Before `.station__q` | After `.station__q` |
+| -----------: | -------------------- | ------------------- |
+|          320 | 44px / 3 lines       | **234px / 2 lines** |
+|          360 | 44px / 3 lines       | **271px / 1 line**  |
+|          375 | 44px / 3 lines       | **285px / 1 line**  |
+|          390 | 44px / 3 lines       | **299px / 1 line**  |
+|          414 | 44px / 3 lines       | **321px / 1 line**  |
+| 768 (tablet) | 4-col, unchanged     | 4-col, unchanged    |
+|  1366 / 1440 | 4-col, unchanged     | 4-col, unchanged    |
 
 ## 5. Verification (Chromium/Playwright, repo-subpath server)
 
 All eight required widths on `bible-study.html`:
 
-| Width | Stations | Min question width | Worst q lines | All complete | H-overflow | JS err | Failed local req |
-|------:|:--------:|-------------------:|--------------:|:------------:|:----------:|:------:|:----------------:|
-| 320×568 | 4 | 234 | 2 | yes | 0 | 0 | 0 |
-| 360×640 | 4 | 271 | 1 | yes | 0 | 0 | 0 |
-| 375×667 | 4 | 285 | 1 | yes | 0 | 0 | 0 |
-| 390×844 | 4 | 299 | 1 | yes | 0 | 0 | 0 |
-| 414×896 | 4 | 321 | 1 | yes | 0 | 0 | 0 |
-| 768×1024 | 4 | 161 (tablet 4-col) | 3 | yes | 0 | 0 | 0 |
-| 1366×768 | 4 | 264 | 2 | yes | 0 | 0 | 0 |
-| 1440×900 | 4 | 264 | 2 | yes | 0 | 0 | 0 |
+|    Width | Stations | Min question width | Worst q lines | All complete | H-overflow | JS err | Failed local req |
+| -------: | :------: | -----------------: | ------------: | :----------: | :--------: | :----: | :--------------: |
+|  320×568 |    4     |                234 |             2 |     yes      |     0      |   0    |        0         |
+|  360×640 |    4     |                271 |             1 |     yes      |     0      |   0    |        0         |
+|  375×667 |    4     |                285 |             1 |     yes      |     0      |   0    |        0         |
+|  390×844 |    4     |                299 |             1 |     yes      |     0      |   0    |        0         |
+|  414×896 |    4     |                321 |             1 |     yes      |     0      |   0    |        0         |
+| 768×1024 |    4     | 161 (tablet 4-col) |             3 |     yes      |     0      |   0    |        0         |
+| 1366×768 |    4     |                264 |             2 |     yes      |     0      |   0    |        0         |
+| 1440×900 |    4     |                264 |             2 |     yes      |     0      |   0    |        0         |
 
 - Teaching, Reproof, Correction, Training in Righteousness all read naturally on
   mobile; title, question and explanation stay grouped; no word split; no overlap;

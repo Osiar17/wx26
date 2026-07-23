@@ -18,23 +18,23 @@ additions. The shared controller `assets/js/wx-detail-reader.js` is
 
 ## 1. Final 15-family inventory
 
-| #  | Family | Surface | Status |
-|----|--------|---------|--------|
-| 1  | Bible Study — Four Works | inline reader | ✅ (9.1J) |
-| 2  | Bible Study — Five Sessions | inline reader | ✅ (9.1J) |
-| 3  | Wade-In dimensions | inline reader | ✅ (9.1J.2) |
-| 4  | Musical Identity — phases | inline reader + graph | ✅ (9.1J.2) |
-| 5  | Colour Palette | `#viOverlay` modal reader | ✅ (9.1J.3) |
-| 6  | Logo & Wordmarks | `#zoneBoard` modal card reader | ✅ (9.1J.4) |
-| 7  | Typography & Typeface | `#zoneBoard` modal card reader | ✅ (9.1J.4) |
-| 8  | Imagery & Photography | `#worldBoard` slide+card | ✅ (9.1J.4) |
-| 9  | Textures & Surface Rules | `#worldBoard` slide+card | ✅ (9.1J.4) |
-| 10 | Structure & Motion | `#worldBoard` slide+card + video | ✅ (9.1J.4) |
-| 11 | **What Are You Making?** | `#sysQs` inline decision-card reader | ✅ **this batch** |
-| 12 | **Elements & Symbols** | `#esModal` carousel modal | ✅ **this batch** (normalised) |
-| 13 | **Flow of Our Journey** | `#fjiStage` inline phase reader | ✅ **this batch** |
-| 14 | **Find Your Part** | `#miFYP` inline hierarchical reader | ✅ **this batch** |
-| 15 | **Musical Identity Elements** | `#miEle` inline element reader | ✅ **this batch** |
+| #   | Family                        | Surface                              | Status                         |
+| --- | ----------------------------- | ------------------------------------ | ------------------------------ |
+| 1   | Bible Study — Four Works      | inline reader                        | ✅ (9.1J)                      |
+| 2   | Bible Study — Five Sessions   | inline reader                        | ✅ (9.1J)                      |
+| 3   | Wade-In dimensions            | inline reader                        | ✅ (9.1J.2)                    |
+| 4   | Musical Identity — phases     | inline reader + graph                | ✅ (9.1J.2)                    |
+| 5   | Colour Palette                | `#viOverlay` modal reader            | ✅ (9.1J.3)                    |
+| 6   | Logo & Wordmarks              | `#zoneBoard` modal card reader       | ✅ (9.1J.4)                    |
+| 7   | Typography & Typeface         | `#zoneBoard` modal card reader       | ✅ (9.1J.4)                    |
+| 8   | Imagery & Photography         | `#worldBoard` slide+card             | ✅ (9.1J.4)                    |
+| 9   | Textures & Surface Rules      | `#worldBoard` slide+card             | ✅ (9.1J.4)                    |
+| 10  | Structure & Motion            | `#worldBoard` slide+card + video     | ✅ (9.1J.4)                    |
+| 11  | **What Are You Making?**      | `#sysQs` inline decision-card reader | ✅ **this batch**              |
+| 12  | **Elements & Symbols**        | `#esModal` carousel modal            | ✅ **this batch** (normalised) |
+| 13  | **Flow of Our Journey**       | `#fjiStage` inline phase reader      | ✅ **this batch**              |
+| 14  | **Find Your Part**            | `#miFYP` inline hierarchical reader  | ✅ **this batch**              |
+| 15  | **Musical Identity Elements** | `#miEle` inline element reader       | ✅ **this batch**              |
 
 **Before this batch: 10 of 15 complete, 5 pending. After this batch: 15 of 15 complete, 0 pending.**
 
@@ -42,13 +42,13 @@ additions. The shared controller `assets/js/wx-detail-reader.js` is
 
 ## 2. Five-family implementation matrix
 
-| Family | Character | Data (order · count) | Reader controls | Reuse point | Boundaries |
-|--------|-----------|----------------------|-----------------|-------------|------------|
-| What Are You Making? | inline | `ASKS` (Every zone → 01 Colour → 02 Marks → 03 Type → 04 Imagery → 05 Surface → 06 Rhythm · 7) | `#sysPrev/#sysPos/#sysNext` | clicks the question's own `<button>` | non-circular |
-| Elements & Symbols | modal (carousel) | 9 `.es-detail` articles, `data-i` 0–8 | pre-existing `#esPrev/#esLive/#esNext` | its own `rotate()`/`showDetail()` (not duplicated) | circular carousel (established) |
-| Flow of Our Journey | inline | `STOPS` (Threshold → Help in Dark → Will Laid Down → Gateway to Glory · 4) | `#fjiPrev/#fjiPos/#fjiNext` | `open(k)` | non-circular |
-| Find Your Part | inline, hierarchical | 12 leaves across Guitars/Keys/Rhythm/Brass/Voices | `#fypPrev/#fypPos/#fypNext` | `renderDetail()` + `renderMap()` | non-circular |
-| Musical Identity Elements | inline | `ELEMENTS` (Tempo & Pulse first · 7) | `#elePrev/#elePos/#eleNext` | `apply()` | non-circular |
+| Family                    | Character            | Data (order · count)                                                                           | Reader controls                        | Reuse point                                        | Boundaries                      |
+| ------------------------- | -------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------- | ------------------------------- |
+| What Are You Making?      | inline               | `ASKS` (Every zone → 01 Colour → 02 Marks → 03 Type → 04 Imagery → 05 Surface → 06 Rhythm · 7) | `#sysPrev/#sysPos/#sysNext`            | clicks the question's own `<button>`               | non-circular                    |
+| Elements & Symbols        | modal (carousel)     | 9 `.es-detail` articles, `data-i` 0–8                                                          | pre-existing `#esPrev/#esLive/#esNext` | its own `rotate()`/`showDetail()` (not duplicated) | circular carousel (established) |
+| Flow of Our Journey       | inline               | `STOPS` (Threshold → Help in Dark → Will Laid Down → Gateway to Glory · 4)                     | `#fjiPrev/#fjiPos/#fjiNext`            | `open(k)`                                          | non-circular                    |
+| Find Your Part            | inline, hierarchical | 12 leaves across Guitars/Keys/Rhythm/Brass/Voices                                              | `#fypPrev/#fypPos/#fypNext`            | `renderDetail()` + `renderMap()`                   | non-circular                    |
+| Musical Identity Elements | inline               | `ELEMENTS` (Tempo & Pulse first · 7)                                                           | `#elePrev/#elePos/#eleNext`            | `apply()`                                          | non-circular                    |
 
 ---
 
@@ -63,9 +63,11 @@ another. New markup in each case is one `.wx-reader-nav` bar (reusing the existi
 9.1J.2 CSS — no new styles).
 
 **A · What Are You Making? (`#sysQs`)**
+
 ```js
 select:function(n){ var b=qBtn(n); if(b) b.click(); }   // reuse the question's own click
 ```
+
 The adapter reuses each generated question button, so the selection highlight, the
 `#sysChildZone`/`#sysChildText` child card and the "Go to <zone>" refer button
 (and its `scrollIntoView` — the underlying zone-scroll) stay wired from one source.
@@ -78,18 +80,25 @@ The carousel already owns Prev/Next (`#esPrev`/`#esNext`), an accurate live posi
 (`#esLive`, e.g. "2 / 9 · Night") and browse-while-open (`rotate()` syncs the open
 detail). Per the no-duplicate-controls rule the controller was **not** attached to it.
 The one gap — internal scroll — was fixed inside `showDetail(i)`:
+
 ```js
-var mc=modal.querySelector('.es-modal-card'); if(mc){ mc.scrollTop=0; }  // reset on every switch
+var mc = modal.querySelector(".es-modal-card");
+if (mc) {
+  mc.scrollTop = 0;
+} // reset on every switch
 ```
+
 The modal is intentionally `aria-modal="false"` so the carousel stays interactive
 while a detail is open; background-inert is therefore deliberately **not** applied
 (it would disable the very carousel used to browse). Focus save/restore, Escape and
 the `es-locked` body scroll-lock are retained.
 
 **C · Flow of Our Journey (`#fjiStage`)**
+
 ```js
 select:function(n){ open(String(n+1)); }   // STOPS keyed "1".."4"
 ```
+
 Reuses `open()` so the active node, the lit figure (`stage.locked`) and the
 eyebrow/title/moods/note all stay synchronised. Position reads `1 of 4` → `4 of 4`
 in canonical order. A section click listener syncs the index when a marker is tapped.
@@ -99,20 +108,24 @@ The first phase is opened by default so the position is accurate.
 A `SEQ` of 12 leaves defines the read-through order; the adapter sets the path +
 selection and reuses `renderDetail()` and `renderMap()` so name, role, instructions
 and the `data-selected` map highlight update together:
+
 ```js
 select:function(n){ var s=SEQ[n]; fyp.path=s.path.slice(); fyp.sel=s.k; renderDetail(); renderMap(); }
 ```
-**Exact sequence (12):** *Guitars* Acoustic → Electric → Bass · *Keys* Piano/Keys →
-Pads → Strings → Organ · *Rhythm* Drums → Aux Perc. · *Brass* (standalone) · *Voices*
+
+**Exact sequence (12):** _Guitars_ Acoustic → Electric → Bass · _Keys_ Piano/Keys →
+Pads → Strings → Organ · _Rhythm_ Drums → Aux Perc. · _Brass_ (standalone) · _Voices_
 Lead → Backing. This is depth-first by the displayed grid order — every item in a
 subgroup before advancing to the first item of the next, never jumping across
 unrelated families. A `#fypMap` click listener keeps the index in step with direct
 hex selection.
 
 **E · Musical Identity Elements (`#miEle`)**
+
 ```js
 select:function(n){ sel=ELEMENTS[n].k; apply(false); }
 ```
+
 Reuses `apply()` so the detail title/content and the `data-on` active state on both
 the board cards and the nav pills update together. **Tempo & Pulse is `ELEMENTS[0]`**
 — shown first, reachable like any other element, never isolated. Board/nav clicks
@@ -123,10 +136,12 @@ sync the index. The phases graph (`mij*`) is untouched.
 ## 4. Shared-controller diff
 
 **None.** `assets/js/wx-detail-reader.js` is byte-identical to 9.1J.4:
+
 ```
 diff -q p91j4/assets/js/wx-detail-reader.js p91j5/assets/js/wx-detail-reader.js
 => (no output) — BYTE-IDENTICAL
 ```
+
 No family data or page-specific selectors were added to it; it is used only for the
 common behaviour (index, Prev/Next, non-circular boundary `disabled`+`aria-disabled`,
 position `label(i)`, guarded arrow keys, scroll reset).
@@ -194,13 +209,13 @@ duplicate controls, no stale content, no horizontal overflow, **0 page errors**.
 
 ## 9. Checks (all green)
 
-| Check | Result |
-|-------|--------|
-| `tools/audit.mjs` | **PASSED — 0 errors, 0 warnings** (11 HTML files, 308 scanned) |
-| `html-validate creative-direction.html` | **exit 0** |
-| `prettier --check` (tools) | **All matched files use Prettier code style** |
-| `eslint` | **0 errors** |
-| Playwright smoke | **37 passed** |
+| Check                                   | Result                                                         |
+| --------------------------------------- | -------------------------------------------------------------- |
+| `tools/audit.mjs`                       | **PASSED — 0 errors, 0 warnings** (11 HTML files, 308 scanned) |
+| `html-validate creative-direction.html` | **exit 0**                                                     |
+| `prettier --check` (tools)              | **All matched files use Prettier code style**                  |
+| `eslint`                                | **0 errors**                                                   |
+| Playwright smoke                        | **37 passed**                                                  |
 
 ---
 

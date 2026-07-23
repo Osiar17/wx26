@@ -41,8 +41,14 @@ carousel arrows (`#esPrev`/`#esNext`), and the live position (`#esLive`, e.g.
 second index:
 
 ```js
-if (emPrev) emPrev.addEventListener("click", function () { rotate(active - 1); });
-if (emNext) emNext.addEventListener("click", function () { rotate(active + 1); });
+if (emPrev)
+  emPrev.addEventListener("click", function () {
+    rotate(active - 1);
+  });
+if (emNext)
+  emNext.addEventListener("click", function () {
+    rotate(active + 1);
+  });
 ```
 
 Because everything funnels through `rotate()` → `showDetail()`, all four surfaces stay
@@ -54,7 +60,10 @@ in one sync:
 - the new in-panel `#esmPos` indicator (updated inside `showDetail(i)`):
 
 ```js
-var emp = document.getElementById("esmPos"); if (emp) { emp.textContent = (i + 1) + " of " + N; }
+var emp = document.getElementById("esmPos");
+if (emp) {
+  emp.textContent = i + 1 + " of " + N;
+}
 ```
 
 The in-panel control steps the **element** (not the detail's tabs) and inherits the
@@ -68,14 +77,14 @@ No page-specific data or selectors were added to `wx-detail-reader.js`.
 
 Live-tested (`file://`, desktop + mobile), 0 page errors:
 
-| Action | Result |
-|--------|--------|
-| Open card 0 | in-panel `1 of 9` · `#esLive` `1 / 9 · Garden` · title "Garden" |
-| In-panel **Next** | `2 of 9` · `2 / 9 · Night` · title "Night" |
-| In-panel Next after scrolling the card | scroll reset to 0, `3 of 9` "Earth" |
-| In-panel **Prev** | steps back to `2 of 9` "Night" |
-| Carousel arrow (`#esNext`) | in-panel `#esmPos` syncs to `3 of 9` |
-| Wrap-around | Prev past item 1 wraps, matching the carousel |
+| Action                                 | Result                                                          |
+| -------------------------------------- | --------------------------------------------------------------- |
+| Open card 0                            | in-panel `1 of 9` · `#esLive` `1 / 9 · Garden` · title "Garden" |
+| In-panel **Next**                      | `2 of 9` · `2 / 9 · Night` · title "Night"                      |
+| In-panel Next after scrolling the card | scroll reset to 0, `3 of 9` "Earth"                             |
+| In-panel **Prev**                      | steps back to `2 of 9` "Night"                                  |
+| Carousel arrow (`#esNext`)             | in-panel `#esmPos` syncs to `3 of 9`                            |
+| Wrap-around                            | Prev past item 1 wraps, matching the carousel                   |
 
 Screenshots: `screenshots/pass-9.1j-6/es-inpanel-desktop.png`,
 `es-inpanel-mobile.png` — the bar renders below the Close button with a divider and
@@ -83,13 +92,13 @@ no collision at 1280 and 390 wide.
 
 ## 4. Checks (all green)
 
-| Check | Result |
-|-------|--------|
-| `tools/audit.mjs` | **PASSED — 0 errors, 0 warnings** |
-| `html-validate creative-direction.html` | **exit 0** |
-| `prettier --check` (tools) | **All matched files use Prettier code style** |
-| `eslint` | **0 errors** |
-| Playwright smoke | **38 passed** (new test 38: in-panel Prev/Next mirrors the carousel + scroll reset + sync) |
+| Check                                   | Result                                                                                     |
+| --------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `tools/audit.mjs`                       | **PASSED — 0 errors, 0 warnings**                                                          |
+| `html-validate creative-direction.html` | **exit 0**                                                                                 |
+| `prettier --check` (tools)              | **All matched files use Prettier code style**                                              |
+| `eslint`                                | **0 errors**                                                                               |
+| Playwright smoke                        | **38 passed** (new test 38: in-panel Prev/Next mirrors the carousel + scroll reset + sync) |
 
 ## 5. Version normalisation
 

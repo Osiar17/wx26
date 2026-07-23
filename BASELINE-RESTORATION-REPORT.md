@@ -5,12 +5,14 @@ the reconstruction of a clean working copy from the last accepted release
 candidate, **v2026.9.0**, with no Pass 9.1 changes applied.
 
 ## 1. Source package used
+
 The accepted **Pass 9 release candidate, v2026.9.0** — the complete site
 (all ten live pages + `404.html`, the shared foundation, the full asset tree
 with WebP + retained `.jpg`/`.png` fallbacks, and the Pass 9 documentation set).
 The partially-remediated 2026.9.1 tree was **not** used as a source.
 
 ## 2. Files restored (complete v2026.9.0 set)
+
 - **Pages (11):** `index`, `concept`, `creative-direction`, `theme-brief`,
   `setlist`, `lyrics`, `playbook`, `blueprint`, `music-workshop`, `bible-study`,
   and `404.html`.
@@ -28,8 +30,10 @@ The partially-remediated 2026.9.1 tree was **not** used as a source.
   `PERFORMANCE-MATRIX.md`, `EXPORT-LIFECYCLE-MATRIX.md`, `UNRESOLVED.md`.
 
 ## 3. Attempted Pass 9.1 files / changes removed (confirmed absent)
+
 None of the Pass 9.1 work is present in the restored baseline (verified by
 precise search):
+
 - No `MOBILE-REMEDIATION-REPORT.md`, no `CONTENT-CORRECTIONS.md`.
 - No `assets/icons/` (the 9.1 WX-monogram favicon set); the baseline keeps the
   9.0 generic-mark `assets/favicon.svg` / `assets/apple-touch-icon.png`.
@@ -38,15 +42,16 @@ precise search):
   `.fyp-hex` `position` change).
 
 ## 4. Version consistency checks (all = 2026.9.0)
-| Location | Value |
-|----------|-------|
-| `VERSION` | 2026.9.0 |
-| `package.json` `version` | 2026.9.0 |
-| `package-lock.json` `version` | 2026.9.0 |
-| `assets/js/site-config.js` `WX.version` | 2026.9.0 |
-| Every page `<meta name="generator">` (×10) | v2026.9.0 |
-| `README.md` | 2026.9.0 |
-| `FINAL-QA-REPORT.md` / `ROUTE-MANIFEST.md` release reports | 2026.9.0 |
+
+| Location                                                   | Value     |
+| ---------------------------------------------------------- | --------- |
+| `VERSION`                                                  | 2026.9.0  |
+| `package.json` `version`                                   | 2026.9.0  |
+| `package-lock.json` `version`                              | 2026.9.0  |
+| `assets/js/site-config.js` `WX.version`                    | 2026.9.0  |
+| Every page `<meta name="generator">` (×10)                 | v2026.9.0 |
+| `README.md`                                                | 2026.9.0  |
+| `FINAL-QA-REPORT.md` / `ROUTE-MANIFEST.md` release reports | 2026.9.0  |
 
 > Correction applied: `README.md` still read `2026.8.0 (Pass 8)` in the accepted
 > package (it was never bumped in Pass 9). It was updated to `2026.9.0` to satisfy
@@ -54,6 +59,7 @@ precise search):
 > no page, style, script, asset, content or interaction was changed.
 
 ## 5. Audit and validation results
+
 - **Structural audit** (`node tools/audit.mjs .`): **0 errors, 0 warnings**
   (missing refs, case, subpath safety, duplicate IDs, `data:image`, canonical
   drift, metadata/a11y).
@@ -66,6 +72,7 @@ precise search):
 - **Smoke tests** (Playwright, desktop + mobile, all pages): **24 / 24 PASS**.
 
 ### Preservation confirmed
+
 - **Ten live pages + `404.html`** — present and loading clean.
 - **Shared 28-item catalogue** — `WX_CATALOGUE` = 28 items, numbers 1–28
   contiguous; Setlist and Lyrics both read from it.
@@ -83,6 +90,7 @@ precise search):
   configuration all present and passing.
 
 ## 6. Confirmation — no new visual/content/interaction changes
+
 A file-level diff against the accepted v2026.9.0 tree shows exactly **two**
 changed files: `README.md` (version line 8.0 → 9.0) and `.prettierignore` (four
 report-doc lines added). **No `.html`, `.css`, `.js` page/behaviour file and no

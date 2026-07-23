@@ -6,6 +6,7 @@ isolated working copy (`wx2026-pass-9.1A`); the authoritative folder was not
 modified. This record is the state **before** any Pass 9.1A edit.
 
 ## Contents verified present
+
 - `index.html` + all HTML pages (concept, creative-direction, theme-brief,
   setlist, lyrics, playbook, blueprint, music-workshop, bible-study) and **404.html**.
 - Complete `assets/` — **107 WebP** + **108 retained `.jpg`/`.png` fallbacks**,
@@ -19,13 +20,14 @@ modified. This record is the state **before** any Pass 9.1A edit.
   package.json, package-lock.json, README and release reports.
 
 ## Baseline check results (working copy, no edits)
-| Check | Command | Result |
-|-------|---------|--------|
-| Structural audit | `npm run audit` | **PASS** — 0 errors, 0 warnings |
-| HTML validation | `npm run validate:html` | **PASS** (11 files) |
-| Formatting | `npm run format:check` | **PASS** |
-| Lint | `npm run lint` | **PASS** |
-| Smoke tests | `npm run test:smoke` | **PASS** — 24 / 24 |
+
+| Check            | Command                 | Result                          |
+| ---------------- | ----------------------- | ------------------------------- |
+| Structural audit | `npm run audit`         | **PASS** — 0 errors, 0 warnings |
+| HTML validation  | `npm run validate:html` | **PASS** (11 files)             |
+| Formatting       | `npm run format:check`  | **PASS**                        |
+| Lint             | `npm run lint`          | **PASS**                        |
+| Smoke tests      | `npm run test:smoke`    | **PASS** — 24 / 24              |
 
 Baseline clean and green. Pass 9.1A (WX monogram icon correction only) proceeds
 from this state.

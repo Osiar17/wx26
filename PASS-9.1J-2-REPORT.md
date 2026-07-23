@@ -10,6 +10,7 @@ needed; both families reuse it as-is. Eight of the twelve families remain pendin
 ## 1. Confirmed inventory (from source)
 
 **A · Wade-In Dimension Cards** — `music-workshop.html`
+
 - Trigger: `.triad` nodes `[data-pillar]` (1 The Christian, 2 The Musician, 3 The
   Performer; 4 = centre "Faithful Service").
 - Panel: `#pillar-detail` / `#pillarBody` (with `#pillarEmpty` empty-first).
@@ -17,6 +18,7 @@ needed; both families reuse it as-is. Eight of the twelve families remain pendin
 - Type: **inline detail**, empty-first. Item count for the reader: **3** (centre is separate).
 
 **B · Musical Identity phase graph** — `creative-direction.html#musical`
+
 - Phase triggers: `#mijPills .mij-pill` (`role=tab`) and graph `.mij-dot[data-d]`.
 - Detail panel: `#mijCard` (aria-live); graph `#mijGraph`.
 - State fn: `select(i)` → updates pills (`aria-selected`/`.on`), `renderCard()`,
@@ -30,6 +32,7 @@ and it hides the reader nav (`#pillarBody.is-center #pillarReaderNav{display:non
 ## 2. Family registrations (callbacks)
 
 **Wade-In** (`music-workshop.html`):
+
 ```
 WXDetailReader.attach({ count:3, prevBtn:#pilPrev, nextBtn:#pilNext, posEl:#pilPos,
   arrowKeys:true, arrowRoot:#pillar-detail, resetScroll:#pillar-detail,
@@ -38,7 +41,9 @@ WXDetailReader.attach({ count:3, prevBtn:#pilPrev, nextBtn:#pilNext, posEl:#pilP
   select:n=> selectPillar(String(n+1)) });
 // the three data-pillar nodes sync the reader index via r.go()
 ```
+
 **Musical Identity** (`creative-direction.html`, inside the mij IIFE):
+
 ```
 WXDetailReader.attach({ count:PHASES.length, prevBtn:#mijPrev, nextBtn:#mijNext, posEl:#mijPos,
   arrowKeys:true, arrowRoot:#mijRoot, resetScroll:#mijCard,

@@ -6,11 +6,11 @@
 
 ## 1. Component inventory (A)
 
-| # | Component | Selectors | Data / state | Mood keys | Notes |
-|---|-----------|-----------|--------------|-----------|-------|
-| 1 | The Moods Within the Garden | `.moods`, `.moods-btn`, `#moodsMaster`, `#moodsNote` | `M2`, `show(key)`, `.is-active` | all,1–5 | **Pass 9.1H** reader (untouched) |
-| 2 | The Five Moods / Mood Board at a Glance | `.mgg`, `#mggRows .krow`, `#mggShared`, `.mgg-board` | `mn`/`SHORT`/`EXPL`, `apply(m)`, `.sel` | 1–5 | **this pass** |
-| 3 | Segment routing | `activate()`, `applyHash()`, `#ws-content` | hash routing | story/elements/mood/identity/musical | landing fix |
+| #   | Component                               | Selectors                                            | Data / state                            | Mood keys                            | Notes                            |
+| --- | --------------------------------------- | ---------------------------------------------------- | --------------------------------------- | ------------------------------------ | -------------------------------- |
+| 1   | The Moods Within the Garden             | `.moods`, `.moods-btn`, `#moodsMaster`, `#moodsNote` | `M2`, `show(key)`, `.is-active`         | all,1–5                              | **Pass 9.1H** reader (untouched) |
+| 2   | The Five Moods / Mood Board at a Glance | `.mgg`, `#mggRows .krow`, `#mggShared`, `.mgg-board` | `mn`/`SHORT`/`EXPL`, `apply(m)`, `.sel` | 1–5                                  | **this pass**                    |
+| 3   | Segment routing                         | `activate()`, `applyHash()`, `#ws-content`           | hash routing                            | story/elements/mood/identity/musical | landing fix                      |
 
 The two mood components do **not** share DOM or state; 9.1H modified #1, this pass modifies #2 and the routing.
 
@@ -34,13 +34,13 @@ near the end (measured `winY:4000`, heading top `-3869`).
 
 ## 3. Five-mood target mapping (C)
 
-| Summary mood (`data-mood`) | Target key | Detail heading (`#mshTitle`) | Verified result |
-|---|---|---|---|
-| 01 Secluded & Intimate | mood `1` | Secluded & Intimate | Explore → selects 1, detail + focus ✓ |
-| 02 Assured | mood `2` | Assured | ✓ |
-| 03 Pressed | mood `3` | Pressed | ✓ |
-| 04 Dependent | mood `4` | Dependent | ✓ |
-| 05 Surrendered | mood `5` | Surrendered | ✓ |
+| Summary mood (`data-mood`) | Target key | Detail heading (`#mshTitle`) | Verified result                       |
+| -------------------------- | ---------- | ---------------------------- | ------------------------------------- |
+| 01 Secluded & Intimate     | mood `1`   | Secluded & Intimate          | Explore → selects 1, detail + focus ✓ |
+| 02 Assured                 | mood `2`   | Assured                      | ✓                                     |
+| 03 Pressed                 | mood `3`   | Pressed                      | ✓                                     |
+| 04 Dependent               | mood `4`   | Dependent                    | ✓                                     |
+| 05 Surrendered             | mood `5`   | Surrendered                  | ✓                                     |
 
 Detail = `#mggShared` (eyebrow `0N`, `#mshTitle` name, `#mshBody` = `EXPL[n]`), with
 the mood's images highlighted as a cluster in `.mgg-board`.
@@ -70,11 +70,11 @@ using instant scroll under reduced-motion. Phones only; desktop bar is `display:
 
 Segment landing (heading top after navigation; negative = below viewport/near end):
 
-| Width | Before Explore Visual | After Explore Visual | Direct #identity | Direct #musical |
-|------:|----------------------:|---------------------:|-----------------:|----------------:|
-| 375 | winY 4000, head **-3869** | head **131** | head 131 | head 150 |
-| 320 | (same class of defect) | — | head 137 | head 137 |
-| 1366 | wsTop 0 (already ok) | head 144 | 144 | 144 |
+| Width |     Before Explore Visual | After Explore Visual | Direct #identity | Direct #musical |
+| ----: | ------------------------: | -------------------: | ---------------: | --------------: |
+|   375 | winY 4000, head **-3869** |         head **131** |         head 131 |        head 150 |
+|   320 |    (same class of defect) |                    — |         head 137 |        head 137 |
+|  1366 |      wsTop 0 (already ok) |             head 144 |              144 |             144 |
 
 All eight widths after fix: `#identity` head 127–177, `#musical` head 137–177 (all
 positive, at segment top), doc h-overflow 0, 0 JS errors, 0 failed local requests.

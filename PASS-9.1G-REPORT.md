@@ -18,6 +18,7 @@ on mobile.
 ## 2. Exact changes (creative-direction.html only)
 
 **CSS** (new base rules + `@media(max-width:760px)`):
+
 - `.hw{display:none !important}` on phones.
 - `.cd-navtrigger` — fixed compact pill, `min-height/min-width:44px`, safe-area
   insets, `:focus-visible` ring.
@@ -44,18 +45,19 @@ system, no change to `activate()`/routing**.
 
 ## 3. Verification (Chromium/Playwright, repo-subpath server)
 
-| Width | Mode | Wheel | Trigger (w×h) | Doc h-overflow | JS err | Failed req |
-|------:|:----:|:-----:|:-------------:|:--------------:|:------:|:----------:|
-| 320×568 | mobile | none | 203×44 | 0 | 0 | 0 |
-| 360×640 | mobile | none | 203×44 | 0 | 0 | 0 |
-| 375×667 | mobile | none | 203×44 | 0 | 0 | 0 |
-| 390×844 | mobile | none | 203×44 | 0 | 0 | 0 |
-| 414×896 | mobile | none | 203×44 | 0 | 0 | 0 |
-| 768×1024 | desktop | block (wheel kept) | hidden | 0 | 0 | 0 |
-| 1366×768 | desktop | block (wheel kept) | hidden | 0 | 0 | 0 |
-| 1440×900 | desktop | block (wheel kept) | hidden | 0 | 0 | 0 |
+|    Width |  Mode   |       Wheel        | Trigger (w×h) | Doc h-overflow | JS err | Failed req |
+| -------: | :-----: | :----------------: | :-----------: | :------------: | :----: | :--------: |
+|  320×568 | mobile  |        none        |    203×44     |       0        |   0    |     0      |
+|  360×640 | mobile  |        none        |    203×44     |       0        |   0    |     0      |
+|  375×667 | mobile  |        none        |    203×44     |       0        |   0    |     0      |
+|  390×844 | mobile  |        none        |    203×44     |       0        |   0    |     0      |
+|  414×896 | mobile  |        none        |    203×44     |       0        |   0    |     0      |
+| 768×1024 | desktop | block (wheel kept) |    hidden     |       0        |   0    |     0      |
+| 1366×768 | desktop | block (wheel kept) |    hidden     |       0        |   0    |     0      |
+| 1440×900 | desktop | block (wheel kept) |    hidden     |       0        |   0    |     0      |
 
 Mobile behaviour (all of 320–414):
+
 - Full wheel not visible; compact "Explore sections" trigger visible; no content obscured.
 - **Open**: `role=dialog`, `aria-modal=true`, trigger `aria-expanded=true`, focus
   moves into the sheet (onto the current item), `body` overflow `hidden`

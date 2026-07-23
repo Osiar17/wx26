@@ -37,40 +37,42 @@ around a framework; no global hard-coded-selector mega-function was created.
 
 ## 2. Pre-edit component inventory / twelve-family matrix
 
-| # | Family | Page | Trigger sel. | Panel sel. | Data | Items | Type | Existing open/close | Status |
-|---|--------|------|--------------|-----------|------|------:|------|---------------------|--------|
-| 1 | Elements & Symbols | creative-direction | `.es-card`/es rail | `.es-detail[data-i]` | inline `<article>` + `es-tabs` | 9 | inline detail + tabs | rail select; no Esc | inventoried |
-| 2 | Flow of Our Journey | creative-direction | `.fji-node` | `.fji-detail` | `FJI`/nodes | 4 | inline stage detail | node click | inventoried |
-| 3 | Our Colour Palette | creative-direction | `.vi-card[data-target=viAtlas]` → swatches | `#viOverlay` `.vi-det` | VI data | 7 | modal overlay | open/close + Esc | inventoried |
-| 4 | Logo & Wordmarks | creative-direction | `.vi-card[data-target=zoneSignature]` | `#viOverlay`/`#zBody` | VI zone data | n | modal overlay | open/close | inventoried |
-| 5 | VI guidance cards (Typography/Imagery/Textures/Structure) | creative-direction | `.vi-card` | `#viOverlay` (`show(k)`) | `dets[data-key]` | 6 | modal overlay | `show()`/`open`/Esc | inventoried |
-| 6 | What Are You Making? | creative-direction | decision cards | inline reveal | inline | n (incl. "Every zone") | inline cards | click-expand | inventoried |
-| 7 | Musical Identity phase graph | creative-direction | `.mij-dot`/`.mij` btns | `.mij` detail beside graph | `select(i)` | 4 | inline graph-linked | dot/btn select | inventoried |
-| 8 | Find Your Part | creative-direction | `.fyp-hex` | `.fyp` panel | FYP tree | family/subgroup/part | inline hex map | hex click | inventoried (needs documented nav rule) |
-| 9 | Musical Identity Elements (Tempo & Pulse …) | creative-direction | `.spx`/`.ele` cards | inline | element data | n | inline | click | inventoried |
-| 10 | Wade-In Dimension Cards | music-workshop | `.pillar`/stops | `.pillar-detail` (`#pillarEmpty`+inner) | data 1–3 | 3 | inline tabbed panel | select; empty-first | inventoried (clean, next batch) |
-| 11 | **Four Works of Scripture** | bible-study | `.station[data-work]` (tablist) | `#wk-panel` | `WORKS[n]`, `selectWork` | 4 | inline tabbed panel | `selectWork`; roving keys | **IMPLEMENTED** |
-| 12 | **Five Sessions, Five Truths** | bible-study | `.stop[data-session]` (tablist) | `#session-detail` | `SESSIONS[n]`, `selectSession` | 5 | inline tabbed panel | `selectSession`; empty-first | **IMPLEMENTED** |
+| #   | Family                                                    | Page               | Trigger sel.                               | Panel sel.                              | Data                           |                  Items | Type                 | Existing open/close          | Status                                  |
+| --- | --------------------------------------------------------- | ------------------ | ------------------------------------------ | --------------------------------------- | ------------------------------ | ---------------------: | -------------------- | ---------------------------- | --------------------------------------- |
+| 1   | Elements & Symbols                                        | creative-direction | `.es-card`/es rail                         | `.es-detail[data-i]`                    | inline `<article>` + `es-tabs` |                      9 | inline detail + tabs | rail select; no Esc          | inventoried                             |
+| 2   | Flow of Our Journey                                       | creative-direction | `.fji-node`                                | `.fji-detail`                           | `FJI`/nodes                    |                      4 | inline stage detail  | node click                   | inventoried                             |
+| 3   | Our Colour Palette                                        | creative-direction | `.vi-card[data-target=viAtlas]` → swatches | `#viOverlay` `.vi-det`                  | VI data                        |                      7 | modal overlay        | open/close + Esc             | inventoried                             |
+| 4   | Logo & Wordmarks                                          | creative-direction | `.vi-card[data-target=zoneSignature]`      | `#viOverlay`/`#zBody`                   | VI zone data                   |                      n | modal overlay        | open/close                   | inventoried                             |
+| 5   | VI guidance cards (Typography/Imagery/Textures/Structure) | creative-direction | `.vi-card`                                 | `#viOverlay` (`show(k)`)                | `dets[data-key]`               |                      6 | modal overlay        | `show()`/`open`/Esc          | inventoried                             |
+| 6   | What Are You Making?                                      | creative-direction | decision cards                             | inline reveal                           | inline                         | n (incl. "Every zone") | inline cards         | click-expand                 | inventoried                             |
+| 7   | Musical Identity phase graph                              | creative-direction | `.mij-dot`/`.mij` btns                     | `.mij` detail beside graph              | `select(i)`                    |                      4 | inline graph-linked  | dot/btn select               | inventoried                             |
+| 8   | Find Your Part                                            | creative-direction | `.fyp-hex`                                 | `.fyp` panel                            | FYP tree                       |   family/subgroup/part | inline hex map       | hex click                    | inventoried (needs documented nav rule) |
+| 9   | Musical Identity Elements (Tempo & Pulse …)               | creative-direction | `.spx`/`.ele` cards                        | inline                                  | element data                   |                      n | inline               | click                        | inventoried                             |
+| 10  | Wade-In Dimension Cards                                   | music-workshop     | `.pillar`/stops                            | `.pillar-detail` (`#pillarEmpty`+inner) | data 1–3                       |                      3 | inline tabbed panel  | select; empty-first          | inventoried (clean, next batch)         |
+| 11  | **Four Works of Scripture**                               | bible-study        | `.station[data-work]` (tablist)            | `#wk-panel`                             | `WORKS[n]`, `selectWork`       |                      4 | inline tabbed panel  | `selectWork`; roving keys    | **IMPLEMENTED**                         |
+| 12  | **Five Sessions, Five Truths**                            | bible-study        | `.stop[data-session]` (tablist)            | `#session-detail`                       | `SESSIONS[n]`, `selectSession` |                      5 | inline tabbed panel  | `selectSession`; empty-first | **IMPLEMENTED**                         |
 
 ## 3. Implemented families (this pass)
 
 ### 11 · Four Works of Scripture (bible-study.html)
+
 - Markup: added `.wx-reader-nav` (`#wkPrev` / `#wkPos` / `#wkNext`) inside
   `.works__detail-inner`; `#wd-title` gets `data-reader-title tabindex="-1"`.
 - JS: `WXDetailReader.attach({count:4, select:n=>selectWork(String(n+1)),
-  resetScroll:#wk-panel, arrowKeys, arrowRoot:#wk-panel})`; the existing station
+resetScroll:#wk-panel, arrowKeys, arrowRoot:#wk-panel})`; the existing station
   tabs sync the reader index (`r.go`).
 - Verified (375 & 1366): 1 of 4 (Teaching, Prev disabled) → 2 (Reproof) → 3
   (Correction) → 4 (Training, Next disabled) → Prev → 3. Titles/tags correct; button
   72×44; doc-overflow 0; 0 JS errors.
 
 ### 12 · Five Sessions, Five Truths, One Life (bible-study.html)
+
 - Markup: `.wx-reader-nav` (`#ssPrev` / `#ssPos` / `#ssNext`) inside `.detail__top`;
   `#d-title` gets `data-reader-title tabindex="-1"`. The panel keeps its
   "choose a station" empty-first state; the nav lives inside the detail and appears
   when a session is open.
 - JS: `WXDetailReader.attach({count:5, select:n=>selectSession(String(n+1)),
-  resetScroll:#session-detail, isActive:()=>data-active==='1'})`; stops sync the index.
+resetScroll:#session-detail, isActive:()=>data-active==='1'})`; stops sync the index.
 - Verified (375 & 1366): Session One (Prev disabled) → Two → Three → Four → Five
   (Next disabled) → Prev → Four; panel stays active; doc-overflow 0; 0 JS errors.
 

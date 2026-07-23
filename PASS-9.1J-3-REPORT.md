@@ -31,15 +31,15 @@ reason they need per-family design**, staged for follow-up. The shared controlle
 
 ## 1. Confirmed seven-family inventory
 
-| Family | Section | Trigger | Overlay | Data | Order | Items | Open fn | Close | Type | Reader? |
-|--------|---------|---------|---------|------|-------|------:|---------|-------|------|---------|
-| Colour Palette | Visual Identity | `.vi-cell/.vi-swatch/.vi-onimg[data-key]` | `#viOverlay .vi-panel` | 7 `.vi-detail[data-key]` | blueblack,midnight,charcoal,bone,gold,crimson,wildflower | 7 | `show(k)` | `close()` Esc+focus-return | **flat modal** | **IMPLEMENTED** |
-| Logo & Wordmarks | Visual Identity | `.vi-card[data-target=zoneSignature]` → grid card | `#zoneBoard #zBody` | `markBoard()`/`faceBoard()` | board | board+slides | `zopen(html)` | `zclose()` | board+slides | staged |
-| Typography & Typeface | Visual Identity | `zoneVoice` grid card | `#zoneBoard` | zone `voice` cards | board | board+slides | `zopen` | `zclose` | board+slides | staged |
-| Imagery & Photography | Visual Identity | `zoneWorld` grid card | `#worldBoard` | `SLIDES` (w1–w3) | slides | multi-slide | `wopen`/`#wPrev`/`#wNext` | `wClose` | **already has slide prev/next** | staged |
-| Textures & Surface | Visual Identity | `zoneSurface` grid card | `#zoneBoard` | `SLIDES` (su1,su2) | board+slides | multi-slide | `zopen` | `zclose` | board+slides+sliders | staged |
-| Structure & Motion | Visual Identity | `zoneRhythm` grid card | `#zoneBoard` | `SLIDES` (ry1,ry2) | board+slides | multi-slide | `zopen` | `zclose` | board+slides+**video** | staged |
-| What Are You Making? | Visual Identity | `ASKS` list buttons | (scrolls to zones) | `ASKS[7]` | list | 7 | scroll | n/a | **list, no per-item modal** | staged |
+| Family                | Section         | Trigger                                           | Overlay                | Data                        | Order                                                    |        Items | Open fn                   | Close                      | Type                            | Reader?         |
+| --------------------- | --------------- | ------------------------------------------------- | ---------------------- | --------------------------- | -------------------------------------------------------- | -----------: | ------------------------- | -------------------------- | ------------------------------- | --------------- |
+| Colour Palette        | Visual Identity | `.vi-cell/.vi-swatch/.vi-onimg[data-key]`         | `#viOverlay .vi-panel` | 7 `.vi-detail[data-key]`    | blueblack,midnight,charcoal,bone,gold,crimson,wildflower |            7 | `show(k)`                 | `close()` Esc+focus-return | **flat modal**                  | **IMPLEMENTED** |
+| Logo & Wordmarks      | Visual Identity | `.vi-card[data-target=zoneSignature]` → grid card | `#zoneBoard #zBody`    | `markBoard()`/`faceBoard()` | board                                                    | board+slides | `zopen(html)`             | `zclose()`                 | board+slides                    | staged          |
+| Typography & Typeface | Visual Identity | `zoneVoice` grid card                             | `#zoneBoard`           | zone `voice` cards          | board                                                    | board+slides | `zopen`                   | `zclose`                   | board+slides                    | staged          |
+| Imagery & Photography | Visual Identity | `zoneWorld` grid card                             | `#worldBoard`          | `SLIDES` (w1–w3)            | slides                                                   |  multi-slide | `wopen`/`#wPrev`/`#wNext` | `wClose`                   | **already has slide prev/next** | staged          |
+| Textures & Surface    | Visual Identity | `zoneSurface` grid card                           | `#zoneBoard`           | `SLIDES` (su1,su2)          | board+slides                                             |  multi-slide | `zopen`                   | `zclose`                   | board+slides+sliders            | staged          |
+| Structure & Motion    | Visual Identity | `zoneRhythm` grid card                            | `#zoneBoard`           | `SLIDES` (ry1,ry2)          | board+slides                                             |  multi-slide | `zopen`                   | `zclose`                   | board+slides+**video**          | staged          |
+| What Are You Making?  | Visual Identity | `ASKS` list buttons                               | (scrolls to zones)     | `ASKS[7]`                   | list                                                     |            7 | scroll                    | n/a                        | **list, no per-item modal**     | staged          |
 
 Reconciliation vs 9.1J inventory: confirmed. The prior inventory listed these as
 `#viOverlay`; in fact only Colour Palette uses `#viOverlay` — the rest use
@@ -48,6 +48,7 @@ Reconciliation vs 9.1J inventory: confirmed. The prior inventory listed these as
 ## 2. Implemented family — Colour Palette
 
 **Registration** (creative-direction.html, colour-overlay IIFE):
+
 ```
 WXDetailReader.attach({ count:7, modal:true, dialog:#viOverlay,
   prevBtn:#viPrev, nextBtn:#viNext, posEl:#viPos, closeBtn:#viClose, backdrop:#viBackdrop,
@@ -57,6 +58,7 @@ WXDetailReader.attach({ count:7, modal:true, dialog:#viOverlay,
   onClose:()=> sel(null) });
 // openers (.vi-cell/.vi-swatch/.vi-onimg[data-key]) focus themselves then reader.open(index)
 ```
+
 The old bespoke `show/close/Escape/openers` were replaced by controller-driven
 `open(index)`/`close()` so the overlay now has a real **focus trap, background inert,
 body scroll-lock and focus restoration** in addition to Prev/Next/position — the
@@ -74,10 +76,10 @@ per-family data entered the controller.
 
 ## 4. Implementation matrix (this batch)
 
-| Family | Items | Trigger | Reader state | Boundary | Focus | Scroll |
-|--------|------:|---------|--------------|----------|-------|--------|
-| Colour Palette | 7 | swatch/cell click | modal, Prev/Next/pos, arrow keys | Prev off @1, Next off @7 | trap + return to opener | `.vi-panel` reset to top per item |
-| (other 6) | — | — | — | — | — | staged (see §1) |
+| Family         | Items | Trigger           | Reader state                     | Boundary                 | Focus                   | Scroll                            |
+| -------------- | ----: | ----------------- | -------------------------------- | ------------------------ | ----------------------- | --------------------------------- |
+| Colour Palette |     7 | swatch/cell click | modal, Prev/Next/pos, arrow keys | Prev off @1, Next off @7 | trap + return to opener | `.vi-panel` reset to top per item |
+| (other 6)      |     — | —                 | —                                | —                        | —                       | staged (see §1)                   |
 
 ## 5. Verification (Chromium/Playwright)
 

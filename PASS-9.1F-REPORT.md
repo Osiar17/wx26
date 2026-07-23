@@ -29,6 +29,7 @@ and the tall pinned region dominated the phone. `touch-action` was unset (`auto`
 ## 3. Exact changes (theme-brief.html only)
 
 **CSS** — new `@media(max-width:760px)` block:
+
 ```
 .gm-stage{height:auto}
 .gm-sticky{position:static;height:72svh;min-height:320px;overflow-x:auto;overflow-y:hidden;
@@ -42,12 +43,14 @@ and the tall pinned region dominated the phone. `touch-action` was unset (`auto`
 .gm-cue{...“Swipe to explore →” chip...}   /* cue, aria-hidden */
 .gm-stage.gm-explored .gm-cue,.gm-stage.gm-explored::after{opacity:0}
 ```
+
 Plus a hidden-by-default `.gm-cue{display:none}` (shown only in the mobile block).
 
 **Markup** — one decorative cue node added inside `.gm-stage`:
 `<div class="gm-cue" aria-hidden="true"><span>Swipe to explore</span><span aria-hidden="true">→</span></div>`.
 
 **JS** — the garden-map block now branches on `window.matchMedia('(max-width:760px)')`:
+
 - `render()` returns early on mobile (no scroll-linked transform); desktop path unchanged.
 - `syncMode()` on mobile sets `.gm-sticky` `tabindex=0`, `role=region`, an
   aria-label, and clears the transform; on desktop it removes those attributes.
@@ -61,16 +64,16 @@ No other selector, page, or the panorama artwork changed.
 
 ## 4. Before / after measurements (mobile)
 
-| Metric (375px) | Before | After |
-|---|---|---|
-| `.gm-stage` height | 2134 px (320vh) | ~480 px |
-| `.gm-sticky` position | sticky | static |
-| `.gm-sticky` overflow-x | hidden | auto |
-| `touch-action` | auto | pan-x pan-y |
-| viewport width | 375 | 375 |
-| panorama content width | 1500 (400vw) | 1500 (400vw) |
-| max horizontal scroll | 0 (not user-scrollable) | **1125 px** |
-| document horizontal overflow | 0 | 0 |
+| Metric (375px)               | Before                  | After        |
+| ---------------------------- | ----------------------- | ------------ |
+| `.gm-stage` height           | 2134 px (320vh)         | ~480 px      |
+| `.gm-sticky` position        | sticky                  | static       |
+| `.gm-sticky` overflow-x      | hidden                  | auto         |
+| `touch-action`               | auto                    | pan-x pan-y  |
+| viewport width               | 375                     | 375          |
+| panorama content width       | 1500 (400vw)            | 1500 (400vw) |
+| max horizontal scroll        | 0 (not user-scrollable) | **1125 px**  |
+| document horizontal overflow | 0                       | 0            |
 
 Per width — viewport / content / max-swipe (all doc-overflow 0):
 320 → 320 / 1280 / **960**; 360 → 360 / 1440 / **1080**; 375 → 375 / 1500 / **1125**;
@@ -78,16 +81,16 @@ Per width — viewport / content / max-swipe (all doc-overflow 0):
 
 ## 5. Verification (Chromium/Playwright, repo-subpath server)
 
-| Width | Mode | Max h-scroll | tabindex/role/label | Arrow-key moves | Doc h-overflow | JS err | Failed local req |
-|------:|:----:|-------------:|:-------------------:|:---------------:|:--------------:|:------:|:----------------:|
-| 320×568 | mobile | 960 | 0 / region / yes | yes | 0 | 0 | 0 |
-| 360×640 | mobile | 1080 | 0 / region / yes | yes | 0 | 0 | 0 |
-| 375×667 | mobile | 1125 | 0 / region / yes | yes | 0 | 0 | 0 |
-| 390×844 | mobile | 1170 | 0 / region / yes | yes | 0 | 0 | 0 |
-| 414×896 | mobile | 1242 | 0 / region / yes | yes | 0 | 0 | 0 |
-| 768×1024 | desktop | (pinned pan, unchanged) | none | — | 0 | 0 | 0 |
-| 1366×768 | desktop | (pinned pan, unchanged) | none | — | 0 | 0 | 0 |
-| 1440×900 | desktop | (pinned pan, unchanged) | none | — | 0 | 0 | 0 |
+|    Width |  Mode   |            Max h-scroll | tabindex/role/label | Arrow-key moves | Doc h-overflow | JS err | Failed local req |
+| -------: | :-----: | ----------------------: | :-----------------: | :-------------: | :------------: | :----: | :--------------: |
+|  320×568 | mobile  |                     960 |  0 / region / yes   |       yes       |       0        |   0    |        0         |
+|  360×640 | mobile  |                    1080 |  0 / region / yes   |       yes       |       0        |   0    |        0         |
+|  375×667 | mobile  |                    1125 |  0 / region / yes   |       yes       |       0        |   0    |        0         |
+|  390×844 | mobile  |                    1170 |  0 / region / yes   |       yes       |       0        |   0    |        0         |
+|  414×896 | mobile  |                    1242 |  0 / region / yes   |       yes       |       0        |   0    |        0         |
+| 768×1024 | desktop | (pinned pan, unchanged) |        none         |        —        |       0        |   0    |        0         |
+| 1366×768 | desktop | (pinned pan, unchanged) |        none         |        —        |       0        |   0    |        0         |
+| 1440×900 | desktop | (pinned pan, unchanged) |        none         |        —        |       0        |   0    |        0         |
 
 - Full panorama reachable by horizontal swipe (max-scroll > 0 everywhere on mobile);
   not compressed into the viewport; page gains no horizontal overflow.

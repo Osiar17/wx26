@@ -6,7 +6,7 @@
 **Working copy:** `wx2026-pass-9.1J-4` (duplicated from `wx2026-pass-9.1J-3`; the 9.1J.3 source was **not** modified)
 **Date:** 2026-07-22
 
-This pass adds *read-through-without-closing* navigation to the five Visual
+This pass adds _read-through-without-closing_ navigation to the five Visual
 Identity families. It changed exactly one runtime file, `creative-direction.html`,
 plus one dev-only Playwright smoke addition. The shared reader controller
 `assets/js/wx-detail-reader.js` is **byte-identical** to 9.1J.3.
@@ -21,28 +21,28 @@ subsections that sit under the Creative Direction "Visual Identity" heading
 Colour Palette) into a single line. Counted correctly — one entry per family
 that has (or needs) its own reader/navigation surface — the site has **15**.
 
-| #  | Family | Surface | Status |
-|----|--------|---------|--------|
-| 1  | Bible Study — Four Works | inline reader | ✅ complete before this batch (9.1J) |
-| 2  | Bible Study — Five Sessions | inline reader | ✅ complete before this batch (9.1J) |
-| 3  | Wade-In dimensions | inline reader | ✅ complete before this batch (9.1J.2) |
-| 4  | Musical Identity — phases | inline reader + graph | ✅ complete before this batch (9.1J.2) |
-| 5  | Colour Palette | `#viOverlay` modal reader | ✅ complete before this batch (9.1J.3) |
-| 6  | **Logo & Wordmarks** | `#zoneBoard` modal card reader | ✅ **this batch** |
-| 7  | **Typography & Typeface** | `#zoneBoard` modal card reader | ✅ **this batch** |
-| 8  | **Imagery & Photography** | `#worldBoard` slide+card | ✅ **this batch** (normalised; nav retained) |
-| 9  | **Textures & Surface Rules** | `#worldBoard` slide+card | ✅ **this batch** (normalised; nav retained) |
-| 10 | **Structure & Motion** | `#worldBoard` slide+card + video | ✅ **this batch** (normalised; nav retained) |
-| 11 | What Are You Making? | — | ⏳ pending |
-| 12 | Elements & Symbols | — | ⏳ pending |
-| 13 | Flow of Our Journey | — | ⏳ pending |
-| 14 | Find Your Part | — | ⏳ pending |
-| 15 | Musical Identity — Elements | — | ⏳ pending |
+| #   | Family                       | Surface                          | Status                                       |
+| --- | ---------------------------- | -------------------------------- | -------------------------------------------- |
+| 1   | Bible Study — Four Works     | inline reader                    | ✅ complete before this batch (9.1J)         |
+| 2   | Bible Study — Five Sessions  | inline reader                    | ✅ complete before this batch (9.1J)         |
+| 3   | Wade-In dimensions           | inline reader                    | ✅ complete before this batch (9.1J.2)       |
+| 4   | Musical Identity — phases    | inline reader + graph            | ✅ complete before this batch (9.1J.2)       |
+| 5   | Colour Palette               | `#viOverlay` modal reader        | ✅ complete before this batch (9.1J.3)       |
+| 6   | **Logo & Wordmarks**         | `#zoneBoard` modal card reader   | ✅ **this batch**                            |
+| 7   | **Typography & Typeface**    | `#zoneBoard` modal card reader   | ✅ **this batch**                            |
+| 8   | **Imagery & Photography**    | `#worldBoard` slide+card         | ✅ **this batch** (normalised; nav retained) |
+| 9   | **Textures & Surface Rules** | `#worldBoard` slide+card         | ✅ **this batch** (normalised; nav retained) |
+| 10  | **Structure & Motion**       | `#worldBoard` slide+card + video | ✅ **this batch** (normalised; nav retained) |
+| 11  | What Are You Making?         | —                                | ⏳ pending                                   |
+| 12  | Elements & Symbols           | —                                | ⏳ pending                                   |
+| 13  | Flow of Our Journey          | —                                | ⏳ pending                                   |
+| 14  | Find Your Part               | —                                | ⏳ pending                                   |
+| 15  | Musical Identity — Elements  | —                                | ⏳ pending                                   |
 
 **Before this batch: 5 of 15 complete, 10 pending.**
 **After this batch: 10 of 15 complete, 5 pending** (families 11–15).
 
-This is *not* "5 of 12."
+This is _not_ "5 of 12."
 
 ---
 
@@ -94,11 +94,19 @@ the two-level position. No board shows a "Card" bar and a "Slide" bar at once.
 **New markup** — a reader bar inside `.vi-zpanel` (after `#zBody`):
 
 ```html
-<div class="wx-reader-nav vi-reader-nav" id="zReaderNav" role="group"
-     aria-label="Move between the cards in this board">
-  <button class="wx-reader-nav__btn" id="zPrev" type="button" aria-label="Previous card">‹<span>Prev</span></button>
+<div
+  class="wx-reader-nav vi-reader-nav"
+  id="zReaderNav"
+  role="group"
+  aria-label="Move between the cards in this board"
+>
+  <button class="wx-reader-nav__btn" id="zPrev" type="button" aria-label="Previous card">
+    ‹<span>Prev</span>
+  </button>
   <span class="wx-reader-nav__pos" id="zPos" aria-live="polite">Card 1 of 1</span>
-  <button class="wx-reader-nav__btn" id="zNext" type="button" aria-label="Next card"><span>Next</span>›</button>
+  <button class="wx-reader-nav__btn" id="zNext" type="button" aria-label="Next card">
+    <span>Next</span>›
+  </button>
 </div>
 ```
 
@@ -107,28 +115,60 @@ shared controller while keeping `markBoard()`/`faceBoard()` as the render source
 of truth:
 
 ```js
-var zReader = (window.WXDetailReader && zPrevBtn) ? WXDetailReader.attach({
-  count:1, modal:true, dialog:zb, prevBtn:zPrevBtn, nextBtn:zNextBtn, posEl:zPosEl,
-  closeBtn:document.getElementById('zClose'), backdrop:document.getElementById('zBackdrop'),
-  arrowKeys:true, arrowRoot:zb, resetScroll:zPanel, focusOnOpen:document.getElementById('zClose'),
-  label:function(i){ return 'Card '+(i+1)+' of '+zFam.length; },
-  select:function(i){ zBody.innerHTML = zRender(zFam[i]);
-    if(zCrumbEl) zCrumbEl.textContent = zFamName+' — '+(zFam[i].name||''); }
-}) : null;
+var zReader =
+  window.WXDetailReader && zPrevBtn
+    ? WXDetailReader.attach({
+        count: 1,
+        modal: true,
+        dialog: zb,
+        prevBtn: zPrevBtn,
+        nextBtn: zNextBtn,
+        posEl: zPosEl,
+        closeBtn: document.getElementById("zClose"),
+        backdrop: document.getElementById("zBackdrop"),
+        arrowKeys: true,
+        arrowRoot: zb,
+        resetScroll: zPanel,
+        focusOnOpen: document.getElementById("zClose"),
+        label: function (i) {
+          return "Card " + (i + 1) + " of " + zFam.length;
+        },
+        select: function (i) {
+          zBody.innerHTML = zRender(zFam[i]);
+          if (zCrumbEl) zCrumbEl.textContent = zFamName + " — " + (zFam[i].name || "");
+        },
+      })
+    : null;
 
-function zOpenFamily(fam,render,name,idx,trigger){ zFam=fam; zRender=render; zFamName=name;
-  if(zReader){ zReader.setCount(fam.length);
-    if(trigger&&trigger.focus){try{trigger.focus();}catch(_){}} zReader.open(idx); }
-  else { zopen(render(fam[idx])); } }   // graceful fallback if controller absent
+function zOpenFamily(fam, render, name, idx, trigger) {
+  zFam = fam;
+  zRender = render;
+  zFamName = name;
+  if (zReader) {
+    zReader.setCount(fam.length);
+    if (trigger && trigger.focus) {
+      try {
+        trigger.focus();
+      } catch (_) {}
+    }
+    zReader.open(idx);
+  } else {
+    zopen(render(fam[idx]));
+  }
+} // graceful fallback if controller absent
 ```
 
 **Grid handlers** now open a family instead of a single card:
 
 ```js
 // mark grid:   zopen(markBoard(m))  ->
-b.addEventListener('click',function(){ zOpenFamily(MARKS,markBoard,'Logo & Wordmarks',MARKS.indexOf(m),b); });
+b.addEventListener("click", function () {
+  zOpenFamily(MARKS, markBoard, "Logo & Wordmarks", MARKS.indexOf(m), b);
+});
 // face grid:   zopen(faceBoard(f))  ->
-b.addEventListener('click',function(){ zOpenFamily(FACES,faceBoard,'Typography & Typeface',FACES.indexOf(f),b); });
+b.addEventListener("click", function () {
+  zOpenFamily(FACES, faceBoard, "Typography & Typeface", FACES.indexOf(f), b);
+});
 ```
 
 **Close wiring** delegated to the controller (its modal mode owns Escape, backdrop,
@@ -136,8 +176,12 @@ inert and focus restoration); the old page-level backdrop/close/Escape listeners
 were removed to avoid double-handling:
 
 ```js
-var zbk=document.getElementById('zBack');
-if(zbk) zbk.addEventListener('click',function(){ if(zReader) zReader.close(); else zclose(); });
+var zbk = document.getElementById("zBack");
+if (zbk)
+  zbk.addEventListener("click", function () {
+    if (zReader) zReader.close();
+    else zclose();
+  });
 ```
 
 **Fallback preserved:** if `WXDetailReader` is unavailable, `zOpenFamily` calls the
@@ -244,15 +288,16 @@ assets/js/wx-detail-reader.js : identical
 
 ## K. Checks (all green)
 
-| Check | Result |
-|-------|--------|
-| `tools/audit.mjs` | **PASSED — 0 errors, 0 warnings** (11 HTML files, 307 scanned) |
-| `html-validate creative-direction.html` | **exit 0** |
-| `prettier --check` (changed files) | **All matched files use Prettier code style** |
-| `eslint` (creative-direction.html + controller) | **0 errors** (1 pre-existing warning) |
-| Playwright smoke | **31 passed** (incl. tests 29–31 added this pass) |
+| Check                                           | Result                                                         |
+| ----------------------------------------------- | -------------------------------------------------------------- |
+| `tools/audit.mjs`                               | **PASSED — 0 errors, 0 warnings** (11 HTML files, 307 scanned) |
+| `html-validate creative-direction.html`         | **exit 0**                                                     |
+| `prettier --check` (changed files)              | **All matched files use Prettier code style**                  |
+| `eslint` (creative-direction.html + controller) | **0 errors** (1 pre-existing warning)                          |
+| Playwright smoke                                | **31 passed** (incl. tests 29–31 added this pass)              |
 
 New smoke tests:
+
 - **29** logo marks — open, Next through cards, boundary, Escape restores focus.
 - **30** typography cards **+ cross-family reset** (Logo 7 → Typography 5 via `setCount`).
 - **31** imagery world-board opens with background lock and slide nav present.

@@ -8,6 +8,7 @@
 
 The interactive mood presentation on `#mood` is "The Moods Within the Garden"
 (`.moods`). Its parts map onto the brief's checklist:
+
 - **Data source:** `M2` (moods 1–5: number `n`, title `t`, keyword set `w`, descriptor `c`).
 - **Active-mood state:** the `is-active` class on a `.moods-btn` tab, driven by `show(key)`.
 - **Selector controls:** `.moods-tabs` (All Moods + the five moods).
@@ -38,6 +39,7 @@ name→image→descriptor group as one unit, style `.moods-nav__btn` (≥44×44,
 reduced-motion rule zeroing `.moods-master/.moods-dim/.moods-glow` transitions.
 
 **Markup** — after `#moodsNote`, inside `.moods-stage`:
+
 ```
 <div class="moods-nav" role="group" aria-label="Step through the moods">
   <button class="moods-nav__btn" id="moodsPrev" aria-label="Previous mood">‹ Prev</button>
@@ -58,14 +60,14 @@ data, `show()`, routing, or desktop rule was changed.
 
 Mobile (320–414), reader stepped with Next from the start:
 
-| Position | Active mood | Active count | Note title | Next disabled |
-|---------|-------------|:------------:|------------|:-------------:|
-| All moods (Prev disabled) | — | — | — | no |
-| 1 of 5 | 1 | 1 | Secluded & Intimate | no |
-| 2 of 5 | 2 | 1 | Assured | no |
-| 3 of 5 | 3 | 1 | Pressed | no |
-| 4 of 5 | 4 | 1 | Dependent | no |
-| 5 of 5 | 5 | 1 | Surrendered | **yes** |
+| Position                  | Active mood | Active count | Note title          | Next disabled |
+| ------------------------- | ----------- | :----------: | ------------------- | :-----------: |
+| All moods (Prev disabled) | —           |      —       | —                   |      no       |
+| 1 of 5                    | 1           |      1       | Secluded & Intimate |      no       |
+| 2 of 5                    | 2           |      1       | Assured             |      no       |
+| 3 of 5                    | 3           |      1       | Pressed             |      no       |
+| 4 of 5                    | 4           |      1       | Dependent           |      no       |
+| 5 of 5                    | 5           |      1       | Surrendered         |    **yes**    |
 
 - Exactly one mood active at every step; name, image and descriptor update
   together; no stale/duplicate mood content.

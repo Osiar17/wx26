@@ -18,19 +18,19 @@ navigation, page directory or cross-page return paths were added.
 
 ## A. Page-by-page footer inventory (pre-edit)
 
-| Page | Footer selector | Static / shared / generated | YES | CCC | Linked? | Mobile grouping (before) | Notes |
-|------|-----------------|-----------------------------|-----|-----|---------|--------------------------|-------|
-| index.html | `.foot > .foot-wrap` (`.foot-yes`/`.foot-ccc`) | static | ✓ | ✓ | YES→`#hub` | row, space-between | canonical base |
-| concept.html | `.foot > .foot-wrap` | static | ✓ | ✓ | YES→`index#hub` | row, space-between | same as index |
-| setlist.html | `.foot` (`.fy`/`.fc`) | static | ✓ | ✓ | YES→`index#hub` | row, space-between | no wrap div |
-| lyrics.html | `.foot` (`.fy`/`.fc`) | static | ✓ | ✓ | YES→`index#hub` | row, space-between | no wrap div |
-| theme-brief.html | `.wx-foot` (`.wx-foot-yes`/`.wx-foot-ccc`) | static | ✓ | ✓ | **not linked** | **column, centred (stacked)** | **Defect 1** — awkward centred block |
-| playbook.html | `.eco-foot` (`.eco-yes`/`.eco-mid`/`.eco-ccc`) | static (shared chrome) | ✓ | ✓ | YES→`index#hub` | **column, centred; label between marks** | **Defect 2** — divergent arrangement |
-| blueprint.html | `.eco-foot` | static (shared chrome) | ✓ | ✓ | YES→`index#hub` | row, align flex-end | bottom-aligned |
-| music-workshop.html | `.eco-foot` | static (shared chrome) | ✓ | ✓ | YES→`index#hub` | row, align flex-end | bottom-aligned |
-| bible-study.html | `.eco-foot` | static (shared chrome) | ✓ | ✓ | YES→`index#hub` | row, align flex-end | bottom-aligned |
-| creative-direction.html | `.eco-foot` (single, after all panels, inside `<main>`) | static, **one shared** footer | ✓ | ✓ | YES→`index#hub` | row, align flex-end | **Defect 3** — hidden on the `is-home` landing splash only |
-| 404.html | — (none) | — | ✗ | ✗ | — | — | intentional minimal error page; **left unchanged** |
+| Page                    | Footer selector                                         | Static / shared / generated   | YES | CCC | Linked?         | Mobile grouping (before)                 | Notes                                                      |
+| ----------------------- | ------------------------------------------------------- | ----------------------------- | --- | --- | --------------- | ---------------------------------------- | ---------------------------------------------------------- |
+| index.html              | `.foot > .foot-wrap` (`.foot-yes`/`.foot-ccc`)          | static                        | ✓   | ✓   | YES→`#hub`      | row, space-between                       | canonical base                                             |
+| concept.html            | `.foot > .foot-wrap`                                    | static                        | ✓   | ✓   | YES→`index#hub` | row, space-between                       | same as index                                              |
+| setlist.html            | `.foot` (`.fy`/`.fc`)                                   | static                        | ✓   | ✓   | YES→`index#hub` | row, space-between                       | no wrap div                                                |
+| lyrics.html             | `.foot` (`.fy`/`.fc`)                                   | static                        | ✓   | ✓   | YES→`index#hub` | row, space-between                       | no wrap div                                                |
+| theme-brief.html        | `.wx-foot` (`.wx-foot-yes`/`.wx-foot-ccc`)              | static                        | ✓   | ✓   | **not linked**  | **column, centred (stacked)**            | **Defect 1** — awkward centred block                       |
+| playbook.html           | `.eco-foot` (`.eco-yes`/`.eco-mid`/`.eco-ccc`)          | static (shared chrome)        | ✓   | ✓   | YES→`index#hub` | **column, centred; label between marks** | **Defect 2** — divergent arrangement                       |
+| blueprint.html          | `.eco-foot`                                             | static (shared chrome)        | ✓   | ✓   | YES→`index#hub` | row, align flex-end                      | bottom-aligned                                             |
+| music-workshop.html     | `.eco-foot`                                             | static (shared chrome)        | ✓   | ✓   | YES→`index#hub` | row, align flex-end                      | bottom-aligned                                             |
+| bible-study.html        | `.eco-foot`                                             | static (shared chrome)        | ✓   | ✓   | YES→`index#hub` | row, align flex-end                      | bottom-aligned                                             |
+| creative-direction.html | `.eco-foot` (single, after all panels, inside `<main>`) | static, **one shared** footer | ✓   | ✓   | YES→`index#hub` | row, align flex-end                      | **Defect 3** — hidden on the `is-home` landing splash only |
+| 404.html                | — (none)                                                | —                             | ✗   | ✗   | —               | —                                        | intentional minimal error page; **left unchanged**         |
 
 Asset paths (every page): `assets/yes-crimson-vertical.{webp,png}`,
 `assets/ccc-logo.{webp,png}` — relative, GitHub-Pages-safe, WebP→PNG `<picture>`
@@ -49,7 +49,7 @@ no shared footer CSS), so the identity block drifted independently:
    at phone widths → the two marks stacked into a tall, isolated centred block.
 2. **Playbook** — inline `.eco-foot` also went column on mobile, and because the
    `.eco-mid` label ("Playbook · WX 2026") sits between the marks in source order, it
-   landed *between* YES and CCC.
+   landed _between_ YES and CCC.
 3. **Creative Direction** — the footer is a single shared `.eco-foot`; it is only
    hidden by `body.is-home .eco-foot{display:none}`, i.e. on the landing splash. On
    the actual Story segment (and all others) it is present and reachable — the
@@ -137,13 +137,13 @@ Screenshots: `pb-320-before/after.png`, `pb-390-before/after.png`, `pb-desktop-a
 
 ## G. Accessibility decision per mark
 
-- **YES Crimson (linked, 9 of 10 footers):** a *functional link* to `index#hub`. The
+- **YES Crimson (linked, 9 of 10 footers):** a _functional link_ to `index#hub`. The
   accessible name comes from the anchor's `aria-label` ("YES — Not My Will, But
   Yours"); destination unchanged; visible focus ring added; the link wraps only the
   mark, not unrelated footer content.
-- **YES Crimson (theme-brief, unlinked):** an *informative* image; `alt` describes it.
+- **YES Crimson (theme-brief, unlinked):** an _informative_ image; `alt` describes it.
   Left unlinked — adding a link would be a cross-page return path (out of scope, §L).
-- **CCC (all footers, unlinked):** a *standalone informative* mark with no adjacent
+- **CCC (all footers, unlinked):** a _standalone informative_ mark with no adjacent
   visible organisation name, so `alt="Calvary Charismatic Centre"` (theme-brief keeps
   its more specific "…, Apenkwa") correctly identifies the church. Not decorative.
 - No repeated announcements were introduced; alt text is only where the mark is the
@@ -181,13 +181,13 @@ structure preserved, marks centred, sizes unchanged (YES 56 / CCC 38px).
 
 ## K. Checks (all green)
 
-| Check | Result |
-|-------|--------|
-| `tools/audit.mjs` | **PASSED — 0 errors, 0 warnings** |
-| `html-validate *.html` | **exit 0** |
-| `prettier --check` (tools) | **All matched files use Prettier code style** |
-| `eslint` | **0 errors** |
-| Playwright smoke | **43 passed** (38 prior incl. all reader tests + 5 new footer tests) |
+| Check                      | Result                                                               |
+| -------------------------- | -------------------------------------------------------------------- |
+| `tools/audit.mjs`          | **PASSED — 0 errors, 0 warnings**                                    |
+| `html-validate *.html`     | **exit 0**                                                           |
+| `prettier --check` (tools) | **All matched files use Prettier code style**                        |
+| `eslint`                   | **0 errors**                                                         |
+| Playwright smoke           | **43 passed** (38 prior incl. all reader tests + 5 new footer tests) |
 
 New footer tests: theme-brief mobile one-row identity group; CD one shared footer on
 all five segments; CD Story footer scrollable into view (mobile); Playbook operational
