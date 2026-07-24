@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.1M">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 <meta name="robots" content="noindex, nofollow">
 
 <title>WX 2026 Blueprint</title>
@@ -429,38 +429,13 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 .eco-foot .eco-ccc img{height:clamp(28px,3.6vw,38px);opacity:.9}
 @media(max-width:640px){.eco-foot .eco-yes img{height:42px}.eco-foot .eco-ccc img{height:28px}}
 
-/* ===== Pass 9.1M — restrained Print control (screen only) ===== */
-.wx-print-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;min-width:38px;padding:0;background:transparent;border:1px solid rgba(var(--gold-rgb),.35);border-radius:9px;color:var(--gold);cursor:pointer;flex:0 0 auto;line-height:0;transition:background .15s,border-color .15s,color .15s}
-@media(pointer:coarse){.wx-print-btn{width:44px;height:44px;min-width:44px}}
-.wx-print-btn:hover{background:rgba(var(--gold-rgb),.12);border-color:rgba(var(--gold-rgb),.6);color:var(--gold-bright)}
-.wx-print-btn:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
-.wx-print-btn svg{display:block;pointer-events:none}
-.rd-main__head{position:relative;padding-right:52px}
-.rd-main__head .wx-print-btn{position:absolute;top:0;right:0}
-
 @media print{
-  @page{size:A4 portrait;margin:14mm 15mm 15mm}
-  html,body{background:#FFFFFF!important;color:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body>*{display:none!important}
-  #printDoc{display:block!important;font-family:Georgia,'EB Garamond',serif;font-size:10.5pt;line-height:1.35;color:#111}
-  .wx-print-btn,.wx-printmenu{display:none!important}
-  .pd-head{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt;break-inside:avoid}
-  .pd-name{font-family:'Cinzel',Georgia,serif;font-size:22pt;line-height:1.05;color:#111;text-transform:uppercase;letter-spacing:.03em;margin:0}
-  .pd-sub{font-family:Arial,sans-serif;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:#303030;margin-top:3pt}
-  .pd-contact{font-family:Arial,sans-serif;font-size:9pt;color:#111;margin-top:5pt}
-  .pd-contact b{color:#111}
-  .pd-sec{margin-bottom:9pt;break-inside:avoid;page-break-inside:avoid}
-  .pd-sec__h{font-family:Arial,sans-serif;font-size:9pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#59420F;border-bottom:.75pt solid #B8B8B8;padding-bottom:2pt;margin-bottom:5pt}
-  .pd-kv{font-size:10pt;color:#111;margin-top:2pt}
-  .pd-kv b{color:#111}
-  .pd-due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7A1115;margin-bottom:2pt}
-  .pd-due__d{font-weight:700;color:#7A1115}
-  .pd-due--overdue{color:#5A0A0D}
-  .pd-due--overdue .pd-due__d{color:#5A0A0D}
-  .pd-due--overdue .pd-due__lab{border:.75pt solid #5A0A0D;padding:0 3pt}
-  .pd-row{border:.75pt solid #777;border-left:2.5pt solid #7A1115;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid}
-  .pd-row__title{font-size:11pt;font-weight:700;color:#111;line-height:1.25;margin-bottom:2pt}
-  .pd-empty{font-size:10pt;color:#333;font-style:italic}
+  body{background:#fff;color:#111}
+  .site-nav,.appbar,.night,.grid,.grain,.hero,.util,.drawer,.scrim,.sheet,.explore,.moredetail__btn,.route,.railsearch{display:none!important}
+  .view{display:none!important}.view.active{display:block!important}
+  .rd{grid-template-columns:1fr!important}.summary{position:static!important}
+  .ovblock,.summary,.delivcard,.docctl,.ov-progress,.trow{border-color:#ccc!important;background:#fff!important;color:#111}
+  .trow__title,.display,.rd-main__title,.delivcard h3{color:#111!important}
 }
 </style>
   <link rel="stylesheet" href="assets/css/tokens.css">
@@ -470,11 +445,9 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
   <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
   <script src="assets/js/site.js" defer></script>
-  <script src="assets/js/wx-export.js"></script>
 </head>
 <body>
 <a class="skip" href="#mainContent">Skip to content</a>
-<div id="printDoc" aria-hidden="true"></div>
 
 <nav class="site-nav" aria-label="Ecosystem">
   <a class="site-nav__logo" href="index.html" aria-label="Worship Experience — home"><picture><source type="image/webp" srcset="assets/wx-logo.webp"><img src="assets/wx-logo.png" alt="Worship Experience" decoding="async"></picture></a>
@@ -938,65 +911,6 @@ function fillRows(host, list, empty, opts){
 }
 function miniRow(t){ const over=isOverdue(t); return `<button class="mini-row" data-ref="${t.ref}">${marker(t.status)}<span class="mini-t">${esc(t.task.split("—")[0].trim())}</span><span class="mini-due ${over?'over':''}">${fmtDue(t)}</span></button>`; }
 
-/* ============================================================
-   Pass 9.1M — Targeted task printing (Blueprint)
-   Dedicated #printDoc rendered through the WXExport isolated iframe.
-   The live page is never mutated; print reflects the current view state.
-   ============================================================ */
-var WX_PRINT_ICON='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2M8 14h8v6H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
-function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Print">'+WX_PRINT_ICON+'</button>'; }
-function pdPrintDate(){ try{ return TODAY.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return ""; } }
-var BLUEPRINT_PRINT_CSS="@page{size:A4 portrait;margin:14mm 15mm 15mm} html,body{margin:0;background:#fff;color:#111;font-family:Georgia,'EB Garamond',serif;font-size:10.5pt;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact} .pd-head{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt} .pd-name{font-family:'Cinzel',Georgia,serif;font-size:22pt;line-height:1.05;color:#111;text-transform:uppercase;letter-spacing:.03em;margin:0} .pd-sub{font-family:Arial,sans-serif;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:#303030;margin-top:3pt} .pd-contact{font-family:Arial,sans-serif;font-size:9pt;color:#111;margin-top:5pt} .pd-contact b{color:#111} .pd-sec{margin-bottom:9pt;break-inside:avoid;page-break-inside:avoid} .pd-sec__h{font-family:Arial,sans-serif;font-size:9pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#59420F;border-bottom:.75pt solid #B8B8B8;padding-bottom:2pt;margin-bottom:5pt} .pd-kv{font-size:10pt;color:#111;margin-top:2pt} .pd-kv b{color:#111} .pd-due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7A1115;margin-bottom:2pt} .pd-due__d{font-weight:700;color:#7A1115} .pd-due--overdue{color:#5A0A0D} .pd-due--overdue .pd-due__d{color:#5A0A0D} .pd-due--overdue .pd-due__lab{border:.75pt solid #5A0A0D;padding:0 3pt} .pd-row{border:.75pt solid #777;border-left:2.5pt solid #7A1115;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid} .pd-row__title{font-size:11pt;font-weight:700;color:#111;line-height:1.25;margin-bottom:2pt} .pd-empty{font-size:10pt;color:#333;font-style:italic}";
-function pdDueParts(t){
-  if(t.status!=="complete" && t.status!=="deferred" && isOverdue(t)){ var od=overdueDays(t); return {cls:'pd-due--overdue',label:'OVERDUE',detail:esc(fmtDue(t))+(od?' · '+od+' day'+(od===1?'':'s')+' overdue':'')}; }
-  if(due14(t)){ var du=daysBetween(t.dueDt,TODAY); return {cls:'pd-due--soon',label:(du<=0?'DUE TODAY':'DUE IN '+du+' DAY'+(du===1?'':'S')),detail:esc(fmtDue(t))}; }
-  return {cls:'',label:'DUE',detail:esc(fmtDue(t))};
-}
-function pdDueHTML(t){ var d=pdDueParts(t); return '<div class="pd-due '+d.cls+'"><span class="pd-due__lab">'+d.label+'</span> <span class="pd-due__d">'+d.detail+'</span></div>'; }
-function pdFullRow(t,opts){
-  opts=opts||{};
-  var out='<div class="pd-row">'+pdDueHTML(t)+'<div class="pd-row__title">'+esc(t.task.split("—")[0].trim())+'</div>';
-  if(t.ref) out+='<div class="pd-kv"><b>Ref:</b> '+esc(t.ref)+'</div>';
-  out+='<div class="pd-kv"><b>Status:</b> '+esc(STATUS_LABEL[t.status]||"")+'</div>';
-  if(!opts.skipArea){ var al=(WORKSTREAMS[t.ws]&&WORKSTREAMS[t.ws].label)||AREA_SHORT[t.ws]||t.ws; out+='<div class="pd-kv"><b>Area:</b> '+esc(al)+'</div>'; }
-  if(!opts.skipOwner && t.responsible) out+='<div class="pd-kv"><b>Owner:</b> '+esc(t.responsible)+'</div>';
-  if(t.notes && String(t.notes).trim()) out+='<div class="pd-kv"><b>Notes:</b> '+esc(t.notes)+'</div>';
-  out+='</div>';
-  return out;
-}
-function pdGroupBy(list,keyFn,labelFn,rowOpts){
-  var groups={},order=[];
-  list.forEach(function(t){ var k=keyFn(t); if(!groups[k]){groups[k]=[];order.push(k);} groups[k].push(t); });
-  return order.map(function(k){ return '<div class="pd-sec"><div class="pd-sec__h">'+esc(labelFn(k))+'</div>'+groups[k].map(function(t){return pdFullRow(t,rowOpts);}).join("")+'</div>'; }).join("");
-}
-function pdDocShell(heading,sub,metaLine,bodyHTML){
-  return '<div class="pd-head"><h1 class="pd-name">'+esc(heading)+'</h1>'+(sub?'<div class="pd-sub">'+esc(sub)+'</div>':'')+(metaLine?'<div class="pd-contact">'+metaLine+'</div>':'')+'</div>'+bodyHTML;
-}
-function wxRunPrint(){
-  var host=document.getElementById('printDoc'); if(!host) return;
-  var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>WX2026 Blueprint</title><style>'+BLUEPRINT_PRINT_CSS+'</style></head><body>'+host.innerHTML+'</body></html>';
-  if(window.WXExport&&window.WXExport.printDocument){ window.WXExport.printDocument(doc); } else { window.print(); }
-}
-function buildPersonPrintDoc(){
-  var host=document.getElementById("printDoc"); if(!host||!peopleSel) return;
-  var l=ownerTasks(peopleSel);
-  var heading="BLUEPRINT / TASKS FOR "+String(peopleSel).toUpperCase();
-  var meta='<b>Person:</b> '+esc(peopleSel)+' · <b>Printed:</b> '+esc(pdPrintDate())+' · <b>Tasks:</b> '+l.length;
-  var body=l.length?pdGroupBy(l,function(t){return t.ws;},function(k){return (WORKSTREAMS[k]&&WORKSTREAMS[k].label)||AREA_SHORT[k]||k;},{skipOwner:true}):'<p class="pd-empty">No tasks in this view.</p>';
-  host.innerHTML=pdDocShell(heading,"Tasks by Person",meta,body);
-}
-function printPerson(){ buildPersonPrintDoc(); wxRunPrint(); }
-function buildAreaPrintDoc(){
-  var host=document.getElementById("printDoc"); if(!host||!areaSel) return;
-  var ws=WORKSTREAMS[areaSel], l=areaTasks(areaSel).slice().sort(function(a,b){return a.dueN-b.dueN;});
-  var heading="BLUEPRINT / TASKS FOR "+String(ws.label).toUpperCase()+" AREA";
-  var meta='<b>Area:</b> '+esc(ws.label)+' · <b>Owner:</b> '+esc(ws.owner)+' · <b>Printed:</b> '+esc(pdPrintDate())+' · <b>Tasks:</b> '+l.length;
-  var body=l.length?pdGroupBy(l,function(t){return t.responsible||"Unassigned";},function(k){return k;},{skipArea:true}):'<p class="pd-empty">No tasks in this view.</p>';
-  host.innerHTML=pdDocShell(heading,"Tasks by Area",meta,body);
-}
-function printArea(){ buildAreaPrintDoc(); wxRunPrint(); }
-window.addEventListener('beforeprint',function(){ var h=document.getElementById('printDoc'); if(h&&!h.innerHTML.trim()){ try{ if(typeof currentView!=='undefined'&&currentView==='people'&&peopleSel) buildPersonPrintDoc(); else if(typeof currentView!=='undefined'&&currentView==='areas'&&areaSel) buildAreaPrintDoc(); }catch(e){} } });
-
 /* ---- progress calc (honest) ---- */
 function progressOf(list){ const total=list.length; const done=list.filter(t=>t.status==="complete").length; return {total,done,remaining:total-done,pct: total?Math.round(done/total*100):0}; }
 function progressWidget(list){
@@ -1144,8 +1058,7 @@ function selectArea(k, opts){
   markSubnavActive(k);
   const ws=WORKSTREAMS[k], l=areaTasks(k).sort((a,b)=>a.dueN-b.dueN);
   const main=document.getElementById("areaMain");
-  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Area · ${esc(AREA_SHORT[k])}</p><h3 class="rd-main__title">${esc(ws.label)}</h3><p class="rd-main__desc">${esc(ws.purpose)} · Owner: ${esc(ws.owner)}</p>${wxPrintBtn("areaPrint","Print tasks for the "+ws.label+" area")}</div><div class="tasklist" id="areaList"></div>`;
-  const _apb=document.getElementById("areaPrint"); if(_apb) _apb.addEventListener("click",printArea);
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Area · ${esc(AREA_SHORT[k])}</p><h3 class="rd-main__title">${esc(ws.label)}</h3><p class="rd-main__desc">${esc(ws.purpose)} · Owner: ${esc(ws.owner)}</p></div><div class="tasklist" id="areaList"></div>`;
   fillRows(document.getElementById("areaList"), l, "No tasks in this area.", {area:false});
   document.getElementById("areaSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForArea(k), "Deliverables for This Area", false));
   liveMsg(`${ws.label} — ${l.length} tasks.`);
@@ -1187,8 +1100,7 @@ function selectPerson(name, opts){
   markSubnavActive(name);
   const l=ownerTasks(name);
   const main=document.getElementById("peopleMain");
-  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Person</p><h3 class="rd-main__title">${esc(name)}</h3><p class="rd-main__desc">${l.length} task${l.length!==1?"s":""} across ${new Set(l.map(t=>t.ws)).size} area${new Set(l.map(t=>t.ws)).size!==1?"s":""}</p>${wxPrintBtn("peoplePrint","Print tasks for "+name)}</div><div class="tasklist" id="peopleList"></div>`;
-  const _ppb=document.getElementById("peoplePrint"); if(_ppb) _ppb.addEventListener("click",printPerson);
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Person</p><h3 class="rd-main__title">${esc(name)}</h3><p class="rd-main__desc">${l.length} task${l.length!==1?"s":""} across ${new Set(l.map(t=>t.ws)).size} area${new Set(l.map(t=>t.ws)).size!==1?"s":""}</p></div><div class="tasklist" id="peopleList"></div>`;
   fillRows(document.getElementById("peopleList"), l, "No tasks assigned.", {owner:false});
   document.getElementById("peopleSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForPerson(name), "Deliverables Connected to Their Work", true));
   liveMsg(`${name} — ${l.length} tasks.`);

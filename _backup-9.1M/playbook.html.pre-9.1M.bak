@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/icons/favicon-16.png?v=2026.9.1J" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=2026.9.1J">
 <meta name="theme-color" content="#0A0E1A">
-<meta name="generator" content="Worship Experience 2026 — v2026.9.1M">
+<meta name="generator" content="Worship Experience 2026 — v2026.9.1L">
 <meta name="robots" content="noindex, nofollow">
 
 <title>WX 2026 Ministries Playbook</title>
@@ -1156,33 +1156,7 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
   .pd-brief{margin-bottom:6pt;break-inside:avoid}
   .pd-brief b{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#111;display:block;margin-bottom:1pt}
   .pd-brief p{font-size:10pt;color:#111;line-height:1.35;margin:0}
-  /* Pass 9.1M — targeted task-print rows + prominent crimson due dates */
-  .pd-due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7A1115;margin-bottom:2pt}
-  .pd-due__d{font-weight:700;color:#7A1115}
-  .pd-due--overdue{color:#5A0A0D}
-  .pd-due--overdue .pd-due__d{color:#5A0A0D}
-  .pd-due--overdue .pd-due__lab{border:.75pt solid #5A0A0D;padding:0 3pt}
-  .pd-row{border:.75pt solid #777;border-left:2.5pt solid #7A1115;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid}
-  .pd-row__title{font-size:11pt;font-weight:700;color:#111;line-height:1.25;margin-bottom:2pt}
-  .pd-meetpurpose{font-size:9.5pt;color:#333;margin-bottom:4pt;font-style:italic}
-  .pd-monthblock+.pd-monthblock{break-before:page;page-break-before:always}
-  .pd-empty{font-size:10pt;color:#333;font-style:italic}
-  /* live print buttons never appear on paper (belt-and-suspenders to body>* hide) */
-  .wx-print-btn,.wx-printmenu{display:none!important}
 }
-
-/* ===== Pass 9.1M — restrained Print control (screen only) ===== */
-.wx-print-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;min-width:38px;padding:0;background:transparent;border:1px solid rgba(var(--gold-rgb),.35);border-radius:9px;color:var(--gold);cursor:pointer;flex:0 0 auto;line-height:0;transition:background .15s,border-color .15s,color .15s}
-@media(pointer:coarse){.wx-print-btn{width:44px;height:44px;min-width:44px}}
-.wx-print-btn:hover{background:rgba(var(--gold-rgb),.12);border-color:rgba(var(--gold-rgb),.6);color:var(--gold-bright)}
-.wx-print-btn:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
-.wx-print-btn svg{display:block;pointer-events:none}
-.atbar .wx-print-btn{margin-left:auto}
-.ov-tvbar .wx-print-btn{margin-left:.2rem}
-.ov-meeting-simple__head .wx-print-btn{margin-left:auto;align-self:center}
-.wx-printmenu{position:absolute;z-index:60;background:#141b2e;border:1px solid rgba(var(--gold-rgb),.4);border-radius:10px;padding:.35rem;min-width:184px;box-shadow:0 10px 30px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:.2rem}
-.wx-printmenu button{appearance:none;background:transparent;border:0;color:var(--ink);font:inherit;text-align:left;padding:.55rem .7rem;border-radius:7px;cursor:pointer}
-.wx-printmenu button:hover,.wx-printmenu button:focus-visible{background:rgba(var(--gold-rgb),.14);outline:none}
 
 /* ===== EXECUTIVE OVERVIEW v20 — simplified layout ===== */
 .ov-snap,.ov-attn{display:none!important}
@@ -3717,7 +3691,7 @@ function buildPrintDoc(ctx){
   if(dd.length) html+=`<div class="pd-sec dday-print"><div class="pd-sec__h">D-Day Responsibilities</div><ul class="pd-list">${dd.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></div>`;
   host.innerHTML=html;
 }
-var PLAYBOOK_PRINT_CSS='@page{size:A4 portrait;margin:14mm 15mm 15mm} html,body{background:#FFFFFF!important;color:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact} html,body{margin:0;font-family:Georgia,\'EB Garamond\',serif;font-size:10.5pt;line-height:1.35;color:#111;background:#fff} .pd-head{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt;break-inside:avoid} .pd-name{font-family:\'Cinzel\',Georgia,serif;font-size:24pt;line-height:1.05;color:#111;text-transform:uppercase;letter-spacing:.03em;margin:0} .pd-sub{font-family:Arial,sans-serif;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:#303030;margin-top:3pt} .pd-contact{font-family:Arial,sans-serif;font-size:9pt;color:#111;margin-top:5pt} .pd-contact b{color:#111} .pd-sec{margin-bottom:9pt;break-inside:avoid;page-break-inside:avoid} .pd-sec__h{font-family:Arial,sans-serif;font-size:9pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#59420F;border-bottom:.75pt solid #B8B8B8;padding-bottom:2pt;margin-bottom:5pt} .pd-sec__h.other-tasks-heading{break-after:avoid;page-break-after:avoid} .pd-next{border:1pt solid #777;border-left:3pt solid #6F5417;background:#fff;padding:8pt 10pt;break-inside:avoid} .pd-next__due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4A4A4A} .pd-next__title{font-family:\'Cinzel\',Georgia,serif;font-size:15pt;color:#111;line-height:1.12;margin:3pt 0 6pt} .pd-kv{font-size:10pt;color:#111;margin-top:2pt} .pd-kv b{color:#111} .pd-statusline{font-family:Arial,sans-serif;font-size:9pt;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#111;margin:8pt 0 10pt;padding:5pt 0;border-top:.75pt solid #B8B8B8;border-bottom:.75pt solid #B8B8B8} .pd-statusline .pd-over{color:#7A1115} .pd-task{display:grid;grid-template-columns:60pt 1fr;gap:8pt;border:.75pt solid #777;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid} .pd-task__due{font-family:Arial,sans-serif;font-size:8pt;font-weight:800;color:#111;letter-spacing:.02em} .pd-task__title{font-size:10.5pt;color:#111;line-height:1.28} .pd-task__meta{font-family:Arial,sans-serif;font-size:7.5pt;letter-spacing:.03em;text-transform:uppercase;color:#4A4A4A;margin-top:2pt} .pd-list{margin:0;padding-left:14pt} .pd-list li{font-size:10pt;color:#111;margin-bottom:2pt} .pd-brief{margin-bottom:6pt;break-inside:avoid} .pd-brief b{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#111;display:block;margin-bottom:1pt} .pd-brief p{font-size:10pt;color:#111;line-height:1.35;margin:0} .pd-due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7A1115;margin-bottom:2pt} .pd-due__d{font-weight:700;color:#7A1115} .pd-due--overdue{color:#5A0A0D} .pd-due--overdue .pd-due__d{color:#5A0A0D} .pd-due--overdue .pd-due__lab{border:.75pt solid #5A0A0D;padding:0 3pt} .pd-row{border:.75pt solid #777;border-left:2.5pt solid #7A1115;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid} .pd-row__title{font-size:11pt;font-weight:700;color:#111;line-height:1.25;margin-bottom:2pt} .pd-meetpurpose{font-size:9.5pt;color:#333;margin-bottom:4pt;font-style:italic} .pd-monthblock+.pd-monthblock{break-before:page;page-break-before:always} .pd-empty{font-size:10pt;color:#333;font-style:italic}';
+var PLAYBOOK_PRINT_CSS='@page{size:A4 portrait;margin:14mm 15mm 15mm} html,body{background:#FFFFFF!important;color:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact} html,body{margin:0;font-family:Georgia,\'EB Garamond\',serif;font-size:10.5pt;line-height:1.35;color:#111;background:#fff} .pd-head{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt;break-inside:avoid} .pd-name{font-family:\'Cinzel\',Georgia,serif;font-size:24pt;line-height:1.05;color:#111;text-transform:uppercase;letter-spacing:.03em;margin:0} .pd-sub{font-family:Arial,sans-serif;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:#303030;margin-top:3pt} .pd-contact{font-family:Arial,sans-serif;font-size:9pt;color:#111;margin-top:5pt} .pd-contact b{color:#111} .pd-sec{margin-bottom:9pt;break-inside:avoid;page-break-inside:avoid} .pd-sec__h{font-family:Arial,sans-serif;font-size:9pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#59420F;border-bottom:.75pt solid #B8B8B8;padding-bottom:2pt;margin-bottom:5pt} .pd-sec__h.other-tasks-heading{break-after:avoid;page-break-after:avoid} .pd-next{border:1pt solid #777;border-left:3pt solid #6F5417;background:#fff;padding:8pt 10pt;break-inside:avoid} .pd-next__due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4A4A4A} .pd-next__title{font-family:\'Cinzel\',Georgia,serif;font-size:15pt;color:#111;line-height:1.12;margin:3pt 0 6pt} .pd-kv{font-size:10pt;color:#111;margin-top:2pt} .pd-kv b{color:#111} .pd-statusline{font-family:Arial,sans-serif;font-size:9pt;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#111;margin:8pt 0 10pt;padding:5pt 0;border-top:.75pt solid #B8B8B8;border-bottom:.75pt solid #B8B8B8} .pd-statusline .pd-over{color:#7A1115} .pd-task{display:grid;grid-template-columns:60pt 1fr;gap:8pt;border:.75pt solid #777;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid} .pd-task__due{font-family:Arial,sans-serif;font-size:8pt;font-weight:800;color:#111;letter-spacing:.02em} .pd-task__title{font-size:10.5pt;color:#111;line-height:1.28} .pd-task__meta{font-family:Arial,sans-serif;font-size:7.5pt;letter-spacing:.03em;text-transform:uppercase;color:#4A4A4A;margin-top:2pt} .pd-list{margin:0;padding-left:14pt} .pd-list li{font-size:10pt;color:#111;margin-bottom:2pt} .pd-brief{margin-bottom:6pt;break-inside:avoid} .pd-brief b{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#111;display:block;margin-bottom:1pt} .pd-brief p{font-size:10pt;color:#111;line-height:1.35;margin:0}';
 /* Pass 7.1 — the Print button renders the briefing document in an isolated
    iframe (WXExport) instead of calling window.print() on the live page with a
    body-hiding print stylesheet. The parent page is never mutated or hidden. */
@@ -3734,111 +3708,6 @@ window.addEventListener('beforeprint',function(){var h=document.getElementById('
 function buildOverviewPrint(){ const d=document.getElementById("printDoc"); if(!d) return;
   const rows=MIN_ORDER.map(c=>{ const m=ovMinData(c); return `<tr><td>${esc(displayName(c))}</td><td>${READY_LABEL[m.r]}</td><td>${m.complete}/${m.total}</td><td>${m.overdue}</td><td>${m.dueSoon}</td></tr>`; }).join("");
   d.innerHTML=`<h1>Worship Experience 2026 — Executive Overview</h1><p>Leadership readiness across all ${MIN_ORDER.length} ministries.</p><table style="border-collapse:collapse;width:100%"><thead><tr><th style="text-align:left;border-bottom:1px solid #999;padding:6px">Ministry</th><th style="text-align:left;border-bottom:1px solid #999;padding:6px">Health</th><th style="text-align:left;border-bottom:1px solid #999;padding:6px">Complete</th><th style="text-align:left;border-bottom:1px solid #999;padding:6px">Overdue</th><th style="text-align:left;border-bottom:1px solid #999;padding:6px">Due soon</th></tr></thead><tbody>${rows.replace(/<td>/g,'<td style="padding:6px;border-bottom:1px solid #ddd">')}</tbody></table>`; }
-/* ============================================================
-   Pass 9.1M — Targeted task printing (Playbook)
-   Reuses the WXExport isolated-iframe engine + PLAYBOOK_PRINT_CSS.
-   The live page is never mutated; #printDoc is the single reused host.
-   ============================================================ */
-var WX_PRINT_ICON='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2M8 14h8v6H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
-function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Print">'+WX_PRINT_ICON+'</button>'; }
-function pdPrintDate(){ try{ return TODAY.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return ""; } }
-function pdDueParts(t){
-  var complete=isComplete(t);
-  if(!complete && isOverdue(t)){ var od=overdueDays(t); return {cls:'pd-due--overdue',label:'OVERDUE',detail:esc(t.dueLabel)+(od?' · '+od+' day'+(od===1?'':'s')+' overdue':'')}; }
-  if(!complete && due14(t)){ var du=daysUntil(t); return {cls:'pd-due--soon',label:(du!=null&&du<=0)?'DUE TODAY':'DUE IN '+du+' DAY'+(du===1?'':'S'),detail:esc(t.dueLabel)}; }
-  return {cls:'',label:'DUE',detail:esc(t.dueLabel)};
-}
-function pdDueHTML(t){ var d=pdDueParts(t); return '<div class="pd-due '+d.cls+'"><span class="pd-due__lab">'+d.label+'</span> <span class="pd-due__d">'+d.detail+'</span></div>'; }
-function pdFullRow(t){
-  var out='<div class="pd-row">'+pdDueHTML(t)+'<div class="pd-row__title">'+esc(t.task)+'</div>';
-  if(t.ref) out+='<div class="pd-kv"><b>Ref:</b> '+esc(t.ref)+'</div>';
-  out+='<div class="pd-kv"><b>Status:</b> '+esc(statusDisplay(t))+'</div>';
-  var dep=depReadableRow(t); if(dep && dep!=='None recorded') out+='<div class="pd-kv"><b>Dependency:</b> '+esc(dep)+'</div>';
-  var deliv=requiredResult(t); if(deliv) out+='<div class="pd-kv"><b>Deliverable:</b> '+esc(deliv)+'</div>';
-  if(t.note && String(t.note).trim()) out+='<div class="pd-kv"><b>Notes:</b> '+esc(t.note)+'</div>';
-  out+='</div>';
-  return out;
-}
-function pdGroupedRows(list){
-  if(!list.length) return '<p class="pd-empty">No tasks in this view.</p>';
-  var groups={},order=[];
-  list.forEach(function(t){ var k=t.monthLabel||'Scheduled'; if(!groups[k]){groups[k]=[];order.push(k);} groups[k].push(t); });
-  return order.map(function(k){ return '<div class="pd-sec"><div class="pd-sec__h">'+esc(k)+'</div>'+groups[k].map(pdFullRow).join("")+'</div>'; }).join("");
-}
-function pdDocShell(heading,sub,metaLine,bodyHTML){
-  return '<div class="pd-head"><h1 class="pd-name">'+esc(heading)+'</h1>'+(sub?'<div class="pd-sub">'+esc(sub)+'</div>':'')+(metaLine?'<div class="pd-contact">'+metaLine+'</div>':'')+'</div>'+bodyHTML;
-}
-function wxRunPrint(){
-  var host=document.getElementById('printDoc'); if(!host) return;
-  var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>WX2026 Playbook</title><style>'+PLAYBOOK_PRINT_CSS+'</style></head><body>'+host.innerHTML+'</body></html>';
-  if(window.WXExport&&window.WXExport.printDocument){ window.WXExport.printDocument(doc); } else { window.print(); }
-}
-/* B — Playbook ministry All Tasks (current ministry + active filter) */
-var PD_ALLFILTER_LABEL={all:"All",overdue:"Overdue",due14:"Due in 14 Days",upcoming:"Upcoming",complete:"Complete"};
-function buildAllTasksPrintDoc(){
-  var host=document.getElementById("printDoc"); if(!host||!curWork) return;
-  var ts=curWork.tasks.slice().sort(byDue);
-  var filt=ts.filter(function(t){ if(allFilter==="overdue")return isOverdue(t)&&!isComplete(t); if(allFilter==="due14")return due14(t)&&!isComplete(t); if(allFilter==="upcoming")return !isOverdue(t)&&!isComplete(t); if(allFilter==="complete")return isComplete(t); return true; });
-  var flab=PD_ALLFILTER_LABEL[allFilter]||"All";
-  var heading="PLAYBOOK / "+String(curWork.title).toUpperCase()+" / "+flab.toUpperCase()+" TASKS";
-  var contact=(curWork.contact&&curWork.contact!=="Not yet specified")?curWork.contact:"Unnamed";
-  var meta='<b>Ministry:</b> '+esc(curWork.title)+' · <b>Contact:</b> '+esc(contact)+' · <b>Printed:</b> '+esc(pdPrintDate())+' · <b>Filter:</b> '+esc(flab)+' · <b>Tasks:</b> '+filt.length;
-  host.innerHTML=pdDocShell(heading,curWork.subtitle,meta,pdGroupedRows(filt));
-}
-function printAllTasks(){ buildAllTasksPrintDoc(); wxRunPrint(); }
-/* C — Overview Ministry Task View (By/All + selected ministry + filter) */
-function buildOvTaskViewPrintDoc(){
-  var host=document.getElementById("printDoc"); if(!host) return;
-  var items=ovTaskItems(), tasks=[];
-  items.forEach(function(it){ if(it.task) tasks.push(it.task); else if(it.group){ TASKS.filter(function(t){return t.sharedGroup===it.group;}).forEach(function(t){tasks.push(t);}); } });
-  var seen={},uniq=[]; tasks.forEach(function(t){ if(!seen[t.ref]){seen[t.ref]=1;uniq.push(t);} }); uniq.sort(byDue);
-  var flab=OVFILTER_LABEL[ovFilter]||"All";
-  var scopeName=ovMode==="ministry"?displayName(ovMin):"All Ministries";
-  var meta='<b>Scope:</b> '+esc(scopeName)+' · <b>View:</b> '+(ovMode==="ministry"?"By Ministry":"All Ministries")+' · <b>Filter:</b> '+esc(flab)+' · <b>Printed:</b> '+esc(pdPrintDate())+' · <b>Tasks:</b> '+uniq.length;
-  var sub=(ovMode==="ministry"?("By Ministry — "+scopeName):"All Ministries")+" · "+flab;
-  host.innerHTML=pdDocShell("PLAYBOOK OVERVIEW / MINISTRY TASK VIEW",sub,meta,pdGroupedRows(uniq));
-}
-function printOvTaskView(){ buildOvTaskViewPrintDoc(); wxRunPrint(); }
-/* D — Monthly Meeting Responsibilities (this month / all months) */
-function pdMeetingBlock(m){
-  var rows=MIN_ORDER.map(function(code){ var t=meetTaskFor(code,m); if(!t) return '';
-    return '<div class="pd-row"><div class="pd-row__title">'+esc(displayName(code))+'</div><div class="pd-kv"><b>Focus:</b> '+esc(t.focus||t.task)+'</div><div class="pd-kv"><b>Status:</b> '+esc(statusDisplay(t))+'</div></div>'; }).filter(Boolean).join("");
-  if(!rows) rows='<p class="pd-empty">No required updates for this meeting.</p>';
-  return '<div class="pd-sec"><div class="pd-sec__h">'+esc(m)+' · '+esc(MEET_TITLE[m])+' — '+esc(shortDate(MEET_DATES[m]))+'</div><div class="pd-meetpurpose">'+esc(MEET_PURPOSE[m])+'.</div>'+rows+'</div>';
-}
-function buildMeetingPrintDoc(scope){
-  var host=document.getElementById("printDoc"); if(!host) return;
-  if(scope==="all"){
-    var meta='<b>Printed:</b> '+esc(pdPrintDate())+' · <b>Meetings:</b> '+MEET_ORDER.length;
-    var body=MEET_ORDER.map(function(m){ return '<div class="pd-monthblock">'+pdMeetingBlock(m)+'</div>'; }).join("");
-    host.innerHTML=pdDocShell("PLAYBOOK OVERVIEW / MONTHLY MEETING RESPONSIBILITIES / ALL MONTHS",null,meta,body);
-  } else {
-    var meta2='<b>Meeting:</b> '+esc(MEET_TITLE[ovMeet])+' ('+esc(shortDate(MEET_DATES[ovMeet]))+') · <b>Printed:</b> '+esc(pdPrintDate());
-    host.innerHTML=pdDocShell("PLAYBOOK OVERVIEW / MONTHLY MEETING RESPONSIBILITIES",esc(MEET_TITLE[ovMeet]),meta2,pdMeetingBlock(ovMeet));
-  }
-}
-function printMeeting(scope){ buildMeetingPrintDoc(scope); wxRunPrint(); }
-function meetMenuKey(e){ if(e.key==="Escape"){ e.preventDefault(); closeMeetPrintMenu(); } }
-function meetMenuOutside(e){ var m=document.getElementById("wxMeetPrintMenu"); if(m&&!m.contains(e.target)&&e.target!==m._trigger){ closeMeetPrintMenu(); } }
-function closeMeetPrintMenu(){ var m=document.getElementById("wxMeetPrintMenu"); if(m){ var t=m._trigger; m.remove(); document.removeEventListener("keydown",meetMenuKey,true); document.removeEventListener("mousedown",meetMenuOutside,true); if(t){ t.setAttribute("aria-expanded","false"); try{t.focus();}catch(e){} } } }
-function openMeetPrintMenu(trigger){
-  if(document.getElementById("wxMeetPrintMenu")){ closeMeetPrintMenu(); return; }
-  var menu=document.createElement("div"); menu.className="wx-printmenu"; menu.id="wxMeetPrintMenu"; menu.setAttribute("role","menu");
-  menu.innerHTML='<button type="button" role="menuitem" data-mscope="this">Print This Month</button><button type="button" role="menuitem" data-mscope="all">Print All Months</button>';
-  document.body.appendChild(menu); menu._trigger=trigger;
-  var r=trigger.getBoundingClientRect();
-  menu.style.top=(window.scrollY+r.bottom+6)+"px";
-  menu.style.left=(window.scrollX+Math.max(8,r.right-menu.offsetWidth))+"px";
-  trigger.setAttribute("aria-expanded","true");
-  menu.querySelectorAll("[data-mscope]").forEach(function(b){ b.addEventListener("click",function(){ var s=b.dataset.mscope==="all"?"all":"this"; closeMeetPrintMenu(); printMeeting(s); }); });
-  var first=menu.querySelector("[data-mscope]"); if(first) first.focus();
-  /* Attach synchronously: the opening click's mousedown has already fired, so
-     this cannot self-close; a setTimeout would race a fast Escape/keydown. */
-  document.addEventListener("keydown",meetMenuKey,true);
-  document.addEventListener("mousedown",meetMenuOutside,true);
-}
-function wireMeetPrint(){ var b=document.getElementById("ovMeetPrint"); if(b) b.addEventListener("click",function(){ openMeetPrintMenu(b); }); }
-
 /* Required Outputs drawer */
 function openOutputs(){
   const outs=curWork.outputs||[];
@@ -3962,12 +3831,10 @@ function renderAllTasks(){
     ? Object.entries(groups).map(([mo,list])=>`<div class="atg"><div class="atg__m">${esc(mo)}</div>${list.map(mtaskRow).join("")}</div>`).join("")
     : `<p class="wp__note">No tasks match this filter.</p>`;
   const filters=["all","overdue","due14","upcoming","complete"].map(f=>`<button class="atf ${f===allFilter?'on':''}" data-filter="${f}">${f==="due14"?"Due 14d":f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join("");
+  const html=`<div class="atbar" role="tablist" aria-label="Filter tasks">${filters}</div><div id="atList">${body}</div>`;
   const TITLES={all:"All Tasks",overdue:"Overdue Tasks",due14:"Due in 14 Days",upcoming:"Upcoming Tasks",complete:"Completed Tasks"};
-  const printBtn=wxPrintBtn("atPrint","Print "+curWork.title+" — "+(TITLES[allFilter]||"All Tasks"));
-  const html=`<div class="atbar" role="tablist" aria-label="Filter tasks">${filters}${printBtn}</div><div id="atList">${body}</div>`;
   openWorkDrawer("", (curWork.title)+" · "+(TITLES[allFilter]||"All Tasks"), html);
   document.querySelectorAll("#drawerBody .atf").forEach(b=>b.addEventListener("click",()=>{ allFilter=b.dataset.filter; renderAllTasks(); }));
-  const atPb=document.getElementById("atPrint"); if(atPb) atPb.addEventListener("click",printAllTasks);
 }
 function openBriefDrawer(){
   const b=curWork.brief;
@@ -4360,7 +4227,7 @@ function ovMeetingResponsibilitiesHTML(){
     if(!t) return `<tr><th>${esc(displayName(code))}</th><td class="focus">No required update</td><td class="state">—</td></tr>`;
     return `<tr data-tref="${esc(t.ref)}" tabindex="0" role="button"><th>${esc(displayName(code))}</th><td class="focus">${esc(t.focus||t.task)}</td><td class="state">${esc(statusDisplay(t))}</td></tr>`;
   }).join("");
-  return `<div class="ov-meeting-simple"><div class="ov-meeting-simple__head"><span class="ov-meeting-simple__title">${esc(MEET_TITLE[ovMeet])}</span><span class="ov-meeting-simple__sep" aria-hidden="true">—</span><span class="ov-meeting-simple__purpose">${esc(MEET_PURPOSE[ovMeet])}.</span><button type="button" id="ovMeetPrint" class="wx-print-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Print monthly meeting responsibilities" title="Print">${WX_PRINT_ICON}</button></div>
+  return `<div class="ov-meeting-simple"><div class="ov-meeting-simple__head"><span class="ov-meeting-simple__title">${esc(MEET_TITLE[ovMeet])}</span><span class="ov-meeting-simple__sep" aria-hidden="true">—</span><span class="ov-meeting-simple__purpose">${esc(MEET_PURPOSE[ovMeet])}.</span></div>
   <table class="ov-meeting-table"><tbody>${rows}</tbody></table></div>`;
 }
 /* Monthly Meeting Readiness */
@@ -4542,7 +4409,7 @@ function renderMinistryTaskView(){
   const sel=ovMode==="ministry"?`<select id="ovTvSel" class="ov-select" aria-label="Choose ministry">${MIN_ORDER.map(c=>`<option value="${c}" ${c===ovMin?'selected':''}>${esc(displayName(c))}</option>`).join("")}</select>`:`<span class="ov-tvnote">Chronological stream across all ministries</span>`;
   const pageCount=Math.max(1,Math.ceil(ovTaskItems().length/10));
   return `<section class="ov-sec"><div class="ov-sechead"><h3 class="ov-sech">Ministry Task View</h3>${modes}</div>
-    <div class="ov-tvbar">${sel}<div class="ov-filters">${filters}</div>${wxPrintBtn("ovTvPrint","Print Ministry Task View")}</div>
+    <div class="ov-tvbar">${sel}<div class="ov-filters">${filters}</div></div>
     <div class="ov-taskpager"><div class="ov-taskpages" id="ovTaskPages" tabindex="0" aria-label="Task pages">${ovTaskPagesHTML()}</div>
       <div class="ov-tasknav"><span class="ov-tasknav__pos" id="ovTaskPos">${ovTaskPage+1} of ${pageCount} · 10 tasks per view</span><div class="ov-tasknav__btns"><button class="ov-nav" id="ovTaskPrev" aria-label="Previous task page" ${ovTaskPage===0?'disabled':''}>&larr;</button><button class="ov-nav" id="ovTaskNext" aria-label="Next task page" ${ovTaskPage>=pageCount-1?'disabled':''}>&rarr;</button></div></div>
     </div><p class="ov-tvhint">Swipe or use the arrows to move through the task pages.</p></section>`;
@@ -4688,8 +4555,6 @@ function wireOverview(){
   const tvSel=document.getElementById("ovTvSel"); if(tvSel) tvSel.addEventListener("change",()=>{ selectOverviewMinistry(tvSel.value); ovGoto(MIN_ORDER.indexOf(tvSel.value)); });
   const tp=document.getElementById("ovTaskPrev"), tn=document.getElementById("ovTaskNext"); if(tp)tp.addEventListener("click",()=>ovGotoTaskPage(ovTaskPage-1)); if(tn)tn.addEventListener("click",()=>ovGotoTaskPage(ovTaskPage+1));
   const tpages=document.getElementById("ovTaskPages"); if(tpages){ enableHorizontalSwipe(tpages); tpages.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();ovGotoTaskPage(ovTaskPage+1)}else if(e.key==="ArrowLeft"){e.preventDefault();ovGotoTaskPage(ovTaskPage-1)}}); tpages.addEventListener("scroll",()=>{clearTimeout(tpages._st);tpages._st=setTimeout(()=>{const pages=[...tpages.querySelectorAll('.ov-taskpage')],x=tpages.scrollLeft+tpages.clientWidth/2;let bi=0,bd=1e9;pages.forEach((pg,i)=>{const d=Math.abs(pg.offsetLeft+pg.offsetWidth/2-x);if(d<bd){bd=d;bi=i}});ovTaskPage=bi;ovUpdateTaskNav(pages.length)},80)},{passive:true}); }
-  const ovTvPb=document.getElementById("ovTvPrint"); if(ovTvPb) ovTvPb.addEventListener("click",printOvTaskView);
-  wireMeetPrint();
   // monthly meeting readiness
   root.querySelectorAll("[data-ovmeet]").forEach(b=>b.addEventListener("click",()=>{ ovMeet=b.dataset.ovmeet; ovRenderMeet(); }));
   // delegated task + info within overview
@@ -4715,13 +4580,11 @@ function renderMinistryTaskViewRefresh(){
   root.querySelectorAll("[data-ovfilter]").forEach(b=>b.addEventListener("click",()=>{ ovFilter=b.dataset.ovfilter; ovTaskPage=0; renderMinistryTaskViewRefresh(); }));
   const tvSel=document.getElementById("ovTvSel"); if(tvSel) tvSel.addEventListener("change",()=>{ selectOverviewMinistry(tvSel.value); ovGoto(MIN_ORDER.indexOf(tvSel.value)); });
   const tp=document.getElementById("ovTaskPrev"), tn=document.getElementById("ovTaskNext"); if(tp)tp.addEventListener("click",()=>ovGotoTaskPage(ovTaskPage-1)); if(tn)tn.addEventListener("click",()=>ovGotoTaskPage(ovTaskPage+1));
-  const ovTvPb2=document.getElementById("ovTvPrint"); if(ovTvPb2) ovTvPb2.addEventListener("click",printOvTaskView);
   const tpages=document.getElementById("ovTaskPages"); if(tpages){ enableHorizontalSwipe(tpages); tpages.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();ovGotoTaskPage(ovTaskPage+1)}else if(e.key==="ArrowLeft"){e.preventDefault();ovGotoTaskPage(ovTaskPage-1)}}); tpages.addEventListener("scroll",()=>{clearTimeout(tpages._st);tpages._st=setTimeout(()=>{const pages=[...tpages.querySelectorAll('.ov-taskpage')],x=tpages.scrollLeft+tpages.clientWidth/2;let bi=0,bd=1e9;pages.forEach((pg,i)=>{const d=Math.abs(pg.offsetLeft+pg.offsetWidth/2-x);if(d<bd){bd=d;bi=i}});ovTaskPage=bi;ovUpdateTaskNav(pages.length)},80)},{passive:true}); }
 }
 function ovRenderMeet(){
   const b=document.getElementById("ovMeetBody"); if(b) b.innerHTML=ovMeetingResponsibilitiesHTML();
   document.querySelectorAll("#leadOverview [data-ovmeet]").forEach(x=>{ const on=x.dataset.ovmeet===ovMeet; x.classList.toggle("on",on); x.setAttribute("aria-selected",String(on)); });
-  wireMeetPrint();
 }
 function ovDelegate(e){
   const mrow=e.target.closest(".ov-mrow[data-tref], .ov-meeting-table tr[data-tref]"); if(mrow){ openTaskPanel(mrow.dataset.tref); return; }
