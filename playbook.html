@@ -483,7 +483,7 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
 .selector.previewing .sel-yes{opacity:0;pointer-events:none}
 .selector.previewing .sel-preview{opacity:1;pointer-events:auto}
 /* the wordmark alone carries the identity */
-.sel-yes__img{height:clamp(150px,26vh,240px);width:auto;max-width:78%;opacity:.98}
+.sel-yes__img{height:clamp(150px,26vh,240px);width:auto;max-width:100%;object-fit:contain;align-self:center;flex:none;opacity:.98}
 .sel-yes__hint{font-family:var(--body);font-size:.98rem;font-style:italic;line-height:1.5;color:rgba(236,227,208,.44);margin-top:1.4rem;max-width:34ch}
 .pv-func{font-family:var(--display);font-weight:600;font-size:clamp(1rem,1.6vw,1.24rem);letter-spacing:.02em;line-height:1.24;color:var(--gold-bright)}
 .pv-summary{font-family:var(--body);font-size:1.01rem;color:var(--ink-soft);line-height:1.54;margin-top:.8rem;max-width:56ch}
@@ -1305,6 +1305,7 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
   <script defer src="assets/js/site-nav.js"></script>
   <script src="assets/js/routes.js"></script>
   <script src="assets/js/wx-export.js"></script>
+  <script defer src="assets/js/vendor-html2pdf.bundle.min.js"></script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
@@ -3740,7 +3741,7 @@ function buildOverviewPrint(){ const d=document.getElementById("printDoc"); if(!
    The live page is never mutated; #printDoc is the single reused host.
    ============================================================ */
 var WX_PRINT_ICON='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2M8 14h8v6H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
-function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Print">'+WX_PRINT_ICON+'</button>'; }
+function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Download PDF">'+WX_PRINT_ICON+'</button>'; }
 function pdPrintDate(){ try{ return TODAY.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return ""; } }
 function pdDueParts(t){
   var complete=isComplete(t);
@@ -3768,8 +3769,28 @@ function pdGroupedRows(list){
 function pdDocShell(heading,sub,metaLine,bodyHTML){
   return '<div class="pd-head"><h1 class="pd-name">'+esc(heading)+'</h1>'+(sub?'<div class="pd-sub">'+esc(sub)+'</div>':'')+(metaLine?'<div class="pd-contact">'+metaLine+'</div>':'')+'</div>'+bodyHTML;
 }
+function wxSlug(s){ return String(s||'WX2026').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,90)||'WX2026'; }
+/* Pass 9.1M.1 — one-click PDF download (no dialog). Renders the already-built
+   #printDoc into an offscreen stage and saves it with the locally vendored
+   html2pdf engine. Falls back to the isolated-iframe print path if the engine
+   is unavailable, so the control always does something useful. */
 function wxRunPrint(){
   var host=document.getElementById('printDoc'); if(!host) return;
+  var name=((host.querySelector('.pd-name')||{}).textContent)||'WX2026 Playbook';
+  var fname=wxSlug(name)+'.pdf';
+  if(window.html2pdf){
+    var stage=document.createElement('div');
+    stage.className='wx-pdf-stage'; stage.setAttribute('aria-hidden','true');
+    stage.style.cssText='position:fixed;left:-10000px;top:0;width:760px;background:#fff;z-index:-1;';
+    var css=PLAYBOOK_PRINT_CSS.replace(/html,\s*body\{/g,'.wx-pdfdoc{');
+    stage.innerHTML='<style>'+css+'</style><div class="wx-pdfdoc" style="background:#fff;color:#111;padding:6px 8px">'+host.innerHTML+'</div>';
+    document.body.appendChild(stage);
+    var el=stage.querySelector('.wx-pdfdoc');
+    var done=function(){ try{ if(stage.parentNode) stage.parentNode.removeChild(stage); }catch(e){} };
+    var opt={margin:[10,12,12,12],filename:fname,image:{type:'jpeg',quality:0.98},html2canvas:{scale:2,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.pd-row','.pd-head']}};
+    try{ window.html2pdf().set(opt).from(el).save().then(done,done); }catch(e){ done(); }
+    return;
+  }
   var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>WX2026 Playbook</title><style>'+PLAYBOOK_PRINT_CSS+'</style></head><body>'+host.innerHTML+'</body></html>';
   if(window.WXExport&&window.WXExport.printDocument){ window.WXExport.printDocument(doc); } else { window.print(); }
 }
@@ -3824,7 +3845,7 @@ function closeMeetPrintMenu(){ var m=document.getElementById("wxMeetPrintMenu");
 function openMeetPrintMenu(trigger){
   if(document.getElementById("wxMeetPrintMenu")){ closeMeetPrintMenu(); return; }
   var menu=document.createElement("div"); menu.className="wx-printmenu"; menu.id="wxMeetPrintMenu"; menu.setAttribute("role","menu");
-  menu.innerHTML='<button type="button" role="menuitem" data-mscope="this">Print This Month</button><button type="button" role="menuitem" data-mscope="all">Print All Months</button>';
+  menu.innerHTML='<button type="button" role="menuitem" data-mscope="this">Download This Month (PDF)</button><button type="button" role="menuitem" data-mscope="all">Download All Months (PDF)</button>';
   document.body.appendChild(menu); menu._trigger=trigger;
   var r=trigger.getBoundingClientRect();
   menu.style.top=(window.scrollY+r.bottom+6)+"px";
@@ -3963,7 +3984,7 @@ function renderAllTasks(){
     : `<p class="wp__note">No tasks match this filter.</p>`;
   const filters=["all","overdue","due14","upcoming","complete"].map(f=>`<button class="atf ${f===allFilter?'on':''}" data-filter="${f}">${f==="due14"?"Due 14d":f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join("");
   const TITLES={all:"All Tasks",overdue:"Overdue Tasks",due14:"Due in 14 Days",upcoming:"Upcoming Tasks",complete:"Completed Tasks"};
-  const printBtn=wxPrintBtn("atPrint","Print "+curWork.title+" — "+(TITLES[allFilter]||"All Tasks"));
+  const printBtn=wxPrintBtn("atPrint","Download "+curWork.title+" — "+(TITLES[allFilter]||"All Tasks")+" as PDF");
   const html=`<div class="atbar" role="tablist" aria-label="Filter tasks">${filters}${printBtn}</div><div id="atList">${body}</div>`;
   openWorkDrawer("", (curWork.title)+" · "+(TITLES[allFilter]||"All Tasks"), html);
   document.querySelectorAll("#drawerBody .atf").forEach(b=>b.addEventListener("click",()=>{ allFilter=b.dataset.filter; renderAllTasks(); }));
@@ -4360,7 +4381,7 @@ function ovMeetingResponsibilitiesHTML(){
     if(!t) return `<tr><th>${esc(displayName(code))}</th><td class="focus">No required update</td><td class="state">—</td></tr>`;
     return `<tr data-tref="${esc(t.ref)}" tabindex="0" role="button"><th>${esc(displayName(code))}</th><td class="focus">${esc(t.focus||t.task)}</td><td class="state">${esc(statusDisplay(t))}</td></tr>`;
   }).join("");
-  return `<div class="ov-meeting-simple"><div class="ov-meeting-simple__head"><span class="ov-meeting-simple__title">${esc(MEET_TITLE[ovMeet])}</span><span class="ov-meeting-simple__sep" aria-hidden="true">—</span><span class="ov-meeting-simple__purpose">${esc(MEET_PURPOSE[ovMeet])}.</span><button type="button" id="ovMeetPrint" class="wx-print-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Print monthly meeting responsibilities" title="Print">${WX_PRINT_ICON}</button></div>
+  return `<div class="ov-meeting-simple"><div class="ov-meeting-simple__head"><span class="ov-meeting-simple__title">${esc(MEET_TITLE[ovMeet])}</span><span class="ov-meeting-simple__sep" aria-hidden="true">—</span><span class="ov-meeting-simple__purpose">${esc(MEET_PURPOSE[ovMeet])}.</span><button type="button" id="ovMeetPrint" class="wx-print-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Download monthly meeting responsibilities as PDF" title="Download PDF">${WX_PRINT_ICON}</button></div>
   <table class="ov-meeting-table"><tbody>${rows}</tbody></table></div>`;
 }
 /* Monthly Meeting Readiness */
@@ -4542,7 +4563,7 @@ function renderMinistryTaskView(){
   const sel=ovMode==="ministry"?`<select id="ovTvSel" class="ov-select" aria-label="Choose ministry">${MIN_ORDER.map(c=>`<option value="${c}" ${c===ovMin?'selected':''}>${esc(displayName(c))}</option>`).join("")}</select>`:`<span class="ov-tvnote">Chronological stream across all ministries</span>`;
   const pageCount=Math.max(1,Math.ceil(ovTaskItems().length/10));
   return `<section class="ov-sec"><div class="ov-sechead"><h3 class="ov-sech">Ministry Task View</h3>${modes}</div>
-    <div class="ov-tvbar">${sel}<div class="ov-filters">${filters}</div>${wxPrintBtn("ovTvPrint","Print Ministry Task View")}</div>
+    <div class="ov-tvbar">${sel}<div class="ov-filters">${filters}</div>${wxPrintBtn("ovTvPrint","Download Ministry Task View as PDF")}</div>
     <div class="ov-taskpager"><div class="ov-taskpages" id="ovTaskPages" tabindex="0" aria-label="Task pages">${ovTaskPagesHTML()}</div>
       <div class="ov-tasknav"><span class="ov-tasknav__pos" id="ovTaskPos">${ovTaskPage+1} of ${pageCount} · 10 tasks per view</span><div class="ov-tasknav__btns"><button class="ov-nav" id="ovTaskPrev" aria-label="Previous task page" ${ovTaskPage===0?'disabled':''}>&larr;</button><button class="ov-nav" id="ovTaskNext" aria-label="Next task page" ${ovTaskPage>=pageCount-1?'disabled':''}>&rarr;</button></div></div>
     </div><p class="ov-tvhint">Swipe or use the arrows to move through the task pages.</p></section>`;

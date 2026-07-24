@@ -471,6 +471,7 @@ main{position:relative;z-index:4;min-height:60vh;padding-bottom:2rem}
   <script src="assets/js/routes.js"></script>
   <script src="assets/js/site.js" defer></script>
   <script src="assets/js/wx-export.js"></script>
+  <script defer src="assets/js/vendor-html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <a class="skip" href="#mainContent">Skip to content</a>
@@ -944,7 +945,7 @@ function miniRow(t){ const over=isOverdue(t); return `<button class="mini-row" d
    The live page is never mutated; print reflects the current view state.
    ============================================================ */
 var WX_PRINT_ICON='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2M8 14h8v6H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
-function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Print">'+WX_PRINT_ICON+'</button>'; }
+function wxPrintBtn(id,label){ return '<button type="button" id="'+id+'" class="wx-print-btn" aria-label="'+esc(label)+'" title="Download PDF">'+WX_PRINT_ICON+'</button>'; }
 function pdPrintDate(){ try{ return TODAY.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return ""; } }
 var BLUEPRINT_PRINT_CSS="@page{size:A4 portrait;margin:14mm 15mm 15mm} html,body{margin:0;background:#fff;color:#111;font-family:Georgia,'EB Garamond',serif;font-size:10.5pt;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact} .pd-head{border-bottom:1.5pt solid #111;padding-bottom:6pt;margin-bottom:10pt} .pd-name{font-family:'Cinzel',Georgia,serif;font-size:22pt;line-height:1.05;color:#111;text-transform:uppercase;letter-spacing:.03em;margin:0} .pd-sub{font-family:Arial,sans-serif;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:#303030;margin-top:3pt} .pd-contact{font-family:Arial,sans-serif;font-size:9pt;color:#111;margin-top:5pt} .pd-contact b{color:#111} .pd-sec{margin-bottom:9pt;break-inside:avoid;page-break-inside:avoid} .pd-sec__h{font-family:Arial,sans-serif;font-size:9pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#59420F;border-bottom:.75pt solid #B8B8B8;padding-bottom:2pt;margin-bottom:5pt} .pd-kv{font-size:10pt;color:#111;margin-top:2pt} .pd-kv b{color:#111} .pd-due{font-family:Arial,sans-serif;font-size:8.5pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7A1115;margin-bottom:2pt} .pd-due__d{font-weight:700;color:#7A1115} .pd-due--overdue{color:#5A0A0D} .pd-due--overdue .pd-due__d{color:#5A0A0D} .pd-due--overdue .pd-due__lab{border:.75pt solid #5A0A0D;padding:0 3pt} .pd-row{border:.75pt solid #777;border-left:2.5pt solid #7A1115;padding:6pt 8pt;margin-bottom:5pt;break-inside:avoid;page-break-inside:avoid} .pd-row__title{font-size:11pt;font-weight:700;color:#111;line-height:1.25;margin-bottom:2pt} .pd-empty{font-size:10pt;color:#333;font-style:italic}";
 function pdDueParts(t){
@@ -972,8 +973,26 @@ function pdGroupBy(list,keyFn,labelFn,rowOpts){
 function pdDocShell(heading,sub,metaLine,bodyHTML){
   return '<div class="pd-head"><h1 class="pd-name">'+esc(heading)+'</h1>'+(sub?'<div class="pd-sub">'+esc(sub)+'</div>':'')+(metaLine?'<div class="pd-contact">'+metaLine+'</div>':'')+'</div>'+bodyHTML;
 }
+function wxSlug(s){ return String(s||'WX2026').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,90)||'WX2026'; }
+/* Pass 9.1M.1 — one-click PDF download (no dialog) via the locally vendored
+   html2pdf engine; isolated-iframe print fallback if it is unavailable. */
 function wxRunPrint(){
   var host=document.getElementById('printDoc'); if(!host) return;
+  var name=((host.querySelector('.pd-name')||{}).textContent)||'WX2026 Blueprint';
+  var fname=wxSlug(name)+'.pdf';
+  if(window.html2pdf){
+    var stage=document.createElement('div');
+    stage.className='wx-pdf-stage'; stage.setAttribute('aria-hidden','true');
+    stage.style.cssText='position:fixed;left:-10000px;top:0;width:760px;background:#fff;z-index:-1;';
+    var css=BLUEPRINT_PRINT_CSS.replace(/html,\s*body\{/g,'.wx-pdfdoc{');
+    stage.innerHTML='<style>'+css+'</style><div class="wx-pdfdoc" style="background:#fff;color:#111;padding:6px 8px">'+host.innerHTML+'</div>';
+    document.body.appendChild(stage);
+    var el=stage.querySelector('.wx-pdfdoc');
+    var done=function(){ try{ if(stage.parentNode) stage.parentNode.removeChild(stage); }catch(e){} };
+    var opt={margin:[10,12,12,12],filename:fname,image:{type:'jpeg',quality:0.98},html2canvas:{scale:2,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.pd-row','.pd-head']}};
+    try{ window.html2pdf().set(opt).from(el).save().then(done,done); }catch(e){ done(); }
+    return;
+  }
   var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>WX2026 Blueprint</title><style>'+BLUEPRINT_PRINT_CSS+'</style></head><body>'+host.innerHTML+'</body></html>';
   if(window.WXExport&&window.WXExport.printDocument){ window.WXExport.printDocument(doc); } else { window.print(); }
 }
@@ -1144,7 +1163,7 @@ function selectArea(k, opts){
   markSubnavActive(k);
   const ws=WORKSTREAMS[k], l=areaTasks(k).sort((a,b)=>a.dueN-b.dueN);
   const main=document.getElementById("areaMain");
-  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Area · ${esc(AREA_SHORT[k])}</p><h3 class="rd-main__title">${esc(ws.label)}</h3><p class="rd-main__desc">${esc(ws.purpose)} · Owner: ${esc(ws.owner)}</p>${wxPrintBtn("areaPrint","Print tasks for the "+ws.label+" area")}</div><div class="tasklist" id="areaList"></div>`;
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Area · ${esc(AREA_SHORT[k])}</p><h3 class="rd-main__title">${esc(ws.label)}</h3><p class="rd-main__desc">${esc(ws.purpose)} · Owner: ${esc(ws.owner)}</p>${wxPrintBtn("areaPrint","Download tasks for the "+ws.label+" area as PDF")}</div><div class="tasklist" id="areaList"></div>`;
   const _apb=document.getElementById("areaPrint"); if(_apb) _apb.addEventListener("click",printArea);
   fillRows(document.getElementById("areaList"), l, "No tasks in this area.", {area:false});
   document.getElementById("areaSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForArea(k), "Deliverables for This Area", false));
@@ -1187,7 +1206,7 @@ function selectPerson(name, opts){
   markSubnavActive(name);
   const l=ownerTasks(name);
   const main=document.getElementById("peopleMain");
-  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Person</p><h3 class="rd-main__title">${esc(name)}</h3><p class="rd-main__desc">${l.length} task${l.length!==1?"s":""} across ${new Set(l.map(t=>t.ws)).size} area${new Set(l.map(t=>t.ws)).size!==1?"s":""}</p>${wxPrintBtn("peoplePrint","Print tasks for "+name)}</div><div class="tasklist" id="peopleList"></div>`;
+  main.innerHTML=`<div class="rd-main__head"><p class="rd-main__idx">Person</p><h3 class="rd-main__title">${esc(name)}</h3><p class="rd-main__desc">${l.length} task${l.length!==1?"s":""} across ${new Set(l.map(t=>t.ws)).size} area${new Set(l.map(t=>t.ws)).size!==1?"s":""}</p>${wxPrintBtn("peoplePrint","Download tasks for "+name+" as PDF")}</div><div class="tasklist" id="peopleList"></div>`;
   const _ppb=document.getElementById("peoplePrint"); if(_ppb) _ppb.addEventListener("click",printPerson);
   fillRows(document.getElementById("peopleList"), l, "No tasks assigned.", {owner:false});
   document.getElementById("peopleSummary").innerHTML=summaryPanel(l, delivMiniBlock(delivsForPerson(name), "Deliverables Connected to Their Work", true));
